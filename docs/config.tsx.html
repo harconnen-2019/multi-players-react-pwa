@@ -44,7 +44,7 @@
             
              
                 <a href="index.html">
-                    <h1 class="navbar-item">Myradio-center-v3</h1>
+                    <h1 class="navbar-item">MultiPlayer - MyRadio</h1>
                 </a>
             
         </div>
@@ -72,7 +72,7 @@
             
             <nav>
                 
-                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Global</h3><ul><li><a href="global.html#URL_INIT">URL_INIT</a></li><li><a href="global.html#VERSION">VERSION</a></li></ul></div>
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Modules</h3><ul><li><a href="module-config.html">config</a></li><li><a href="module-lib_init.html">lib/init</a></li></ul><h3>Classes</h3><ul><li><a href="module-lib_init-Init.html">Init</a></li></ul></div>
                 
             </nav>
         </div>
@@ -89,18 +89,34 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import { version } from '../package.json'
+            <pre class="prettyprint source linenums"><code>/**
+ * Модуль с настройками плеера
+ * @module config
+ */
+
+import { version } from '../package.json'
 
 /**
  * Версия приложения
  * @constant
  */
-export const VERSION = `App version : ${version} (alfa)`
+export const VERSION: string = `App version : ${version} (alfa)`
+/**
+ * Debug
+ * @constant
+ */
+export const DEBUG: boolean =
+  process.env.NODE_ENV === 'development' ? true : false
+/**
+ * Префикс для локального запуска
+ * @constant
+ */
+export const PREFIX: string = 'https://default.my-radio.app'
 /**
  * Инициализация приложения
  * @constant
  */
-export const URL_INIT = '/api/orange/func/player/init'
+export const URL_INIT: string = '/api/orange/func/player/init'
 </code></pre>
         </article>
     </section>
