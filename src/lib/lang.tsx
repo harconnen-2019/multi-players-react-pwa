@@ -68,10 +68,10 @@ export enum listLocales {
  */
 export const getLang = (): string => {
   let lang: any = 'en'
-  if (localStorage.getItem('lang')) {
-    lang = localStorage.getItem('lang')
+  if (localStorage.getItem('player-lang')) {
+    lang = localStorage.getItem('player-lang')
   } else {
-    typeof lang === 'string' && localStorage.setItem('lang', lang)
+    typeof lang === 'string' && localStorage.setItem('player-lang', lang)
   }
   return lang
 }
