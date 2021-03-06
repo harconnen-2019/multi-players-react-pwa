@@ -3,25 +3,39 @@
  * @module components/App
  */
 import React, { useState, useEffect } from 'react'
-import * as config from './config'
-import { IApiInit, ICreateInit } from './interfaces/initializing'
+import * as CONFIG from './config'
+import * as type from './interfaces/initializing'
+import * as create from './lib/initializing'
 import { ILocalization } from './interfaces/localization'
-import { fetchFromApi, SelectStatus } from './lib/utils'
-import { getCookie, createInit } from './lib/initializing'
-import { getLang } from './lib/lang'
+import {
+  getCookie,
+  fetchFromApi,
+  STATUS,
+  PLATFORM as DEFAULT_PLATFORM,
+} from './lib/utils'
+
+// import {  } from './lib/lang'
+
+const SESSION: string | undefined = getCookie('session')
+const PLATFORM: string = process.env.REACT_APP_PLATFORM || DEFAULT_PLATFORM.PWA
 
 /**
  * Сборка всего плеера и бизнес логика
  * @returns {void}
  */
 function App() {
-  const [initStatus, setInitStatus] = useState(SelectStatus.init)
-  const [init, setInit] = useState<ICreateInit | null>(null)
+  const [initStatus, setInitStatus] = useState(STATUS.INIT)
   const [lang, setLang] = useState<ILocalization>({})
+
+  let linkRadios: type.LinkRadiosRequest
+  let linkFavoritesRadios: type.LinkFavoritesRequest
+  let playerTheme: type.PlayerThemeRequest
+  let countersForHead: type.CountersIdRequest
+  let advertising: type.AdvertisingRequest
 
   useEffect(() => {
     consolTitle()
-    setInitStatus(SelectStatus.loading)
+    setInitStatus(STATUS.LOADING)
     loadInit()
     loadLocalization()
     /**
@@ -52,7 +66,7 @@ function App() {
      * //TODO: Запуск счетчиков
      */
 
-    setInitStatus(SelectStatus.loaded)
+    setInitStatus(STATUS.LOADED)
   }, [])
 
   /**
@@ -62,9 +76,9 @@ function App() {
    */
   function consolTitle(): void {
     console.group('Init player:')
-    console.info(config.VERSION)
-    config.DEBUG && console.log('env : ' + process.env.NODE_ENV)
-    config.DEBUG && console.log('session : %s', getCookie('session'))
+    console.info(CONFIG.VERSION, `Platform: ${PLATFORM}`)
+    CONFIG.DEBUG && console.log('env : ' + process.env.NODE_ENV)
+    CONFIG.DEBUG && console.log('session : %s', SESSION)
     console.groupEnd()
   }
 
@@ -74,16 +88,19 @@ function App() {
    * @returns {void}
    */
   function loadInit(): void {
-    fetchFromApi<IApiInit>(
-      `${config.PREFIX}${config.URL_INIT}?session=${getCookie('session')}`
+    fetchFromApi<type.ApiRequest>(
+      `${CONFIG.PREFIX}${CONFIG.URL_INIT}?session=${SESSION}`
     )
       .then((data) => {
-        const result: ICreateInit = createInit(data)
-        setInit(result)
-        config.DEBUG && console.log('Инициализация : ', result)
+        linkRadios = create.linkRadiosFromApi(data)
+        linkFavoritesRadios = create.linkFavoritesFromApi(data)
+        playerTheme = create.playerThemeFromApi(data, PLATFORM)
+        countersForHead = create.countersIdFomApi(data)
+        advertising = create.advertisingFromApi(data, PLATFORM)
+        CONFIG.DEBUG && console.log('Инициализация : ', data)
       })
       .catch((err) => {
-        setInitStatus(SelectStatus.error)
+        setInitStatus(STATUS.ERROR)
         console.error('Loading init failed', err)
       })
   }
@@ -94,28 +111,26 @@ function App() {
    * @returns {void}
    */
   function loadLocalization(): void {
-    const activeLang = getLang()
     if (localStorage.getItem('player-localization')) {
       const getLocalization = localStorage.getItem('player-localization')
       if (typeof getLocalization === 'string') {
         setLang(JSON.parse(getLocalization))
-        config.DEBUG &&
+        CONFIG.DEBUG &&
           console.log(
             'Локализация из localStorage : ',
             JSON.parse(getLocalization)
           )
       }
     } else {
-      fetchFromApi<ILocalization>(`/static/locales/${activeLang}/messages.json`)
-        .then((data) => {
-          const result: ILocalization = data
-          result.activeLang = { message: activeLang }
+      fetchFromApi<ILocalization>(`/static/locales/en/messages.json`)
+        .then((result) => {
+          result.activeLang = { message: 'en' }
           setLang(result)
           localStorage.setItem('player-localization', JSON.stringify(result))
-          config.DEBUG && console.log('Локализация из api : ', result)
+          CONFIG.DEBUG && console.log('Локализация из api : ', result)
         })
         .catch((err) => {
-          setInitStatus(SelectStatus.error)
+          setInitStatus(STATUS.ERROR)
           console.error('Loading lang failed', err)
         })
     }

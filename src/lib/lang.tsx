@@ -60,18 +60,3 @@ export enum listLocales {
   'zh_CN' = 'Chinese (China)',
   'zh_TW' = 'Chinese (Taiwan)',
 }
-
-/**
- * Устанавливает текущий язык или возвращает из localStorage, по умолчанию EN
- * @function
- * @returns {string} - Возвращает текущий язык
- */
-export const getLang = (): string => {
-  let lang: any = 'en'
-  if (localStorage.getItem('player-lang')) {
-    lang = localStorage.getItem('player-lang')
-  } else {
-    typeof lang === 'string' && localStorage.setItem('player-lang', lang)
-  }
-  return lang
-}

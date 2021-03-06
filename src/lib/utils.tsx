@@ -4,6 +4,20 @@
  */
 
 /**
+ * Считывает cookies для отправки запросов api (?session=)
+ * @function
+ * @returns {string | undefine} - Значение cookie или Undefine
+ */
+export const getCookie = (name: string): string | undefined => {
+  let matches = document.cookie.match(
+    new RegExp(
+      '(?:^|; )' + name.replace(/([.$?*|{}()[\]\\/+^])/g, '\\$1') + '=([^;]*)'
+    )
+  )
+  return matches ? decodeURIComponent(matches[1]) : undefined
+}
+
+/**
  * Получение данных с сервера с помощью Fetch
  * @function
  * @param {string} url - url
@@ -23,11 +37,23 @@ export async function fetchFromApi<T>(request: RequestInfo): Promise<T> {
 /**
  * Статус загрузки плеера (init, loading, loaded, error)
  * @readonly
+ * @enum
+ */
+export enum STATUS {
+  INIT,
+  LOADING,
+  LOADED,
+  ERROR,
+}
+
+/**
+ * Платформы для плеера
+ * @readonly
  * @enum {string}
  */
-export enum SelectStatus {
-  init = 'init',
-  loading = 'loading',
-  loaded = 'loaded',
-  error = 'error',
+export enum PLATFORM {
+  PWA = 'PWA',
+  FB = 'FB',
+  VK = 'VK',
+  OK = 'OK',
 }

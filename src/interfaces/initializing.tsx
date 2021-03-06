@@ -1,8 +1,8 @@
 /**
- * @interface
- * @see createInit
+ * @memberof linkRadiosFromApi
+ * @alias ApiRequest
  */
-export interface IApiInit {
+export type ApiRequest = {
   /** Параметры плеера */
   params: {
     session: string
@@ -54,58 +54,76 @@ export interface IApiInit {
   }
 }
 /**
- * @interface
- * @see Init
+ * @memberof linkRadiosFromApi
+ * @alias LinkRadiosRequest
  */
-export interface ICreateInit {
-  /** Платформа плеера */
-  readonly platform: string
-  /** Настройки плеера */
-  player: {
-    /** Плеер для одного радио */
-    readonly single: boolean
-    /** Favicon */
-    readonly favicon: string
-    /** Тема по умолчанию  */
-    readonly themeDefault: string
-    /** Тема текущей платформы */
-    readonly theme: string
-    /** Логотип текущей платформы */
-    readonly cover: string
-    /** Стили текущей платформы */
-    readonly css: string
-  }
-  /** полученные url из api */
-  readonly api: {
-    /** URL для получения списка радиостанций */
-    readonly list: string
-    /** URL для получения списка топовых радиостанций */
-    readonly top: string
-    /** URL для получения списка рекомендуемых радиостанций */
-    readonly recommend: string
-    /** URL для получения списка радиостанций при поиске */
-    readonly search: string
-    /** URL для получения списка избранных радиостанций */
-    readonly favoriteList: string
-    /** URL метода добавления в избранное */
-    readonly favoriteAdd: string
-    /** URL метода удаления из избранное */
-    readonly favoriteDel: string
-    /** URL метода добавления пользователя */
-    readonly user: string
-  }
-  /** Сессия пользователя */
-  readonly session: string
+export type LinkRadiosRequest = {
+  /** URL для получения списка радиостанций */
+  readonly list: string
+  /** URL для получения списка топовых радиостанций */
+  readonly top: string
+  /** URL для получения списка рекомендуемых радиостанций */
+  readonly recommend: string
+  /** URL для получения списка радиостанций при поиске */
+  readonly search: string
+  /** URL метода добавления пользователя */
+  readonly user: string
+}
+
+/**
+ * @memberof linkFavoritesFromApi
+ * @alias LinkFavoritesRequest
+ */
+export type LinkFavoritesRequest = {
+  /** URL для получения списка избранных радиостанций */
+  readonly favoriteList: string
+  /** URL метода добавления в избранное */
+  readonly favoriteAdd: string
+  /** URL метода удаления из избранное */
+  readonly favoriteDel: string
+}
+
+/**
+ * @memberof playerThemeFromApi
+ * @alias PlayerThemeRequest
+ */
+export type PlayerThemeRequest = {
+  /** Плеер для одного радио */
+  readonly single: boolean
+  /** Favicon */
+  readonly favicon: string
+  /** Тема по умолчанию  */
+  readonly themeDefault: string
+  /** Тема текущей платформы */
+  readonly theme: string
+  /** Логотип текущей платформы */
+  readonly cover: string
+  /** Стили текущей платформы */
+  readonly css: string
+}
+
+/**
+ * @memberof countersIdFomApi
+ * @alias CountersIdRequest
+ */
+export type CountersIdRequest = {
+  /** Счетчик Google */
+  readonly ga: string | null
+  /** Счетчик Вконтакте */
+  readonly vk?: string | null
+  /** Счетчик Facebook */
+  readonly fb?: string | null
+}
+
+/**
+ * @memberof advertisingFromApi
+ * @alias AdvertisingRequest
+ */
+export type AdvertisingRequest = {
   /** Плид для IMA Google */
   readonly plid: number
   /** Параметры для показа баннера */
   readonly banner: string | null
   /** VAST параметры преролла */
   readonly preroll: string | null
-  /** Счетчики */
-  readonly counters: {
-    ga: string | null
-    vk?: string | null
-    fb?: string | null
-  }
 }
