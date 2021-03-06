@@ -1,0 +1,92 @@
+{
+  "appName": {
+    "message": "myRadio"
+  },
+  "appDescription": {
+    "message": "Vituo mbalimbali unavyopenda katika eneo moja."
+  },
+  "appTooltip": {
+    "message": "myRadio"
+  },
+  "stations": {
+    "message": "Vituo"
+  },
+  "favorites": {
+    "message": "Unavyopenda"
+  },
+  "genres": {
+    "message": "Aina"
+  },
+  "newStationTitle": {
+    "message": "Kituo Kipya"
+  },
+  "newStationDescription": {
+    "message": "Je, hukupata ulichokuwa ukitafuta? Tueleze unachohitaji na kutakiweka kwenye orodha ya vituo."
+  },
+  "newStationPlaceholder": {
+    "message": "Mpasho au jina la kituo"
+  },
+  "send": {
+    "message": "Tuma"
+  },
+  "loginTitle": {
+    "message": "Ingia"
+  },
+  "favoritesTitle": {
+    "message": "Unavyopenda"
+  },
+  "favoritesEmpty": {
+    "message": "Vituo %add% vya kwanza kwenye orodha ya unavyopenda"
+  },
+  "favoritesEmptyAdd": {
+    "message": "weka"
+  },
+  "mood": {
+    "message": "Hali"
+  },
+  "radio": {
+    "message": "Redio"
+  },
+  "countrys": {
+    "message": "Miji (Nchi)"
+  },
+  "profile": {
+    "message": "Wasifu"
+  },
+  "similar": {
+    "message": "Vituo vinavyofanana"
+  },
+  "logout": {
+    "message": "Ondoka"
+  },
+  "lang": {
+    "message": "Lugha"
+  },
+  "search": {
+    "message": "Tafuta"
+  },
+  "searchByGenre": {
+    "message": "Tafuta kulingana na aina"
+  },
+  "searchByCity": {
+    "message": "Tafuta kulingana na mji"
+  },
+  "searchByMood": {
+    "message": "Tafuta kulingana na hali"
+  },
+  "searchByStation": {
+    "message": "Tafuta kituo"
+  },
+  "terms": {
+    "message": "Sera ya faragha"
+  },
+  "eula": {
+    "message": "Masharti ya matumizi"
+  },
+  "faq": {
+    "message": "Maswali Yanayoulizwa Sana"
+  },
+  "about": {
+    "message": "Kuhusu"
+  }
+}

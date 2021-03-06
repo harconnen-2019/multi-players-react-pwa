@@ -1,0 +1,92 @@
+{
+  "appName": {
+    "message": "myRadio"
+  },
+  "appDescription": {
+    "message": "Berbagai ragam stasiun, plus favorit Anda, di satu ekstensi."
+  },
+  "appTooltip": {
+    "message": "myRadio"
+  },
+  "stations": {
+    "message": "Stasiun"
+  },
+  "favorites": {
+    "message": "Favorit"
+  },
+  "genres": {
+    "message": "Genre"
+  },
+  "newStationTitle": {
+    "message": "Stasiun Baru"
+  },
+  "newStationDescription": {
+    "message": "Anda tidak menemukan yang dicari? Tuliskan pesan kepada kami untuk menambahkannya ke daftar."
+  },
+  "newStationPlaceholder": {
+    "message": "Stream atau nama stasiun"
+  },
+  "send": {
+    "message": "Kirim"
+  },
+  "loginTitle": {
+    "message": "Masuk"
+  },
+  "favoritesTitle": {
+    "message": "Favorit"
+  },
+  "favoritesEmpty": {
+    "message": "Pertama-tama, %add% stasiun ke favorit Anda"
+  },
+  "favoritesEmptyAdd": {
+    "message": "tambah"
+  },
+  "mood": {
+    "message": "Suasana hati"
+  },
+  "radio": {
+    "message": "Radio"
+  },
+  "countrys": {
+    "message": "Kota (Negara)"
+  },
+  "profile": {
+    "message": "Profil"
+  },
+  "similar": {
+    "message": "Stasiun serupa"
+  },
+  "logout": {
+    "message": "Keluar"
+  },
+  "lang": {
+    "message": "Bahasa"
+  },
+  "search": {
+    "message": "Cari"
+  },
+  "searchByGenre": {
+    "message": "Cari menurut genre"
+  },
+  "searchByCity": {
+    "message": "Cari menurut kota"
+  },
+  "searchByMood": {
+    "message": "Cari menurut suasana hati"
+  },
+  "searchByStation": {
+    "message": "Cari stasiun"
+  },
+  "terms": {
+    "message": "Kebijakan privasi"
+  },
+  "eula": {
+    "message": "Syarat-syarat penggunaan"
+  },
+  "faq": {
+    "message": "T&J"
+  },
+  "about": {
+    "message": "Tentang"
+  }
+}

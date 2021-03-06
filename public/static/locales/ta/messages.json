@@ -1,0 +1,92 @@
+{
+  "appName": {
+    "message": "myRadio"
+  },
+  "appDescription": {
+    "message": "ஒரே நீட்டிப்பில் உங்களுக்கு விருப்பமானவற்றுடன் ஏராளமான ஸ்டேஷன்கள்."
+  },
+  "appTooltip": {
+    "message": "myRadio"
+  },
+  "stations": {
+    "message": "ஸ்டேஷன்கள்"
+  },
+  "favorites": {
+    "message": "விருப்பமானவை"
+  },
+  "genres": {
+    "message": "வகைப்பிரிவு"
+  },
+  "newStationTitle": {
+    "message": "புதிய ஸ்டேஷன்"
+  },
+  "newStationDescription": {
+    "message": "நீங்கள் தேடியதைக் கண்டறிய முடியவில்லையா? பிளேயர் தொகுப்பில் சேர்க்க, உங்கள் தேவையை எங்களுக்கு எழுதியனுப்புங்கள்."
+  },
+  "newStationPlaceholder": {
+    "message": "ஸ்டேஷன் பெயர் அல்லது ஸ்டிரீம்"
+  },
+  "send": {
+    "message": "அனுப்பு"
+  },
+  "loginTitle": {
+    "message": "உள்நுழை"
+  },
+  "favoritesTitle": {
+    "message": "விருப்பமானவை"
+  },
+  "favoritesEmpty": {
+    "message": "உங்கள் விருப்பமானவையில் முதலில் ஸ்டேஷன்களை %add%"
+  },
+  "favoritesEmptyAdd": {
+    "message": "சேர்"
+  },
+  "mood": {
+    "message": "மனநிலை"
+  },
+  "radio": {
+    "message": "ரேடியோ"
+  },
+  "countrys": {
+    "message": "நகரங்கள் (நாடுகள்)"
+  },
+  "profile": {
+    "message": "சுயவிவரம்"
+  },
+  "similar": {
+    "message": "ஒத்த ஸ்டேஷன்கள்"
+  },
+  "logout": {
+    "message": "வெளியேறு"
+  },
+  "lang": {
+    "message": "மொழி"
+  },
+  "search": {
+    "message": "தேடு"
+  },
+  "searchByGenre": {
+    "message": "வகைப்பிரிவு வாரியாக தேடு"
+  },
+  "searchByCity": {
+    "message": "நகரம் வாரியாக தேடு"
+  },
+  "searchByMood": {
+    "message": "மனநிலை வாரியாக தேடு"
+  },
+  "searchByStation": {
+    "message": "ஸ்டேஷனை தேடு"
+  },
+  "terms": {
+    "message": "தனியுரிமைக் கொள்கை"
+  },
+  "eula": {
+    "message": "பயன்பாட்டு விதிமுறைகள்"
+  },
+  "faq": {
+    "message": "அ.கே.கே."
+  },
+  "about": {
+    "message": "அறிமுகம்"
+  }
+}

@@ -1,0 +1,92 @@
+{
+  "appName": {
+    "message": "myRadio"
+  },
+  "appDescription": {
+    "message": "Ett enormt utbud av stationer plus dina favoriter i ett tillägg."
+  },
+  "appTooltip": {
+    "message": "myRadio"
+  },
+  "stations": {
+    "message": "Stationer"
+  },
+  "favorites": {
+    "message": "Favoriter"
+  },
+  "genres": {
+    "message": "Genrer"
+  },
+  "newStationTitle": {
+    "message": "Ny station"
+  },
+  "newStationDescription": {
+    "message": "Hittade du inte vad du letade efter? Skriv till oss vad du vill lägga till i listan med radiostationer."
+  },
+  "newStationPlaceholder": {
+    "message": "Stationens namn eller stream"
+  },
+  "send": {
+    "message": "Skicka"
+  },
+  "loginTitle": {
+    "message": "Logga in"
+  },
+  "favoritesTitle": {
+    "message": "Favoriter"
+  },
+  "favoritesEmpty": {
+    "message": "Först %add% stationer i dina favoriter"
+  },
+  "favoritesEmptyAdd": {
+    "message": "lägg till"
+  },
+  "mood": {
+    "message": "Humör"
+  },
+  "radio": {
+    "message": "Radio"
+  },
+  "countrys": {
+    "message": "Städer (länder)"
+  },
+  "profile": {
+    "message": "Profil"
+  },
+  "similar": {
+    "message": "Liknande stationer"
+  },
+  "logout": {
+    "message": "Logga ut"
+  },
+  "lang": {
+    "message": "Språk"
+  },
+  "search": {
+    "message": "Sök"
+  },
+  "searchByGenre": {
+    "message": "Sök efter genre"
+  },
+  "searchByCity": {
+    "message": "Sök efter stad"
+  },
+  "searchByMood": {
+    "message": "Sök efter humör"
+  },
+  "searchByStation": {
+    "message": "Sök efter station"
+  },
+  "terms": {
+    "message": "Sekretesspolicy"
+  },
+  "eula": {
+    "message": "Användningsvillkor"
+  },
+  "faq": {
+    "message": "Vanliga frågor"
+  },
+  "about": {
+    "message": "Om"
+  }
+}

@@ -1,0 +1,92 @@
+{
+  "appName": {
+    "message": "myRadio"
+  },
+  "appDescription": {
+    "message": "مجموعة كبيرة ومتنوعة من المحطات، بالإضافة لتفضيلاتك، وذلك بنفس ملحق المتصفح."
+  },
+  "appTooltip": {
+    "message": "myRadio"
+  },
+  "stations": {
+    "message": "المحطات"
+  },
+  "favorites": {
+    "message": "التفضيلات"
+  },
+  "genres": {
+    "message": "أنواع المحتوى"
+  },
+  "newStationTitle": {
+    "message": "محطة جديدة"
+  },
+  "newStationDescription": {
+    "message": "ألم تجد ما تبحث عنه؟ أرسل إلينا لإعلامنا بما تحتاج لإضافته إلى مجموعة مشغل الراديو."
+  },
+  "newStationPlaceholder": {
+    "message": "اسم المحطة أو البث"
+  },
+  "send": {
+    "message": "إرسال"
+  },
+  "loginTitle": {
+    "message": "تسجيل الدخول"
+  },
+  "favoritesTitle": {
+    "message": "التفضيلات"
+  },
+  "favoritesEmpty": {
+    "message": "عليك أولًا %add% محطات إلى تفضيلاتك"
+  },
+  "favoritesEmptyAdd": {
+    "message": "إضافة"
+  },
+  "mood": {
+    "message": "الحالة المزاجية"
+  },
+  "radio": {
+    "message": "الراديو"
+  },
+  "countrys": {
+    "message": "المدن (الدول)"
+  },
+  "profile": {
+    "message": "الملف الشخصي"
+  },
+  "similar": {
+    "message": "محطات مشابهة"
+  },
+  "logout": {
+    "message": "تسجيل الخروج"
+  },
+  "lang": {
+    "message": "اللغة"
+  },
+  "search": {
+    "message": "البحث"
+  },
+  "searchByGenre": {
+    "message": "البحث حسب نوع المحتوى"
+  },
+  "searchByCity": {
+    "message": "البحث حسب المدينة"
+  },
+  "searchByMood": {
+    "message": "البحث حسب الحالة المزاجية"
+  },
+  "searchByStation": {
+    "message": "البحث عن محطة"
+  },
+  "terms": {
+    "message": "سياسة الخصوصية"
+  },
+  "eula": {
+    "message": "شروط الاستخدام"
+  },
+  "faq": {
+    "message": "أسئلة متكررة"
+  },
+  "about": {
+    "message": "حول"
+  }
+}

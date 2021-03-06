@@ -1,0 +1,92 @@
+{
+  "appName": {
+    "message": "myRadio - online radio and FM radio stations"
+  },
+  "appDescription": {
+    "message": "More than 50.000 online radio plus your favorites radio stations in one extension"
+  },
+  "appTooltip": {
+    "message": "myRadio"
+  },
+  "stations": {
+    "message": "Stations"
+  },
+  "favorites": {
+    "message": "Favorites"
+  },
+  "genres": {
+    "message": "Genres"
+  },
+  "newStationTitle": {
+    "message": "New Station"
+  },
+  "newStationDescription": {
+    "message": "Didn't find what you were looking for? Write us what you need to add to the player collection."
+  },
+  "newStationPlaceholder": {
+    "message": "Station name or stream"
+  },
+  "send": {
+    "message": "Send"
+  },
+  "loginTitle": {
+    "message": "Login"
+  },
+  "favoritesTitle": {
+    "message": "Favorites"
+  },
+  "favoritesEmpty": {
+    "message": "First %add% stations to your favorites"
+  },
+  "favoritesEmptyAdd": {
+    "message": "add"
+  },
+  "mood": {
+    "message": "Mood"
+  },
+  "radio": {
+    "message": "Radio"
+  },
+  "countrys": {
+    "message": "Cities (Countries)"
+  },
+  "profile": {
+    "message": "Profile"
+  },
+  "similar": {
+    "message": "Similar stations"
+  },
+  "logout": {
+    "message": "Logout"
+  },
+  "lang": {
+    "message": "Language"
+  },
+  "search": {
+    "message": "Search"
+  },
+  "searchByGenre": {
+    "message": "Search by genre"
+  },
+  "searchByCity": {
+    "message": "Search by city"
+  },
+  "searchByMood": {
+    "message": "Search by mood"
+  },
+  "searchByStation": {
+    "message": "Search station"
+  },
+  "terms": {
+    "message": "Privacy policy"
+  },
+  "eula": {
+    "message": "Terms of use"
+  },
+  "faq": {
+    "message": "F.A.Q."
+  },
+  "about": {
+    "message": "About"
+  }
+}

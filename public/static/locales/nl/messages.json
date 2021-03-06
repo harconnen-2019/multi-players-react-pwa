@@ -1,0 +1,92 @@
+{
+  "appName": {
+    "message": "myRadio"
+  },
+  "appDescription": {
+    "message": "Een enorme verscheidenheid aan zenders plus uw favorieten in één extensie."
+  },
+  "appTooltip": {
+    "message": "myRadio"
+  },
+  "stations": {
+    "message": "Zenders"
+  },
+  "favorites": {
+    "message": "Favorieten"
+  },
+  "genres": {
+    "message": "Genres"
+  },
+  "newStationTitle": {
+    "message": "Nieuwe zender"
+  },
+  "newStationDescription": {
+    "message": "Niet gevonden wat u zoekt? Vertel ons wat we aan de spelercollectie moeten toevoegen."
+  },
+  "newStationPlaceholder": {
+    "message": "Zendernaam of stream"
+  },
+  "send": {
+    "message": "Verzenden"
+  },
+  "loginTitle": {
+    "message": "Inloggen"
+  },
+  "favoritesTitle": {
+    "message": "Favorieten"
+  },
+  "favoritesEmpty": {
+    "message": "Zenders eerst %add% aan de favorieten"
+  },
+  "favoritesEmptyAdd": {
+    "message": "toevoegen"
+  },
+  "mood": {
+    "message": "Stemming"
+  },
+  "radio": {
+    "message": "Radio"
+  },
+  "countrys": {
+    "message": "Steden (landen)"
+  },
+  "profile": {
+    "message": "Profiel"
+  },
+  "similar": {
+    "message": "Vergelijkbare zenders"
+  },
+  "logout": {
+    "message": "Uitloggen"
+  },
+  "lang": {
+    "message": "Taal"
+  },
+  "search": {
+    "message": "Zoeken"
+  },
+  "searchByGenre": {
+    "message": "Zoeken op genre"
+  },
+  "searchByCity": {
+    "message": "Zoeken op plaats"
+  },
+  "searchByMood": {
+    "message": "Zoek op stemming"
+  },
+  "searchByStation": {
+    "message": "Zender zoeken"
+  },
+  "terms": {
+    "message": "Privacybeleid"
+  },
+  "eula": {
+    "message": "Gebruiksvoorwaarden"
+  },
+  "faq": {
+    "message": "F.A.Q."
+  },
+  "about": {
+    "message": "Over"
+  }
+}

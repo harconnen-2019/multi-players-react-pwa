@@ -1,0 +1,92 @@
+{
+  "appName": {
+    "message": "myRadio"
+  },
+  "appDescription": {
+    "message": "รวมสถานีมากมายและสถานีโปรดของคุณไว้ในส่วนขยายเดียว"
+  },
+  "appTooltip": {
+    "message": "myRadio"
+  },
+  "stations": {
+    "message": "สถานี"
+  },
+  "favorites": {
+    "message": "สถานีโปรด"
+  },
+  "genres": {
+    "message": "ประเภท"
+  },
+  "newStationTitle": {
+    "message": "สถานีใหม่"
+  },
+  "newStationDescription": {
+    "message": "ไม่พบสิ่งที่คุณกำลังมองหาใช่ไหม บอกเราว่าคุณอยากจะเพิ่มอะไรไปยังคอลเลกชันของโปรแกรมเล่นเลยสิ"
+  },
+  "newStationPlaceholder": {
+    "message": "ชื่อสถานีหรือสตรีม"
+  },
+  "send": {
+    "message": "ส่ง"
+  },
+  "loginTitle": {
+    "message": "เข้าสู่ระบบ"
+  },
+  "favoritesTitle": {
+    "message": "สถานีโปรด"
+  },
+  "favoritesEmpty": {
+    "message": "ก่อนอื่น %add% สถานีไปยังสถานีโปรดของคุณ"
+  },
+  "favoritesEmptyAdd": {
+    "message": "เพิ่ม"
+  },
+  "mood": {
+    "message": "แนวอารมณ์"
+  },
+  "radio": {
+    "message": "วิทยุ"
+  },
+  "countrys": {
+    "message": "เมือง (ประเทศ)"
+  },
+  "profile": {
+    "message": "โปรไฟล์"
+  },
+  "similar": {
+    "message": "สถานีที่คล้ายกัน"
+  },
+  "logout": {
+    "message": "ออกจากระบบ"
+  },
+  "lang": {
+    "message": "ภาษา"
+  },
+  "search": {
+    "message": "ค้นหา"
+  },
+  "searchByGenre": {
+    "message": "ค้นหาตามประเภท"
+  },
+  "searchByCity": {
+    "message": "ค้นหาตามเมือง"
+  },
+  "searchByMood": {
+    "message": "ค้นหาตามแนวอารมณ์"
+  },
+  "searchByStation": {
+    "message": "ค้นหาสถานี"
+  },
+  "terms": {
+    "message": "นโยบายความเป็นส่วนตัว"
+  },
+  "eula": {
+    "message": "เงื่อนไขการใช้งาน"
+  },
+  "faq": {
+    "message": "คำถามที่พบบ่อย"
+  },
+  "about": {
+    "message": "เกี่ยวกับ"
+  }
+}

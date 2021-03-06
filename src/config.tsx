@@ -1,5 +1,5 @@
 /**
- * Модуль с настройками плеера
+ * Настройки для управления плеером
  * @module config
  */
 
@@ -7,22 +7,23 @@ import { version } from '../package.json'
 
 /**
  * Версия приложения
- * @constant
+ * @constant {string}
  */
 export const VERSION: string = `App version : ${version} (alfa)`
 /**
- * Debug
- * @constant
+ * Активирует консольные логи для отладки
+ * @constant {boolean}
  */
 export const DEBUG: boolean =
   process.env.NODE_ENV === 'development' ? true : false
 /**
- * Префикс для локального запуска
- * @constant
+ * Префикс для локального запуска, в продакшене  пустая строка
+ * @constant {string}
  */
-export const PREFIX: string = 'https://default.my-radio.app'
+export const PREFIX: string =
+  process.env.NODE_ENV === 'development' ? 'https://default.my-radio.app' : ''
 /**
- * Инициализация приложения
- * @constant
+ * URL для получения данных при инициализации плеера
+ * @constant {string}
  */
 export const URL_INIT: string = '/api/orange/func/player/init'

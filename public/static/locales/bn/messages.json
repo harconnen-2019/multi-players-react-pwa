@@ -1,0 +1,92 @@
+{
+  "appName": {
+    "message": "myRadio"
+  },
+  "appDescription": {
+    "message": "একটি এক্সটেনশনে অনেকগুলো স্টেশন সহ আপনার কিছু প্রিয় স্টেশন।"
+  },
+  "appTooltip": {
+    "message": "myRadio"
+  },
+  "stations": {
+    "message": "স্টেশন"
+  },
+  "favorites": {
+    "message": "প্রিয়"
+  },
+  "genres": {
+    "message": "শাখা"
+  },
+  "newStationTitle": {
+    "message": "নতুন স্টেশন"
+  },
+  "newStationDescription": {
+    "message": "আপনি যা খুঁজছেন তা পাননি? প্লেয়ারের সংগ্রহে আপনার কোন স্টেশন যোগ করতে হবে তা আমাদেরকে লিখে জানান।"
+  },
+  "newStationPlaceholder": {
+    "message": "স্টেশনের নাম বা স্ট্রিম"
+  },
+  "send": {
+    "message": "পাঠান"
+  },
+  "loginTitle": {
+    "message": "লগইন"
+  },
+  "favoritesTitle": {
+    "message": "প্রিয়"
+  },
+  "favoritesEmpty": {
+    "message": "আপনার প্রিয়তে প্রথম %add%টি স্টেশন"
+  },
+  "favoritesEmptyAdd": {
+    "message": "যোগ"
+  },
+  "mood": {
+    "message": "মুড"
+  },
+  "radio": {
+    "message": "রেডিও"
+  },
+  "countrys": {
+    "message": "শহর (দেশ)"
+  },
+  "profile": {
+    "message": "প্রোফাইল"
+  },
+  "similar": {
+    "message": "একই ধরনের স্টেশন"
+  },
+  "logout": {
+    "message": "লগআউট"
+  },
+  "lang": {
+    "message": "ভাষা"
+  },
+  "search": {
+    "message": "খুঁজুন"
+  },
+  "searchByGenre": {
+    "message": "শাখা অনুযায়ী খুঁজুন"
+  },
+  "searchByCity": {
+    "message": "শহর অনুযায়ী খুঁজুন"
+  },
+  "searchByMood": {
+    "message": "মুড অনুযায়ী খুঁজুন"
+  },
+  "searchByStation": {
+    "message": "স্টেশন খুঁজুন"
+  },
+  "terms": {
+    "message": "গোপনীয়তার নীতিমালা"
+  },
+  "eula": {
+    "message": "ব্যবহারের শর্তাবলী"
+  },
+  "faq": {
+    "message": "F.A.Q."
+  },
+  "about": {
+    "message": "সম্বন্ধে"
+  }
+}

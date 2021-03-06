@@ -1,0 +1,92 @@
+{
+  "appName": {
+    "message": "myRadio"
+  },
+  "appDescription": {
+    "message": "تنوع زیادی از ایستگاه‌ها همراه ایستگاه مورد علاقه‌شما در یک افزونه."
+  },
+  "appTooltip": {
+    "message": "myRadio"
+  },
+  "stations": {
+    "message": "ایستگاه‌ها"
+  },
+  "favorites": {
+    "message": "علاقه‌مندی‌ها"
+  },
+  "genres": {
+    "message": "ژانرها"
+  },
+  "newStationTitle": {
+    "message": "ایستگاه جدید"
+  },
+  "newStationDescription": {
+    "message": "ایستگاهی که می‌خواهید را پیدا نکردید؟ برای ما بنویسید تا آن را به کلکسیون ایستگاه‌هایمان اضافه کنیم."
+  },
+  "newStationPlaceholder": {
+    "message": "نام ایستگاه یا استریم"
+  },
+  "send": {
+    "message": "ارسال"
+  },
+  "loginTitle": {
+    "message": "ورود"
+  },
+  "favoritesTitle": {
+    "message": "علاقه‌مندی‌ها"
+  },
+  "favoritesEmpty": {
+    "message": "ابتدا ایستگا‌ها را به علاقه‌مندی‌های خود %add% کنید"
+  },
+  "favoritesEmptyAdd": {
+    "message": "اضافه کنید"
+  },
+  "mood": {
+    "message": "حالت"
+  },
+  "radio": {
+    "message": "رادیو"
+  },
+  "countrys": {
+    "message": "شهر‌ها (کشورها)"
+  },
+  "profile": {
+    "message": "نمایه"
+  },
+  "similar": {
+    "message": "ایستگاه‌های مشابه"
+  },
+  "logout": {
+    "message": "خروج"
+  },
+  "lang": {
+    "message": "زبان"
+  },
+  "search": {
+    "message": "جستجو"
+  },
+  "searchByGenre": {
+    "message": "جستجو بر اساس ژانر"
+  },
+  "searchByCity": {
+    "message": "جستجو بر اساس شهر"
+  },
+  "searchByMood": {
+    "message": "جستجو بر اساس حالت"
+  },
+  "searchByStation": {
+    "message": "ایستگاه جستجو"
+  },
+  "terms": {
+    "message": "سیاست حریم خصوصی"
+  },
+  "eula": {
+    "message": "شرایط استفاده"
+  },
+  "faq": {
+    "message": "سوالات متداول"
+  },
+  "about": {
+    "message": "درباره"
+  }
+}

@@ -1,0 +1,92 @@
+{
+  "appName": {
+    "message": "myRadio"
+  },
+  "appDescription": {
+    "message": "Širok izbor postaj ter vaših priljubljenih postaj v eni razširitvi brskalnika."
+  },
+  "appTooltip": {
+    "message": "myRadio"
+  },
+  "stations": {
+    "message": "Postaje"
+  },
+  "favorites": {
+    "message": "Priljubljene"
+  },
+  "genres": {
+    "message": "Zvrsti"
+  },
+  "newStationTitle": {
+    "message": "Nova postaja"
+  },
+  "newStationDescription": {
+    "message": "Niste našli želene postaje? Sporočite nam svoje želje in postajo bomo dodali na seznam postaj."
+  },
+  "newStationPlaceholder": {
+    "message": "Ime postaje ali pretočne vsebine"
+  },
+  "send": {
+    "message": "Pošlji"
+  },
+  "loginTitle": {
+    "message": "Prijava"
+  },
+  "favoritesTitle": {
+    "message": "Priljubljene"
+  },
+  "favoritesEmpty": {
+    "message": "Dodaj postaje %add% med priljubljene"
+  },
+  "favoritesEmptyAdd": {
+    "message": "dodaj"
+  },
+  "mood": {
+    "message": "Razpoloženje"
+  },
+  "radio": {
+    "message": "Postaja"
+  },
+  "countrys": {
+    "message": "Mesta (države)"
+  },
+  "profile": {
+    "message": "Profil"
+  },
+  "similar": {
+    "message": "Sorodne postaje"
+  },
+  "logout": {
+    "message": "Odjava"
+  },
+  "lang": {
+    "message": "Jezik"
+  },
+  "search": {
+    "message": "Iskanje"
+  },
+  "searchByGenre": {
+    "message": "Iskanje po zvrsti"
+  },
+  "searchByCity": {
+    "message": "Iskanje po mestu"
+  },
+  "searchByMood": {
+    "message": "Iskanje po razpoloženju"
+  },
+  "searchByStation": {
+    "message": "Iskanje postaj"
+  },
+  "terms": {
+    "message": "Pravilnik o zasebnosti"
+  },
+  "eula": {
+    "message": "Pogoji uporabe"
+  },
+  "faq": {
+    "message": "Pogosta vprašanja"
+  },
+  "about": {
+    "message": "Vizitka"
+  }
+}

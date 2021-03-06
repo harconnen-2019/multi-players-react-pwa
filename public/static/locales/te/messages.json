@@ -1,0 +1,92 @@
+{
+  "appName": {
+    "message": "myRadio"
+  },
+  "appDescription": {
+    "message": "ఒక ఎక్స్‌టెన్షన్‌లో పెద్ద సంఖ్యలో స్టేషన్‌లు ప్లస్ మీ ఫేవరేట్‌లు."
+  },
+  "appTooltip": {
+    "message": "myRadio"
+  },
+  "stations": {
+    "message": "స్టేషన్‌లు"
+  },
+  "favorites": {
+    "message": "ఫేవరేట్‌లు"
+  },
+  "genres": {
+    "message": "జానర్‌లు"
+  },
+  "newStationTitle": {
+    "message": "కొత్త స్టేషన్"
+  },
+  "newStationDescription": {
+    "message": "మీరు దేనికొరకు అయితే చూస్తున్నారో అది లేదా? ప్లేయర్ కలెక్షన్‌కు దేనిని జోడించాల్సిన అవసరం ఉందో మాకు రాయండి."
+  },
+  "newStationPlaceholder": {
+    "message": "స్టేషన్ పేరు లేదా స్ట్రీమ్"
+  },
+  "send": {
+    "message": "పంపండి"
+  },
+  "loginTitle": {
+    "message": "లాగిన్"
+  },
+  "favoritesTitle": {
+    "message": "ఫేవరేట్‌లు"
+  },
+  "favoritesEmpty": {
+    "message": "మీ ఫేవరేట్‌లకు మొదటి %add% స్టేషన్‌లు జోడించండి"
+  },
+  "favoritesEmptyAdd": {
+    "message": "జోడించండి"
+  },
+  "mood": {
+    "message": "మూడ్"
+  },
+  "radio": {
+    "message": "రేడియో"
+  },
+  "countrys": {
+    "message": "నగరాలు (దేశాలు)"
+  },
+  "profile": {
+    "message": "ప్రొఫైల్"
+  },
+  "similar": {
+    "message": "ఒకేమాదిరి స్టేషన్‌లు"
+  },
+  "logout": {
+    "message": "లాగ్‌అవుట్"
+  },
+  "lang": {
+    "message": "భాష"
+  },
+  "search": {
+    "message": "వెతకడం"
+  },
+  "searchByGenre": {
+    "message": "జానర్ ద్వారా వెతకడం"
+  },
+  "searchByCity": {
+    "message": "నగరం ద్వారా వెతకడం"
+  },
+  "searchByMood": {
+    "message": "మూడ్ ద్వారా వెతకడం"
+  },
+  "searchByStation": {
+    "message": "స్టేషన్ వెతకండి"
+  },
+  "terms": {
+    "message": "గోప్యతా విధానం"
+  },
+  "eula": {
+    "message": "ఉపయోగ నిబంధనలు"
+  },
+  "faq": {
+    "message": "ఎఫ్ఎక్యూ."
+  },
+  "about": {
+    "message": "గురించి"
+  }
+}

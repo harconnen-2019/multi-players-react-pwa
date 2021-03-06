@@ -1,0 +1,92 @@
+{
+  "appName": {
+    "message": "myRadio"
+  },
+  "appDescription": {
+    "message": "Un'ampia scelta di stazioni, più le tue Preferite, in un'unica estensione."
+  },
+  "appTooltip": {
+    "message": "myRadio"
+  },
+  "stations": {
+    "message": "Stazioni"
+  },
+  "favorites": {
+    "message": "Preferite"
+  },
+  "genres": {
+    "message": "Generi"
+  },
+  "newStationTitle": {
+    "message": "Nuova stazione"
+  },
+  "newStationDescription": {
+    "message": "Non hai trovato quello che stavi cercando? Scrivici e specifica cosa vuoi aggiungere all'elenco delle stazioni radio."
+  },
+  "newStationPlaceholder": {
+    "message": "Nome stazione o flusso"
+  },
+  "send": {
+    "message": "Invia"
+  },
+  "loginTitle": {
+    "message": "Accedi"
+  },
+  "favoritesTitle": {
+    "message": "Preferite"
+  },
+  "favoritesEmpty": {
+    "message": "Per cominciare, %add% delle stazioni alle tue Preferite"
+  },
+  "favoritesEmptyAdd": {
+    "message": "aggiungi"
+  },
+  "mood": {
+    "message": "Umore"
+  },
+  "radio": {
+    "message": "Radio"
+  },
+  "countrys": {
+    "message": "Città (paesi)"
+  },
+  "profile": {
+    "message": "Profilo"
+  },
+  "similar": {
+    "message": "Stazioni simili"
+  },
+  "logout": {
+    "message": "Esci"
+  },
+  "lang": {
+    "message": "Lingua"
+  },
+  "search": {
+    "message": "Cerca"
+  },
+  "searchByGenre": {
+    "message": "Cerca per genere"
+  },
+  "searchByCity": {
+    "message": "Cerca per città"
+  },
+  "searchByMood": {
+    "message": "Cerca per umore"
+  },
+  "searchByStation": {
+    "message": "Cerca stazione"
+  },
+  "terms": {
+    "message": "Informativa sulla privacy"
+  },
+  "eula": {
+    "message": "Termini di utilizzo"
+  },
+  "faq": {
+    "message": "Domande frequenti"
+  },
+  "about": {
+    "message": "Informazioni"
+  }
+}

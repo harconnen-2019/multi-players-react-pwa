@@ -1,0 +1,92 @@
+{
+  "appName": {
+    "message": "myRadio"
+  },
+  "appDescription": {
+    "message": "Valtava valikoima asemia ja kaikki suosikkisi yhdessä laajennuksessa."
+  },
+  "appTooltip": {
+    "message": "myRadio"
+  },
+  "stations": {
+    "message": "Asenat"
+  },
+  "favorites": {
+    "message": "Suosikit"
+  },
+  "genres": {
+    "message": "Genret"
+  },
+  "newStationTitle": {
+    "message": "Uusi Asema"
+  },
+  "newStationDescription": {
+    "message": "Et löytänyt, mitä etsit? Kirjoita meille, mitä haluaisit lisätä soittimen kokoelmaan."
+  },
+  "newStationPlaceholder": {
+    "message": "Aseman nimi tai suoratiosto"
+  },
+  "send": {
+    "message": "Lähetä"
+  },
+  "loginTitle": {
+    "message": "Kirjaudu"
+  },
+  "favoritesTitle": {
+    "message": "Suosikit"
+  },
+  "favoritesEmpty": {
+    "message": "Ensin %add% asemat suosikkeihisi"
+  },
+  "favoritesEmptyAdd": {
+    "message": "lisää"
+  },
+  "mood": {
+    "message": "Tunnetila"
+  },
+  "radio": {
+    "message": "Radio"
+  },
+  "countrys": {
+    "message": "Kaupungit (Maat)"
+  },
+  "profile": {
+    "message": "Profiili"
+  },
+  "similar": {
+    "message": "Samankaltaisia asemia"
+  },
+  "logout": {
+    "message": "Kirjaudu ulos"
+  },
+  "lang": {
+    "message": "Kieli"
+  },
+  "search": {
+    "message": "Haku"
+  },
+  "searchByGenre": {
+    "message": "Hae genrellä"
+  },
+  "searchByCity": {
+    "message": "Hae kaupungilla"
+  },
+  "searchByMood": {
+    "message": "Hae tunnetilalla"
+  },
+  "searchByStation": {
+    "message": "Hae asemalla"
+  },
+  "terms": {
+    "message": "Tietosuoja"
+  },
+  "eula": {
+    "message": "Käyttöehdot"
+  },
+  "faq": {
+    "message": "UKK"
+  },
+  "about": {
+    "message": "Tietoja"
+  }
+}

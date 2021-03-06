@@ -1,0 +1,92 @@
+{
+  "appName": {
+    "message": "myRadio"
+  },
+  "appDescription": {
+    "message": "Величезна кількість станцій і найулюбленіші з них в одному розширенні."
+  },
+  "appTooltip": {
+    "message": "myRadio"
+  },
+  "stations": {
+    "message": "Станції"
+  },
+  "favorites": {
+    "message": "Улюблені"
+  },
+  "genres": {
+    "message": "Жанри"
+  },
+  "newStationTitle": {
+    "message": "Нова станція"
+  },
+  "newStationDescription": {
+    "message": "Не знайшли те, що шукали? Повідомте, яких радіостанцій вам бракує, і ми подбаємо про це."
+  },
+  "newStationPlaceholder": {
+    "message": "Назва станції або ефіру"
+  },
+  "send": {
+    "message": "Надіслати"
+  },
+  "loginTitle": {
+    "message": "Вхід"
+  },
+  "favoritesTitle": {
+    "message": "Улюблені"
+  },
+  "favoritesEmpty": {
+    "message": "Спочатку %add% станції до улюблених"
+  },
+  "favoritesEmptyAdd": {
+    "message": "додайте"
+  },
+  "mood": {
+    "message": "Настрій"
+  },
+  "radio": {
+    "message": "Радіо"
+  },
+  "countrys": {
+    "message": "Міста (країни)"
+  },
+  "profile": {
+    "message": "Профіль"
+  },
+  "similar": {
+    "message": "Подібні станції"
+  },
+  "logout": {
+    "message": "Вийти"
+  },
+  "lang": {
+    "message": "Мова"
+  },
+  "search": {
+    "message": "Пошук"
+  },
+  "searchByGenre": {
+    "message": "Пошук за жанром"
+  },
+  "searchByCity": {
+    "message": "Пошук за містом"
+  },
+  "searchByMood": {
+    "message": "Пошук за настроєм"
+  },
+  "searchByStation": {
+    "message": "Пошук за станцією"
+  },
+  "terms": {
+    "message": "Політика конфіденційності"
+  },
+  "eula": {
+    "message": "Умови використання"
+  },
+  "faq": {
+    "message": "Поширені запитання"
+  },
+  "about": {
+    "message": "Про нас"
+  }
+}

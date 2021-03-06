@@ -1,0 +1,92 @@
+{
+  "appName": {
+    "message": "myRadio"
+  },
+  "appDescription": {
+    "message": "’n Groot verskeidenheid van stasies, plus jou gunstelinge, in een uitbreiding."
+  },
+  "appTooltip": {
+    "message": "myRadio"
+  },
+  "stations": {
+    "message": "Stasies"
+  },
+  "favorites": {
+    "message": "Gunstelinge"
+  },
+  "genres": {
+    "message": "Genres"
+  },
+  "newStationTitle": {
+    "message": "Nuwe stasie"
+  },
+  "newStationDescription": {
+    "message": "Kon jy nie vind waarna jy soek nie? Vertel vir ons wat jy graag wil hê ons moet by die program se versameling voeg."
+  },
+  "newStationPlaceholder": {
+    "message": "Stasie se naam of stroom"
+  },
+  "send": {
+    "message": "Stuur"
+  },
+  "loginTitle": {
+    "message": "Meld aan"
+  },
+  "favoritesTitle": {
+    "message": "Gunstelinge"
+  },
+  "favoritesEmpty": {
+    "message": "%add% stasies eers by jou gunstelinge"
+  },
+  "favoritesEmptyAdd": {
+    "message": "voeg"
+  },
+  "mood": {
+    "message": "Luim"
+  },
+  "radio": {
+    "message": "Radio"
+  },
+  "countrys": {
+    "message": "Dorpe/stede (lande)"
+  },
+  "profile": {
+    "message": "Profiel"
+  },
+  "similar": {
+    "message": "Soortgelyke stasies"
+  },
+  "logout": {
+    "message": "Meld af"
+  },
+  "lang": {
+    "message": "Taal"
+  },
+  "search": {
+    "message": "Soek"
+  },
+  "searchByGenre": {
+    "message": "Soek volgens genre"
+  },
+  "searchByCity": {
+    "message": "Soek volgens dorp/stad"
+  },
+  "searchByMood": {
+    "message": "Soek volgens luim"
+  },
+  "searchByStation": {
+    "message": "Deursoek stasie"
+  },
+  "terms": {
+    "message": "Privaatheidsbeleid"
+  },
+  "eula": {
+    "message": "Gebruiksbepalings"
+  },
+  "faq": {
+    "message": "V&A"
+  },
+  "about": {
+    "message": "Meer oor"
+  }
+}

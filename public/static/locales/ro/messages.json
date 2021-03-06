@@ -1,0 +1,92 @@
+{
+  "appName": {
+    "message": "myRadio"
+  },
+  "appDescription": {
+    "message": "O mare varietate de stații, plus preferatele dvs., într-o singură extensie."
+  },
+  "appTooltip": {
+    "message": "myRadio"
+  },
+  "stations": {
+    "message": "Stații"
+  },
+  "favorites": {
+    "message": "Favorite"
+  },
+  "genres": {
+    "message": "Genuri"
+  },
+  "newStationTitle": {
+    "message": "Stație nouă"
+  },
+  "newStationDescription": {
+    "message": "Nu ați găsit ceea ce căutați? Scrieți-ne ce anume trebuie să adăugați în colecția playerului."
+  },
+  "newStationPlaceholder": {
+    "message": "Denumire stație sau flux"
+  },
+  "send": {
+    "message": "Trimitere"
+  },
+  "loginTitle": {
+    "message": "Conectare"
+  },
+  "favoritesTitle": {
+    "message": "Favorite"
+  },
+  "favoritesEmpty": {
+    "message": "Pentru început, %add% stații în secțiunea Favorite"
+  },
+  "favoritesEmptyAdd": {
+    "message": "adaugă"
+  },
+  "mood": {
+    "message": "Stare"
+  },
+  "radio": {
+    "message": "Radio"
+  },
+  "countrys": {
+    "message": "Orașe (țări)"
+  },
+  "profile": {
+    "message": "Profil"
+  },
+  "similar": {
+    "message": "Stații similare"
+  },
+  "logout": {
+    "message": "Deconectare"
+  },
+  "lang": {
+    "message": "Limba"
+  },
+  "search": {
+    "message": "Căutare"
+  },
+  "searchByGenre": {
+    "message": "Căutare după gen"
+  },
+  "searchByCity": {
+    "message": "Căutare după oraș"
+  },
+  "searchByMood": {
+    "message": "Căutare după stare"
+  },
+  "searchByStation": {
+    "message": "Căutare stație"
+  },
+  "terms": {
+    "message": "Politica de confidențialit."
+  },
+  "eula": {
+    "message": "Condiții de utilizare"
+  },
+  "faq": {
+    "message": "F.A.Q."
+  },
+  "about": {
+    "message": "Despre"
+  }
+}

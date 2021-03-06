@@ -1,0 +1,92 @@
+{
+  "appName": {
+    "message": "myRadio"
+  },
+  "appDescription": {
+    "message": "એક એક્સ્ટેંશનમાં સ્ટેશનોની એક વિશાળ વિવિધતા અને તમારી પસંદ."
+  },
+  "appTooltip": {
+    "message": "myRadio"
+  },
+  "stations": {
+    "message": "સ્ટેશનો"
+  },
+  "favorites": {
+    "message": "મનપસંદ"
+  },
+  "genres": {
+    "message": "શૈલીઓ"
+  },
+  "newStationTitle": {
+    "message": "નવું સ્ટેશન"
+  },
+  "newStationDescription": {
+    "message": "તમે જે શોધી રહ્યા હતા તે મળ્યું નથી? પ્લેયર સંગ્રહમાં તમારે શું ઉમેરવાની જરૂર છે તે અમને લખો."
+  },
+  "newStationPlaceholder": {
+    "message": "સ્ટેશનનું નામ અથવા સ્ટ્રીમ"
+  },
+  "send": {
+    "message": "મોકલો"
+  },
+  "loginTitle": {
+    "message": "લોગિન"
+  },
+  "favoritesTitle": {
+    "message": "મનપસંદ"
+  },
+  "favoritesEmpty": {
+    "message": "પહેલા %add% સ્ટેશન તમારા મનપસંદમાં ઉમેરો"
+  },
+  "favoritesEmptyAdd": {
+    "message": "ઉમેરો"
+  },
+  "mood": {
+    "message": "મૂડ"
+  },
+  "radio": {
+    "message": "રેડિયો"
+  },
+  "countrys": {
+    "message": "શહેરો (દેશો)"
+  },
+  "profile": {
+    "message": "પ્રોફાઈલ"
+  },
+  "similar": {
+    "message": "સમાન સ્ટેશનો"
+  },
+  "logout": {
+    "message": "લોગ આઉટ"
+  },
+  "lang": {
+    "message": "ભાષા"
+  },
+  "search": {
+    "message": "શોધો"
+  },
+  "searchByGenre": {
+    "message": "શૈલી દ્વારા શોધો"
+  },
+  "searchByCity": {
+    "message": "શહેર દ્વારા શોધ"
+  },
+  "searchByMood": {
+    "message": "મૂડ દ્વારા શોધ"
+  },
+  "searchByStation": {
+    "message": "સ્ટેશન દ્વારા શોધો"
+  },
+  "terms": {
+    "message": "ગોપનીયતા નીતિ"
+  },
+  "eula": {
+    "message": "ઉપયોગની શરતો"
+  },
+  "faq": {
+    "message": "વારંવાર પૂછાતા પ્રશ્નો."
+  },
+  "about": {
+    "message": "વિષય"
+  }
+}

@@ -1,0 +1,92 @@
+{
+  "appName": {
+    "message": "myRadio"
+  },
+  "appDescription": {
+    "message": "מגוון עצום של תחנות בנוסף למועדפות עליך בשלוחה אחת."
+  },
+  "appTooltip": {
+    "message": "myRadio"
+  },
+  "stations": {
+    "message": "תחנות"
+  },
+  "favorites": {
+    "message": "מועדפות"
+  },
+  "genres": {
+    "message": "ז'אנרים"
+  },
+  "newStationTitle": {
+    "message": "תחנה חדשה"
+  },
+  "newStationDescription": {
+    "message": "לא מצאת את מה שחיפשת? כתוב לנו מה אתה צריך להוסיף לאוסף התחנות."
+  },
+  "newStationPlaceholder": {
+    "message": "שם או שידור התחנה"
+  },
+  "send": {
+    "message": "שלח"
+  },
+  "loginTitle": {
+    "message": "כניסה"
+  },
+  "favoritesTitle": {
+    "message": "מועדפות"
+  },
+  "favoritesEmpty": {
+    "message": "תחילה %add% תחנות למועדפות עליך"
+  },
+  "favoritesEmptyAdd": {
+    "message": "הוסף"
+  },
+  "mood": {
+    "message": "אווירה"
+  },
+  "radio": {
+    "message": "רדיו"
+  },
+  "countrys": {
+    "message": "ערים (מדינות)"
+  },
+  "profile": {
+    "message": "פרופיל"
+  },
+  "similar": {
+    "message": "תחנות דומות"
+  },
+  "logout": {
+    "message": "יציאה"
+  },
+  "lang": {
+    "message": "שפה"
+  },
+  "search": {
+    "message": "חיפוש"
+  },
+  "searchByGenre": {
+    "message": "חיפוש לפי ז'אנר"
+  },
+  "searchByCity": {
+    "message": "חיפוש לפי עיר"
+  },
+  "searchByMood": {
+    "message": "חיפוש לפי אווירה"
+  },
+  "searchByStation": {
+    "message": "חיפוש תחנה"
+  },
+  "terms": {
+    "message": "מדיניות פרטיות"
+  },
+  "eula": {
+    "message": "תנאי שימוש"
+  },
+  "faq": {
+    "message": "שאלות נפוצות"
+  },
+  "about": {
+    "message": "אודות"
+  }
+}

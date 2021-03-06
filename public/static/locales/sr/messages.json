@@ -1,0 +1,92 @@
+{
+  "appName": {
+    "message": "myRadio"
+  },
+  "appDescription": {
+    "message": "Велики избор станица заједно са вашим омиљеним у једном додатку."
+  },
+  "appTooltip": {
+    "message": "myRadio"
+  },
+  "stations": {
+    "message": "Станице"
+  },
+  "favorites": {
+    "message": "Омиљено"
+  },
+  "genres": {
+    "message": "Жанрови"
+  },
+  "newStationTitle": {
+    "message": "Нова станица"
+  },
+  "newStationDescription": {
+    "message": "Нисте пронашли оно што тражите? Напишите нам шта желите да додамо у колекцију плејера."
+  },
+  "newStationPlaceholder": {
+    "message": "Назив станице или стрима"
+  },
+  "send": {
+    "message": "Пошаљи"
+  },
+  "loginTitle": {
+    "message": "Пријављивање"
+  },
+  "favoritesTitle": {
+    "message": "Омиљено"
+  },
+  "favoritesEmpty": {
+    "message": "Прво %add% станице у омиљено"
+  },
+  "favoritesEmptyAdd": {
+    "message": "додајте"
+  },
+  "mood": {
+    "message": "Расположење"
+  },
+  "radio": {
+    "message": "Радио"
+  },
+  "countrys": {
+    "message": "Градови (државе)"
+  },
+  "profile": {
+    "message": "Профил"
+  },
+  "similar": {
+    "message": "Сличне станице"
+  },
+  "logout": {
+    "message": "Одјава"
+  },
+  "lang": {
+    "message": "Језик"
+  },
+  "search": {
+    "message": "Претражи"
+  },
+  "searchByGenre": {
+    "message": "Претрага по жанру"
+  },
+  "searchByCity": {
+    "message": "Претрага по граду"
+  },
+  "searchByMood": {
+    "message": "Претрага по расположењу"
+  },
+  "searchByStation": {
+    "message": "Тражи станицу"
+  },
+  "terms": {
+    "message": "Правила о приватности"
+  },
+  "eula": {
+    "message": "Услови коришћења"
+  },
+  "faq": {
+    "message": "Честа питања"
+  },
+  "about": {
+    "message": "О додатку"
+  }
+}

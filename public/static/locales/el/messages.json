@@ -1,0 +1,92 @@
+{
+  "appName": {
+    "message": "myRadio"
+  },
+  "appDescription": {
+    "message": "Μια τεράστια ποικιλία σταθμών και οι αγαπημένοι σας σε μία επέκταση."
+  },
+  "appTooltip": {
+    "message": "myRadio"
+  },
+  "stations": {
+    "message": "Σταθμοί"
+  },
+  "favorites": {
+    "message": "Αγαπημένοι"
+  },
+  "genres": {
+    "message": "Είδος"
+  },
+  "newStationTitle": {
+    "message": "Νέος σταθμός"
+  },
+  "newStationDescription": {
+    "message": "Δε βρήκατε αυτό που ψάχνατε; Γράψτε μας τις χρειάζεστε και θα το προσθέσουμε στη συλλογή σταθμών στο πρόγραμμα αναπαραγωγής."
+  },
+  "newStationPlaceholder": {
+    "message": "Όνομα σταθμού ή ροής προγράμματος"
+  },
+  "send": {
+    "message": "Αποστολή"
+  },
+  "loginTitle": {
+    "message": "Είσοδος"
+  },
+  "favoritesTitle": {
+    "message": "Αγαπημένοι"
+  },
+  "favoritesEmpty": {
+    "message": "Πρώτα %add% σταθμούς στους αγαπημένους σας"
+  },
+  "favoritesEmptyAdd": {
+    "message": "προσθέστε"
+  },
+  "mood": {
+    "message": "Διάθεση"
+  },
+  "radio": {
+    "message": "Ραδιόφωνο"
+  },
+  "countrys": {
+    "message": "Πόλεις (Χώρες)"
+  },
+  "profile": {
+    "message": "Προφίλ"
+  },
+  "similar": {
+    "message": "Παρόμοιοι σταθμοί"
+  },
+  "logout": {
+    "message": "Έξοδος"
+  },
+  "lang": {
+    "message": "Γλώσσα"
+  },
+  "search": {
+    "message": "Αναζήτηση"
+  },
+  "searchByGenre": {
+    "message": "Αναζήτηση ανά είδος"
+  },
+  "searchByCity": {
+    "message": "Αναζήτηση ανά πόλη"
+  },
+  "searchByMood": {
+    "message": "Αναζήτηση ανά διάθεση"
+  },
+  "searchByStation": {
+    "message": "Αναζήτηση σταθμού"
+  },
+  "terms": {
+    "message": "Πολιτική απορρήτου"
+  },
+  "eula": {
+    "message": "Όροι χρήσης"
+  },
+  "faq": {
+    "message": "Συχνές ερωτήσεις"
+  },
+  "about": {
+    "message": "Σχετικά"
+  }
+}

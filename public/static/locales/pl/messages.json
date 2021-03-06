@@ -1,0 +1,92 @@
+{
+  "appName": {
+    "message": "myRadio"
+  },
+  "appDescription": {
+    "message": "Ogromna różnorodność stacji plus Twoje ulubione w jednym rozszerzeniu."
+  },
+  "appTooltip": {
+    "message": "myRadio"
+  },
+  "stations": {
+    "message": "Stacje"
+  },
+  "favorites": {
+    "message": "Ulubione"
+  },
+  "genres": {
+    "message": "Gatunki"
+  },
+  "newStationTitle": {
+    "message": "Nowa stacja"
+  },
+  "newStationDescription": {
+    "message": "Nie ma stacji, której szukasz? Napisz do nas z nazwami stacji, które według Ciebie powinny znaleźć się w kolekcji odtwarzacza."
+  },
+  "newStationPlaceholder": {
+    "message": "Nazwa stacji lub strumień"
+  },
+  "send": {
+    "message": "Wyślij"
+  },
+  "loginTitle": {
+    "message": "Zaloguj się"
+  },
+  "favoritesTitle": {
+    "message": "Ulubione"
+  },
+  "favoritesEmpty": {
+    "message": "Najpierw %add% stacje do ulubionych"
+  },
+  "favoritesEmptyAdd": {
+    "message": "dodaj"
+  },
+  "mood": {
+    "message": "Nastrój"
+  },
+  "radio": {
+    "message": "Radio"
+  },
+  "countrys": {
+    "message": "Miasta (kraje)"
+  },
+  "profile": {
+    "message": "Profil"
+  },
+  "similar": {
+    "message": "Podobne stacje"
+  },
+  "logout": {
+    "message": "Wyloguj się"
+  },
+  "lang": {
+    "message": "Język"
+  },
+  "search": {
+    "message": "Szukaj"
+  },
+  "searchByGenre": {
+    "message": "Szukaj wg gatunku"
+  },
+  "searchByCity": {
+    "message": "Szukaj wg miasta"
+  },
+  "searchByMood": {
+    "message": "Szukaj wg nastroju"
+  },
+  "searchByStation": {
+    "message": "Szukaj stacji"
+  },
+  "terms": {
+    "message": "Polityka prywatności"
+  },
+  "eula": {
+    "message": "Regulamin"
+  },
+  "faq": {
+    "message": "F.A.Q."
+  },
+  "about": {
+    "message": "Informacje"
+  }
+}

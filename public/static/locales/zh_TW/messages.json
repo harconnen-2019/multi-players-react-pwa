@@ -1,0 +1,92 @@
+{
+  "appName": {
+    "message": "myRadio"
+  },
+  "appDescription": {
+    "message": "一個擴充套件網羅種類繁多的電台和您最喜愛的頻道。"
+  },
+  "appTooltip": {
+    "message": "myRadio"
+  },
+  "stations": {
+    "message": "電台"
+  },
+  "favorites": {
+    "message": "我的最愛"
+  },
+  "genres": {
+    "message": "類型"
+  },
+  "newStationTitle": {
+    "message": "新電台"
+  },
+  "newStationDescription": {
+    "message": "找不到您想要的內容？請告訴我們您需要新增甚麼電台。"
+  },
+  "newStationPlaceholder": {
+    "message": "電台或串流名稱"
+  },
+  "send": {
+    "message": "傳送"
+  },
+  "loginTitle": {
+    "message": "登入"
+  },
+  "favoritesTitle": {
+    "message": "我的最愛"
+  },
+  "favoritesEmpty": {
+    "message": "首先，將電台 %add% 到我的最愛"
+  },
+  "favoritesEmptyAdd": {
+    "message": "新增"
+  },
+  "mood": {
+    "message": "心情"
+  },
+  "radio": {
+    "message": "電台"
+  },
+  "countrys": {
+    "message": "城市（國家）"
+  },
+  "profile": {
+    "message": "個人檔案"
+  },
+  "similar": {
+    "message": "類似的電台"
+  },
+  "logout": {
+    "message": "登出"
+  },
+  "lang": {
+    "message": "語言"
+  },
+  "search": {
+    "message": "搜尋"
+  },
+  "searchByGenre": {
+    "message": "按類型搜尋"
+  },
+  "searchByCity": {
+    "message": "按城市搜尋"
+  },
+  "searchByMood": {
+    "message": "按心情搜尋"
+  },
+  "searchByStation": {
+    "message": "搜尋電台"
+  },
+  "terms": {
+    "message": "隱私權政策"
+  },
+  "eula": {
+    "message": "使用條款"
+  },
+  "faq": {
+    "message": "常見問題"
+  },
+  "about": {
+    "message": "關於"
+  }
+}

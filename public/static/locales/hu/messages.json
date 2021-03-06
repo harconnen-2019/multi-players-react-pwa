@@ -1,0 +1,92 @@
+{
+  "appName": {
+    "message": "Az én rádióm"
+  },
+  "appDescription": {
+    "message": "Rádióállomások óriási választéka és a kedvenceid egy bővítményben."
+  },
+  "appTooltip": {
+    "message": "Az én rádióm"
+  },
+  "stations": {
+    "message": "Állomások"
+  },
+  "favorites": {
+    "message": "Kedvencek"
+  },
+  "genres": {
+    "message": "Műfajok"
+  },
+  "newStationTitle": {
+    "message": "Új állomás"
+  },
+  "newStationDescription": {
+    "message": "Nem találta amit keresett? Írja meg nekünk mivel bővítsük a lejátszási gyűjteményt!"
+  },
+  "newStationPlaceholder": {
+    "message": "Az állomás neve vagy streamje"
+  },
+  "send": {
+    "message": "Küldés"
+  },
+  "loginTitle": {
+    "message": "Bejelentkezés"
+  },
+  "favoritesTitle": {
+    "message": "Kedvencek"
+  },
+  "favoritesEmpty": {
+    "message": "Először %add% állomásokat a kedvencei közül"
+  },
+  "favoritesEmptyAdd": {
+    "message": "adjon hozzá"
+  },
+  "mood": {
+    "message": "Hangulat"
+  },
+  "radio": {
+    "message": "Rádió"
+  },
+  "countrys": {
+    "message": "Városok (Országok)"
+  },
+  "profile": {
+    "message": "Profil"
+  },
+  "similar": {
+    "message": "Hasonló állomások"
+  },
+  "logout": {
+    "message": "Kijelentkezés"
+  },
+  "lang": {
+    "message": "Nyelv"
+  },
+  "search": {
+    "message": "Keresés"
+  },
+  "searchByGenre": {
+    "message": "Keresés műfaj szerint"
+  },
+  "searchByCity": {
+    "message": "Keresés város szerint"
+  },
+  "searchByMood": {
+    "message": "Keresés hangulat szerint"
+  },
+  "searchByStation": {
+    "message": "Állomás keresése"
+  },
+  "terms": {
+    "message": "Adatkezelési irányelv"
+  },
+  "eula": {
+    "message": "Felhasználási feltételek"
+  },
+  "faq": {
+    "message": "GYIK"
+  },
+  "about": {
+    "message": "Névjegy"
+  }
+}

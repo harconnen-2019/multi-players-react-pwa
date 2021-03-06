@@ -1,0 +1,92 @@
+{
+  "appName": {
+    "message": "myRadio"
+  },
+  "appDescription": {
+    "message": "Огромно разнообразие от станции плюс Вашите любими - в едно разширение."
+  },
+  "appTooltip": {
+    "message": "myRadio"
+  },
+  "stations": {
+    "message": "Станции"
+  },
+  "favorites": {
+    "message": "Любими"
+  },
+  "genres": {
+    "message": "Жанрове"
+  },
+  "newStationTitle": {
+    "message": "Нова станция"
+  },
+  "newStationDescription": {
+    "message": "Не намирате търсеното? Пишете ни какво искате да се добави към колекцията на плейъра."
+  },
+  "newStationPlaceholder": {
+    "message": "Име на станция или стрийм"
+  },
+  "send": {
+    "message": "Изпращане"
+  },
+  "loginTitle": {
+    "message": "Вход"
+  },
+  "favoritesTitle": {
+    "message": "Любими"
+  },
+  "favoritesEmpty": {
+    "message": "Първо %add% станции към Вашите любими"
+  },
+  "favoritesEmptyAdd": {
+    "message": "добавете"
+  },
+  "mood": {
+    "message": "Настроение"
+  },
+  "radio": {
+    "message": "Радио"
+  },
+  "countrys": {
+    "message": "Градове (Държави)"
+  },
+  "profile": {
+    "message": "Профил"
+  },
+  "similar": {
+    "message": "Подобни станции"
+  },
+  "logout": {
+    "message": "Изход"
+  },
+  "lang": {
+    "message": "Език"
+  },
+  "search": {
+    "message": "Търсене"
+  },
+  "searchByGenre": {
+    "message": "Търсене по жанр"
+  },
+  "searchByCity": {
+    "message": "Търсене по град"
+  },
+  "searchByMood": {
+    "message": "Търсене по настроение"
+  },
+  "searchByStation": {
+    "message": "Търсене на станция"
+  },
+  "terms": {
+    "message": "Политика за поверителност"
+  },
+  "eula": {
+    "message": "Условия за употреба"
+  },
+  "faq": {
+    "message": "Ч.З.В."
+  },
+  "about": {
+    "message": "За продукта"
+  }
+}

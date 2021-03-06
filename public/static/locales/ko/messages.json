@@ -1,0 +1,92 @@
+{
+  "appName": {
+    "message": "myRadio"
+  },
+  "appDescription": {
+    "message": "한 곳에서 다양한 방송국과 즐겨찾기를 즐길 수 있습니다."
+  },
+  "appTooltip": {
+    "message": "myRadio"
+  },
+  "stations": {
+    "message": "방송국"
+  },
+  "favorites": {
+    "message": "즐겨찾기"
+  },
+  "genres": {
+    "message": "장르"
+  },
+  "newStationTitle": {
+    "message": "새 방송국"
+  },
+  "newStationDescription": {
+    "message": "원하는 것을 찾지 못했습니까? 추가하고 싶은 플레이어 목록을 알려주세요."
+  },
+  "newStationPlaceholder": {
+    "message": "방송국 또는 스트림 이름"
+  },
+  "send": {
+    "message": "전송"
+  },
+  "loginTitle": {
+    "message": "로그인"
+  },
+  "favoritesTitle": {
+    "message": "즐겨찾기"
+  },
+  "favoritesEmpty": {
+    "message": "먼저 즐겨찾기에 방송국 %add%"
+  },
+  "favoritesEmptyAdd": {
+    "message": "추가"
+  },
+  "mood": {
+    "message": "무드"
+  },
+  "radio": {
+    "message": "라디오"
+  },
+  "countrys": {
+    "message": "도시(국가)"
+  },
+  "profile": {
+    "message": "프로필"
+  },
+  "similar": {
+    "message": "유사한 방송국"
+  },
+  "logout": {
+    "message": "로그아웃"
+  },
+  "lang": {
+    "message": "언어"
+  },
+  "search": {
+    "message": "검색"
+  },
+  "searchByGenre": {
+    "message": "장르별 검색"
+  },
+  "searchByCity": {
+    "message": "도시별 검색"
+  },
+  "searchByMood": {
+    "message": "무드별 검색"
+  },
+  "searchByStation": {
+    "message": "방송국 검색"
+  },
+  "terms": {
+    "message": "개인정보 보호 정책"
+  },
+  "eula": {
+    "message": "사용 약관"
+  },
+  "faq": {
+    "message": "FAQ"
+  },
+  "about": {
+    "message": "정보"
+  }
+}

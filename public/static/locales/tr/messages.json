@@ -1,0 +1,92 @@
+{
+  "appName": {
+    "message": "myRadio"
+  },
+  "appDescription": {
+    "message": "Çok çeşitli istasyonlar ve favorileriniz tek bir eklentide."
+  },
+  "appTooltip": {
+    "message": "myRadio"
+  },
+  "stations": {
+    "message": "İstasyonlar"
+  },
+  "favorites": {
+    "message": "Favoriler"
+  },
+  "genres": {
+    "message": "Tarzlar"
+  },
+  "newStationTitle": {
+    "message": "Yeni İstasyon"
+  },
+  "newStationDescription": {
+    "message": "Aradığınız şeyi bulamadınız mı? Oynatıcı koleksiyonuna eklemeniz gerekenleri bize yazın."
+  },
+  "newStationPlaceholder": {
+    "message": "İstasyon adı veya akışı"
+  },
+  "send": {
+    "message": "Gönder"
+  },
+  "loginTitle": {
+    "message": "Oturum Aç"
+  },
+  "favoritesTitle": {
+    "message": "Favoriler"
+  },
+  "favoritesEmpty": {
+    "message": "Öncelikle istasyonları favorilerinize %add%"
+  },
+  "favoritesEmptyAdd": {
+    "message": "ekleyin"
+  },
+  "mood": {
+    "message": "Ruh Hali"
+  },
+  "radio": {
+    "message": "Radyo"
+  },
+  "countrys": {
+    "message": "Şehirler (Ülkeler)"
+  },
+  "profile": {
+    "message": "Profil"
+  },
+  "similar": {
+    "message": "Benzer istasyonlar"
+  },
+  "logout": {
+    "message": "Oturumu kapat"
+  },
+  "lang": {
+    "message": "Dil"
+  },
+  "search": {
+    "message": "Ara"
+  },
+  "searchByGenre": {
+    "message": "Tarza göre ara"
+  },
+  "searchByCity": {
+    "message": "Şehre göre ara"
+  },
+  "searchByMood": {
+    "message": "Ruh haline göre ara"
+  },
+  "searchByStation": {
+    "message": "İstasyon ara"
+  },
+  "terms": {
+    "message": "Gizlilik politikası"
+  },
+  "eula": {
+    "message": "Kullanım şartları"
+  },
+  "faq": {
+    "message": "S.S.S."
+  },
+  "about": {
+    "message": "Hakkında"
+  }
+}

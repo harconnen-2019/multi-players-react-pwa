@@ -1,0 +1,92 @@
+{
+  "appName": {
+    "message": "myRadio"
+  },
+  "appDescription": {
+    "message": "Didelis stočių pasirinkimas ir galimybė įtraukti mėgstamas stotis viename plėtinyje."
+  },
+  "appTooltip": {
+    "message": "myRadio"
+  },
+  "stations": {
+    "message": "Stotys"
+  },
+  "favorites": {
+    "message": "Mėgstamos"
+  },
+  "genres": {
+    "message": "Žanrai"
+  },
+  "newStationTitle": {
+    "message": "Nauja stotis"
+  },
+  "newStationDescription": {
+    "message": "Neradote, ko ieškojote? Parašykite, ką reikėtų įtraukti į grotuvo kolekciją."
+  },
+  "newStationPlaceholder": {
+    "message": "Stoties pavadinimas arba srautas"
+  },
+  "send": {
+    "message": "Siųsti"
+  },
+  "loginTitle": {
+    "message": "Prisijungti"
+  },
+  "favoritesTitle": {
+    "message": "Mėgstamos"
+  },
+  "favoritesEmpty": {
+    "message": "Pirmiausia %add% stočių į mėgstamų stočių sąrašą"
+  },
+  "favoritesEmptyAdd": {
+    "message": "įtraukite"
+  },
+  "mood": {
+    "message": "Nuotaika"
+  },
+  "radio": {
+    "message": "Radijas"
+  },
+  "countrys": {
+    "message": "Miestai (šalys)"
+  },
+  "profile": {
+    "message": "Profilis"
+  },
+  "similar": {
+    "message": "Panašios stotys"
+  },
+  "logout": {
+    "message": "Atsijungti"
+  },
+  "lang": {
+    "message": "Kalba"
+  },
+  "search": {
+    "message": "Ieškoti"
+  },
+  "searchByGenre": {
+    "message": "Ieškoti pagal žanrą"
+  },
+  "searchByCity": {
+    "message": "Ieškoti pagal miestą"
+  },
+  "searchByMood": {
+    "message": "Ieškoti pagal nuotaiką"
+  },
+  "searchByStation": {
+    "message": "Ieškoti stoties"
+  },
+  "terms": {
+    "message": "Privatumo politika"
+  },
+  "eula": {
+    "message": "Naudojimo sąlygos"
+  },
+  "faq": {
+    "message": "DUK"
+  },
+  "about": {
+    "message": "Apie"
+  }
+}

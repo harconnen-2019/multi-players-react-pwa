@@ -1,0 +1,92 @@
+{
+  "appName": {
+    "message": "myRadio"
+  },
+  "appDescription": {
+    "message": "Vô số đài cùng với những đài yêu thích của bạn trong cùng một tiện ích."
+  },
+  "appTooltip": {
+    "message": "myRadio"
+  },
+  "stations": {
+    "message": "Đài"
+  },
+  "favorites": {
+    "message": "Yêu thích"
+  },
+  "genres": {
+    "message": "Thể loại"
+  },
+  "newStationTitle": {
+    "message": "Đài mới"
+  },
+  "newStationDescription": {
+    "message": "Không tìm thấy thứ bạn đang tìm? Gửi tin cho chúng tôi biết bạn cần thêm thứ gì vào bộ sưu tập trình phát."
+  },
+  "newStationPlaceholder": {
+    "message": "Tên hoặc đường truyền của đài"
+  },
+  "send": {
+    "message": "Gửi"
+  },
+  "loginTitle": {
+    "message": "Đăng nhập"
+  },
+  "favoritesTitle": {
+    "message": "Yêu thích"
+  },
+  "favoritesEmpty": {
+    "message": "%add% đài đầu tiên vào mục yêu thích"
+  },
+  "favoritesEmptyAdd": {
+    "message": "thêm"
+  },
+  "mood": {
+    "message": "Tâm trạng"
+  },
+  "radio": {
+    "message": "Radio"
+  },
+  "countrys": {
+    "message": "Thành phố (quốc gia)"
+  },
+  "profile": {
+    "message": "Hồ sơ"
+  },
+  "similar": {
+    "message": "Đài tương tự"
+  },
+  "logout": {
+    "message": "Đăng xuất"
+  },
+  "lang": {
+    "message": "Ngôn ngữ"
+  },
+  "search": {
+    "message": "Tìm kiếm"
+  },
+  "searchByGenre": {
+    "message": "Tìm kiếm theo thể loại"
+  },
+  "searchByCity": {
+    "message": "Tìm kiếm theo thành phố"
+  },
+  "searchByMood": {
+    "message": "Tìm kiếm theo tâm trạng"
+  },
+  "searchByStation": {
+    "message": "Tìm kiếm đài"
+  },
+  "terms": {
+    "message": "Chính sách quyền riêng tư"
+  },
+  "eula": {
+    "message": "Điều khoản sử dụng"
+  },
+  "faq": {
+    "message": "Hỏi đáp"
+  },
+  "about": {
+    "message": "Giới thiệu"
+  }
+}

@@ -1,0 +1,92 @@
+{
+  "appName": {
+    "message": "myRadio"
+  },
+  "appDescription": {
+    "message": "在一个扩展包中包含大量不同的电台和您的收藏。"
+  },
+  "appTooltip": {
+    "message": "myRadio"
+  },
+  "stations": {
+    "message": "电台"
+  },
+  "favorites": {
+    "message": "收藏夹"
+  },
+  "genres": {
+    "message": "流派"
+  },
+  "newStationTitle": {
+    "message": "新电台"
+  },
+  "newStationDescription": {
+    "message": "找不到您想要的东西？写下您需要添加到收藏的电台。"
+  },
+  "newStationPlaceholder": {
+    "message": "电台或流媒体名称"
+  },
+  "send": {
+    "message": "发送"
+  },
+  "loginTitle": {
+    "message": "登录"
+  },
+  "favoritesTitle": {
+    "message": "收藏夹"
+  },
+  "favoritesEmpty": {
+    "message": "首先，%add% 电台至收藏夹"
+  },
+  "favoritesEmptyAdd": {
+    "message": "添加"
+  },
+  "mood": {
+    "message": "氛围"
+  },
+  "radio": {
+    "message": "收音机"
+  },
+  "countrys": {
+    "message": "城市（国家）"
+  },
+  "profile": {
+    "message": "个人资料"
+  },
+  "similar": {
+    "message": "类似的电台"
+  },
+  "logout": {
+    "message": "注销"
+  },
+  "lang": {
+    "message": "语言"
+  },
+  "search": {
+    "message": "搜索"
+  },
+  "searchByGenre": {
+    "message": "按流派搜索"
+  },
+  "searchByCity": {
+    "message": "按城市搜索"
+  },
+  "searchByMood": {
+    "message": "按氛围搜索"
+  },
+  "searchByStation": {
+    "message": "搜索电台"
+  },
+  "terms": {
+    "message": "隐私策略"
+  },
+  "eula": {
+    "message": "使用条款"
+  },
+  "faq": {
+    "message": "常见问答"
+  },
+  "about": {
+    "message": "关于"
+  }
+}

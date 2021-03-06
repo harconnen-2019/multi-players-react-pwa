@@ -1,0 +1,92 @@
+{
+  "appName": {
+    "message": "myRadio"
+  },
+  "appDescription": {
+    "message": "Veľké množstvo staníc a vaše obľúbené v jednom rozšírení."
+  },
+  "appTooltip": {
+    "message": "myRadio"
+  },
+  "stations": {
+    "message": "Stanice"
+  },
+  "favorites": {
+    "message": "Obľúbené"
+  },
+  "genres": {
+    "message": "Žánre"
+  },
+  "newStationTitle": {
+    "message": "Nová stanica"
+  },
+  "newStationDescription": {
+    "message": "Nenašli ste, čo ste hľadali? Napíšte nám, čo by ste radi pridali do zbierky."
+  },
+  "newStationPlaceholder": {
+    "message": "Názov stanice alebo streamu"
+  },
+  "send": {
+    "message": "Odoslať"
+  },
+  "loginTitle": {
+    "message": "Prihlásiť sa"
+  },
+  "favoritesTitle": {
+    "message": "Obľúbené"
+  },
+  "favoritesEmpty": {
+    "message": "Najprv %add% stanice medzi svoje obľúbené"
+  },
+  "favoritesEmptyAdd": {
+    "message": "pridajte"
+  },
+  "mood": {
+    "message": "Nálada"
+  },
+  "radio": {
+    "message": "Rádio"
+  },
+  "countrys": {
+    "message": "Mestá (krajiny)"
+  },
+  "profile": {
+    "message": "Profil"
+  },
+  "similar": {
+    "message": "Podobné stanice"
+  },
+  "logout": {
+    "message": "Odhlásiť sa"
+  },
+  "lang": {
+    "message": "Jazyk"
+  },
+  "search": {
+    "message": "Vyhľadávanie"
+  },
+  "searchByGenre": {
+    "message": "Hľadať podľa žánru"
+  },
+  "searchByCity": {
+    "message": "Hľadať podľa mesta"
+  },
+  "searchByMood": {
+    "message": "Hľadať podľa nálady"
+  },
+  "searchByStation": {
+    "message": "Hľadať stanicu"
+  },
+  "terms": {
+    "message": "Zásady ochrany osobných údajov"
+  },
+  "eula": {
+    "message": "Podmienky použitia"
+  },
+  "faq": {
+    "message": "Často kladené otázky"
+  },
+  "about": {
+    "message": "O aplikácii"
+  }
+}

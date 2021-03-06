@@ -1,0 +1,92 @@
+{
+  "appName": {
+    "message": "myRadio"
+  },
+  "appDescription": {
+    "message": "Una gran varietat d'emissores i els teus preferits en una sola extensió."
+  },
+  "appTooltip": {
+    "message": "myRadio"
+  },
+  "stations": {
+    "message": "Emissores"
+  },
+  "favorites": {
+    "message": "Preferits"
+  },
+  "genres": {
+    "message": "Gèneres"
+  },
+  "newStationTitle": {
+    "message": "Nova emissora"
+  },
+  "newStationDescription": {
+    "message": "No has trobat el que buscaves? Escriu-nos i digue'ns què vols afegir a la col·lecció del reproductor."
+  },
+  "newStationPlaceholder": {
+    "message": "Nom de l'emissora o l'emissió"
+  },
+  "send": {
+    "message": "Envia"
+  },
+  "loginTitle": {
+    "message": "Inicia la sessió"
+  },
+  "favoritesTitle": {
+    "message": "Preferits"
+  },
+  "favoritesEmpty": {
+    "message": "Has d'%add% emissores als preferits"
+  },
+  "favoritesEmptyAdd": {
+    "message": "afegir"
+  },
+  "mood": {
+    "message": "Estat d'ànim"
+  },
+  "radio": {
+    "message": "Ràdio"
+  },
+  "countrys": {
+    "message": "Ciutats (Països)"
+  },
+  "profile": {
+    "message": "Perfil"
+  },
+  "similar": {
+    "message": "Emissores similars"
+  },
+  "logout": {
+    "message": "Tanca la sessió"
+  },
+  "lang": {
+    "message": "Idioma"
+  },
+  "search": {
+    "message": "Cerca"
+  },
+  "searchByGenre": {
+    "message": "Cerca per gènere"
+  },
+  "searchByCity": {
+    "message": "Cerca per ciutat"
+  },
+  "searchByMood": {
+    "message": "Cerca per estat d'ànim"
+  },
+  "searchByStation": {
+    "message": "Cerca una emissora"
+  },
+  "terms": {
+    "message": "Política de privadesa"
+  },
+  "eula": {
+    "message": "Condicions d'ús"
+  },
+  "faq": {
+    "message": "Preguntes freqüents"
+  },
+  "about": {
+    "message": "Quant a"
+  }
+}

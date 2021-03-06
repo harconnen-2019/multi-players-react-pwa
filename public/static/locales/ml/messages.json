@@ -1,0 +1,92 @@
+{
+  "appName": {
+    "message": "myRadio"
+  },
+  "appDescription": {
+    "message": "വൈവിധ്യമാർന്ന നിരവധി സ്റ്റേഷനുകളും നിങ്ങൾക്ക് പ്രിയപ്പെട്ടവയും ഒറ്റ എക്സ്റ്റൻഷനിൽ ലഭ്യമാക്കുന്നു."
+  },
+  "appTooltip": {
+    "message": "myRadio"
+  },
+  "stations": {
+    "message": "സ്റ്റേഷനുകൾ"
+  },
+  "favorites": {
+    "message": "പ്രിയപ്പെട്ടവ"
+  },
+  "genres": {
+    "message": "ഇനങ്ങൾ"
+  },
+  "newStationTitle": {
+    "message": "പുതിയ സ്റ്റേഷൻ"
+  },
+  "newStationDescription": {
+    "message": "നിങ്ങൾ അന്വേഷിക്കുന്നത് കണ്ടെത്തിയില്ലേ? പ്ലെയറിന്റെ ശേഖരത്തിലേക്ക് നിങ്ങൾ കൂട്ടിച്ചേർക്കാൻ ആഗ്രഹിക്കുന്നതിനെക്കുറിച്ച് ഞങ്ങൾക്ക് എഴുതുക."
+  },
+  "newStationPlaceholder": {
+    "message": "സ്റ്റേഷന്റെ പേര് അല്ലെങ്കിൽ സ്ട്രീം"
+  },
+  "send": {
+    "message": "അയക്കുക"
+  },
+  "loginTitle": {
+    "message": "ലോഗിൻ"
+  },
+  "favoritesTitle": {
+    "message": "പ്രിയപ്പെട്ടവ"
+  },
+  "favoritesEmpty": {
+    "message": "ആദ്യം %add% സ്റ്റേഷനുകൾ നിങ്ങളുടെ പ്രിയപ്പെട്ടവയിലേക്ക് ചേർക്കുക"
+  },
+  "favoritesEmptyAdd": {
+    "message": "ചേർക്കുക"
+  },
+  "mood": {
+    "message": "മൂഡ്"
+  },
+  "radio": {
+    "message": "റേഡിയോ"
+  },
+  "countrys": {
+    "message": "നഗരങ്ങൾ (രാജ്യങ്ങൾ)"
+  },
+  "profile": {
+    "message": "പ്രൊഫൈൽ"
+  },
+  "similar": {
+    "message": "സമാനമായ സ്റ്റേഷനുകൾ"
+  },
+  "logout": {
+    "message": "ലോഗൗട്ട്"
+  },
+  "lang": {
+    "message": "ഭാഷ"
+  },
+  "search": {
+    "message": "തിരയുക"
+  },
+  "searchByGenre": {
+    "message": "ഇനം അനുസരിച്ച് തിരയുക"
+  },
+  "searchByCity": {
+    "message": "നഗരം അനുസരിച്ച് തിരയുക"
+  },
+  "searchByMood": {
+    "message": "മൂഡ് അനുസരിച്ച് തിരയുക"
+  },
+  "searchByStation": {
+    "message": "സ്റ്റേഷൻ തിരയുക"
+  },
+  "terms": {
+    "message": "സ്വകാര്യതാ നയം"
+  },
+  "eula": {
+    "message": "ഉപയോഗ നിബന്ധനകൾ"
+  },
+  "faq": {
+    "message": "പതിവ് ചോദ്യങ്ങൾ"
+  },
+  "about": {
+    "message": "ഞങ്ങളെക്കുറിച്ച്"
+  }
+}

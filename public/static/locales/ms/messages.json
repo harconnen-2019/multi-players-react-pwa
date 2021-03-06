@@ -1,0 +1,92 @@
+{
+  "appName": {
+    "message": "myRadio"
+  },
+  "appDescription": {
+    "message": "Pelbagai jenis stesen tambah kesukaan anda dalam satu sambungan."
+  },
+  "appTooltip": {
+    "message": "myRadio"
+  },
+  "stations": {
+    "message": "Stesen"
+  },
+  "favorites": {
+    "message": "Kesukaan"
+  },
+  "genres": {
+    "message": "Genre"
+  },
+  "newStationTitle": {
+    "message": "Stesen Baru"
+  },
+  "newStationDescription": {
+    "message": "Tidak menjumpai apa yang anda mencari? Tulis kepada kami apa yang anda perlu tambah ke koleksi pemain."
+  },
+  "newStationPlaceholder": {
+    "message": "Nama atau strim stesen"
+  },
+  "send": {
+    "message": "Kirim"
+  },
+  "loginTitle": {
+    "message": "Log masuk"
+  },
+  "favoritesTitle": {
+    "message": "Kesukaan"
+  },
+  "favoritesEmpty": {
+    "message": "Pertama %add% stesen ke kesukaan anda"
+  },
+  "favoritesEmptyAdd": {
+    "message": "tambah"
+  },
+  "mood": {
+    "message": "Angin"
+  },
+  "radio": {
+    "message": "Radio"
+  },
+  "countrys": {
+    "message": "Negeri (Negara)"
+  },
+  "profile": {
+    "message": "Profil"
+  },
+  "similar": {
+    "message": "Stesen serupa"
+  },
+  "logout": {
+    "message": "Log keluar"
+  },
+  "lang": {
+    "message": "Bahasa"
+  },
+  "search": {
+    "message": "Cari"
+  },
+  "searchByGenre": {
+    "message": "Cari mengikut genre"
+  },
+  "searchByCity": {
+    "message": "Cari mengikut bandar"
+  },
+  "searchByMood": {
+    "message": "Cari mengikut angin"
+  },
+  "searchByStation": {
+    "message": "Cari stesen"
+  },
+  "terms": {
+    "message": "Dasar privasi"
+  },
+  "eula": {
+    "message": "Syarat penggunaan"
+  },
+  "faq": {
+    "message": "Soalan Lazim"
+  },
+  "about": {
+    "message": "Tentang"
+  }
+}

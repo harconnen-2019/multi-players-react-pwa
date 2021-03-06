@@ -1,0 +1,92 @@
+{
+  "appName": {
+    "message": "myRadio"
+  },
+  "appDescription": {
+    "message": "膨大な種類のステーションに加えて、お気に入りを 1 つの拡張機能でご利用いただけます。"
+  },
+  "appTooltip": {
+    "message": "myRadio"
+  },
+  "stations": {
+    "message": "ステーション"
+  },
+  "favorites": {
+    "message": "お気に入り"
+  },
+  "genres": {
+    "message": "ジャンル"
+  },
+  "newStationTitle": {
+    "message": "新しいステーション"
+  },
+  "newStationDescription": {
+    "message": "探していたものが見つからない場合は、プレイヤーコレクションに追加する必要があるステーションをお知らせください。"
+  },
+  "newStationPlaceholder": {
+    "message": "ステーション名またはストリーム"
+  },
+  "send": {
+    "message": "送信"
+  },
+  "loginTitle": {
+    "message": "ログイン"
+  },
+  "favoritesTitle": {
+    "message": "お気に入り"
+  },
+  "favoritesEmpty": {
+    "message": "まずはステーションをお気に入りに%add%してください"
+  },
+  "favoritesEmptyAdd": {
+    "message": "追加"
+  },
+  "mood": {
+    "message": "ムード"
+  },
+  "radio": {
+    "message": "ラジオ"
+  },
+  "countrys": {
+    "message": "都市 (国)"
+  },
+  "profile": {
+    "message": "プロフィール"
+  },
+  "similar": {
+    "message": "類似のステーション"
+  },
+  "logout": {
+    "message": "ログアウト"
+  },
+  "lang": {
+    "message": "言語"
+  },
+  "search": {
+    "message": "検索"
+  },
+  "searchByGenre": {
+    "message": "ジャンルで検索"
+  },
+  "searchByCity": {
+    "message": "都市で検索"
+  },
+  "searchByMood": {
+    "message": "ムードで検索"
+  },
+  "searchByStation": {
+    "message": "ステーションを検索"
+  },
+  "terms": {
+    "message": "プライバシーポリシー"
+  },
+  "eula": {
+    "message": "利用規約"
+  },
+  "faq": {
+    "message": "よくあるご質問"
+  },
+  "about": {
+    "message": "About"
+  }
+}

@@ -1,0 +1,92 @@
+{
+  "appName": {
+    "message": "myRadio"
+  },
+  "appDescription": {
+    "message": "Et stort utvalg av stasjoner i tillegg til dine favoritter i én utvidelse."
+  },
+  "appTooltip": {
+    "message": "myRadio"
+  },
+  "stations": {
+    "message": "Stasjoner"
+  },
+  "favorites": {
+    "message": "Favoritter"
+  },
+  "genres": {
+    "message": "Sjanger"
+  },
+  "newStationTitle": {
+    "message": "Ny stasjon"
+  },
+  "newStationDescription": {
+    "message": "Fant du ikke det du leter etter? Skriv til oss om hva du ønsker å legge til utvalget."
+  },
+  "newStationPlaceholder": {
+    "message": "Stasjonsnavn eller stream"
+  },
+  "send": {
+    "message": "Send"
+  },
+  "loginTitle": {
+    "message": "Logg inn"
+  },
+  "favoritesTitle": {
+    "message": "Favoritter"
+  },
+  "favoritesEmpty": {
+    "message": "Først må du %add% stasjoner i dine favoritter"
+  },
+  "favoritesEmptyAdd": {
+    "message": "legge til"
+  },
+  "mood": {
+    "message": "Stemning"
+  },
+  "radio": {
+    "message": "Radio"
+  },
+  "countrys": {
+    "message": "Byer (land)"
+  },
+  "profile": {
+    "message": "Profil"
+  },
+  "similar": {
+    "message": "Lignende stasjoner"
+  },
+  "logout": {
+    "message": "Logg ut"
+  },
+  "lang": {
+    "message": "Språk"
+  },
+  "search": {
+    "message": "Søk"
+  },
+  "searchByGenre": {
+    "message": "Søk etter sjanger"
+  },
+  "searchByCity": {
+    "message": "Søk etter by"
+  },
+  "searchByMood": {
+    "message": "Søk etter stemning"
+  },
+  "searchByStation": {
+    "message": "Søk etter stasjon"
+  },
+  "terms": {
+    "message": "Retningslinjer for personvern"
+  },
+  "eula": {
+    "message": "Bruksvilkår"
+  },
+  "faq": {
+    "message": "Ofte stilte spørsmål"
+  },
+  "about": {
+    "message": "Om"
+  }
+}

@@ -1,0 +1,92 @@
+{
+  "appName": {
+    "message": "myRadio"
+  },
+  "appDescription": {
+    "message": "एका विस्तारामध्ये आपल्या पसंतीच्या स्टेशन्सची भरपूर विविधता."
+  },
+  "appTooltip": {
+    "message": "myRadio"
+  },
+  "stations": {
+    "message": "स्टेशन"
+  },
+  "favorites": {
+    "message": "पसंतीची"
+  },
+  "genres": {
+    "message": "शैली"
+  },
+  "newStationTitle": {
+    "message": "नवीन स्टेशन"
+  },
+  "newStationDescription": {
+    "message": "आपण ज्याचा शोध घेत होता ते सापडले नाही का? आपल्याला प्लेयर संग्रहात काय समाविष्ट केले पाहिजे त्याबद्दल आम्हाला लिहा."
+  },
+  "newStationPlaceholder": {
+    "message": "स्टेशनचे नाव किंवा धारावाही"
+  },
+  "send": {
+    "message": "पाठवा"
+  },
+  "loginTitle": {
+    "message": "लॉगइन"
+  },
+  "favoritesTitle": {
+    "message": "पसंती"
+  },
+  "favoritesEmpty": {
+    "message": "प्रथम %add% स्टेशन तुमच्या पसंत असलेल्यांमध्ये समाविष्ट करा"
+  },
+  "favoritesEmptyAdd": {
+    "message": "समाविष्ट करा"
+  },
+  "mood": {
+    "message": "मूड"
+  },
+  "radio": {
+    "message": "रेडिओ"
+  },
+  "countrys": {
+    "message": "शहरे (देश)"
+  },
+  "profile": {
+    "message": "प्रोफाइल"
+  },
+  "similar": {
+    "message": "समान स्टेशन"
+  },
+  "logout": {
+    "message": "लॉगआउट"
+  },
+  "lang": {
+    "message": "भाषा"
+  },
+  "search": {
+    "message": "शोध"
+  },
+  "searchByGenre": {
+    "message": "शैलीनुसार शोधा"
+  },
+  "searchByCity": {
+    "message": "शहरानुसार शोधा"
+  },
+  "searchByMood": {
+    "message": "मूडनुसार शोधा"
+  },
+  "searchByStation": {
+    "message": "स्टेशन शोधा"
+  },
+  "terms": {
+    "message": "गोपनीयता धोरण"
+  },
+  "eula": {
+    "message": "वापराच्या अटी"
+  },
+  "faq": {
+    "message": "वारंवार विचारले जाणारे प्रश्न."
+  },
+  "about": {
+    "message": "बद्दल"
+  }
+}

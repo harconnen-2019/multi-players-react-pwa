@@ -1,0 +1,92 @@
+{
+  "appName": {
+    "message": "myRadio"
+  },
+  "appDescription": {
+    "message": "Isang malawak na sari-saring mga istasyon kasama ang iyong mga paborito sa isang extension."
+  },
+  "appTooltip": {
+    "message": "myRadio"
+  },
+  "stations": {
+    "message": "Mga Istasyon"
+  },
+  "favorites": {
+    "message": "Mga Paborito"
+  },
+  "genres": {
+    "message": "Mga genre"
+  },
+  "newStationTitle": {
+    "message": "Bagong Istasyon"
+  },
+  "newStationDescription": {
+    "message": "Hindi makita ang iyong hinahanap? Sumulat sa amin kung ano ang kailangan mong idagdag sa koleksyon ng player."
+  },
+  "newStationPlaceholder": {
+    "message": "Pangalan ng istasyon o stream"
+  },
+  "send": {
+    "message": "Ipadala"
+  },
+  "loginTitle": {
+    "message": "Mag-login"
+  },
+  "favoritesTitle": {
+    "message": "Mga Paborito"
+  },
+  "favoritesEmpty": {
+    "message": "Una %add% ang mga istasyon sa iyong mga paborito"
+  },
+  "favoritesEmptyAdd": {
+    "message": "idagdag"
+  },
+  "mood": {
+    "message": "Mood"
+  },
+  "radio": {
+    "message": "Radyo"
+  },
+  "countrys": {
+    "message": "Mga lungsod (Countries)"
+  },
+  "profile": {
+    "message": "Profile"
+  },
+  "similar": {
+    "message": "Katulad na mga istasyon"
+  },
+  "logout": {
+    "message": "Mag-logout"
+  },
+  "lang": {
+    "message": "Wika"
+  },
+  "search": {
+    "message": "Maghanap"
+  },
+  "searchByGenre": {
+    "message": "Maghanap sa pamamagitan ng genre"
+  },
+  "searchByCity": {
+    "message": "Maghanap sa pamamagitan ng lungsod"
+  },
+  "searchByMood": {
+    "message": "Maghanap sa pamamagitan ng mood"
+  },
+  "searchByStation": {
+    "message": "Maghanap ng istasyon"
+  },
+  "terms": {
+    "message": "Patakaran sa pagkapribado"
+  },
+  "eula": {
+    "message": "Mga Tuntunin sa Paggamit"
+  },
+  "faq": {
+    "message": "F.A.Q."
+  },
+  "about": {
+    "message": "Tungkol sa"
+  }
+}

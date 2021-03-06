@@ -1,0 +1,92 @@
+{
+  "appName": {
+    "message": "myRadio"
+  },
+  "appDescription": {
+    "message": "Suur valik raadiojaamu ja sinu lemmikjaamad ühes kohas."
+  },
+  "appTooltip": {
+    "message": "myRadio"
+  },
+  "stations": {
+    "message": "Jaamad"
+  },
+  "favorites": {
+    "message": "Lemmikjaamad"
+  },
+  "genres": {
+    "message": "Žanrid"
+  },
+  "newStationTitle": {
+    "message": "Uus raadiojaam"
+  },
+  "newStationDescription": {
+    "message": "Kas sa ei leidnud seda, mida otsisid? Kirjuta meile, milliseid jaamu tahaksid mängija kollektsiooni lisada."
+  },
+  "newStationPlaceholder": {
+    "message": "Jaama või voo nimi"
+  },
+  "send": {
+    "message": "Saada"
+  },
+  "loginTitle": {
+    "message": "Logi sisse"
+  },
+  "favoritesTitle": {
+    "message": "Lemmikud"
+  },
+  "favoritesEmpty": {
+    "message": "Kõigepealt %add% mõni jaam oma lemmikuks"
+  },
+  "favoritesEmptyAdd": {
+    "message": "lisa"
+  },
+  "mood": {
+    "message": "Meeleolu"
+  },
+  "radio": {
+    "message": "Raadio"
+  },
+  "countrys": {
+    "message": "Linnad (riigid)"
+  },
+  "profile": {
+    "message": "Profiil"
+  },
+  "similar": {
+    "message": "Sarnased jaamad"
+  },
+  "logout": {
+    "message": "Logi välja"
+  },
+  "lang": {
+    "message": "Keel"
+  },
+  "search": {
+    "message": "Otsi"
+  },
+  "searchByGenre": {
+    "message": "Otsi žanrite järgi"
+  },
+  "searchByCity": {
+    "message": "Otsi linnade järgi"
+  },
+  "searchByMood": {
+    "message": "Otsi meeleolu järgi"
+  },
+  "searchByStation": {
+    "message": "Otsi jaama"
+  },
+  "terms": {
+    "message": "Privaatsuspoliitika"
+  },
+  "eula": {
+    "message": "Kasutustingimused"
+  },
+  "faq": {
+    "message": "KKK"
+  },
+  "about": {
+    "message": "Teave"
+  }
+}

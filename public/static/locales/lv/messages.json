@@ -1,0 +1,92 @@
+{
+  "appName": {
+    "message": "myRadio"
+  },
+  "appDescription": {
+    "message": "Milzīga radio staciju izvēle un jūsu mīļākās stacijas vienā paplašinājumā."
+  },
+  "appTooltip": {
+    "message": "myRadio"
+  },
+  "stations": {
+    "message": "Stacijas"
+  },
+  "favorites": {
+    "message": "Izlase"
+  },
+  "genres": {
+    "message": "Žanri"
+  },
+  "newStationTitle": {
+    "message": "Jauna stacija"
+  },
+  "newStationDescription": {
+    "message": "Neatradāt meklēto? Uzrakstiet, ko vēlaties, un mēs pievienosim to atskaņošanas kolekcijai."
+  },
+  "newStationPlaceholder": {
+    "message": "Stacijas vai straumes nosaukums"
+  },
+  "send": {
+    "message": "Nosūtīt"
+  },
+  "loginTitle": {
+    "message": "Pierakstīties"
+  },
+  "favoritesTitle": {
+    "message": "Izlase"
+  },
+  "favoritesEmpty": {
+    "message": "Vispirms pievienojiet %add% stacijas savai izlasei"
+  },
+  "favoritesEmptyAdd": {
+    "message": "pievienot"
+  },
+  "mood": {
+    "message": "Noskaņojums"
+  },
+  "radio": {
+    "message": "Radio"
+  },
+  "countrys": {
+    "message": "Pilsētas (valstis)"
+  },
+  "profile": {
+    "message": "Profils"
+  },
+  "similar": {
+    "message": "Līdzīgas stacijas"
+  },
+  "logout": {
+    "message": "Izrakstīties"
+  },
+  "lang": {
+    "message": "Valoda"
+  },
+  "search": {
+    "message": "Meklēšana"
+  },
+  "searchByGenre": {
+    "message": "Meklēt pēc žanra"
+  },
+  "searchByCity": {
+    "message": "Meklēt pēc pilsētas"
+  },
+  "searchByMood": {
+    "message": "Meklēt pēc noskaņojuma"
+  },
+  "searchByStation": {
+    "message": "Meklēt staciju"
+  },
+  "terms": {
+    "message": "Konfidencialitātes politika"
+  },
+  "eula": {
+    "message": "Lietošanas noteikumi"
+  },
+  "faq": {
+    "message": "B.U.J."
+  },
+  "about": {
+    "message": "Par"
+  }
+}

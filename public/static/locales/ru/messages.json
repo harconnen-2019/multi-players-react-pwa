@@ -1,0 +1,92 @@
+{
+  "appName": {
+    "message": "myRadio – онлайн радио"
+  },
+  "appDescription": {
+    "message": "Слушать радио онлайн, бесплатно. Топовые российские и мировые станции. "
+  },
+  "appTooltip": {
+    "message": "myRadio"
+  },
+  "stations": {
+    "message": "Станции"
+  },
+  "favorites": {
+    "message": "Избранное"
+  },
+  "genres": {
+    "message": "Жанры"
+  },
+  "newStationTitle": {
+    "message": "Новая радиостанция"
+  },
+  "newStationDescription": {
+    "message": "Не нашли то что искали? Напишите нам что необходимо добавить в коллекцию плеера"
+  },
+  "newStationPlaceholder": {
+    "message": "Название станции или поток"
+  },
+  "send": {
+    "message": "Отправить"
+  },
+  "loginTitle": {
+    "message": "Войти"
+  },
+  "favoritesTitle": {
+    "message": "Избранные радиостанции"
+  },
+  "favoritesEmpty": {
+    "message": "Для начала %add% радиостанции в избранное"
+  },
+  "favoritesEmptyAdd": {
+    "message": "добавьте"
+  },
+  "mood": {
+    "message": "Настроение"
+  },
+  "radio": {
+    "message": "Radio"
+  },
+  "countrys": {
+    "message": "Города (Страны)"
+  },
+  "profile": {
+    "message": "Профиль"
+  },
+  "similar": {
+    "message": "Похожие радиостанции"
+  },
+  "logout": {
+    "message": "Выход"
+  },
+  "lang": {
+    "message": "Язык"
+  },
+  "search": {
+    "message": "Поиск"
+  },
+  "searchByGenre": {
+    "message": "Поиск по жанрам"
+  },
+  "searchByCity": {
+    "message": "Поиск по городу"
+  },
+  "searchByMood": {
+    "message": "Поиск по настроениям"
+  },
+  "searchByStation": {
+    "message": "Поиск радиостанции"
+  },
+  "terms": {
+    "message": "Политика конфиденциальности"
+  },
+  "eula": {
+    "message": "Правила пользования"
+  },
+  "faq": {
+    "message": "F.A.Q."
+  },
+  "about": {
+    "message": "О продукте"
+  }
+}
