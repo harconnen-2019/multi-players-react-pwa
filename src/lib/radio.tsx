@@ -40,6 +40,23 @@ export const createPlayList = (
   return result
 }
 
+export const createArrayTags = (playlist: IRadio[], tag: string) => {
+  const result = new Set()
+  playlist.forEach((element: IRadio) => {
+    //FIXME: element[tag] - не получается
+    if (tag === 'genres') {
+      element.genres.forEach((el: string) => {
+        result.add(el)
+      })
+    } else {
+      element.moods.forEach((el: string) => {
+        result.add(el)
+      })
+    }
+  })
+  return result
+}
+
 /**
  * Создание объекта Radio
  * @class
@@ -101,8 +118,7 @@ export class Radio implements IRadio {
         return result
       })()
     this.bits = (() => {
-      const result: Array<string> = []
-      //TODO:   result = Object.keys(item.streams)
+      const result: Array<string> = Object.keys(item.streams)
       return result
     })()
     this.genres = (() => {
