@@ -27,3 +27,8 @@ export const PREFIX: string =
  * @constant {string}
  */
 export const URL_INIT: string = '/api/orange/func/player/init'
+/**
+ * Сколько в плеер загружать радио из API
+ * @constant {number}
+ */
+export const NUM_PLAYLIST = 50

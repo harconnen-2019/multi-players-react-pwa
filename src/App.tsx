@@ -13,6 +13,8 @@ import {
   STATUS,
   PLATFORM as DEFAULT_PLATFORM,
 } from './lib/utils'
+import { ApiRadioRequest, IRadio } from './interfaces/radio'
+import { createPlayList } from './lib/radio'
 
 // import {  } from './lib/lang'
 
@@ -26,6 +28,8 @@ const PLATFORM: string = process.env.REACT_APP_PLATFORM || DEFAULT_PLATFORM.PWA
 function App() {
   const [initStatus, setInitStatus] = useState(STATUS.INIT)
   const [lang, setLang] = useState<ILocalization>({})
+  const [playList, setPlayList] = useState<IRadio[]>()
+  const [playRadio, setPlayRadio] = useState<IRadio>()
 
   let linkRadios: type.LinkRadiosRequest
   let linkFavoritesRadios: type.LinkFavoritesRequest
@@ -36,12 +40,11 @@ function App() {
   useEffect(() => {
     consolTitle()
     setInitStatus(STATUS.LOADING)
-    loadInit()
     loadLocalization()
+    loadInit()
+
     /**
-     * //TODO: Рекомендуемые радио
-     * //TODO: ТОП радио
-     * //TODO: Избранные радио
+     * //TODO: ТОП радио ???
      * //TODO: Список радио для поиска
      */
     /**
@@ -60,10 +63,10 @@ function App() {
      * //TODO: Deeplink
      */
     /**
-     * //TODO: Авторизация в соцсетях
+     * //TODO: Запуск счетчиков
      */
     /**
-     * //TODO: Запуск счетчиков
+     * //TODO: Авторизация в соцсетях
      */
 
     setInitStatus(STATUS.LOADED)
@@ -87,22 +90,61 @@ function App() {
    * @function
    * @returns {void}
    */
-  function loadInit(): void {
-    fetchFromApi<type.ApiRequest>(
+  async function loadInit() {
+    // Инициализация
+    const init = await fetchFromApi<type.ApiRequest>(
       `${CONFIG.PREFIX}${CONFIG.URL_INIT}?session=${SESSION}`
     )
-      .then((data) => {
-        linkRadios = create.linkRadiosFromApi(data)
-        linkFavoritesRadios = create.linkFavoritesFromApi(data)
-        playerTheme = create.playerThemeFromApi(data, PLATFORM)
-        countersForHead = create.countersIdFomApi(data)
-        advertising = create.advertisingFromApi(data, PLATFORM)
-        CONFIG.DEBUG && console.log('Инициализация : ', data)
+    linkRadios = create.linkRadiosFromApi(init)
+    linkFavoritesRadios = create.linkFavoritesFromApi(init)
+    playerTheme = create.playerThemeFromApi(init, PLATFORM)
+    countersForHead = create.countersIdFomApi(init)
+    advertising = create.advertisingFromApi(init, PLATFORM)
+    CONFIG.DEBUG && console.log('Инициализация : ', init)
+
+    // Загрузка избранного
+    const favoritesApiRadios = await fetchFromApi<ApiRadioRequest>(
+      `${CONFIG.PREFIX}${linkFavoritesRadios.favoriteList}?session=${SESSION}`
+    )
+    let radioFavorites: Array<IRadio> = []
+    if (favoritesApiRadios.data.list_radio.length !== 0) {
+      radioFavorites = createPlayList(
+        favoritesApiRadios.data.list_radio,
+        PLATFORM
+      )
+      CONFIG.DEBUG && console.log('Загрузка избранного : ', radioFavorites)
+    } else {
+      CONFIG.DEBUG && console.log('В избранном пусто')
+    }
+    // Загрузка рекомендованных
+    const recommendApiRadios = await fetchFromApi<ApiRadioRequest>(
+      `${CONFIG.PREFIX}${linkRadios.recommend}&session=${SESSION}`
+    )
+    const radioRecommend: Array<IRadio> = createPlayList(
+      recommendApiRadios.data.list_radio,
+      PLATFORM
+    )
+    CONFIG.DEBUG && console.log('Загрузка рекомендованных : ', radioRecommend)
+
+    // Полный Плейлист без дубликатов
+    let fullPlayList: Array<IRadio>
+    if (radioFavorites.length !== 0) {
+      fullPlayList = Array.from(new Set(radioFavorites.concat(radioRecommend)))
+      let i: number = 0
+      fullPlayList.forEach((element) => {
+        element.index = i
+        i++
       })
-      .catch((err) => {
-        setInitStatus(STATUS.ERROR)
-        console.error('Loading init failed', err)
-      })
+    } else {
+      fullPlayList = radioRecommend
+    }
+    setPlayList(fullPlayList)
+    CONFIG.DEBUG && console.log('Совмещенный плейлист : ', fullPlayList)
+
+    // .catch((err) => {
+    //   setInitStatus(STATUS.ERROR)
+    //   console.error('Loading init failed', err)
+    // })
   }
 
   /**
