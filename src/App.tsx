@@ -12,6 +12,7 @@ import {
   fetchFromApi,
   STATUS,
   PLATFORM as DEFAULT_PLATFORM,
+  report,
 } from './lib/utils'
 import { ApiRadioRequest, IRadio } from './interfaces/radio'
 import { createArrayTags, createPlayList } from './lib/radio'
@@ -80,8 +81,8 @@ function App() {
   function consolTitle(): void {
     console.group('Init player:')
     console.info(CONFIG.VERSION, `Platform: ${PLATFORM}`)
-    CONFIG.DEBUG && console.log('env : ' + process.env.NODE_ENV)
-    CONFIG.DEBUG && console.log('session : %s', SESSION)
+    report('env : ' + process.env.NODE_ENV)
+    report('session : %s', SESSION)
     console.groupEnd()
   }
 
@@ -101,7 +102,7 @@ function App() {
       playerTheme = create.playerThemeFromApi(init, PLATFORM)
       countersForHead = create.countersIdFomApi(init)
       advertising = create.advertisingFromApi(init, PLATFORM)
-      CONFIG.DEBUG && console.log('Инициализация : ', init)
+      report('Инициализация : ', init)
 
       // Загрузка избранного
       const favoritesApiRadios = await fetchFromApi<ApiRadioRequest>(
@@ -113,10 +114,9 @@ function App() {
           favoritesApiRadios.data.list_radio,
           PLATFORM
         )
-        CONFIG.DEBUG &&
-          console.log('Загрузка избранного : ', radioFavorites.length)
+        report('Загрузка избранного : ', radioFavorites.length)
       } else {
-        CONFIG.DEBUG && console.log('В избранном пусто')
+        report('В избранном пусто')
       }
       // Загрузка рекомендованных
       const recommendApiRadios = await fetchFromApi<ApiRadioRequest>(
@@ -126,8 +126,7 @@ function App() {
         recommendApiRadios.data.list_radio,
         PLATFORM
       )
-      CONFIG.DEBUG &&
-        console.log('Загрузка рекомендованных : ', radioRecommend.length)
+      report('Загрузка рекомендованных : ', radioRecommend.length)
 
       // Полный Плейлист без дубликатов
       let fullPlayList: Array<IRadio>
@@ -144,8 +143,7 @@ function App() {
         fullPlayList = radioRecommend
       }
       setPlayList(fullPlayList)
-      CONFIG.DEBUG &&
-        console.log('Совмещенный плейлист : ', fullPlayList.length)
+      report('Совмещенный плейлист : ', fullPlayList.length)
       //Собираем жанры и настроения
       allGenresFromPlayList = createArrayTags(fullPlayList, 'genres')
       allMoodsFromPlayList = createArrayTags(fullPlayList, 'moods')
@@ -164,29 +162,26 @@ function App() {
    * @function
    * @returns {void}
    */
-  function loadLocalization(): void {
+  async function loadLocalization() {
     if (localStorage.getItem('player-localization')) {
       const getLocalization = localStorage.getItem('player-localization')
       if (typeof getLocalization === 'string') {
         setLang(JSON.parse(getLocalization))
-        CONFIG.DEBUG &&
-          console.log(
-            'Локализация из localStorage : ',
-            JSON.parse(getLocalization)
-          )
+        report('Локализация из localStorage : ', JSON.parse(getLocalization))
       }
     } else {
-      fetchFromApi<ILocalization>(`/static/locales/en/messages.json`)
-        .then((result) => {
-          result.activeLang = { message: 'en' }
-          setLang(result)
-          localStorage.setItem('player-localization', JSON.stringify(result))
-          CONFIG.DEBUG && console.log('Локализация из api : ', result)
-        })
-        .catch((err) => {
-          setInitStatus(STATUS.ERROR)
-          console.error('Loading lang failed', err)
-        })
+      try {
+        const result = await fetchFromApi<ILocalization>(
+          `/static/locales/en/messages.json`
+        )
+        result.activeLang = { message: 'en' }
+        setLang(result)
+        localStorage.setItem('player-localization', JSON.stringify(result))
+        report('Локализация из api : ', result)
+      } catch {
+        setInitStatus(STATUS.ERROR)
+        console.error('Loading lang failed')
+      }
     }
   }
 

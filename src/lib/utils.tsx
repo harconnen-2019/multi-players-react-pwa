@@ -2,7 +2,7 @@
  * Утилиты для плеера
  * @module lib/utils
  */
-
+import * as CONFIG from '../config'
 /**
  * Считывает cookies для отправки запросов api (?session=)
  * @function
@@ -56,4 +56,8 @@ export enum PLATFORM {
   FB = 'FB',
   VK = 'VK',
   OK = 'OK',
+}
+
+export const report = (text: string, prop: any = ''): void => {
+  CONFIG.DEBUG && console.log(text, prop)
 }
