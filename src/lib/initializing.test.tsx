@@ -1,4 +1,4 @@
-import { initFromApi } from './initializing'
+import { createInitFromApi } from './initializing'
 
 describe('Инициализация плеера', () => {
   const api = {
@@ -132,7 +132,7 @@ describe('Инициализация плеера', () => {
       },
     },
   }
-  const init = initFromApi(api, 'FB')
+  const init = createInitFromApi(api, 'FB')
 
   test('Загрузка всех url api', () => {
     expect(Object.keys(init.api).length === 5).toBe(true)

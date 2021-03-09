@@ -18,8 +18,8 @@ export type SingleRadioRequest = {
   streams: IApiStreams
   is_top: number
   is_recommend: number
-  genres: IApiTags[]
-  moods: IApiTags[]
+  genres: ApiTags[]
+  moods: ApiTags[]
   vast: {
     daast: {
       [key: string]: number
@@ -30,7 +30,7 @@ export type SingleRadioRequest = {
   }
 }
 
-export type IApiTags = {
+export type ApiTags = {
   name: string
   id: string
   alias: string

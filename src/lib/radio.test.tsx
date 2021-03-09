@@ -1,7 +1,8 @@
 import { getStreamFromApi, Radio } from './radio'
+import { SingleRadioRequest } from '../interfaces/radio'
 
 describe('Radio', () => {
-  const input = {
+  const input: SingleRadioRequest = {
     genres: [
       {
         name: 'Entertainment',
@@ -47,16 +48,16 @@ describe('Radio', () => {
     moods: [],
     origins: [
       {
-        code: 'EU',
+        // code: 'EU',
         name: 'Europe',
       },
       {
         name: 'Russia',
-        code: 'RU',
-        id: 2017370,
+        // code: 'RU',
+        // id: 2017370,
       },
       {
-        id: 472757,
+        // id: 472757,
         name: 'Volgograd',
       },
     ],
@@ -91,30 +92,47 @@ describe('Radio', () => {
     id: '5f2beda6-0000-0000-0000-0000802c3407',
     is_recommend: 0,
   }
-  beforeAll(() => {})
+  const radio = new Radio(input, 0, 'fb')
+  // beforeAll(() => {})
 
-  test('Проверка Радио на наличие объекта "Streams"', () => {
+  test('В радио объект "Streams" не пустой', () => {
     expect(getStreamFromApi(input.streams)).toEqual(true)
   })
-  test('Проверка Радио на отсутствие объекта "Streams"', () => {
-    const input = {}
-    expect(getStreamFromApi(input)).toEqual(false)
-  })
-  test('Поле note выводиться', () => {
-    const radio = new Radio(input, 0, 'pwa')
+  test('Поле note выводиться из двух параметров', () => {
     expect(radio.note).toEqual('Europe, on-line')
   })
-  test('Формируем массив жанров', () => {
-    const radio = new Radio(input, 0, 'pwa')
+  test('Формируем массив жанры', () => {
     expect(radio.genres).toEqual(['Entertainment', 'Top', '90x'])
   })
-  test('Добавление в избранное', () => {
-    const radio = new Radio(input, 0, 'pwa')
-    radio.favoriteAdd()
-    expect(radio.favorites).toEqual(true)
+  test('Формируем текущий stream', () => {
+    expect(radio.playStream).toEqual([
+      {
+        type: 'audio/mp4',
+        src: 'https://maximum.hostingradio.ru/maximum96.aacp?type=.flv',
+      },
+    ])
   })
-  test('Проверка методов Класса Radio', () => {
-    const radio = new Radio(input, 0, 'pwa')
-    expect(radio.index).toEqual(0)
+  test('Метод изменения stream', () => {
+    radio.selectStream('88')
+    expect(radio.playStream).toEqual([
+      {
+        type: 'audio/aac',
+        src: 'https://maximum.hostingradio.ru/maximum96.aacp',
+      },
+    ])
+  })
+  test('Формируем массив битрейт', () => {
+    expect(radio.bits).toEqual(['0', '88'])
+  })
+  test('Добавление в избранное', () => {
+    radio.favoriteAdd()
+    expect(radio.favorites).toBe(true)
+  })
+  test('Удаление из избранного', () => {
+    radio.favoriteDel()
+    expect(radio.favorites).toBe(false)
+  })
+  test('Правильно выбрана платформа', () => {
+    expect(radio.vast).toBe(3150)
   })
 })

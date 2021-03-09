@@ -3,40 +3,50 @@
  * @module lib/radio
  */
 
-import { IRadio, IApiStreams, SingleRadioRequest } from '../interfaces/radio'
+import {
+  IRadio,
+  IApiStreams,
+  SingleRadioRequest,
+  ApiTags,
+} from '../interfaces/radio'
 
 /**
- * Проверка наличия параметра stream в объекте
+ * Проверка наличия параметра stream в объекте, если false - пропуск радио
  * @function
  * @param {Object} streams - Параметры стрим для радио
  * @returns {boolean}
  */
 export const getStreamFromApi = (streams: IApiStreams) => {
+  //TODO: Разобраться с битами равными нулю
   const result: boolean = Object.keys(streams).length !== 0 ? true : false
   return result
 }
 
 /**
- * Создание плейлиста для инициализации плеера из API
+ * Создание плейлиста из API для инициализации плеера
  * @function
  * @param {Array} api - список радио из API
  * @returns {Array} - нормализованный список объектов радио в количестве config.NUM_PLAYLIST
  */
 export const createPlayList = (
-  api: Array<SingleRadioRequest>,
+  apiFav: Array<SingleRadioRequest>,
+  apiRec: Array<SingleRadioRequest>,
   platform: string
-): Array<IRadio> => {
+) => {
   const apiPlatform: string = platform.toLowerCase() || 'pwa'
   const result: Array<IRadio> = []
-  let i: number = 0
+  const api = Array.from(apiRec.concat(apiFav))
+  let index: number = 0
   api.forEach((element) => {
     // Проверка на наличие стрима, иначе пропускаем
     if (getStreamFromApi(element.streams)) {
-      const item: IRadio = new Radio(element, i, apiPlatform)
+      const item: IRadio = new Radio(element, index, apiPlatform)
       result.push(item)
     }
-    i++
+    index++
   })
+  //TODO: проверка на дубликаты
+  // const output = new Set<IRadio>(result)
   return result
 }
 
@@ -88,10 +98,18 @@ export class Radio implements IRadio {
     this.favorites = false
   }
   selectStream = (bit: string) => {
+    //TODO: Разобраться с битами равными нулю
     const result: [{ src: string; type: string }] = [{ src: '', type: '' }]
     result[0].src = this.streams[bit][0].url
     result[0].type = this.streams[bit][0].mime
     this.playStream = result
+  }
+  static createTag = (tags: ApiTags[]) => {
+    const result: Array<string> = []
+    tags.forEach((item) => {
+      result.push(item.name)
+    })
+    return result
   }
   constructor(item: SingleRadioRequest, index: number, platform: string) {
     this.index = index
@@ -107,6 +125,7 @@ export class Radio implements IRadio {
     this.playStream =
       // Добавление одного стрима из массива
       (() => {
+        //TODO: Разобраться с битами равными нулю
         const result: [{ src: string; type: string }] = [{ src: '', type: '' }]
         for (let key in item.streams) {
           if (item.streams[key][0].url && item.streams[key][0].mime) {
@@ -121,20 +140,8 @@ export class Radio implements IRadio {
       const result: Array<string> = Object.keys(item.streams)
       return result
     })()
-    this.genres = (() => {
-      const result: Array<string> = []
-      item.genres.forEach((item) => {
-        result.push(item.name)
-      })
-      return result
-    })()
-    this.moods = (() => {
-      const result: Array<string> = []
-      item.moods.forEach((item) => {
-        result.push(item.name)
-      })
-      return result
-    })()
+    this.genres = Radio.createTag(item.genres)
+    this.moods = Radio.createTag(item.moods)
     this.favorites = false //TODO: Доработать назначение
     this.top = item.is_top === 1 ? true : false
     this.recommend = item.is_recommend === 1 ? true : false

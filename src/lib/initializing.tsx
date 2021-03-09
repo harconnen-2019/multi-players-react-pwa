@@ -13,7 +13,7 @@ import { ApiInitRequest } from '../api/init'
  * @param {string} getPlatform - Текущая платформа
  * @returns {object} - Возвращает объект
  */
-export const initFromApi = (
+export const createInitFromApi = (
   itemsApi: ApiInitRequest,
   getPlatform: string = 'pwa'
 ): InitPlayer => {

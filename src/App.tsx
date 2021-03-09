@@ -6,7 +6,7 @@ import React, { useState, useEffect } from 'react'
 import * as CONFIG from './config'
 import { ApiInitRequest } from './api/init'
 import { InitPlayer } from './interfaces/init'
-import { initFromApi } from './lib/initializing'
+import { createInitFromApi } from './lib/initializing'
 import { ILocalization } from './interfaces/localization'
 import {
   getCookie,
@@ -94,52 +94,29 @@ function App() {
       const init = await fetchFromApi<ApiInitRequest>(
         `${CONFIG.PREFIX}${CONFIG.URL_INIT}?session=${SESSION}`
       )
-      const initPlayer: InitPlayer = initFromApi(init, PLATFORM)
+      const initPlayer: InitPlayer = createInitFromApi(init, PLATFORM)
+      // Сохранить данные в "apiPlayer" для плеера
       apiPlayer.search = initPlayer.api.search
       apiPlayer.favoriteAdd = initPlayer.api.favoriteAdd
       apiPlayer.favoriteDel = initPlayer.api.favoriteDel
       report('Инициализация : ', init)
 
       // Загрузка избранного
-      const favoritesApiRadios = await fetchFromApi<ApiRadioRequest>(
+      const favoritesListFromApi = await fetchFromApi<ApiRadioRequest>(
         `${CONFIG.PREFIX}${initPlayer.api.favoriteList}?session=${SESSION}`
       )
-      let radioFavorites: Array<IRadio> = []
-      if (favoritesApiRadios.data.list_radio.length !== 0) {
-        radioFavorites = createPlayList(
-          favoritesApiRadios.data.list_radio,
-          PLATFORM
-        )
-        report('Загрузка избранного : ', radioFavorites.length)
-      } else {
-        report('В избранном пусто')
-      }
       // Загрузка рекомендованных
-      const recommendApiRadios = await fetchFromApi<ApiRadioRequest>(
+      const recommendListFromApi = await fetchFromApi<ApiRadioRequest>(
         `${CONFIG.PREFIX}${initPlayer.api.recommend}&session=${SESSION}`
       )
-      const radioRecommend: Array<IRadio> = createPlayList(
-        recommendApiRadios.data.list_radio,
+      const fullPlayList: Array<IRadio> = createPlayList(
+        recommendListFromApi.data.list_radio,
+        favoritesListFromApi.data.list_radio,
         PLATFORM
       )
-      report('Загрузка рекомендованных : ', radioRecommend.length)
-
-      // Полный Плейлист без дубликатов
-      let fullPlayList: Array<IRadio>
-      if (radioFavorites.length !== 0) {
-        fullPlayList = Array.from(
-          new Set(radioFavorites.concat(radioRecommend))
-        )
-        let i: number = 0
-        fullPlayList.forEach((element) => {
-          element.index = i
-          i++
-        })
-      } else {
-        fullPlayList = radioRecommend
-      }
       setPlayList(fullPlayList)
-      report('Совмещенный плейлист : ', fullPlayList.length)
+      report('Загрузка плейлиста : ', fullPlayList.length)
+
       //Собираем жанры и настроения
       allGenresFromPlayList = createArrayTags(fullPlayList, 'genres')
       allMoodsFromPlayList = createArrayTags(fullPlayList, 'moods')
