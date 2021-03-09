@@ -5,6 +5,7 @@
 import React, { useState, useEffect } from 'react'
 import * as CONFIG from './config'
 import { ApiInitRequest } from './api/init'
+import { ApiRadioListRequest } from './api/radios'
 import { InitPlayer } from './interfaces/init'
 import { createInitFromApi } from './lib/initializing'
 import { ILocalization } from './interfaces/localization'
@@ -15,7 +16,7 @@ import {
   PLATFORM as DEFAULT_PLATFORM,
   report,
 } from './lib/utils'
-import { ApiRadioRequest, IRadio } from './interfaces/radio'
+import { IRadio } from './interfaces/radio'
 import { createArrayTags, createPlayList } from './lib/radio'
 
 // import {  } from './lib/lang'
@@ -100,11 +101,11 @@ function App() {
       report('Инициализация : ', init)
 
       // Загрузка избранного
-      const favoritesListFromApi = await fetchFromApi<ApiRadioRequest>(
+      const favoritesListFromApi = await fetchFromApi<ApiRadioListRequest>(
         `${CONFIG.PREFIX}${initPlayer.api.favoriteList}?session=${SESSION}`
       )
       // Загрузка рекомендованных
-      const recommendListFromApi = await fetchFromApi<ApiRadioRequest>(
+      const recommendListFromApi = await fetchFromApi<ApiRadioListRequest>(
         `${CONFIG.PREFIX}${initPlayer.api.recommend}&session=${SESSION}`
       )
       const fullPlayList: Array<IRadio> = createPlayList(

@@ -1,74 +1,4 @@
 /**
- * Полная инициализация плеера
- * @alias ApiRadioRequest
- */
-export type ApiRadioRequest = {
-  data: {
-    list_radio: SingleRadioRequest[]
-  }
-}
-
-/**
- * @memberof ApiRadioRequest
- * @alias SingleRadioRequest
- */
-export type SingleRadioRequest = {
-  status: number
-  partner_id: string
-  license: string
-  id: string
-  alias: string
-  name: string
-  description: string
-  cover: string
-  fm: string
-  origins: { name: string }[]
-  streams: ApiStreams
-  is_top: number
-  is_recommend: number
-  genres: ApiTags[]
-  moods: ApiTags[]
-  vast: {
-    daast: {
-      [key: string]: number
-    }
-  }
-  play_now: {
-    name: string
-  }
-}
-
-/**
- * @memberof SingleRadioRequest
- * @alias ApiTags
- */
-export type ApiTags = {
-  name: string
-  id: string
-  alias: string
-  status: number
-}
-
-/**
- * @memberof SingleRadioRequest
- * @alias ApiStreams
- */
-export type ApiStreams = {
-  [key: string]: [
-    {
-      type: string
-      id: string
-      mime: string
-      bitrate: number
-      samplerate: number
-      url: string
-      status: number
-      radio_id: string
-    }
-  ]
-}
-
-/**
  * Интерфейс Радио
  * @interface
  */
@@ -92,7 +22,7 @@ export interface IRadio {
   /** идентификатор рекламы */
   readonly vast: number
   /** текущий стрим */
-  readonly playStream: [{ src: string; type: string }]
+  readonly playStream: Array<{ [key: string]: string }>
   /** все стримы */
   readonly streams: object
   /** список битрейтов */

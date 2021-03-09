@@ -3,12 +3,12 @@
  * @module lib/radio
  */
 
+import { IRadio } from '../interfaces/radio'
 import {
-  IRadio,
-  ApiStreams,
-  SingleRadioRequest,
-  ApiTags,
-} from '../interfaces/radio'
+  ApiSubRadioRequest,
+  ApiSubStreamsRequest,
+  ApiSubTagsRequest,
+} from '../api/radios'
 
 /**
  * Проверка наличия параметра stream в объекте, если false - пропуск радио
@@ -16,7 +16,7 @@ import {
  * @param {Object} streams - Параметры стрим для радио
  * @returns {boolean}
  */
-export const getStreamFromApi = (streams: ApiStreams) => {
+export const getStreamFromApi = (streams: ApiSubStreamsRequest) => {
   //TODO: Разобраться с битами равными нулю
   const result: boolean = Object.keys(streams).length !== 0 ? true : false
   return result
@@ -30,11 +30,11 @@ export const getStreamFromApi = (streams: ApiStreams) => {
  * @param {string} platform - текущая платформа
  * @param {string} session - текущая сессия
  * @param {Object} init - аргументы инициализации
- * @returns {Array} - нормализованный список объектов радио в количестве config.NUM_PLAYLIST
+ * @returns {Array} - нормализованный список объектов радио
  */
 export const createPlayList = (
-  apiFav: Array<SingleRadioRequest>,
-  apiRec: Array<SingleRadioRequest>,
+  apiFav: Array<ApiSubRadioRequest>,
+  apiRec: Array<ApiSubRadioRequest>,
   platform: string,
   session: string | undefined,
   init: { [key: string]: string }
@@ -128,7 +128,7 @@ export class Radio implements IRadio {
     result[0].type = this.streams[bit][0].mime
     this.playStream = result
   }
-  static createTag = (tags: ApiTags[]) => {
+  static createTag = (tags: ApiSubTagsRequest[]) => {
     const result: Array<string> = []
     tags.forEach((item) => {
       result.push(item.name)
@@ -136,7 +136,7 @@ export class Radio implements IRadio {
     return result
   }
   constructor(
-    item: SingleRadioRequest,
+    item: ApiSubRadioRequest,
     index: number,
     platform: string,
     session: string | undefined,

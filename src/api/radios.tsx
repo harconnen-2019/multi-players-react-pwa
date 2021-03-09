@@ -18,18 +18,18 @@ export type ApiSubRadioRequest = {
     name: string
   }
   moods: ApiSubTagsRequest[]
-  origins: { [key: string]: string | number }[]
+  origins: { [key: string]: string }[]
   cover: string
   streams: ApiSubStreamsRequest
   id: string
-  is_recommend: boolean
+  is_recommend: number
   genres: ApiSubTagsRequest[]
   description: string
   fm: string
   alias: string
-  status: boolean
+  status: number
   name: string
-  is_top: boolean
+  is_top: number
   partner_id: string
   license: string
 }

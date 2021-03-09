@@ -1,8 +1,8 @@
 import { getStreamFromApi, Radio } from './radio'
-import { SingleRadioRequest } from '../interfaces/radio'
+import { ApiSubRadioRequest } from '../api/radios'
 
 describe('Radio', () => {
-  const input: SingleRadioRequest = {
+  const input: ApiSubRadioRequest = {
     genres: [
       {
         name: 'Entertainment',
