@@ -46,7 +46,7 @@ function App() {
 
     /**
      * //TODO: ТОП радио ???
-     * //TODO: Список радио для поиска
+     * //TODO: Список радио для поиска ?? пока fullPlayList
      */
     /**
     /**
@@ -97,8 +97,6 @@ function App() {
       const initPlayer: InitPlayer = createInitFromApi(init, PLATFORM)
       // Сохранить данные в "apiPlayer" для плеера
       apiPlayer.search = initPlayer.api.search
-      apiPlayer.favoriteAdd = initPlayer.api.favoriteAdd
-      apiPlayer.favoriteDel = initPlayer.api.favoriteDel
       report('Инициализация : ', init)
 
       // Загрузка избранного
@@ -112,7 +110,12 @@ function App() {
       const fullPlayList: Array<IRadio> = createPlayList(
         recommendListFromApi.data.list_radio,
         favoritesListFromApi.data.list_radio,
-        PLATFORM
+        PLATFORM,
+        SESSION,
+        {
+          favoriteAdd: initPlayer.api.favoriteAdd,
+          favoriteDel: initPlayer.api.favoriteDel,
+        }
       )
       setPlayList(fullPlayList)
       report('Загрузка плейлиста : ', fullPlayList.length)

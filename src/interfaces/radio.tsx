@@ -15,7 +15,7 @@ export type SingleRadioRequest = {
   cover: string
   fm: string
   origins: { name: string }[]
-  streams: IApiStreams
+  streams: ApiStreams
   is_top: number
   is_recommend: number
   genres: ApiTags[]
@@ -37,7 +37,7 @@ export type ApiTags = {
   status: number
 }
 
-export type IApiStreams = {
+export type ApiStreams = {
   [key: string]: [
     {
       type: string
@@ -86,11 +86,15 @@ export interface IRadio {
   /** в рекомендованных */
   readonly recommend: boolean
   /** в избранном */
-  readonly favorites: boolean
+  readonly favorite: boolean
   /** жанры */
   readonly genres: Array<string>
   /**-настроения */
   readonly moods: Array<string>
+  /** url из init для методов с избранным */
+  readonly url: { [key: string]: string }
+  /** сессия для методов избранного */
+  readonly session: string | undefined
   /**добавление в избранное */
   favoriteAdd: () => void
   /** удаление из избранного */

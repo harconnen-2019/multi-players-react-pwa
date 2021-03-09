@@ -3,9 +3,10 @@
  * @module lib/radio
  */
 
+import { Session } from 'node:inspector'
 import {
   IRadio,
-  IApiStreams,
+  ApiStreams,
   SingleRadioRequest,
   ApiTags,
 } from '../interfaces/radio'
@@ -16,7 +17,7 @@ import {
  * @param {Object} streams - Параметры стрим для радио
  * @returns {boolean}
  */
-export const getStreamFromApi = (streams: IApiStreams) => {
+export const getStreamFromApi = (streams: ApiStreams) => {
   //TODO: Разобраться с битами равными нулю
   const result: boolean = Object.keys(streams).length !== 0 ? true : false
   return result
@@ -31,7 +32,9 @@ export const getStreamFromApi = (streams: IApiStreams) => {
 export const createPlayList = (
   apiFav: Array<SingleRadioRequest>,
   apiRec: Array<SingleRadioRequest>,
-  platform: string
+  platform: string,
+  session: string | undefined,
+  init: { [key: string]: string }
 ) => {
   const apiPlatform: string = platform.toLowerCase() || 'pwa'
   const result: Array<IRadio> = []
@@ -40,7 +43,7 @@ export const createPlayList = (
   api.forEach((element) => {
     // Проверка на наличие стрима, иначе пропускаем
     if (getStreamFromApi(element.streams)) {
-      const item: IRadio = new Radio(element, index, apiPlatform)
+      const item: IRadio = new Radio(element, index, apiPlatform, session, init)
       result.push(item)
     }
     index++
@@ -88,15 +91,27 @@ export class Radio implements IRadio {
   bits
   genres
   moods
-  favorites
+  favorite
   top
   recommend
+  url
+  session
   favoriteAdd = () => {
-    this.favorites = true
+    this.favorite = true
+    fetch(
+      this.url.favoriteAdd + '?session=' + this.session + '&radio_id=' + this.id
+    )
   }
   favoriteDel = () => {
-    this.favorites = false
+    this.favorite = false
+    fetch(
+      this.url.favoriteDel + '?session=' + this.session + '&radio_id=' + this.id
+    )
   }
+  /**
+   * @method
+   * @param {string} bit - выбранный битрейт
+   */
   selectStream = (bit: string) => {
     //TODO: Разобраться с битами равными нулю
     const result: [{ src: string; type: string }] = [{ src: '', type: '' }]
@@ -111,7 +126,13 @@ export class Radio implements IRadio {
     })
     return result
   }
-  constructor(item: SingleRadioRequest, index: number, platform: string) {
+  constructor(
+    item: SingleRadioRequest,
+    index: number,
+    platform: string,
+    session: string | undefined,
+    init: { [key: string]: string }
+  ) {
     this.index = index
     this.id = item.id
     this.name = item.name
@@ -142,8 +163,10 @@ export class Radio implements IRadio {
     })()
     this.genres = Radio.createTag(item.genres)
     this.moods = Radio.createTag(item.moods)
-    this.favorites = false //TODO: Доработать назначение
+    this.favorite = false //TODO: Доработать назначение
     this.top = item.is_top === 1 ? true : false
     this.recommend = item.is_recommend === 1 ? true : false
+    this.session = session
+    this.url = init
   }
 }

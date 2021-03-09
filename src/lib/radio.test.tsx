@@ -96,7 +96,7 @@ describe('Radio', () => {
   // beforeAll(() => {})
 
   test('В радио объект "Streams" не пустой', () => {
-    expect(getStreamFromApi(input.streams)).toEqual(true)
+    expect(getStreamFromApi(input.streams)).toBe(true)
   })
   test('Поле note выводиться из двух параметров', () => {
     expect(radio.note).toEqual('Europe, on-line')
@@ -124,14 +124,14 @@ describe('Radio', () => {
   test('Формируем массив битрейт', () => {
     expect(radio.bits).toEqual(['0', '88'])
   })
-  test('Добавление в избранное', () => {
-    radio.favoriteAdd()
-    expect(radio.favorites).toBe(true)
-  })
-  test('Удаление из избранного', () => {
-    radio.favoriteDel()
-    expect(radio.favorites).toBe(false)
-  })
+  // test('Добавление в избранное', () => {
+  //   radio.favoriteAdd()
+  //   expect(radio.favorites).toBe(true)
+  // })
+  // test('Удаление из избранного', () => {
+  //   radio.favoriteDel()
+  //   expect(radio.favorites).toBe(false)
+  // })
   test('Правильно выбрана платформа', () => {
     expect(radio.vast).toBe(3150)
   })
