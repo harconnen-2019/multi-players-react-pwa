@@ -1,9 +1,17 @@
+/**
+ * Полная инициализация плеера
+ * @alias ApiRadioRequest
+ */
 export type ApiRadioRequest = {
   data: {
     list_radio: SingleRadioRequest[]
   }
 }
 
+/**
+ * @memberof ApiRadioRequest
+ * @alias SingleRadioRequest
+ */
 export type SingleRadioRequest = {
   status: number
   partner_id: string
@@ -30,6 +38,10 @@ export type SingleRadioRequest = {
   }
 }
 
+/**
+ * @memberof SingleRadioRequest
+ * @alias ApiTags
+ */
 export type ApiTags = {
   name: string
   id: string
@@ -37,6 +49,10 @@ export type ApiTags = {
   status: number
 }
 
+/**
+ * @memberof SingleRadioRequest
+ * @alias ApiStreams
+ */
 export type ApiStreams = {
   [key: string]: [
     {

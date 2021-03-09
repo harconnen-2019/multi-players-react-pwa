@@ -1,5 +1,5 @@
 /**
- * Функции для инициализации плеера
+ * Инициализация плеера
  * @module lib/initializing
  */
 
@@ -7,11 +7,11 @@ import { InitPlayer } from '../interfaces/init'
 import { ApiInitRequest } from '../api/init'
 
 /**
- * Инициализация плеера
+ * Сборка всех аргументов
  * @function
  * @param {object} items - Данные fetch запроса
  * @param {string} getPlatform - Текущая платформа
- * @returns {object} - Возвращает объект
+ * @returns {object} - весь комплект для инициализации
  */
 export const createInitFromApi = (
   itemsApi: ApiInitRequest,

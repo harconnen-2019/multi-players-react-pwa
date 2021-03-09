@@ -1,3 +1,8 @@
+/**
+ * Полная инициализация плеера
+ * @memberof createInitFromApi
+ * @alias InitPlayer
+ */
 export type InitPlayer = {
   api: ApiRequest
   player: ThemeRequest
@@ -6,8 +11,8 @@ export type InitPlayer = {
 }
 
 /**
- * @memberof linkRadiosFromApi
- * @alias LinkRadiosRequest
+ * @memberof InitPlayer
+ * @alias ApiRequest
  */
 type ApiRequest = {
   /** URL для получения списка радиостанций */
@@ -28,6 +33,10 @@ type ApiRequest = {
   readonly user?: string
 }
 
+/**
+ * @memberof InitPlayer
+ * @alias ThemeRequest
+ */
 type ThemeRequest = {
   /** Плеер для одного радио */
   readonly single: boolean
@@ -43,6 +52,10 @@ type ThemeRequest = {
   readonly css: string
 }
 
+/**
+ * @memberof InitPlayer
+ * @alias CountersIdRequest
+ */
 type CountersIdRequest = {
   /** Счетчик Google */
   readonly ga: string | null
@@ -52,6 +65,10 @@ type CountersIdRequest = {
   readonly fb?: string | null
 }
 
+/**
+ * @memberof InitPlayer
+ * @alias AdvertisingRequest
+ */
 type AdvertisingRequest = {
   /** Плид для IMA Google */
   readonly plid: number

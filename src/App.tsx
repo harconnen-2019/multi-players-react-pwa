@@ -118,7 +118,7 @@ function App() {
         }
       )
       setPlayList(fullPlayList)
-      report('Загрузка плейлиста : ', fullPlayList.length)
+      report('Загрузка плейлиста : ', fullPlayList)
 
       //Собираем жанры и настроения
       allGenresFromPlayList = createArrayTags(fullPlayList, 'genres')

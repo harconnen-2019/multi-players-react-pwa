@@ -20,7 +20,7 @@ export type ApiSubRadioRequest = {
   moods: ApiSubTagsRequest[]
   origins: { [key: string]: string | number }[]
   cover: string
-  streams: IApiSubStreamsRequest
+  streams: ApiSubStreamsRequest
   id: string
   is_recommend: boolean
   genres: ApiSubTagsRequest[]
@@ -41,7 +41,7 @@ export type ApiSubTagsRequest = {
   status: number
 }
 
-export type IApiSubStreamsRequest = {
+export type ApiSubStreamsRequest = {
   [key: string]: [
     {
       type: string

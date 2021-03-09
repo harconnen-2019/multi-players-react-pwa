@@ -3,7 +3,6 @@
  * @module lib/radio
  */
 
-import { Session } from 'node:inspector'
 import {
   IRadio,
   ApiStreams,
@@ -26,7 +25,11 @@ export const getStreamFromApi = (streams: ApiStreams) => {
 /**
  * Создание плейлиста из API для инициализации плеера
  * @function
- * @param {Array} api - список радио из API
+ * @param {Array} apiFav - список избранного
+ * @param {Array} apiRec - список рекомендованных
+ * @param {string} platform - текущая платформа
+ * @param {string} session - текущая сессия
+ * @param {Object} init - аргументы инициализации
  * @returns {Array} - нормализованный список объектов радио в количестве config.NUM_PLAYLIST
  */
 export const createPlayList = (
@@ -53,6 +56,13 @@ export const createPlayList = (
   return result
 }
 
+/**
+ * Создание массива жанров и настроений
+ * @function
+ * @param {Object} playlist - список радио
+ * @param {string} tag  - жанр или настроение
+ * @returns {Array}
+ */
 export const createArrayTags = (playlist: IRadio[], tag: string) => {
   const result = new Set()
   playlist.forEach((element: IRadio) => {
@@ -75,6 +85,9 @@ export const createArrayTags = (playlist: IRadio[], tag: string) => {
  * @class
  * @param {object} item  - Объект радио из API
  * @param {number} index - Текущий индекс строки
+ * @param {string} platform - текущая платформа
+ * @param {string} session - текущая сессия
+ * @param {Object} init - аргументы инициализации
  */
 export class Radio implements IRadio {
   index
@@ -98,15 +111,11 @@ export class Radio implements IRadio {
   session
   favoriteAdd = () => {
     this.favorite = true
-    fetch(
-      this.url.favoriteAdd + '?session=' + this.session + '&radio_id=' + this.id
-    )
+    fetch(`${this.url.favoriteAdd}?session=${this.session}&radio_id=${this.id}`)
   }
   favoriteDel = () => {
     this.favorite = false
-    fetch(
-      this.url.favoriteDel + '?session=' + this.session + '&radio_id=' + this.id
-    )
+    fetch(`${this.url.favoriteDel}?session=${this.session}&radio_id=${this.id}`)
   }
   /**
    * @method
