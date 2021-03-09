@@ -4,8 +4,9 @@
  */
 import React, { useState, useEffect } from 'react'
 import * as CONFIG from './config'
-import * as type from './interfaces/initializing'
-import * as create from './lib/initializing'
+import { ApiInitRequest } from './api/init'
+import { InitPlayer } from './interfaces/init'
+import { initFromApi } from './lib/initializing'
 import { ILocalization } from './interfaces/localization'
 import {
   getCookie,
@@ -33,11 +34,7 @@ function App() {
   const PLATFORM: string =
     process.env.REACT_APP_PLATFORM || DEFAULT_PLATFORM.PWA
 
-  let linkRadios: type.LinkRadiosRequest
-  let linkFavoritesRadios: type.LinkFavoritesRequest
-  let playerTheme: type.PlayerThemeRequest
-  let countersForHead: type.CountersIdRequest
-  let advertising: type.AdvertisingRequest
+  const apiPlayer: { [key: string]: string } = {}
   let allGenresFromPlayList
   let allMoodsFromPlayList
 
@@ -87,26 +84,25 @@ function App() {
   }
 
   /**
-   * Инициализация плеера, создание объекта Init  в состояние
+   * Инициализация плеера
    * @function
    * @returns {void}
    */
   async function loadInit() {
     try {
       // Инициализация
-      const init = await fetchFromApi<type.ApiRequest>(
+      const init = await fetchFromApi<ApiInitRequest>(
         `${CONFIG.PREFIX}${CONFIG.URL_INIT}?session=${SESSION}`
       )
-      linkRadios = create.linkRadiosFromApi(init)
-      linkFavoritesRadios = create.linkFavoritesFromApi(init)
-      playerTheme = create.playerThemeFromApi(init, PLATFORM)
-      countersForHead = create.countersIdFomApi(init)
-      advertising = create.advertisingFromApi(init, PLATFORM)
+      const initPlayer: InitPlayer = initFromApi(init, PLATFORM)
+      apiPlayer.search = initPlayer.api.search
+      apiPlayer.favoriteAdd = initPlayer.api.favoriteAdd
+      apiPlayer.favoriteDel = initPlayer.api.favoriteDel
       report('Инициализация : ', init)
 
       // Загрузка избранного
       const favoritesApiRadios = await fetchFromApi<ApiRadioRequest>(
-        `${CONFIG.PREFIX}${linkFavoritesRadios.favoriteList}?session=${SESSION}`
+        `${CONFIG.PREFIX}${initPlayer.api.favoriteList}?session=${SESSION}`
       )
       let radioFavorites: Array<IRadio> = []
       if (favoritesApiRadios.data.list_radio.length !== 0) {
@@ -120,7 +116,7 @@ function App() {
       }
       // Загрузка рекомендованных
       const recommendApiRadios = await fetchFromApi<ApiRadioRequest>(
-        `${CONFIG.PREFIX}${linkRadios.recommend}&session=${SESSION}`
+        `${CONFIG.PREFIX}${initPlayer.api.recommend}&session=${SESSION}`
       )
       const radioRecommend: Array<IRadio> = createPlayList(
         recommendApiRadios.data.list_radio,

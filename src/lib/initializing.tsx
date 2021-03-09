@@ -1,134 +1,64 @@
-import {
-  ApiRequest,
-  LinkFavoritesRequest,
-  AdvertisingRequest,
-  LinkRadiosRequest,
-  CountersIdRequest,
-  PlayerThemeRequest,
-} from '../interfaces/initializing'
-
 /**
  * Функции для инициализации плеера
  * @module lib/initializing
  */
 
+import { InitPlayer } from '../interfaces/init'
+import { ApiInitRequest } from '../api/init'
+
 /**
- * Интерфейс: {@link LinkRadiosRequest}
+ * Инициализация плеера
  * @function
- * @param {object} itemsApi - fetch запрос
- * @returns {object} - Список URL адресов радио
+ * @param {object} items - Данные fetch запроса
+ * @param {string} getPlatform - Текущая платформа
+ * @returns {object} - Возвращает объект
  */
-export const linkRadiosFromApi = (itemsApi: ApiRequest): LinkRadiosRequest => {
+export const initFromApi = (
+  itemsApi: ApiInitRequest,
+  getPlatform: string = 'pwa'
+): InitPlayer => {
+  const platform: string = getPlatform.toLowerCase()
   const {
-    data: {
-      init: { api },
-    },
+    data: { init },
   } = itemsApi
-  const result: LinkRadiosRequest = {
-    list: api.radio_list,
-    top: api.radio_top,
-    recommend: api.radio_recommend,
-    search: api.radio_search,
-    user: api.user_create_account,
-  }
-  return result
-}
-
-/**
- * Интерфейс - см. {@link LinkFavoritesRequest}
- * @function
- * @param {object} items - Данные fetch запроса
- * @returns {object} - Возвращает объект
- */
-export const linkFavoritesFromApi = (
-  items: ApiRequest
-): LinkFavoritesRequest => {
-  const {
-    data: {
-      init: { api },
+  const result: InitPlayer = {
+    api: {
+      recommend: init.api.radio_recommend,
+      search: init.api.radio_search,
+      favoriteList: init.api.user_fav_list,
+      favoriteAdd: init.api.user_fav_add,
+      favoriteDel: init.api.user_fav_del,
+      // user: init.api.user_create_account,
+      // list: init.api.radio_list,
+      // top: init.api.radio_top,
     },
-  } = items
-  const result: LinkFavoritesRequest = {
-    favoriteList: api.user_fav_list,
-    favoriteAdd: api.user_fav_add,
-    favoriteDel: api.user_fav_del,
-  }
-  return result
-}
-
-/**
- * Интерфейс - см. {@link PlayerThemeRequest}
- * @function
- * @param {object} items - Данные fetch запроса
- * @returns {object} - Возвращает объект
- */
-export const playerThemeFromApi = (
-  items: ApiRequest,
-  platform: string
-): PlayerThemeRequest => {
-  const {
-    data: {
-      init: { player },
+    player: {
+      single: init.player.single || false,
+      favicon: init.player.favicon,
+      themeDefault: init.player.theme || 'default',
+      theme: init.defaults.style[platform].theme,
+      cover: init.defaults.style[platform].cover,
+      css: init.defaults.style[platform].custom_css,
     },
-    data: {
-      init: { defaults },
+    counters: {
+      ga:
+        init.counters?.ga && init.counters?.ga !== '' ? init.counters.ga : null,
+      fb:
+        init.counters?.fb && init.counters?.fb !== '' ? init.counters.fb : null,
+      vk:
+        init.counters?.vk && init.counters?.vk !== '' ? init.counters.vk : null,
     },
-  } = items
-  const apiPlatform: string = platform.toLowerCase() || 'pwa'
-  const result: PlayerThemeRequest = {
-    single: player.single || false,
-    favicon: player.favicon,
-    themeDefault: player.theme || 'default',
-    theme: defaults.style[apiPlatform].theme,
-    cover: defaults.style[apiPlatform].cover,
-    css: defaults.style[apiPlatform].custom_css,
-  }
-  return result
-}
-
-/**
- * Интерфейс - см. {@link CountersIdRequest}
- * @function
- * @param {object} items - Данные fetch запроса
- * @returns {object} - Возвращает объект
- */
-export const countersIdFomApi = (items: ApiRequest): CountersIdRequest => {
-  const {
-    data: {
-      init: { counters },
+    advertising: {
+      plid: init.defaults.vast.daast[platform],
+      banner:
+        init.vast[platform]?.banner && init.vast[platform]?.banner !== ''
+          ? init.vast[platform].banner
+          : null,
+      preroll:
+        init.vast[platform]?.preroll && init.vast[platform]?.preroll !== ''
+          ? init.vast[platform].preroll
+          : null,
     },
-  } = items
-  const result: CountersIdRequest = {
-    ga: counters?.ga ? counters.ga : null,
-    fb: counters?.fb ? counters.fb : null,
-    vk: counters?.vk ? counters.vk : null,
-  }
-  return result
-}
-
-/**
- * Интерфейс - см. {@link AdvertisingRequest}
- * @function
- * @param {object} items - Данные fetch запроса
- * @returns {object} - Возвращает объект
- */
-export const advertisingFromApi = (
-  items: ApiRequest,
-  platform: string
-): AdvertisingRequest => {
-  const {
-    data: {
-      init: { vast },
-    },
-    data: {
-      init: { defaults },
-    },
-  } = items
-  const apiPlatform: string = platform.toLowerCase() || 'pwa'
-  const result: AdvertisingRequest = {
-    plid: defaults.vast.daast[apiPlatform],
-    banner: vast[apiPlatform]?.banner ? vast[apiPlatform].banner : null,
-    preroll: vast[apiPlatform]?.preroll ? vast[apiPlatform].preroll : null,
   }
   return result
 }

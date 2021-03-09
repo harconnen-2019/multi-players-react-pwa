@@ -1,40 +1,53 @@
 export type ApiRadioRequest = {
   data: {
-    list_radio: Array<SingleRadioRequest>
+    list_radio: SingleRadioRequest[]
   }
 }
 
 export type SingleRadioRequest = {
+  status: number
+  partner_id: string
+  license: string
   id: string
   alias: string
   name: string
   description: string
   cover: string
   fm: string
-  origins: [{ name: string }]
+  origins: { name: string }[]
   streams: IApiStreams
   is_top: number
   is_recommend: number
-  genres: [IApiTags]
-  moods: [IApiTags]
+  genres: IApiTags[]
+  moods: IApiTags[]
   vast: {
     daast: {
       [key: string]: number
     }
   }
+  play_now: {
+    name: string
+  }
 }
 
 export type IApiTags = {
-  [key: string]: string
+  name: string
+  id: string
+  alias: string
+  status: number
 }
 
 export type IApiStreams = {
   [key: string]: [
     {
       type: string
+      id: string
       mime: string
       bitrate: number
+      samplerate: number
       url: string
+      status: number
+      radio_id: string
     }
   ]
 }
