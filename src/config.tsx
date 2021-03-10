@@ -26,7 +26,10 @@ export const PREFIX: string =
  * URL для получения данных при инициализации плеера
  * @constant {string}
  */
-export const URL_INIT: string = '/api/orange/func/player/init'
+export const URL_INIT: string =
+  process.env.NODE_ENV !== 'development'
+    ? '/api/orange/func/player/init'
+    : '/data/init.json'
 /**
  * Сколько в плеер загружать радио из API
  * @constant {number}

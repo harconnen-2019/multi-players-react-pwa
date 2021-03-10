@@ -25,28 +25,24 @@ import { listLocales } from './lib/lang'
  * @returns {void}
  */
 function App() {
+  const SESSION: string | undefined = getCookie('session')
+  const PLATFORM: string =
+    process.env.REACT_APP_PLATFORM || DEFAULT_PLATFORM.PWA
+
   const [initStatus, setInitStatus] = useState(STATUS.INIT)
   const { localization, selectLang } = useLocalization()
 
   const [playList, setPlayList] = useState<IRadio[]>()
   const [playRadio, setPlayRadio] = useState<IRadio>()
 
-  const SESSION: string | undefined = getCookie('session')
-  const PLATFORM: string =
-    process.env.REACT_APP_PLATFORM || DEFAULT_PLATFORM.PWA
-
   const apiPlayer: { [key: string]: string } = {}
   let allGenresFromPlayList
   let allMoodsFromPlayList
 
   useEffect(() => {
-    console.group('Init player:')
-    console.info(CONFIG.VERSION, `Platform: ${PLATFORM}`)
-    report('env : ' + process.env.NODE_ENV)
-    report('session : %s', SESSION)
-    console.groupEnd()
-    // setInitStatus(STATUS.LOADING)
-    // loadInit()
+    consolTitle() // eslint-disable-next-line
+    setInitStatus(STATUS.LOADING)
+    loadInit()
 
     /**
      * //TODO: ТОП радио ???
@@ -75,6 +71,19 @@ function App() {
   }, [])
 
   /**
+   * Консольный баннер для отображения данных о плеере
+   * @function
+   * @returns {void}
+   */
+  function consolTitle(): void {
+    console.group('Init player:')
+    console.info(CONFIG.VERSION, `Platform: ${PLATFORM}`)
+    report('env : ' + process.env.NODE_ENV)
+    report('session : %s', SESSION)
+    console.groupEnd()
+  }
+
+  /**
    * Инициализация плеера
    * @function
    * @returns {void}
@@ -83,12 +92,12 @@ function App() {
     try {
       // Инициализация
       const init = await fetchFromApi<ApiInitRequest>(
-        `${CONFIG.PREFIX}${CONFIG.URL_INIT}?session=${SESSION}`
+        `${CONFIG.URL_INIT}?session=${SESSION}`
       )
       const initPlayer: InitPlayer = createInitFromApi(init, PLATFORM)
       // Сохранить данные в "apiPlayer" для плеера
       apiPlayer.search = initPlayer.api.search
-      report('Инициализация : ', init)
+      report('Инициализация : ', initPlayer)
 
       // Загрузка избранного
       const favoritesListFromApi = await fetchFromApi<ApiRadioListRequest>(
