@@ -2,13 +2,12 @@
  * Контроллер плеера
  * @module components/App
  */
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import * as CONFIG from './config'
 import { ApiInitRequest } from './api/init'
 import { ApiRadioListRequest } from './api/radios'
 import { InitPlayer } from './interfaces/init'
 import { createInitFromApi } from './lib/initializing'
-import { ILocalization } from './interfaces/localization'
 import {
   getCookie,
   fetchFromApi,
@@ -18,8 +17,8 @@ import {
 } from './lib/utils'
 import { IRadio } from './interfaces/radio'
 import { createArrayTags, createPlayList } from './lib/radio'
-
-// import {  } from './lib/lang'
+import { useLocalization } from './hooks/localization'
+import { listLocales } from './lib/lang'
 
 /**
  * Сборка всего плеера и бизнес логика
@@ -27,9 +26,11 @@ import { createArrayTags, createPlayList } from './lib/radio'
  */
 function App() {
   const [initStatus, setInitStatus] = useState(STATUS.INIT)
-  const [lang, setLang] = useState<ILocalization>({})
   const [playList, setPlayList] = useState<IRadio[]>()
   const [playRadio, setPlayRadio] = useState<IRadio>()
+
+  const [selectLang, setSelectLang] = useState('')
+  const { localization } = useLocalization(selectLang)
 
   const SESSION: string | undefined = getCookie('session')
   const PLATFORM: string =
@@ -42,8 +43,7 @@ function App() {
   useEffect(() => {
     consolTitle()
     // setInitStatus(STATUS.LOADING)
-    loadLocalization()
-    loadInit()
+    // loadInit()
 
     /**
      * //TODO: ТОП радио ???
@@ -68,7 +68,7 @@ function App() {
      * //TODO: Авторизация в соцсетях
      */
 
-    // setInitStatus(STATUS.LOADED)
+    setInitStatus(STATUS.LOADED)
   }, [])
 
   /**
@@ -134,32 +134,8 @@ function App() {
     }
   }
 
-  /**
-   * Загрузка локализации из api или localStorage
-   * @function
-   * @returns {void}
-   */
-  async function loadLocalization() {
-    if (localStorage.getItem('player-localization')) {
-      const getLocalization = localStorage.getItem('player-localization')
-      if (typeof getLocalization === 'string') {
-        setLang(JSON.parse(getLocalization))
-        report('Локализация из localStorage : ', JSON.parse(getLocalization))
-      }
-    } else {
-      try {
-        const result = await fetchFromApi<ILocalization>(
-          `/static/locales/en/messages.json`
-        )
-        result.activeLang = { message: 'en' }
-        setLang(result)
-        localStorage.setItem('player-localization', JSON.stringify(result))
-        report('Локализация из api : ', result)
-      } catch {
-        setInitStatus(STATUS.ERROR)
-        console.error('Loading lang failed')
-      }
-    }
+  const langChange = (event: any) => {
+    setSelectLang(event.target.value)
   }
 
   if (initStatus === STATUS.INIT) {
@@ -170,11 +146,20 @@ function App() {
     return (
       <div className='bg-gray-800 text-white h-screen'>
         <div>
-          <img src={playRadio?.cover} />
+          <img src={playRadio?.cover} alt='' />
           <p>
             <b>{playRadio?.name}</b>
           </p>
           <p>{playRadio?.note}</p>
+        </div>
+        <div>
+          <select value={localization.activeLang.message} onChange={langChange}>
+            {listLocales.map((item, key) => (
+              <option key={key} value={item.code}>
+                {item.name}
+              </option>
+            ))}
+          </select>
         </div>
       </div>
     )
