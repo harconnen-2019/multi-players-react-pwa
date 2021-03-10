@@ -4,7 +4,7 @@
  */
 
 import { InitPlayer } from '../interfaces/init'
-import { ApiInitRequest } from '../api/init'
+import { ApiInitRequest } from '../interfaces/api'
 
 /**
  * Сборка всех аргументов

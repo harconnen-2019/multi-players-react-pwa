@@ -8,7 +8,7 @@ import {
   ApiSubRadioRequest,
   ApiSubStreamsRequest,
   ApiSubTagsRequest,
-} from '../api/radios'
+} from '../interfaces/api'
 
 /**
  * Проверка наличия параметра stream в объекте, если false - пропуск радио

@@ -1,5 +1,5 @@
 import { getStreamFromApi, Radio } from './radio'
-import { ApiSubRadioRequest } from '../api/radios'
+import { ApiSubRadioRequest } from '../interfaces/api'
 
 describe('Radio', () => {
   const input: ApiSubRadioRequest = {
