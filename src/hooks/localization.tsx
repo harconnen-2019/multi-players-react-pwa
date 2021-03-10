@@ -2,9 +2,9 @@ import { useState, useEffect } from 'react'
 import { fetchFromApi, report } from '../lib/utils'
 import { ILocalization } from '../interfaces/localization'
 
-export const useLocalization = (lang: string) => {
+export const useLocalization = () => {
   const [localization, setLocalization] = useState<ILocalization>({})
-  //   const [lang, setLang] = useState('')
+  const [lang, setLang] = useState('')
 
   useEffect(() => {
     if (localStorage.getItem('player-localization')) {
@@ -37,5 +37,9 @@ export const useLocalization = (lang: string) => {
       console.error('Loading lang failed')
     }
   }
-  return { localization }
+
+  const selectLang = (getLang: string) => {
+    setLang(getLang)
+  }
+  return { localization, selectLang }
 }

@@ -26,11 +26,10 @@ import { listLocales } from './lib/lang'
  */
 function App() {
   const [initStatus, setInitStatus] = useState(STATUS.INIT)
+  const { localization, selectLang } = useLocalization()
+
   const [playList, setPlayList] = useState<IRadio[]>()
   const [playRadio, setPlayRadio] = useState<IRadio>()
-
-  const [selectLang, setSelectLang] = useState('')
-  const { localization } = useLocalization(selectLang)
 
   const SESSION: string | undefined = getCookie('session')
   const PLATFORM: string =
@@ -41,7 +40,11 @@ function App() {
   let allMoodsFromPlayList
 
   useEffect(() => {
-    consolTitle()
+    console.group('Init player:')
+    console.info(CONFIG.VERSION, `Platform: ${PLATFORM}`)
+    report('env : ' + process.env.NODE_ENV)
+    report('session : %s', SESSION)
+    console.groupEnd()
     // setInitStatus(STATUS.LOADING)
     // loadInit()
 
@@ -70,19 +73,6 @@ function App() {
 
     setInitStatus(STATUS.LOADED)
   }, [])
-
-  /**
-   * Консольный баннер для отображения данных о плеере
-   * @function
-   * @returns {void}
-   */
-  function consolTitle(): void {
-    console.group('Init player:')
-    console.info(CONFIG.VERSION, `Platform: ${PLATFORM}`)
-    report('env : ' + process.env.NODE_ENV)
-    report('session : %s', SESSION)
-    console.groupEnd()
-  }
 
   /**
    * Инициализация плеера
@@ -135,7 +125,7 @@ function App() {
   }
 
   const langChange = (event: any) => {
-    setSelectLang(event.target.value)
+    selectLang(event.target.value)
   }
 
   if (initStatus === STATUS.INIT) {

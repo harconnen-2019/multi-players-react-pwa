@@ -1,8 +1,3 @@
-/**
- * Локализация плеера
- * @module lib/lang
- */
-
 export const listLocales = [
   { code: 'ru', name: 'Русский' },
   { code: 'en', name: 'English' },
