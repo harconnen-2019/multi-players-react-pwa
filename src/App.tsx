@@ -2,11 +2,13 @@
  * Контроллер плеера
  * @module components/App
  */
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect, Suspense, useRef } from 'react'
+import videojs from 'video.js'
 import * as CONFIG from './config'
 import { ApiInitRequest, ApiRadioListRequest } from './interfaces/api'
 import { InitPlayer } from './interfaces/init'
 import { createInitFromApi } from './lib/initializing'
+import { IRadio } from './interfaces/radio'
 import {
   getCookie,
   fetchFromApi,
@@ -14,12 +16,10 @@ import {
   PLATFORM as DEFAULT_PLATFORM,
   report,
 } from './lib/utils'
-import { IRadio } from './interfaces/radio'
 import { createArrayTags, createPlayList } from './lib/radio'
 import { useLocalization } from './hooks/localization'
-import { listLocales } from './lib/lang'
 
-// import videojs from 'video.js'
+const Player = React.lazy(() => import('./components/platforms/default/Player'))
 
 /**
  * Сборка всего плеера и бизнес логика
@@ -40,11 +40,10 @@ function App() {
   const [isPlay, setIsPlay] = useState<boolean>(false)
   const [isMuted, setIsMuted] = useState<boolean>(false)
 
-  // const videoRef = useRef(null)
+  const videoRef = useRef<any>(null)
   // const [radio, setRadio] = useState('')
-  // const [player, setPlayer] = useState(null)
-  // const [sliderVal, setSliderVal] = useState(50) - не нужен
-  const [volume, setVolume] = useState(50)
+  const [player, setPlayer] = useState<any>(null)
+  const [volume, setVolume] = useState<number>(50)
 
   const apiPlayer: { [key: string]: string } = {}
   let allGenresFromPlayList
@@ -78,41 +77,41 @@ function App() {
      * //TODO: Авторизация в соцсетях
      */
 
-    setStatus(STATUS.LOADED)
+    // setStatus(STATUS.LOADED)
   }, [])
 
   // Инициализация videoJs, смена радио при выборе
   // Управление воспроизведением
-  // useEffect(() => {
-  //   if (!videoRef || !isLoading) return
-  //   let actPlay = isPlay
-  //   if (player) {
-  //     // Инициализация плеера уже прошла? меняем радио
-  //     pause()
-  //     videoRef.current.volume = volume / 100
-  //     videoRef.current.src = radio.sources[0].src
-  //     videoRef.current.type = radio.sources[0].type
-  //     config.DEBUG && console.log('Смена радио в videoJs', radio)
-  //     actPlay ? play() : null
-  //   } else {
-  //     // Инициируем плеер
-  //     const initPlayer = videojs(
-  //       videoRef.current,
-  //       {
-  //         autoplay: false,
-  //         controls: false,
-  //         sources: radio.sources,
-  //       },
-  //       function onPlayerReady() {
-  //         config.DEBUG && console.log('onPlayerReady', this)
-  //       }
-  //     )
-  //     setPlayer(initPlayer)
-  //     // return () => {
-  //     //   if (player) player.dispose()
-  //     // }
-  //   }
-  // }, [radio, isLoading])
+  useEffect(() => {
+    if (!videoRef || status !== STATUS.LOADED) return
+    let actPlay: boolean = isPlay
+    if (player) {
+      // Инициализация плеера уже прошла? меняем радио
+      pause()
+      videoRef.current.volume = volume / 100
+      videoRef.current.src = playRadio?.playStream[0].src
+      videoRef.current.type = playRadio?.playStream[0].type
+      console.log('Смена радио в videoJs', playRadio)
+      actPlay && play()
+    } else {
+      // Инициируем плеер
+      const initPlayer = videojs(
+        videoRef.current,
+        {
+          autoplay: false,
+          controls: false,
+          sources: playRadio?.playStream,
+        },
+        function onPlayerReady() {
+          // console.log('onPlayerReady', this)
+        }
+      )
+      setPlayer(initPlayer)
+      // return () => {
+      //   if (player) player.dispose()
+      // }
+    }
+  }, [playRadio, status])
 
   // Загрузка радио, выбранное на странице из API
   // useEffect(() => {
@@ -228,7 +227,7 @@ function App() {
     // )
     // config.DEBUG && console.log('VAST: ' + config.URL_GET_VAST + radio.vast)
     setTimeout(() => {
-      // videoRef.current.play()
+      videoRef.current.play()
       setIsPlay(true)
     }, 1000)
   }
@@ -238,7 +237,7 @@ function App() {
    * @method
    */
   const pause = () => {
-    // videoRef.current.pause()
+    videoRef.current.pause()
     setIsPlay(false)
   }
 
@@ -248,7 +247,7 @@ function App() {
    * @param {boolean} stat - состояние
    */
   const muted = (stat: boolean) => {
-    // videoRef.current.muted = stat
+    videoRef.current.muted = stat
     setIsMuted(stat)
   }
 
@@ -257,10 +256,9 @@ function App() {
    * @method
    * @param {*} e
    */
-  const handleVolume = (event: any) => {
-    // videoRef.current.volume = volume / 100
+  const volumeChange = (event: any) => {
+    videoRef.current.volume = volume / 100
     setVolume(event.target.value)
-    // setSliderVal(e.target.value) - не нужен
   }
 
   /**
@@ -272,79 +270,44 @@ function App() {
   }
 
   if (status === STATUS.INIT) {
-    return <>Loading....</>
+    return <div>Загрузка...</div>
   } else if (status === STATUS.ERROR) {
     return <>Error....</>
   } else {
     return (
-      <div className='bg-gray-800 text-white h-screen'>
-        <div>
-          <img src={playRadio?.cover} alt='' />
-          <p>
-            <b>{playRadio?.name}</b>
-          </p>
-          <p>{playRadio?.note}</p>
+      <>
+        <Suspense fallback={<div>Загрузка...</div>}>
+          <Player
+            lang={localization}
+            radio={playRadio}
+            isPlay={isPlay}
+            play={play}
+            pause={pause}
+            isMuted={isMuted}
+            muted={muted}
+            volume={volume}
+            getIndexRadio={getIndexRadio}
+            volumeChange={volumeChange}
+            langChange={langChange}
+            genres={allGenresFromPlayList}
+            moods={allMoodsFromPlayList}
+            isWarning={isWarning}
+            // videoRef={videoRef}
+          />
+        </Suspense>
+        <div data-vjs-player>
+          <video
+            id='content_audio'
+            ref={videoRef}
+            className='video-js'
+            style={{ height: `0px` }}
+            preload='none'
+            playsInline
+            hidden
+          />
+          <div id='ad-container' className='hidden'></div>
         </div>
-        <div>
-          <span onClick={() => getIndexRadio(2, 'prev')}>Назад</span>
-
-          {!isPlay ? (
-            <span
-              onClick={() => {
-                play()
-              }}
-            >
-              Воспроизведение
-            </span>
-          ) : (
-            <span
-              onClick={() => {
-                pause()
-              }}
-            >
-              Пауза
-            </span>
-          )}
-
-          <span onClick={() => getIndexRadio(3, 'next')}>Вперед</span>
-          {!isMuted ? (
-            <span
-              onClick={() => {
-                muted(true)
-              }}
-            >
-              Звук выключить
-            </span>
-          ) : (
-            <span
-              onClick={() => {
-                muted(false)
-              }}
-            >
-              Звук включить
-            </span>
-          )}
-
-          <span>
-            <input
-              type='range'
-              min='1'
-              max='100'
-              value={volume}
-              onChange={handleVolume}
-            />
-          </span>
-        </div>
-        <div>
-          <select value={localization.activeLang.message} onChange={langChange}>
-            {listLocales.map((item, key) => (
-              <option key={key} value={item.code}>
-                {item.name}
-              </option>
-            ))}
-          </select>
-        </div>
-      </div>
+      </>
     )
   }
 }

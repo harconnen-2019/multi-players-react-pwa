@@ -22,7 +22,7 @@ export interface IRadio {
   /** идентификатор рекламы */
   readonly vast: number
   /** текущий стрим */
-  readonly playStream: Array<{ [key: string]: string }>
+  readonly playStream: Array<{ src: string; type: string }>
   /** все стримы */
   readonly streams: object
   /** список битрейтов */
