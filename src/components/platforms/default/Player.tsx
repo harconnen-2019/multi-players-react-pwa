@@ -1,25 +1,8 @@
 import React from 'react'
-import { ILocalization } from '../../../interfaces/localization'
-import { IRadio } from '../../../interfaces/radio'
+import { IPlayer } from '../../../interfaces/player'
 import { listLocales } from '../../../lib/lang'
 
-export type Props = {
-  lang: ILocalization
-  radio: IRadio | undefined
-  isPlay: boolean
-  isMuted: boolean
-  volume: number
-  play: () => void
-  pause: () => void
-  muted: (stat: boolean) => void
-  getIndexRadio: (index: number, act: string) => void
-  volumeChange: (event: any) => void
-  langChange: (event: any) => void
-  genres: string[] | undefined
-  moods: string[] | undefined
-  isWarning: boolean
-}
-export const Player: React.FC<Props> = (props) => {
+export const Player: React.FC<IPlayer> = (props) => {
   // console.log({})
   return (
     <>

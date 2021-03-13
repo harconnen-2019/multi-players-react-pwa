@@ -34,15 +34,14 @@ function App() {
   const { localization, selectLang } = useLocalization()
 
   const [playList, setPlayList] = useState<IRadio[]>()
-  const [playRadio, setPlayRadio] = useState<IRadio>()
+  const [radio, setRadio] = useState<IRadio>()
 
   const [isWarning, setIsWarning] = useState<boolean>(false)
   const [isPlay, setIsPlay] = useState<boolean>(false)
   const [isMuted, setIsMuted] = useState<boolean>(false)
 
   const videoRef = useRef<any>(null)
-  // const [radio, setRadio] = useState('')
-  const [player, setPlayer] = useState<any>(null)
+  const [player, setPlayer] = useState<object | null>(null)
   const [volume, setVolume] = useState<number>(50)
 
   const apiPlayer: { [key: string]: string } = {}
@@ -89,9 +88,10 @@ function App() {
       // Инициализация плеера уже прошла? меняем радио
       pause()
       videoRef.current.volume = volume / 100
-      videoRef.current.src = playRadio?.playStream[0].src
-      videoRef.current.type = playRadio?.playStream[0].type
-      console.log('Смена радио в videoJs', playRadio)
+      videoRef.current.src = radio?.playStream[0].src
+      videoRef.current.type = radio?.playStream[0].type
+      videoRef.current.load()
+      report('Смена радио в videoJs : ', videoRef)
       actPlay && play()
     } else {
       // Инициируем плеер
@@ -100,18 +100,18 @@ function App() {
         {
           autoplay: false,
           controls: false,
-          sources: playRadio?.playStream,
+          sources: radio?.playStream,
         },
         function onPlayerReady() {
-          // console.log('onPlayerReady', this)
+          report('Готовность плеера : ', initPlayer)
         }
       )
       setPlayer(initPlayer)
-      // return () => {
-      //   if (player) player.dispose()
-      // }
+      return () => {
+        if (player) initPlayer.dispose()
+      }
     }
-  }, [playRadio, status])
+  }, [radio, status])
 
   // Загрузка радио, выбранное на странице из API
   // useEffect(() => {
@@ -195,7 +195,7 @@ function App() {
       allMoodsFromPlayList = createArrayTags(fullPlayList, 'moods')
 
       //TODO: Кэшировать последнее радио (продумать индексы)
-      setPlayRadio(fullPlayList[0])
+      setRadio(fullPlayList[0])
       setStatus(STATUS.LOADED)
     } catch {
       setStatus(STATUS.ERROR)
@@ -209,9 +209,9 @@ function App() {
    * @param {Number} index  - Индекс активного радио
    * @param {String} act    - Направление переключения (next/prev)
    */
-  const getIndexRadio = (index: number, act: string) => {
-    // const actRadio = getPlayRadioFromPlayList(radioPlayList, index, act)
-    // setRadio(actRadio)
+  const getIndexRadio = (index: number, act: string): void => {
+    // const actRadio = getradioFromPlayList(radioPlayList, index, act)
+    playList !== undefined && setRadio(playList[index])
     // addStorageActiveRadio(actRadio)
   }
 
@@ -220,7 +220,7 @@ function App() {
    * Таймаут для инициализации VAST
    * @method
    */
-  const play = () => {
+  const play = (): void => {
     // initializeIMA(
     //   `${config.URL_GET_VAST + radio}&cover_h=200&cover_w=200`.vast,
     //   true
@@ -236,7 +236,7 @@ function App() {
    * Пауза
    * @method
    */
-  const pause = () => {
+  const pause = (): void => {
     videoRef.current.pause()
     setIsPlay(false)
   }
@@ -246,7 +246,7 @@ function App() {
    * @method
    * @param {boolean} stat - состояние
    */
-  const muted = (stat: boolean) => {
+  const muted = (stat: boolean): void => {
     videoRef.current.muted = stat
     setIsMuted(stat)
   }
@@ -256,18 +256,14 @@ function App() {
    * @method
    * @param {*} e
    */
-  const volumeChange = (event: any) => {
+  const volumeChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
     videoRef.current.volume = volume / 100
-    setVolume(event.target.value)
+    setVolume(parseInt(event.target.value, 10))
   }
 
-  /**
-   * Переключение локализации
-   * @param {object} event - данные из формы
-   */
-  const langChange = (event: any) => {
-    selectLang(event.target.value)
-  }
+  // const langChange = (event: React.ChangeEvent<HTMLSelectElement>): void => {
+  //   selectLang(event.target.value)
+  // }
 
   if (status === STATUS.INIT) {
     return <div>Загрузка...</div>
@@ -279,7 +275,7 @@ function App() {
         <Suspense fallback={<div>Загрузка...</div>}>
           <Player
             lang={localization}
-            radio={playRadio}
+            radio={radio}
             isPlay={isPlay}
             play={play}
             pause={pause}
@@ -288,7 +284,9 @@ function App() {
             volume={volume}
             getIndexRadio={getIndexRadio}
             volumeChange={volumeChange}
-            langChange={langChange}
+            langChange={(ev: React.ChangeEvent<HTMLSelectElement>): void => {
+              selectLang(ev.target.value)
+            }}
             genres={allGenresFromPlayList}
             moods={allMoodsFromPlayList}
             isWarning={isWarning}
