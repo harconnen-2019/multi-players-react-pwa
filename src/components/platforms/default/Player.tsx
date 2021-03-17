@@ -1,8 +1,9 @@
 import React from 'react'
 import { IPlayer } from '../../../interfaces/player'
-import { listLocales } from '../../../lib/lang'
+// import { listLocales } from '../../../lib/lang'
 import './Player.css'
 import Sprite from './Sprite'
+import Volume from './Volume'
 
 export const Player: React.FC<IPlayer> = (props) => {
   // console.log({})
@@ -18,33 +19,11 @@ export const Player: React.FC<IPlayer> = (props) => {
             </div>
           </div>
           <nav>
-            {!props.isMuted ? (
-              <svg
-                className='no-mobile'
-                onClick={() => {
-                  props.muted(true)
-                }}
-              >
-                <use xlinkHref='#volume'></use>
-              </svg>
-            ) : (
-              <svg
-                className='no-mobile'
-                onClick={() => {
-                  props.muted(false)
-                }}
-              >
-                <use xlinkHref='#mute'></use>
-              </svg>
-            )}
-
-            <input
-              className='no-mobile'
-              type='range'
-              min='1'
-              max='100'
-              value={props.volume}
-              onChange={props.volumeChange}
+            <Volume
+              volume={props.volume}
+              volumeChange={props.volumeChange}
+              isMuted={props.isMuted}
+              muted={props.muted}
             />
             {!props.theme.single && (
               <>

@@ -98,6 +98,7 @@ function App() {
     if (player) {
       // Инициализация плеера уже прошла? меняем радио
       pause()
+      //TODO: Громкость не регулирует первое смонтированное радио
       videoRef.current.volume = volume / 100
       videoRef.current.src = radio?.playStream[0].src
       videoRef.current.type = radio?.playStream[0].type
