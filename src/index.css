@@ -1,1 +1,19 @@
+@import-normalize; /* bring in normalize.css styles */
 
+body {
+  margin: 0;
+  padding: 0;
+  font-size: inherit;
+}
+#ad-container {
+  display: none;
+}
+#content_audio {
+  height: 0;
+}
+.sprite {
+  display: none;
+}
+
+@media (max-width: 640px) {
+}

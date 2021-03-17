@@ -37,7 +37,7 @@ type ApiRequest = {
  * @memberof InitPlayer
  * @alias ThemeRequest
  */
-type ThemeRequest = {
+export type ThemeRequest = {
   /** Плеер для одного радио */
   readonly single: boolean
   /** Favicon */

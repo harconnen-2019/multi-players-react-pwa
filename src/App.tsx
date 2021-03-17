@@ -4,9 +4,10 @@
  */
 import React, { useState, useEffect, Suspense, useRef } from 'react'
 import videojs from 'video.js'
+
 import * as CONFIG from './config'
 import { ApiInitRequest, ApiRadioListRequest } from './interfaces/api'
-import { InitPlayer } from './interfaces/init'
+import { InitPlayer, ThemeRequest } from './interfaces/init'
 import { createInitFromApi } from './lib/initializing'
 import { IRadio } from './interfaces/radio'
 import {
@@ -30,26 +31,35 @@ function App() {
   const PLATFORM: string =
     process.env.REACT_APP_PLATFORM || DEFAULT_PLATFORM.PWA
 
+  let theme: ThemeRequest = {
+    single: false,
+    favicon: '',
+    themeDefault: 'default',
+    theme: 'default',
+    cover: '',
+    css: '',
+  }
+
   const [status, setStatus] = useState(STATUS.INIT)
+  // eslint-disable-next-line
+  const [isWarning, setIsWarning] = useState<boolean>(false)
   const { localization, selectLang } = useLocalization()
 
   const [playList, setPlayList] = useState<IRadio[]>()
+  //TODO: Сделать для radio кеширование localStorage
   const [radio, setRadio] = useState<IRadio>()
-
-  const [isWarning, setIsWarning] = useState<boolean>(false)
+  const [volume, setVolume] = useState<number>(50)
   const [isPlay, setIsPlay] = useState<boolean>(false)
   const [isMuted, setIsMuted] = useState<boolean>(false)
 
   const videoRef = useRef<any>(null)
   const [player, setPlayer] = useState<object | null>(null)
-  const [volume, setVolume] = useState<number>(50)
 
-  const apiPlayer: { [key: string]: string } = {}
   let allGenresFromPlayList
   let allMoodsFromPlayList
 
   useEffect(() => {
-    consolTitle() // eslint-disable-next-line
+    consolTitle()
     setStatus(STATUS.LOADING)
     loadInit()
 
@@ -77,6 +87,7 @@ function App() {
      */
 
     // setStatus(STATUS.LOADED)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   // Инициализация videoJs, смена радио при выборе
@@ -111,6 +122,7 @@ function App() {
         if (player) initPlayer.dispose()
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [radio, status])
 
   // Загрузка радио, выбранное на странице из API
@@ -165,8 +177,7 @@ function App() {
         `${CONFIG.URL_INIT}?session=${SESSION}`
       )
       const initPlayer: InitPlayer = createInitFromApi(init, PLATFORM)
-      // Сохранить данные в "apiPlayer" для плеера
-      apiPlayer.search = initPlayer.api.search
+      theme = initPlayer.player
       report('Инициализация : ', initPlayer)
 
       // Загрузка избранного
@@ -188,7 +199,7 @@ function App() {
         }
       )
       setPlayList(fullPlayList)
-      report('Загрузка плейлиста : ', fullPlayList)
+      report('Загрузка плейлиста : ', fullPlayList.length)
 
       //Собираем жанры и настроения
       allGenresFromPlayList = createArrayTags(fullPlayList, 'genres')
@@ -210,6 +221,7 @@ function App() {
    * @param {String} act    - Направление переключения (next/prev)
    */
   const getIndexRadio = (index: number, act: string): void => {
+    //TODO: переделать на switch - три варианта + index
     // const actRadio = getradioFromPlayList(radioPlayList, index, act)
     playList !== undefined && setRadio(playList[index])
     // addStorageActiveRadio(actRadio)
@@ -221,6 +233,7 @@ function App() {
    * @method
    */
   const play = (): void => {
+    //TODO: Установка заголовка текущего радио
     // initializeIMA(
     //   `${config.URL_GET_VAST + radio}&cover_h=200&cover_w=200`.vast,
     //   true
@@ -261,10 +274,6 @@ function App() {
     setVolume(parseInt(event.target.value, 10))
   }
 
-  // const langChange = (event: React.ChangeEvent<HTMLSelectElement>): void => {
-  //   selectLang(event.target.value)
-  // }
-
   if (status === STATUS.INIT) {
     return <div>Загрузка...</div>
   } else if (status === STATUS.ERROR) {
@@ -274,7 +283,9 @@ function App() {
       <>
         <Suspense fallback={<div>Загрузка...</div>}>
           <Player
+            theme={theme}
             lang={localization}
+            playList={playList}
             radio={radio}
             isPlay={isPlay}
             play={play}
@@ -298,12 +309,11 @@ function App() {
             id='content_audio'
             ref={videoRef}
             className='video-js'
-            style={{ height: `0px` }}
             preload='none'
             playsInline
             hidden
           />
-          <div id='ad-container' className='hidden'></div>
+          <div id='ad-container'></div>
         </div>
       </>
     )
