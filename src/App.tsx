@@ -53,7 +53,7 @@ function App() {
   const [isMuted, setIsMuted] = useState<boolean>(false)
 
   const videoRef = useRef<any>(null)
-  const [player, setPlayer] = useState<object | null>(null)
+  // const [player, setPlayer] = useState<object | null>(null)
 
   let allGenresFromPlayList
   let allMoodsFromPlayList
@@ -95,34 +95,35 @@ function App() {
   useEffect(() => {
     if (!videoRef || status !== STATUS.LOADED) return
     let actPlay: boolean = isPlay
-    if (player) {
-      // Инициализация плеера уже прошла? меняем радио
-      pause()
-      //TODO: Громкость не регулирует первое смонтированное радио
-      videoRef.current.volume = volume / 100
-      videoRef.current.src = radio?.playStream[0].src
-      videoRef.current.type = radio?.playStream[0].type
-      videoRef.current.load()
-      report('Смена радио в videoJs : ', videoRef)
-      actPlay && play()
-    } else {
-      // Инициируем плеер
-      const initPlayer = videojs(
-        videoRef.current,
-        {
-          autoplay: false,
-          controls: false,
-          sources: radio?.playStream,
-        },
-        function onPlayerReady() {
-          report('Готовность плеера : ', initPlayer)
-        }
-      )
-      setPlayer(initPlayer)
-      return () => {
-        if (player) initPlayer.dispose()
+    // if (player) {
+    // Инициализация плеера уже прошла? меняем радио
+    // pause()
+    //TODO: Громкость не регулирует первое смонтированное радио
+    // videoRef.current.volume = volume / 100
+    // videoRef.current.src = radio?.playStream[0].src
+    // videoRef.current.type = radio?.playStream[0].type
+    // videoRef.current.load()
+    // report('Смена радио в videoJs : ', videoRef)
+    // actPlay && play()
+    // } else {
+    // Инициируем плеер
+    const initPlayer = videojs(
+      videoRef.current,
+      {
+        autoplay: false,
+        controls: false,
+        sources: radio?.playStream,
+      },
+      function onPlayerReady() {
+        report('Готовность плеера : ', initPlayer)
       }
+    )
+    actPlay && play()
+    // setPlayer(initPlayer)
+    return () => {
+      initPlayer.dispose()
     }
+    // }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [radio, status])
 

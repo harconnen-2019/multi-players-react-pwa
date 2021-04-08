@@ -18,8 +18,8 @@ import {
  */
 export const getStreamFromApi = (streams: ApiSubStreamsRequest) => {
   //TODO: Разобраться с битами равными нулю
-  const result: boolean = Object.keys(streams).length !== 0 ? true : false
-  return result
+  // const result: boolean = Object.keys(streams).length !== 0 ? true : false
+  return Object.keys(streams).length !== 0 // Короткий вариант
 }
 
 /**

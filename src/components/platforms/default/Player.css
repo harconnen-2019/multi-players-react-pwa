@@ -1,5 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
+:root {
+  --color-one: hsl(207, 30%, 70%);
+  /* --color-one: #98b1c6; */
+  /* --color-two: #295474; */
+  --color-two: hsl(207, 50%, 30%);
+}
+
 .container {
   position: relative;
   width: 100%;
@@ -48,13 +55,18 @@ nav {
 }
 
 nav svg {
+  fill: var(--color-one);
   width: 22px;
   height: 22px;
   cursor: pointer;
   margin-right: 15px;
   transition: 0.3s ease-in-out;
 }
-
+nav svg:hover,
+svg.active {
+  fill:var(--color-two);
+  transition: 0.3s ease-in-out;
+}
 
 .player {
   position: absolute;

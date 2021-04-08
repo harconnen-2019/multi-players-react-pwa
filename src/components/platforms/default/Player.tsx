@@ -1,12 +1,32 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { IPlayer } from '../../../interfaces/player'
+import { Icon } from './Icon'
 // import { listLocales } from '../../../lib/lang'
 import './Player.css'
 import Sprite from './Sprite'
 import Volume from './Volume'
 
+type Menu = { [key: string]: boolean }
+
 export const Player: React.FC<IPlayer> = (props) => {
-  // console.log({})
+  const [menu, setMenu] = useState<Menu>({
+    favorites: false,
+    genres: false,
+    moods: false,
+    setting: false,
+    search: false,
+  })
+  const toggleMenu = (event: string): void => {
+    const newMenu: Menu = {}
+    Object.keys(menu).forEach((key) => {
+      if (key === event) {
+        newMenu[key] = !menu[key]
+      } else {
+        newMenu[key] = false
+      }
+    })
+    setMenu(newMenu)
+  }
   return (
     <>
       <div className='container'>
@@ -27,12 +47,16 @@ export const Player: React.FC<IPlayer> = (props) => {
             />
             {!props.theme.single && (
               <>
-                <svg>
-                  <use xlinkHref='#favorite'></use>
-                </svg>
-                <svg>
-                  <use xlinkHref='#genres'></use>
-                </svg>
+                <Icon
+                  name='favorites'
+                  active={menu.favorites}
+                  onClick={() => toggleMenu('favorites')}
+                />
+                <Icon
+                  name='genres'
+                  active={menu.genres}
+                  onClick={() => toggleMenu('genres')}
+                />
                 <svg>
                   <use xlinkHref='#moods'></use>
                 </svg>
