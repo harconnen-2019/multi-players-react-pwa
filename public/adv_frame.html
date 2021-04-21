@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Dev'Coffee PWA</title>
+    <style>
+      iframe {
+        overflow: hidden;
+      }
+    </style>
+  </head>
+  <body id="test" style="margin: 0;">
+    <div id="bcontParams" class="adwistsfplace" data-conf=""></div>
+    <script>
+      const queryString = window.location.search;
+      const urlParams = new URLSearchParams(queryString);
+      const bcontParams = urlParams.get("rtb_url");
+      const url = new URL("https:" + bcontParams).search;
+      const urlParamsPlid = new URLSearchParams(url);
+      const bcontParamsPlid = urlParamsPlid.get("plid");
+      document
+        .getElementById("bcontParams")
+        .setAttribute("data-conf", window.location.search.substring(1));
+      document.getElementById("bcontParams").id = "bcont_" + bcontParamsPlid;
+    </script>
+    <script type="text/javascript" src="static/js/bundle.min.js"></script>
+  </body>
+</html>

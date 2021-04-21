@@ -2,6 +2,15 @@ import { useState, useEffect } from 'react'
 import { fetchFromApi, report } from '../lib/utils'
 import { ILocalization } from '../interfaces/localization'
 
+/**
+ * Считывает локализацию из localStorage,
+ * если не находит, то создает английскую.
+ * После изменения языка, записывает текущую локализацию в localStorage
+ *
+ * @returns {object} localization
+ * @returns {method} selectLang - выбор языка
+ */
+
 export const useLocalization = () => {
   const [localization, setLocalization] = useState<ILocalization>({})
   const [lang, setLang] = useState('')

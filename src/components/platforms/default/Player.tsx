@@ -31,13 +31,13 @@ export const Player: React.FC<IPlayer> = (props) => {
     <>
       <div className='container'>
         <header>
-          <div className='title'>
-            <img src={props.radio?.cover} alt='' />
-            <div>
+          <section onClick={() => toggleMenu('null')}>
+            <img src={props.radio?.cover} alt={props.radio?.name} />
+            <article>
               <div>{props.radio?.name}</div>
               <span>{props.radio?.note}</span>
-            </div>
-          </div>
+            </article>
+          </section>
           <nav>
             <Volume
               volume={props.volume}
@@ -57,22 +57,28 @@ export const Player: React.FC<IPlayer> = (props) => {
                   active={menu.genres}
                   onClick={() => toggleMenu('genres')}
                 />
-                <svg>
-                  <use xlinkHref='#moods'></use>
-                </svg>
+                <Icon
+                  name='moods'
+                  active={menu.moods}
+                  onClick={() => toggleMenu('moods')}
+                />
               </>
             )}
-            <svg>
-              <use xlinkHref='#setting'></use>
-            </svg>
+            <Icon
+              name='setting'
+              active={menu.setting}
+              onClick={() => toggleMenu('setting')}
+            />
             {!props.theme.single && (
-              <svg>
-                <use xlinkHref='#bars'></use>
-              </svg>
+              <Icon
+                name='bars'
+                active={menu.search}
+                onClick={() => toggleMenu('search')}
+              />
             )}
           </nav>
         </header>
-        <div className='player'>
+        <main className='player'>
           <div className='backward'>
             <svg onClick={() => props.getIndexRadio(2, 'prev')}>
               <use xlinkHref='#step-backward'></use>
@@ -102,7 +108,8 @@ export const Player: React.FC<IPlayer> = (props) => {
               <use xlinkHref='#step-forward'></use>
             </svg>
           </div>
-        </div>
+        </main>
+        <aside></aside>
         {/* <div style={{ marginTop: '200px', position: 'absolute' }}>
           <div>
             <select
