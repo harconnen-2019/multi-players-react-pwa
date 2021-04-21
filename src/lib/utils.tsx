@@ -3,8 +3,9 @@
  * @module lib/utils
  */
 import * as CONFIG from '../config'
+
 /**
- * Считывает cookies для отправки запросов api (?session=)
+ * Считывает cookies до инициализации для отправки запросов api (?session=)
  * @function
  * @returns {string | undefine} - Значение cookie или Undefine
  */
@@ -35,29 +36,10 @@ export async function fetchFromApi<T>(request: RequestInfo): Promise<T> {
 }
 
 /**
- * Статус загрузки плеера (init, loading, loaded, error)
- * @readonly
- * @enum
+ * Вывод в консоль при отладке
+ * @param {string} text
+ * @param {any} prop
  */
-export enum STATUS {
-  INIT,
-  LOADING,
-  LOADED,
-  ERROR,
-}
-
-/**
- * Платформы для плеера
- * @readonly
- * @enum {string}
- */
-export enum PLATFORM {
-  PWA = 'PWA',
-  FB = 'FB',
-  VK = 'VK',
-  OK = 'OK',
-}
-
 export const report = (text: string, prop: any = ''): void => {
   CONFIG.DEBUG && console.log(text, prop)
 }

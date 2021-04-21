@@ -30,7 +30,7 @@ export const getStreamFromApi = (streams: ApiSubStreamsRequest) => {
  * @param {string} platform - текущая платформа
  * @param {string} session - текущая сессия
  * @param {Object} init - аргументы инициализации
- * @returns {Array} - нормализованный список объектов радио
+ * @returns {Array} - нормализованный список объектов радио (используем класс Radio)
  */
 export const createPlayList = (
   apiFav: Array<ApiSubRadioRequest>,

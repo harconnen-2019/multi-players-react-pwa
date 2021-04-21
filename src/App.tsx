@@ -10,13 +10,7 @@ import { ApiInitRequest, ApiRadioListRequest } from './interfaces/api'
 import { InitPlayer, ThemeRequest } from './interfaces/init'
 import { createInitFromApi } from './lib/initializing'
 import { IRadio } from './interfaces/radio'
-import {
-  getCookie,
-  fetchFromApi,
-  STATUS,
-  PLATFORM as DEFAULT_PLATFORM,
-  report,
-} from './lib/utils'
+import { getCookie, fetchFromApi, report } from './lib/utils'
 import { createArrayTags, createPlayList } from './lib/radio'
 import { useLocalization } from './hooks/localization'
 
@@ -28,8 +22,7 @@ const Player = React.lazy(() => import('./components/platforms/default/Player'))
  */
 function App() {
   const SESSION: string | undefined = getCookie('session')
-  const PLATFORM: string =
-    process.env.REACT_APP_PLATFORM || DEFAULT_PLATFORM.PWA
+  const PLATFORM: string = process.env.REACT_APP_PLATFORM || CONFIG.PLATFORM.PWA
 
   let theme: ThemeRequest = {
     single: false,
@@ -40,7 +33,7 @@ function App() {
     css: '',
   }
 
-  const [status, setStatus] = useState(STATUS.INIT)
+  const [status, setStatus] = useState(CONFIG.STATUS.INIT)
   // eslint-disable-next-line
   const [isWarning, setIsWarning] = useState<boolean>(false)
   const { localization, selectLang } = useLocalization()
@@ -60,7 +53,7 @@ function App() {
 
   useEffect(() => {
     consolTitle()
-    setStatus(STATUS.LOADING)
+    setStatus(CONFIG.STATUS.LOADING)
     loadInit()
 
     /**
@@ -93,7 +86,7 @@ function App() {
   // Инициализация videoJs, смена радио при выборе
   // Управление воспроизведением
   useEffect(() => {
-    if (!videoRef || status !== STATUS.LOADED) return
+    if (!videoRef || status !== CONFIG.STATUS.LOADED) return
     let actPlay: boolean = isPlay
     // if (player) {
     // Инициализация плеера уже прошла? меняем радио
@@ -168,7 +161,8 @@ function App() {
   }
 
   /**
-   * Инициализация плеера
+   * Инициализация плеера.
+   * Загружает по URL 'URL_INIT' из конфига api json с настройками плеера.
    * @function
    * @returns {void}
    */
@@ -176,7 +170,7 @@ function App() {
     try {
       // Инициализация
       const init = await fetchFromApi<ApiInitRequest>(
-        `${CONFIG.URL_INIT}?session=${SESSION}`
+        `${CONFIG.PREFIX}${CONFIG.URL_INIT}?session=${SESSION}`
       )
       const initPlayer: InitPlayer = createInitFromApi(init, PLATFORM)
       theme = initPlayer.player
@@ -209,9 +203,9 @@ function App() {
 
       //TODO: Кэшировать последнее радио (продумать индексы)
       setRadio(fullPlayList[0])
-      setStatus(STATUS.LOADED)
+      setStatus(CONFIG.STATUS.LOADED)
     } catch {
-      setStatus(STATUS.ERROR)
+      setStatus(CONFIG.STATUS.ERROR)
       console.error('Loading init failed')
     }
   }
@@ -276,9 +270,9 @@ function App() {
     setVolume(parseInt(event.target.value, 10))
   }
 
-  if (status === STATUS.INIT) {
+  if (status === CONFIG.STATUS.INIT) {
     return <div>Загрузка...</div>
-  } else if (status === STATUS.ERROR) {
+  } else if (status === CONFIG.STATUS.ERROR) {
     return <>Error....</>
   } else {
     return (
