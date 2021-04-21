@@ -1,14 +1,15 @@
 import React, { useState } from 'react'
 import { IPlayer } from '../../../interfaces/player'
+import './css/player.css'
 import { Icon } from './Icon'
 // import { listLocales } from '../../../lib/lang'
-import './Player.css'
 import Sprite from './Sprite'
 import Volume from './Volume'
+import Banner from '../../Banner'
 
 type Menu = { [key: string]: boolean }
 
-export const Player: React.FC<IPlayer> = (props) => {
+const Player: React.FC<IPlayer> = (props) => {
   const [menu, setMenu] = useState<Menu>({
     favorites: false,
     genres: false,
@@ -109,7 +110,7 @@ export const Player: React.FC<IPlayer> = (props) => {
             </svg>
           </div>
         </main>
-        <aside></aside>
+        <Banner />
         {/* <div style={{ marginTop: '200px', position: 'absolute' }}>
           <div>
             <select
