@@ -19,4 +19,5 @@ export type IPlayer = {
   genres: string[] | undefined
   moods: string[] | undefined
   isWarning: boolean
+  banner: string | null | undefined
 }

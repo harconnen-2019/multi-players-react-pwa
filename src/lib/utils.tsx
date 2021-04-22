@@ -43,3 +43,22 @@ export async function fetchFromApi<T>(request: RequestInfo): Promise<T> {
 export const report = (text: string, prop: any = ''): void => {
   CONFIG.DEBUG && console.log(text, prop)
 }
+
+/**
+ * Обновление баннера по заданному интервалу
+ * @param {number} timeAds - время последнего обновления
+ * @param {number} intervalAds - интервал обновления рекламы
+ */
+export const refreshBanner = (timeAds: number) => {
+  if (new Date().getTime() - timeAds > CONFIG.INTERVAL_BANNER) {
+    const isIFrame = (input: HTMLElement | null): input is HTMLIFrameElement =>
+      input !== null && input.tagName === 'IFRAME'
+
+    const frame = document.getElementById('bannerRefresh')
+    if (isIFrame(frame) && frame.contentWindow) {
+      frame.contentWindow.location.reload()
+    }
+    // TODO: Должен вернуть текущее время для обнуления интервала
+    // timeAds = new Date().getTime()
+  }
+}

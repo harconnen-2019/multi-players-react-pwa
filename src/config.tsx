@@ -60,3 +60,9 @@ export enum PLATFORM {
   VK = 'vk',
   OK = 'ok',
 }
+
+/**
+ * Интервал показа баннера в миллисекундах
+ * @constant {number}
+ */
+export const INTERVAL_BANNER: number = 10000

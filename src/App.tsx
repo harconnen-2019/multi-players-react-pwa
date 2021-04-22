@@ -24,6 +24,23 @@ function App() {
   const SESSION: string | undefined = getCookie('session')
   const PLATFORM: string = process.env.REACT_APP_PLATFORM || CONFIG.PLATFORM.PWA
 
+  const [status, setStatus] = useState(CONFIG.STATUS.INIT)
+  // eslint-disable-next-line
+  const [isWarning, setIsWarning] = useState<boolean>(false)
+  const { localization, selectLang } = useLocalization()
+  const [init, setInit] = useState<InitPlayer>()
+
+  const [playList, setPlayList] = useState<IRadio[]>()
+  //TODO: Сделать для radio кеширование localStorage
+  const [radio, setRadio] = useState<IRadio>()
+  const [volume, setVolume] = useState<number>(50)
+  const [isPlay, setIsPlay] = useState<boolean>(false)
+  const [isMuted, setIsMuted] = useState<boolean>(false)
+  // const [timeAds, setTimeAds] = useState<number>(new Date().getTime())
+
+  const videoRef = useRef<any>(null)
+  // const [player, setPlayer] = useState<object | null>(null)
+
   let theme: ThemeRequest = {
     single: false,
     favicon: '',
@@ -32,21 +49,6 @@ function App() {
     cover: '',
     css: '',
   }
-
-  const [status, setStatus] = useState(CONFIG.STATUS.INIT)
-  // eslint-disable-next-line
-  const [isWarning, setIsWarning] = useState<boolean>(false)
-  const { localization, selectLang } = useLocalization()
-
-  const [playList, setPlayList] = useState<IRadio[]>()
-  //TODO: Сделать для radio кеширование localStorage
-  const [radio, setRadio] = useState<IRadio>()
-  const [volume, setVolume] = useState<number>(50)
-  const [isPlay, setIsPlay] = useState<boolean>(false)
-  const [isMuted, setIsMuted] = useState<boolean>(false)
-
-  const videoRef = useRef<any>(null)
-  // const [player, setPlayer] = useState<object | null>(null)
 
   let allGenresFromPlayList
   let allMoodsFromPlayList
@@ -173,6 +175,7 @@ function App() {
         `${CONFIG.PREFIX}${CONFIG.URL_INIT}?session=${SESSION}`
       )
       const initPlayer: InitPlayer = createInitFromApi(init, PLATFORM)
+      setInit(initPlayer)
       theme = initPlayer.player
       report('Инициализация : ', initPlayer)
 
@@ -298,6 +301,7 @@ function App() {
             moods={allMoodsFromPlayList}
             isWarning={isWarning}
             // videoRef={videoRef}
+            banner={init !== undefined ? init.advertising.banner : undefined}
           />
         </Suspense>
         <div data-vjs-player>

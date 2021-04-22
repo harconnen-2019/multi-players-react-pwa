@@ -1,23 +1,21 @@
 import React from 'react'
 import './css/banner.css'
 
-interface Props {}
+interface Props {
+  banner: string | null | undefined
+}
 
-const Banner: React.FC = (props: Props) => {
+const Banner = (props: Props) => {
   return (
     <>
       <aside>
         <iframe
           title='Coffee PWA'
           src={
-            './adv_frame.html?' +
-            //   this.props.playerStore.apibanner +
-            '&genre='
-            //   this.props.playerStore.genre.join()
+            './adv_frame.html?' + props.banner
+            //TODO: '&genre=' + this.props.playerStore.genre.join()
           }
-          id='advrefreshh'
-          // allowtransparency='true'
-          // hidefocus='true'
+          id='bannerRefresh'
         ></iframe>
       </aside>
     </>

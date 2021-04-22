@@ -110,7 +110,7 @@ const Player: React.FC<IPlayer> = (props) => {
             </svg>
           </div>
         </main>
-        <Banner />
+        {props.banner && <Banner banner={props.banner} />}
         {/* <div style={{ marginTop: '200px', position: 'absolute' }}>
           <div>
             <select
