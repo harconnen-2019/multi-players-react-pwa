@@ -8,8 +8,8 @@ import videojs from 'video.js'
 import * as CONFIG from './config'
 import { ApiInitRequest, ApiRadioListRequest } from './interfaces/api'
 import { InitPlayer, ThemeRequest } from './interfaces/init'
-import { createInitFromApi } from './lib/initializing'
 import { IRadio } from './interfaces/radio'
+import { createInitFromApi } from './lib/initializing'
 import { getCookie, fetchFromApi, report } from './lib/utils'
 import { createArrayTags, createPlayList } from './lib/radio'
 import { useLocalization } from './hooks/localization'
@@ -214,15 +214,28 @@ function App() {
   }
 
   /**
-   * Переключение радио в плейлисте, вызывается кеширование
+   * Переключение радио в плейлисте
    * @method
    * @param {Number} index  - Индекс активного радио
-   * @param {String} act    - Направление переключения (next/prev)
+   * @param {String} act    - Направление переключения (next|prev|index)
    */
-  const getIndexRadio = (index: number, act: string): void => {
-    //TODO: переделать на switch - три варианта + index
-    // const actRadio = getradioFromPlayList(radioPlayList, index, act)
-    playList !== undefined && setRadio(playList[index])
+  const getIndexRadio = (index: number | undefined, act: string): void => {
+    if (playList !== undefined && index !== undefined) {
+      let selectIndex = index
+      switch (act) {
+        case 'prev':
+          index === 0
+            ? (selectIndex = playList.length - 1)
+            : (selectIndex = index - 1)
+          break
+        case 'next':
+          index === playList.length - 1
+            ? (selectIndex = 0)
+            : (selectIndex = index + 1)
+          break
+      }
+      setRadio(playList[selectIndex])
+    }
     // addStorageActiveRadio(actRadio)
   }
 
@@ -266,7 +279,7 @@ function App() {
   /**
    * Установка громкости плеера и бегунок
    * @method
-   * @param {*} e
+   * @param {*} event
    */
   const volumeChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
     videoRef.current.volume = volume / 100

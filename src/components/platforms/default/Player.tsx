@@ -81,9 +81,13 @@ const Player: React.FC<IPlayer> = (props) => {
         </header>
         <main className='player'>
           <div className='backward'>
-            <svg onClick={() => props.getIndexRadio(2, 'prev')}>
-              <use xlinkHref='#step-backward'></use>
-            </svg>
+            {!props.theme.single && (
+              <svg
+                onClick={() => props.getIndexRadio(props.radio?.index, 'prev')}
+              >
+                <use xlinkHref='#step-backward'></use>
+              </svg>
+            )}
           </div>
           <div className='play'>
             {!props.isPlay ? (
@@ -105,9 +109,13 @@ const Player: React.FC<IPlayer> = (props) => {
             )}
           </div>
           <div className='forward'>
-            <svg onClick={() => props.getIndexRadio(3, 'next')}>
-              <use xlinkHref='#step-forward'></use>
-            </svg>
+            {!props.theme.single && (
+              <svg
+                onClick={() => props.getIndexRadio(props.radio?.index, 'next')}
+              >
+                <use xlinkHref='#step-forward'></use>
+              </svg>
+            )}
           </div>
         </main>
         {props.banner && <Banner banner={props.banner} />}

@@ -13,7 +13,7 @@ export type IPlayer = {
   play: () => void
   pause: () => void
   muted: (stat: boolean) => void
-  getIndexRadio: (index: number, act: string) => void
+  getIndexRadio: (index: number | undefined, act: string) => void
   volumeChange: (event: React.ChangeEvent<HTMLInputElement>) => void
   langChange: (event: React.ChangeEvent<HTMLSelectElement>) => void
   genres: string[] | undefined
