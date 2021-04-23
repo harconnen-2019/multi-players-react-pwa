@@ -46,7 +46,7 @@ const Player: React.FC<IPlayer> = (props) => {
               isMuted={props.isMuted}
               muted={props.muted}
             />
-            {!props.theme.single && (
+            {props.theme !== undefined && !props.theme.single && (
               <>
                 <Icon
                   name='favorites'
@@ -70,7 +70,7 @@ const Player: React.FC<IPlayer> = (props) => {
               active={menu.setting}
               onClick={() => toggleMenu('setting')}
             />
-            {!props.theme.single && (
+            {props.theme !== undefined && !props.theme.single && (
               <Icon
                 name='bars'
                 active={menu.search}
@@ -81,7 +81,7 @@ const Player: React.FC<IPlayer> = (props) => {
         </header>
         <main className='player'>
           <div className='backward'>
-            {!props.theme.single && (
+            {props.theme !== undefined && !props.theme.single && (
               <svg
                 onClick={() => props.getIndexRadio(props.radio?.index, 'prev')}
               >
@@ -109,7 +109,7 @@ const Player: React.FC<IPlayer> = (props) => {
             )}
           </div>
           <div className='forward'>
-            {!props.theme.single && (
+            {props.theme !== undefined && !props.theme.single && (
               <svg
                 onClick={() => props.getIndexRadio(props.radio?.index, 'next')}
               >

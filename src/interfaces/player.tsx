@@ -3,7 +3,7 @@ import { IRadio } from './radio'
 import { ThemeRequest } from './init'
 
 export type IPlayer = {
-  theme: ThemeRequest
+  theme: ThemeRequest | undefined
   lang: ILocalization
   playList: IRadio[] | undefined
   radio: IRadio | undefined

@@ -45,6 +45,22 @@ export const report = (text: string, prop: any = ''): void => {
 }
 
 /**
+ * Добавление в index.html элемент favicon
+ * @param {string} href - URL favicon получаем из API
+ */
+export const addFavicon = (href: string | undefined) => {
+  if (href !== undefined) {
+    var link: HTMLElement =
+      document.querySelector("link[rel*='icon']") ||
+      document.createElement('link')
+    link.setAttribute('type', 'image/x-icon')
+    link.setAttribute('rel', 'shortcut icon')
+    link.setAttribute('href', CONFIG.PREFIX + href)
+    document.getElementsByTagName('head')[0].appendChild(link)
+  }
+}
+
+/**
  * Обновление баннера по заданному интервалу
  * @param {number} timeAds - время последнего обновления
  * @param {number} intervalAds - интервал обновления рекламы

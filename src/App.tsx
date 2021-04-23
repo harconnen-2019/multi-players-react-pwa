@@ -7,10 +7,10 @@ import videojs from 'video.js'
 
 import * as CONFIG from './config'
 import { ApiInitRequest, ApiRadioListRequest } from './interfaces/api'
-import { InitPlayer, ThemeRequest } from './interfaces/init'
+import { InitPlayer } from './interfaces/init'
 import { IRadio } from './interfaces/radio'
 import { createInitFromApi } from './lib/initializing'
-import { getCookie, fetchFromApi, report } from './lib/utils'
+import { getCookie, fetchFromApi, report, addFavicon } from './lib/utils'
 import { createArrayTags, createPlayList } from './lib/radio'
 import { useLocalization } from './hooks/localization'
 
@@ -40,15 +40,6 @@ function App() {
 
   const videoRef = useRef<any>(null)
   // const [player, setPlayer] = useState<object | null>(null)
-
-  let theme: ThemeRequest = {
-    single: false,
-    favicon: '',
-    themeDefault: 'default',
-    theme: 'default',
-    cover: '',
-    css: '',
-  }
 
   let allGenresFromPlayList
   let allMoodsFromPlayList
@@ -176,7 +167,7 @@ function App() {
       )
       const initPlayer: InitPlayer = createInitFromApi(init, PLATFORM)
       setInit(initPlayer)
-      theme = initPlayer.player
+      addFavicon(initPlayer.player.favicon)
       report('Инициализация : ', initPlayer)
 
       // Загрузка избранного
@@ -295,7 +286,7 @@ function App() {
       <>
         <Suspense fallback={<div>Загрузка...</div>}>
           <Player
-            theme={theme}
+            theme={init?.player}
             lang={localization}
             playList={playList}
             radio={radio}
