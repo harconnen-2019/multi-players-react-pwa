@@ -10,7 +10,13 @@ import { ApiInitRequest, ApiRadioListRequest } from './interfaces/api'
 import { InitPlayer } from './interfaces/init'
 import { IRadio } from './interfaces/radio'
 import { createInitFromApi } from './lib/initializing'
-import { getCookie, fetchFromApi, report, addFavicon } from './lib/utils'
+import {
+  getCookie,
+  fetchFromApi,
+  report,
+  addFavicon,
+  refreshBanner,
+} from './lib/utils'
 import { createArrayTags, createPlayList } from './lib/radio'
 import { useLocalization } from './hooks/localization'
 
@@ -36,7 +42,7 @@ function App() {
   const [volume, setVolume] = useState<number>(50)
   const [isPlay, setIsPlay] = useState<boolean>(false)
   const [isMuted, setIsMuted] = useState<boolean>(false)
-  // const [timeAds, setTimeAds] = useState<number>(new Date().getTime())
+  const [timeAds, setTimeAds] = useState<number>(new Date().getTime())
 
   const videoRef = useRef<any>(null)
   // const [player, setPlayer] = useState<object | null>(null)
@@ -101,7 +107,7 @@ function App() {
         sources: radio?.playStream,
       },
       function onPlayerReady() {
-        report('Готовность плеера : ', initPlayer)
+        report('VIDEOJS инициализирован : ', initPlayer)
       }
     )
     actPlay && play()
@@ -198,6 +204,7 @@ function App() {
       //TODO: Кэшировать последнее радио (продумать индексы)
       setRadio(fullPlayList[0])
       setStatus(CONFIG.STATUS.LOADED)
+      report('Активное радио из INIT : ', fullPlayList[0])
     } catch {
       setStatus(CONFIG.STATUS.ERROR)
       console.error('Loading init failed')
@@ -205,7 +212,17 @@ function App() {
   }
 
   /**
+   * Обновление баннера
+   * Добавление в состояние времени для следующего обновления
+   */
+  const newBanner = () => {
+    const newRefreshTime = refreshBanner(timeAds)
+    newRefreshTime && setTimeAds(newRefreshTime)
+  }
+
+  /**
    * Переключение радио в плейлисте
+   * Обновление баннера
    * @method
    * @param {Number} index  - Индекс активного радио
    * @param {String} act    - Направление переключения (next|prev|index)
@@ -226,12 +243,16 @@ function App() {
           break
       }
       setRadio(playList[selectIndex])
+      report('Выбранное радио : ', playList[selectIndex])
+      newBanner()
     }
-    // addStorageActiveRadio(actRadio)
+    //TODO: addStorageActiveRadio(actRadio)
   }
 
   /**
    * Воспроизведение
+   * Меняем TITLE страницы на название текущего радио
+   * Обновление баннера
    * Таймаут для инициализации VAST
    * @method
    */
@@ -245,16 +266,22 @@ function App() {
     setTimeout(() => {
       videoRef.current.play()
       setIsPlay(true)
-    }, 1000)
+    }, 10)
+
+    document.title = radio?.name ? radio?.name : 'player' //TODO: Название плеера в manifest + ' - ' + this.title
+    newBanner()
   }
 
   /**
    * Пауза
+   * Обновление баннера
    * @method
    */
   const pause = (): void => {
     videoRef.current.pause()
     setIsPlay(false)
+    //TODO: Обратно изменить TITLE на название плеера
+    newBanner()
   }
 
   /**

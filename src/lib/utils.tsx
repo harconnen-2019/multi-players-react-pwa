@@ -62,8 +62,8 @@ export const addFavicon = (href: string | undefined) => {
 
 /**
  * Обновление баннера по заданному интервалу
+ * Интервал берем из конфига
  * @param {number} timeAds - время последнего обновления
- * @param {number} intervalAds - интервал обновления рекламы
  */
 export const refreshBanner = (timeAds: number) => {
   if (new Date().getTime() - timeAds > CONFIG.INTERVAL_BANNER) {
@@ -76,5 +76,7 @@ export const refreshBanner = (timeAds: number) => {
     }
     // TODO: Должен вернуть текущее время для обнуления интервала
     // timeAds = new Date().getTime()
+    report('Баннер обновлен, интервал:', CONFIG.INTERVAL_BANNER)
+    return new Date().getTime()
   }
 }

@@ -67,7 +67,7 @@ nav svg {
 }
 nav svg:hover,
 svg.active {
-  fill:var(--color-two);
+  fill: var(--color-two);
   transition: 0.3s ease-in-out;
 }
 
