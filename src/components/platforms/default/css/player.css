@@ -1,10 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
 :root {
-  --color-one: hsl(207, 30%, 70%);
   /* --color-one: #98b1c6; */
   /* --color-two: #295474; */
+  --color-one: hsl(207, 30%, 70%);
   --color-two: hsl(207, 50%, 30%);
+  --color-lineVolume: #d7d7d7;
+  --color-background: #fff;
 }
 
 .container {
@@ -12,7 +14,7 @@
   width: 100%;
   max-width: 740px;
   height: 100vh;
-  max-height: 700px;
+  /* max-height: 700px; */
   font-family: 'Roboto', sans-serif;
 }
 header {
@@ -27,7 +29,7 @@ header {
   box-shadow: 0 3px 1px rgb(0 0 0 / 5%);
 }
 header section {
-  padding: 10px 5px;
+  padding: 10px 5px 0 10px;
   width: 50%;
   flex: 1 1 auto;
   cursor: pointer;
@@ -71,7 +73,7 @@ svg.active {
   transition: 0.3s ease-in-out;
 }
 
-.player {
+main {
   position: absolute;
   top: 150px;
   left: 20px;
@@ -80,7 +82,6 @@ svg.active {
   width: 170px;
   height: 110px;
 }
-
 .backward svg,
 .forward svg {
   width: 35px;
@@ -95,6 +96,46 @@ svg.active {
   cursor: pointer;
 }
 
+/* Панели */
+.container > section {
+  position: absolute;
+  box-sizing: border-box;
+  width: 100%;
+  height: calc(100vh - 73px);
+  bottom: 0px;
+  background-color: var(--color-background);
+  padding: 10px 10px 0 10px;
+}
+
+section > p {
+  margin: 20px;
+}
+
+section > p > svg {
+  /* fill: var(--color-one); */
+  width: 28px;
+  height: 28px;
+  margin-right: 10px;
+  float: left;
+  fill: var(--color-one);
+}
+section > P > span {
+  float: left;
+  padding-top: 5px;
+  width: 80px;
+}
+select {
+  border: none;
+  padding: 5px;
+  border-bottom: rgb(0 0 0 / 10%) 1px solid;
+  background: transparent;
+  margin-left: 10px;
+  font-size: 1rem;
+}
+select:focus {
+  outline: none;
+}
+
 @media (max-width: 640px) {
   .container {
     max-height: none;
@@ -106,7 +147,7 @@ svg.active {
   nav .no-mobile {
     display: none;
   }
-  .player {
+  main {
     position: absolute;
     top: unset;
     left: 0;

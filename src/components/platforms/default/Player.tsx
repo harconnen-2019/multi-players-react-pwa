@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { IPlayer } from '../../../interfaces/player'
 import './css/player.css'
 import { Icon } from './Icon'
-// import { listLocales } from '../../../lib/lang'
+import { listLocales } from '../../../lib/lang'
 import Sprite from './Sprite'
 import Volume from './Volume'
 import Banner from '../../Banner'
@@ -79,7 +79,7 @@ const Player: React.FC<IPlayer> = (props) => {
             )}
           </nav>
         </header>
-        <main className='player'>
+        <main>
           <div className='backward'>
             {props.theme !== undefined && !props.theme.single && (
               <svg
@@ -118,6 +118,46 @@ const Player: React.FC<IPlayer> = (props) => {
             )}
           </div>
         </main>
+        {menu.setting && (
+          <section>
+            <p>
+              <svg>
+                <use xlinkHref='#quality'></use>
+              </svg>
+              <span>Quality:</span>
+              {/* //TODO: нет перевода "Quality" */}
+              <select
+              //  value={props.radio?.}
+              // onChange={props.langChange}
+              >
+                {props.radio?.bits !== undefined &&
+                  props.radio.bits.map((item: string) => (
+                    <option key={item} value={item}>
+                      {item} kbps
+                    </option>
+                  ))}
+              </select>
+            </p>
+            <p>
+              <svg>
+                <use xlinkHref='#language'></use>
+              </svg>
+              <span>
+                {props.lang.lang ? props.lang.lang.message : 'Language'}:
+              </span>
+              <select
+                value={props.lang.activeLang.message}
+                onChange={props.langChange}
+              >
+                {listLocales.map((item, key) => (
+                  <option key={key} value={item.code}>
+                    {item.name}
+                  </option>
+                ))}
+              </select>
+            </p>
+          </section>
+        )}
         {props.banner && <Banner banner={props.banner} />}
         {/* <div style={{ marginTop: '200px', position: 'absolute' }}>
           <div>
