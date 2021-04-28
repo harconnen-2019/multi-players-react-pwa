@@ -20,4 +20,5 @@ export type IPlayer = {
   moods: string[] | undefined
   isWarning: boolean
   banner: string | null | undefined
+  bitrateChange: (event: React.ChangeEvent<HTMLSelectElement>) => void
 }

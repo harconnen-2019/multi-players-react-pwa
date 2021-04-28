@@ -26,7 +26,7 @@ export interface IRadio {
   /** все стримы */
   readonly streams: object
   /** список битрейтов */
-  readonly bits: Array<string>
+  readonly activeBitRate: string
   /** в топе */
   readonly top: boolean
   /** в рекомендованных */

@@ -9,6 +9,9 @@
   --color-background: #fff;
 }
 
+body{
+  background-color: var(--color-background);
+}
 .container {
   position: relative;
   width: 100%;

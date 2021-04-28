@@ -127,11 +127,11 @@ const Player: React.FC<IPlayer> = (props) => {
               <span>Quality:</span>
               {/* //TODO: нет перевода "Quality" */}
               <select
-              //  value={props.radio?.}
-              // onChange={props.langChange}
+                value={props.radio?.activeBitRate}
+                onChange={props.bitrateChange}
               >
-                {props.radio?.bits !== undefined &&
-                  props.radio.bits.map((item: string) => (
+                {props.radio?.streams !== undefined &&
+                  Object.keys(props.radio.streams).map((item) => (
                     <option key={item} value={item}>
                       {item} kbps
                     </option>

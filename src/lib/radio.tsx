@@ -101,7 +101,7 @@ export class Radio implements IRadio {
   vast
   streams
   playStream
-  bits
+  activeBitRate
   genres
   moods
   favorite
@@ -126,6 +126,7 @@ export class Radio implements IRadio {
     const result: [{ src: string; type: string }] = [{ src: '', type: '' }]
     result[0].src = this.streams[bit][0].url
     result[0].type = this.streams[bit][0].mime
+    this.activeBitRate = bit
     this.playStream = result
   }
   static createTag = (tags: ApiSubTagsRequest[]) => {
@@ -166,8 +167,8 @@ export class Radio implements IRadio {
         }
         return result
       })()
-    this.bits = (() => {
-      const result: Array<string> = Object.keys(item.streams)
+    this.activeBitRate = (() => {
+      const result: string = Object.keys(item.streams)[0]
       return result
     })()
     this.genres = Radio.createTag(item.genres)

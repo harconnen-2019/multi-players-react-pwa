@@ -304,6 +304,18 @@ function App() {
     setVolume(parseInt(event.target.value, 10))
   }
 
+  /**
+   * Смена битрейта стрима
+   * Метод объекта Radio изменяет текущий стрим
+   * @method
+   * @param {*} event
+   */
+  const bitrateChange = (ev: React.ChangeEvent<HTMLSelectElement>) => {
+    const newRadio = radio
+    newRadio?.selectStream(ev.target.value)
+    setRadio(newRadio)
+  }
+
   if (status === CONFIG.STATUS.INIT) {
     return <div>Загрузка...</div>
   } else if (status === CONFIG.STATUS.ERROR) {
@@ -333,6 +345,7 @@ function App() {
             isWarning={isWarning}
             // videoRef={videoRef}
             banner={init !== undefined ? init.advertising.banner : undefined}
+            bitrateChange={bitrateChange}
           />
         </Suspense>
         <div data-vjs-player>
