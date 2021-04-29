@@ -6,6 +6,7 @@ import Sprite from './Sprite'
 import Volume from './Volume'
 import Banner from '../../Banner'
 import PanelSetting from './PanelSetting'
+import PanelFavorites from './PanelFavorites'
 
 type Menu = { [key: string]: boolean }
 
@@ -118,6 +119,15 @@ const Player: React.FC<IPlayer> = (props) => {
             )}
           </div>
         </main>
+        {menu.favorites && (
+          <PanelFavorites
+            favoritesId={props.favoritesId}
+            playList={props.playList}
+            lang={props.lang}
+          />
+        )}
+        {menu.genres && <section></section>}
+        {menu.moods && <section></section>}
         {menu.setting && (
           <PanelSetting
             radio={props.radio}
@@ -126,6 +136,7 @@ const Player: React.FC<IPlayer> = (props) => {
             langChange={props.langChange}
           />
         )}
+        {menu.search && <section></section>}
         {props.banner && <Banner banner={props.banner} />}
       </div>
       <Sprite />

@@ -51,7 +51,7 @@ export const createPlayList = (
     }
     index++
   })
-  //TODO: проверка на дубликаты
+  //FIXME: проверка на дубликаты
   // const output = new Set<IRadio>(result)
   return result
 }

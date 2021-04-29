@@ -37,6 +37,7 @@ function App() {
   const [init, setInit] = useState<InitPlayer>()
 
   const [playList, setPlayList] = useState<IRadio[]>()
+  const [favoritesId, setFavoritesId] = useState<Array<string>>([])
   //TODO: Сделать для radio кеширование localStorage
   const [radio, setRadio] = useState<IRadio>()
   const [volume, setVolume] = useState<number>(50)
@@ -185,6 +186,13 @@ function App() {
       setPlayList(fullPlayList)
       report('Загрузка плейлиста : ', fullPlayList.length)
 
+      // Собираем индикаторы избранного
+      const loadFavoritesId: string[] = []
+      favoritesListFromApi.data.list_radio.map((item) =>
+        loadFavoritesId.push(item.id)
+      )
+      setFavoritesId(loadFavoritesId)
+
       //Собираем жанры и настроения
       allGenresFromPlayList = createArrayTags(fullPlayList, 'genres')
       allMoodsFromPlayList = createArrayTags(fullPlayList, 'moods')
@@ -299,7 +307,7 @@ function App() {
    * @param {*} event
    */
   const bitrateChange = (ev: React.ChangeEvent<HTMLSelectElement>) => {
-    //TODO: Понаблюдать в работе
+    //TODO: Понаблюдать в работе Перенести сюда метод из класса
     const newRadio = radio
     newRadio?.selectStream(ev.target.value)
     if (radio !== undefined && newRadio?.activeBitRate !== undefined) {
@@ -341,6 +349,7 @@ function App() {
             // videoRef={videoRef}
             banner={init !== undefined ? init.advertising.banner : undefined}
             bitrateChange={bitrateChange}
+            favoritesId={favoritesId}
           />
         </Suspense>
         <div data-vjs-player>
