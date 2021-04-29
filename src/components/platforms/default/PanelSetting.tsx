@@ -1,6 +1,7 @@
 import React from 'react'
 import { ILocalization } from '../../../interfaces/localization'
 import { IRadio } from '../../../interfaces/radio'
+import './css/panelSetting.css'
 
 interface Props {
   radio: IRadio | undefined
