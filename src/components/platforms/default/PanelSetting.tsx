@@ -2,16 +2,13 @@ import React from 'react'
 import { ILocalization } from '../../../interfaces/localization'
 import { IRadio } from '../../../interfaces/radio'
 import './css/panelSetting.css'
+import { listLocales } from '../../../lib/lang'
 
 interface Props {
   radio: IRadio | undefined
   bitrateChange: (event: React.ChangeEvent<HTMLSelectElement>) => void
   lang: ILocalization
   langChange: (event: React.ChangeEvent<HTMLSelectElement>) => void
-  listLocales: {
-    code: string
-    name: string
-  }[]
 }
 
 const PanelSetting = ({
@@ -19,8 +16,7 @@ const PanelSetting = ({
   bitrateChange,
   lang,
   langChange,
-  listLocales,
-}: Props) => {
+}: Props): React.ReactElement => {
   return (
     <section>
       <p>

@@ -123,6 +123,7 @@ export class Radio implements IRadio {
    */
   selectStream = (bit: string) => {
     //TODO: Разобраться с битами равными нулю
+    //FIXME: Этот метод можно удалить перенести в функцию выбора битрейта
     const result: [{ src: string; type: string }] = [{ src: '', type: '' }]
     result[0].src = this.streams[bit][0].url
     result[0].type = this.streams[bit][0].mime
@@ -156,7 +157,7 @@ export class Radio implements IRadio {
     this.playStream =
       // Добавление одного стрима из массива
       (() => {
-        //TODO: Разобраться с битами равными нулю
+        //TODO: Разобраться с битами равными нулю.
         const result: [{ src: string; type: string }] = [{ src: '', type: '' }]
         for (let key in item.streams) {
           if (item.streams[key][0].url && item.streams[key][0].mime) {
@@ -173,7 +174,7 @@ export class Radio implements IRadio {
     })()
     this.genres = Radio.createTag(item.genres)
     this.moods = Radio.createTag(item.moods)
-    this.favorite = false //TODO: Доработать назначение
+    this.favorite = false //TODO: Доработать назначение (нет смысла в этом значении)
     this.top = item.is_top === 1 ? true : false
     this.recommend = item.is_recommend === 1 ? true : false
     this.session = session

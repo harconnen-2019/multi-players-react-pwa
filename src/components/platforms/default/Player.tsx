@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { IPlayer } from '../../../interfaces/player'
 import './css/player.css'
 import { Icon } from './Icon'
-import { listLocales } from '../../../lib/lang'
 import Sprite from './Sprite'
 import Volume from './Volume'
 import Banner from '../../Banner'
@@ -125,7 +124,6 @@ const Player: React.FC<IPlayer> = (props) => {
             bitrateChange={props.bitrateChange}
             lang={props.lang}
             langChange={props.langChange}
-            listLocales={listLocales}
           />
         )}
         {props.banner && <Banner banner={props.banner} />}

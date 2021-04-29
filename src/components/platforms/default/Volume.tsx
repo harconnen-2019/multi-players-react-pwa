@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react'
+import React from 'react'
 import './css/volume.css'
 
 interface Props {
@@ -8,7 +8,12 @@ interface Props {
   isMuted: boolean
 }
 
-function Volume({ volume, volumeChange, muted, isMuted }: Props): ReactElement {
+function Volume({
+  volume,
+  volumeChange,
+  muted,
+  isMuted,
+}: Props): React.ReactElement {
   return (
     <>
       {!isMuted ? (

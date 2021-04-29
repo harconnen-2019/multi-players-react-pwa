@@ -5,7 +5,7 @@ interface Props {
   banner: string | null | undefined
 }
 
-const Banner = (props: Props) => {
+const Banner = (props: Props): React.ReactElement => {
   return (
     <>
       <aside>
