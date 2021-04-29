@@ -6,6 +6,7 @@ import { listLocales } from '../../../lib/lang'
 import Sprite from './Sprite'
 import Volume from './Volume'
 import Banner from '../../Banner'
+import PanelSetting from './PanelSetting'
 
 type Menu = { [key: string]: boolean }
 
@@ -119,60 +120,15 @@ const Player: React.FC<IPlayer> = (props) => {
           </div>
         </main>
         {menu.setting && (
-          <section>
-            <p>
-              <svg>
-                <use xlinkHref='#quality'></use>
-              </svg>
-              <span>Quality:</span>
-              {/* //TODO: нет перевода "Quality" */}
-              <select
-                value={props.radio?.activeBitRate}
-                onChange={props.bitrateChange}
-              >
-                {props.radio?.streams !== undefined &&
-                  Object.keys(props.radio.streams).map((item) => (
-                    <option key={item} value={item}>
-                      {item} kbps
-                    </option>
-                  ))}
-              </select>
-            </p>
-            <p>
-              <svg>
-                <use xlinkHref='#language'></use>
-              </svg>
-              <span>
-                {props.lang.lang ? props.lang.lang.message : 'Language'}:
-              </span>
-              <select
-                value={props.lang.activeLang.message}
-                onChange={props.langChange}
-              >
-                {listLocales.map((item, key) => (
-                  <option key={key} value={item.code}>
-                    {item.name}
-                  </option>
-                ))}
-              </select>
-            </p>
-          </section>
+          <PanelSetting
+            radio={props.radio}
+            bitrateChange={props.bitrateChange}
+            lang={props.lang}
+            langChange={props.langChange}
+            listLocales={listLocales}
+          />
         )}
         {props.banner && <Banner banner={props.banner} />}
-        {/* <div style={{ marginTop: '200px', position: 'absolute' }}>
-          <div>
-            <select
-              value={props.lang.activeLang.message}
-              onChange={props.langChange}
-            >
-              {listLocales.map((item, key) => (
-                <option key={key} value={item.code}>
-                  {item.name}
-                </option>
-              ))}
-            </select>
-          </div>
-        </div> */}
       </div>
       <Sprite />
     </>

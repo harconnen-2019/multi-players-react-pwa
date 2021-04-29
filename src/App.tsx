@@ -87,17 +87,6 @@ function App() {
   useEffect(() => {
     if (!videoRef || status !== CONFIG.STATUS.LOADED) return
     let actPlay: boolean = isPlay
-    // if (player) {
-    // Инициализация плеера уже прошла? меняем радио
-    // pause()
-    //TODO: Громкость не регулирует первое смонтированное радио
-    // videoRef.current.volume = volume / 100
-    // videoRef.current.src = radio?.playStream[0].src
-    // videoRef.current.type = radio?.playStream[0].type
-    // videoRef.current.load()
-    // report('Смена радио в videoJs : ', videoRef)
-    // actPlay && play()
-    // } else {
     // Инициируем плеер
     const initPlayer = videojs(
       videoRef.current,
@@ -115,7 +104,6 @@ function App() {
     return () => {
       initPlayer.dispose()
     }
-    // }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [radio, status])
 
@@ -311,9 +299,16 @@ function App() {
    * @param {*} event
    */
   const bitrateChange = (ev: React.ChangeEvent<HTMLSelectElement>) => {
+    //TODO: Понаблюдать в работе
     const newRadio = radio
     newRadio?.selectStream(ev.target.value)
-    setRadio(newRadio)
+    if (radio !== undefined && newRadio?.activeBitRate !== undefined) {
+      setRadio({
+        ...radio,
+        activeBitRate: ev.target.value,
+        playStream: newRadio?.playStream,
+      })
+    }
   }
 
   if (status === CONFIG.STATUS.INIT) {
