@@ -23,9 +23,9 @@ export const getStreamFromApi = (streams: ApiSubStreamsRequest) => {
 }
 
 /**
- * Удаляет дубликаты из плейлиста
- * @param {object} items - плейлист радиостанций
- * @returns {object} - массив без дубликатов
+ * Удаляет дубликаты из полученного списка радиостанций
+ * @param {Array} items - список радиостанций из API
+ * @returns {Array} - массив без дубликатов
  */
 export const uniqueArrow = (items: Array<ApiSubRadioRequest>) => {
   let result: Array<ApiSubRadioRequest> = []

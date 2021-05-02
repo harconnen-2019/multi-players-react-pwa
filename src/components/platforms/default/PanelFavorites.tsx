@@ -19,14 +19,18 @@ const PanelFavorites = ({ favoritesId, playList, lang }: Props) => {
   }, [])
   return (
     <section>
-      {favorites !== undefined &&
-        favorites.map((item, key) => <div key={key}>{item.id}</div>)}
-      {lang.favoritesEmpty
-        ? lang.favoritesEmpty.message.replace(
+      {favorites !== undefined && favorites.length !== 0 ? (
+        favorites.map((item, key) => <div key={key}>{item.id}</div>)
+      ) : lang.favoritesEmpty ? (
+        <p>
+          {lang.favoritesEmpty.message.replace(
             '%add%',
             lang.favoritesEmptyAdd.message
-          )
-        : 'First add stations to your favorites'}
+          )}
+        </p>
+      ) : (
+        <p>First add stations to your favorites</p>
+      )}
     </section>
   )
 }
