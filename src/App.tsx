@@ -320,6 +320,19 @@ function App() {
     }
   }
 
+  const favoritesChange = (change: boolean, radioId: string): void => {
+    if (change) {
+      const newFavoritesId = favoritesId.filter((item) => item !== radioId)
+      setFavoritesId(newFavoritesId)
+      report('Удалить из избранного', radioId)
+    } else {
+      const newFavoritesId = [...favoritesId]
+      newFavoritesId.push(radioId)
+      setFavoritesId(newFavoritesId)
+      report('Добавить в избранное', radioId)
+    }
+  }
+
   if (status === CONFIG.STATUS.INIT) {
     return <div>Загрузка...</div>
   } else if (status === CONFIG.STATUS.ERROR) {
@@ -351,6 +364,7 @@ function App() {
             banner={init !== undefined ? init.advertising.banner : undefined}
             bitrateChange={bitrateChange}
             favoritesId={favoritesId}
+            favoritesChange={favoritesChange}
           />
         </Suspense>
         <div data-vjs-player>

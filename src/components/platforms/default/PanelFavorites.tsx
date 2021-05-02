@@ -7,9 +7,15 @@ interface Props {
   favoritesId: Array<string>
   playList: IRadio[] | undefined
   lang: ILocalization
+  favoritesChange: (change: boolean, radioId: string) => void
 }
 
-const PanelFavorites = ({ favoritesId, playList, lang }: Props) => {
+const PanelFavorites = ({
+  favoritesId,
+  playList,
+  lang,
+  favoritesChange,
+}: Props) => {
   const [favorites, setFavorites] = useState<IRadio[] | undefined>([])
   useEffect(() => {
     const result = playList?.filter(
@@ -17,12 +23,17 @@ const PanelFavorites = ({ favoritesId, playList, lang }: Props) => {
     )
     setFavorites(result)
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [favoritesId])
   return (
     <section>
       {favorites !== undefined && favorites.length !== 0 ? (
         favorites.map((item) => (
-          <List key={item.id} favoritesID={favoritesId} radio={item} />
+          <List
+            key={item.id}
+            favoritesID={favoritesId}
+            radio={item}
+            favoritesChange={favoritesChange}
+          />
         ))
       ) : lang.favoritesEmpty ? (
         <p>

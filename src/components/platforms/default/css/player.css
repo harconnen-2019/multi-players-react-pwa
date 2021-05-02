@@ -9,7 +9,7 @@
   --color-background: #fff;
 }
 
-body{
+body {
   background-color: var(--color-background);
 }
 .container {
@@ -108,9 +108,8 @@ main {
   bottom: 0px;
   background-color: var(--color-background);
   padding: 10px 10px 0 10px;
+  z-index: 50;
 }
-
-
 
 @media (max-width: 640px) {
   .container {

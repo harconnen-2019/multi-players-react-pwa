@@ -4,6 +4,7 @@ aside {
   height: 254px;
   right: 20px;
   top: 100px;
+  z-index: 0;
 }
 
 iframe {

@@ -5,9 +5,16 @@ import './css/list.css'
 interface Props {
   favoritesID: string[]
   radio: IRadio
+  favoritesChange: (change: boolean, radioId: string) => void
 }
 
-const List = ({ favoritesID, radio }: Props) => {
+const List = ({ favoritesID, radio, favoritesChange }: Props) => {
+  const displayFavorite = favoritesID.find((item) => {
+    return item === radio.id
+  })
+    ? true
+    : false
+
   return (
     <section className='list'>
       <img src={radio.cover} alt={radio.name} />
@@ -18,9 +25,23 @@ const List = ({ favoritesID, radio }: Props) => {
         {radio.genres.length !== 0 && <span>{radio.genres}</span>}
       </article>
       <div className='fav'>
-        <svg>
-          <use xlinkHref={`#favorites`}></use>
-        </svg>
+        {displayFavorite ? (
+          <svg
+            onClick={() => {
+              favoritesChange(displayFavorite, radio.id)
+            }}
+          >
+            <use xlinkHref={`#favorites`}></use>
+          </svg>
+        ) : (
+          <svg
+            onClick={() => {
+              favoritesChange(displayFavorite, radio.id)
+            }}
+          >
+            <use xlinkHref={`#favorite-add`}></use>
+          </svg>
+        )}
       </div>
     </section>
   )

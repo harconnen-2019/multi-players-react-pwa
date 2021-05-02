@@ -124,6 +124,7 @@ const Player: React.FC<IPlayer> = (props) => {
             favoritesId={props.favoritesId}
             playList={props.playList}
             lang={props.lang}
+            favoritesChange={props.favoritesChange}
           />
         )}
         {menu.genres && <section></section>}
@@ -137,7 +138,12 @@ const Player: React.FC<IPlayer> = (props) => {
           />
         )}
         {menu.search && <section></section>}
-        {props.banner && <Banner banner={props.banner} />}
+        {props.banner &&
+          !menu.favorites &&
+          !menu.genres &&
+          !menu.moods &&
+          !menu.setting &&
+          !menu.search && <Banner banner={props.banner} />}
       </div>
       <Sprite />
     </>

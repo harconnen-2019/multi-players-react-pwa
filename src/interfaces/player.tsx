@@ -22,4 +22,5 @@ export type IPlayer = {
   banner: string | null | undefined
   bitrateChange: (event: React.ChangeEvent<HTMLSelectElement>) => void
   favoritesId: Array<string>
+  favoritesChange: (change: boolean, radioId: string) => void
 }
