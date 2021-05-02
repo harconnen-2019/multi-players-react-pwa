@@ -139,6 +139,7 @@ const Player: React.FC<IPlayer> = (props) => {
         )}
         {menu.search && <section></section>}
         {props.banner &&
+          //TODO: передать в баннер genres
           !menu.favorites &&
           !menu.genres &&
           !menu.moods &&

@@ -320,15 +320,35 @@ function App() {
     }
   }
 
+  /**
+   * Добавление и удаление радио в избранное
+   * @param {boolean} change - добавить удалить
+   * @param {string} radioId  - ИД радио
+   */
   const favoritesChange = (change: boolean, radioId: string): void => {
+    //TODO: при добавлении в избранное добавить радио в плейлист
     if (change) {
       const newFavoritesId = favoritesId.filter((item) => item !== radioId)
       setFavoritesId(newFavoritesId)
+      try {
+        fetch(
+          `${CONFIG.PREFIX}${init?.api.favoriteDel}?session=${SESSION}&radio_id=${radioId}`
+        )
+      } catch (error) {
+        console.error('Запрос на удаление избранного', error)
+      }
       report('Удалить из избранного', radioId)
     } else {
       const newFavoritesId = [...favoritesId]
       newFavoritesId.push(radioId)
       setFavoritesId(newFavoritesId)
+      try {
+        fetch(
+          `${CONFIG.PREFIX}${init?.api.favoriteAdd}?session=${SESSION}&radio_id=${radioId}`
+        )
+      } catch (error) {
+        console.error('Запрос на добавление избранного', error)
+      }
       report('Добавить в избранное', radioId)
     }
   }
