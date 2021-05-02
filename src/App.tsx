@@ -165,6 +165,7 @@ function App() {
       addFavicon(initPlayer.player.favicon)
       report('Инициализация : ', initPlayer)
 
+      //TODO: проверить плеер на single
       // Загрузка избранного
       const favoritesListFromApi = await fetchFromApi<ApiRadioListRequest>(
         `${CONFIG.PREFIX}${initPlayer.api.favoriteList}?session=${SESSION}`

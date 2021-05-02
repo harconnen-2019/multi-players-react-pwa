@@ -23,6 +23,33 @@ export const getStreamFromApi = (streams: ApiSubStreamsRequest) => {
 }
 
 /**
+ * Удаляет дубликаты из плейлиста
+ * @param {object} items - плейлист радиостанций
+ * @returns {object} - массив без дубликатов
+ */
+export const uniqueArrow = (items: Array<ApiSubRadioRequest>) => {
+  let result: Array<ApiSubRadioRequest> = []
+  const idItems: string[] = []
+
+  items.map((item) => idItems.push(item.id))
+
+  const selectItems = idItems.filter(function (item, pos) {
+    return idItems.indexOf(item) === pos
+  })
+
+  selectItems.map((radio) => {
+    for (let item of items) {
+      if (radio === item.id) {
+        result.push(item)
+        break
+      }
+    }
+    return result
+  })
+  return result
+}
+
+/**
  * Создание плейлиста из API для инициализации плеера
  * @function
  * @param {Array} apiFav - список избранного
@@ -42,8 +69,9 @@ export const createPlayList = (
   const apiPlatform: string = platform.toLowerCase() || 'pwa'
   const result: Array<IRadio> = []
   const api = Array.from(apiRec.concat(apiFav))
+  const unique = uniqueArrow(api)
   let index: number = 0
-  api.forEach((element) => {
+  unique.forEach((element) => {
     // Проверка на наличие стрима, иначе пропускаем
     if (getStreamFromApi(element.streams)) {
       const item: IRadio = new Radio(element, index, apiPlatform, session, init)
@@ -51,8 +79,6 @@ export const createPlayList = (
     }
     index++
   })
-  //FIXME: проверка на дубликаты
-  // const output = new Set<IRadio>(result)
   return result
 }
 
