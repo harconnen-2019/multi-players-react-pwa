@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { IRadio } from '../../../interfaces/radio'
 import { ILocalization } from '../../../interfaces/localization'
+import List from './List'
 
 interface Props {
   favoritesId: Array<string>
@@ -20,7 +21,9 @@ const PanelFavorites = ({ favoritesId, playList, lang }: Props) => {
   return (
     <section>
       {favorites !== undefined && favorites.length !== 0 ? (
-        favorites.map((item, key) => <div key={key}>{item.id}</div>)
+        favorites.map((item) => (
+          <List key={item.id} favoritesID={favoritesId} radio={item} />
+        ))
       ) : lang.favoritesEmpty ? (
         <p>
           {lang.favoritesEmpty.message.replace(
