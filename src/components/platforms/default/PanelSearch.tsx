@@ -1,19 +1,18 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { IRadio } from '../../../interfaces/radio'
 import { ILocalization } from '../../../interfaces/localization'
 import List from './List'
 import './css/search.css'
 import InputSearch from './InputSearch'
-// import { fetchFromApi } from '../../../lib/utils'
-// import { ApiRadioListRequest } from '../../../interfaces/api'
-// import * as CONFIG from '../../../config'
 
 interface Props {
   lang: ILocalization
   favoritesId: Array<string>
   playList: IRadio[] | undefined
   favoritesChange: (change: boolean, radioId: string) => void
-  apiSearch: string | undefined
+  input: string
+  inputChange: (event: React.ChangeEvent<HTMLInputElement>) => void
+  searchSubmit: () => void
 }
 
 const PanelSearch = ({
@@ -21,22 +20,16 @@ const PanelSearch = ({
   favoritesId,
   playList,
   favoritesChange,
-  apiSearch,
+  input,
+  inputChange,
+  searchSubmit,
 }: Props) => {
-  const [input, setInput] = useState<string>('')
-  //   const [searchPlaylist, setSearchPlayList] = useState<IRadio[]>()
-  const searchSubmit = async () => {
-    // const searchFromApi = await fetchFromApi<ApiRadioListRequest>(
-    //   `${CONFIG.PREFIX}${apiSearch}${input}`
-    // )
-    // console.log(searchFromApi)
-  }
   return (
     <section className='search'>
       <InputSearch
         lang={lang}
         input={input}
-        inputChange={(event) => setInput(event.target.value)}
+        inputChange={inputChange}
         searchSubmit={searchSubmit}
       />
 
@@ -59,7 +52,7 @@ const PanelSearch = ({
           <InputSearch
             lang={lang}
             input={input}
-            inputChange={(event) => setInput(event.target.value)}
+            inputChange={inputChange}
             searchSubmit={searchSubmit}
           />
         </footer>

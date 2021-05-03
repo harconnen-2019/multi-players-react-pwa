@@ -47,6 +47,8 @@ function App() {
 
   const [allGenres, setAllGenres] = useState<Set<string>>()
   const [allMoods, setAllMoods] = useState<Set<string>>()
+  // поле для поиска
+  const [input, setInput] = useState<string>('')
 
   const videoRef = useRef<any>(null)
   // const [player, setPlayer] = useState<object | null>(null)
@@ -176,13 +178,7 @@ function App() {
       const fullPlayList: Array<IRadio> = createPlayList(
         recommendListFromApi.data.list_radio,
         favoritesListFromApi.data.list_radio,
-        PLATFORM,
-        SESSION,
-        {
-          //TODO: это уже не нужно
-          favoriteAdd: initPlayer.api.favoriteAdd,
-          favoriteDel: initPlayer.api.favoriteDel,
-        }
+        PLATFORM
       )
       setPlayList(fullPlayList)
       report('Загрузка плейлиста : ', fullPlayList.length)
@@ -354,6 +350,21 @@ function App() {
     }
   }
 
+  /**
+   * Обработка формы поиска
+   */
+  const searchSubmit = async () => {
+    const searchFromApi = await fetchFromApi<ApiRadioListRequest>(
+      `${CONFIG.PREFIX}${init?.api.search}${input}`
+    )
+    const searchPlayList: Array<IRadio> = createPlayList(
+      [],
+      searchFromApi.data.list_radio,
+      PLATFORM
+    )
+    console.log(searchPlayList)
+  }
+
   if (status === CONFIG.STATUS.INIT) {
     return <div>Загрузка...</div>
   } else if (status === CONFIG.STATUS.ERROR) {
@@ -387,7 +398,9 @@ function App() {
             favoritesChange={favoritesChange}
             allGenres={allGenres}
             allMoods={allMoods}
-            apiSearch={init?.api.search}
+            input={input}
+            inputChange={(event) => setInput(event.target.value)}
+            searchSubmit={searchSubmit}
           />
         </Suspense>
         <div data-vjs-player>

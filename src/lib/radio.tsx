@@ -55,17 +55,12 @@ export const uniqueArrow = (items: Array<ApiSubRadioRequest>) => {
  * @param {Array} apiFav - список избранного
  * @param {Array} apiRec - список рекомендованных
  * @param {string} platform - текущая платформа
- * @param {string} session - текущая сессия
- * @param {Object} init - аргументы инициализации
  * @returns {Array} - нормализованный список объектов радио (используем класс Radio)
  */
 export const createPlayList = (
   apiFav: Array<ApiSubRadioRequest>,
   apiRec: Array<ApiSubRadioRequest>,
-  platform: string,
-  session: string | undefined,
-  //TODO: это для методов избранного - уже не нужно
-  init: { [key: string]: string }
+  platform: string
 ) => {
   const apiPlatform: string = platform.toLowerCase() || 'pwa'
   const result: Array<IRadio> = []
@@ -75,7 +70,7 @@ export const createPlayList = (
   unique.forEach((element) => {
     // Проверка на наличие стрима, иначе пропускаем
     if (getStreamFromApi(element.streams)) {
-      const item: IRadio = new Radio(element, index, apiPlatform, session, init)
+      const item: IRadio = new Radio(element, index, apiPlatform)
       result.push(item)
     }
     index++
@@ -113,7 +108,6 @@ export const createArrayTags = (playlist: IRadio[], tag: string) => {
  * @param {object} item  - Объект радио из API
  * @param {number} index - Текущий индекс строки
  * @param {string} platform - текущая платформа
- * @param {string} session - текущая сессия
  * @param {Object} init - аргументы инициализации
  */
 export class Radio implements IRadio {
@@ -131,20 +125,8 @@ export class Radio implements IRadio {
   activeBitRate
   genres
   moods
-  // favorite
   top
   recommend
-  url
-  session
-
-  // favoriteAdd = () => {
-  //   this.favorite = true
-  //   fetch(`${this.url.favoriteAdd}?session=${this.session}&radio_id=${this.id}`)
-  // }
-  // favoriteDel = () => {
-  //   this.favorite = false
-  //   fetch(`${this.url.favoriteDel}?session=${this.session}&radio_id=${this.id}`)
-  // }
 
   /**
    * @method
@@ -166,13 +148,7 @@ export class Radio implements IRadio {
     })
     return result
   }
-  constructor(
-    item: ApiSubRadioRequest,
-    index: number,
-    platform: string,
-    session: string | undefined,
-    init: { [key: string]: string }
-  ) {
+  constructor(item: ApiSubRadioRequest, index: number, platform: string) {
     this.index = index
     this.id = item.id
     this.name = item.name
@@ -203,10 +179,7 @@ export class Radio implements IRadio {
     })()
     this.genres = Radio.createTag(item.genres)
     this.moods = Radio.createTag(item.moods)
-    // this.favorite = false //TODO: Доработать назначение (нет смысла в этом значении)
     this.top = item.is_top === 1 ? true : false
     this.recommend = item.is_recommend === 1 ? true : false
-    this.session = session
-    this.url = init
   }
 }

@@ -25,5 +25,7 @@ export type IPlayer = {
   favoritesChange: (change: boolean, radioId: string) => void
   allGenres: Set<string> | undefined
   allMoods: Set<string> | undefined
-  apiSearch: string | undefined
+  input: string
+  inputChange: (event: React.ChangeEvent<HTMLInputElement>) => void
+  searchSubmit: () => void
 }
