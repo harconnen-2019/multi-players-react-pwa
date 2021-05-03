@@ -179,6 +179,7 @@ function App() {
         PLATFORM,
         SESSION,
         {
+          //TODO: это уже не нужно
           favoriteAdd: initPlayer.api.favoriteAdd,
           favoriteDel: initPlayer.api.favoriteDel,
         }
@@ -386,6 +387,7 @@ function App() {
             favoritesChange={favoritesChange}
             allGenres={allGenres}
             allMoods={allMoods}
+            apiSearch={init?.api.search}
           />
         </Suspense>
         <div data-vjs-player>

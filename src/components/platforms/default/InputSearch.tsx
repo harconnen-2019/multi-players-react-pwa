@@ -3,9 +3,19 @@ import { ILocalization } from '../../../interfaces/localization'
 
 interface Props {
   lang: ILocalization
+  input: string | undefined
+  inputChange: (event: React.ChangeEvent<HTMLInputElement>) => void
+  searchSubmit: () => void
 }
 
-const InputSearch = ({ lang }: Props) => {
+const InputSearch = ({ lang, input, inputChange, searchSubmit }: Props) => {
+  /**
+   * Нажатие на Enter в поле поиска
+   * @param e
+   */
+  const enterSubmit = (e: { keyCode: number }) => {
+    e.keyCode === 13 && document?.getElementById('btnSearch')?.click()
+  }
   return (
     <>
       <div className='input'>
@@ -13,10 +23,10 @@ const InputSearch = ({ lang }: Props) => {
           <use xlinkHref='#search'></use>
         </svg>
         <input
-          //   onKeyDown={(e) => props.navStore.enterSubmit(e)}
+          onKeyDown={(e) => enterSubmit(e)}
           type='search'
-          //   value={props.navStore.inputSearch}
-          //   onChange={props.navStore.searchChange.bind(this)}
+          value={input}
+          onChange={inputChange}
           placeholder={
             lang.searchByStation
               ? lang.searchByStation.message
@@ -25,11 +35,7 @@ const InputSearch = ({ lang }: Props) => {
         />
       </div>
       <div className='button'>
-        <button
-          id='btnSearch'
-          //   onClick={props.navStore.searchSubmit.bind(this, props.navStore.inputSearch)}
-          type='submit'
-        >
+        <button id='btnSearch' onClick={searchSubmit} type='submit'>
           {lang.search ? lang.search.message : 'Search'}
         </button>
       </div>

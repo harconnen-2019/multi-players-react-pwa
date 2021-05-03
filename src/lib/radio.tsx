@@ -64,6 +64,7 @@ export const createPlayList = (
   apiRec: Array<ApiSubRadioRequest>,
   platform: string,
   session: string | undefined,
+  //TODO: это для методов избранного - уже не нужно
   init: { [key: string]: string }
 ) => {
   const apiPlatform: string = platform.toLowerCase() || 'pwa'

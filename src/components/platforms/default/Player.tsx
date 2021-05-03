@@ -166,6 +166,7 @@ const Player: React.FC<IPlayer> = (props) => {
             favoritesId={props.favoritesId}
             playList={props.playList}
             favoritesChange={props.favoritesChange}
+            apiSearch={props.apiSearch}
           />
         )}
         {props.banner &&
