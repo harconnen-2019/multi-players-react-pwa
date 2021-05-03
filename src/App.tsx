@@ -64,10 +64,9 @@ function App() {
     /**
      * //TODO: Тема плеера
      * //TODO: Кастомные стили плеера
-     * //TODO: Favicon плеера
      */
     /**
-     * //TODO: Установка заголовка из manifest.json
+     * //TODO: Установка заголовка из manifest.json попросить сделать в ините
      */
     /**
      * //TODO: Deeplink

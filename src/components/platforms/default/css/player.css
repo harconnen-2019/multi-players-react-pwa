@@ -7,6 +7,7 @@
   --color-two: hsl(207, 50%, 30%);
   --color-lineVolume: #d7d7d7;
   --color-background: #fff;
+  --color-muted: #999;
 }
 
 body {
@@ -109,6 +110,7 @@ main {
   background-color: var(--color-background);
   padding: 10px 10px 0 10px;
   z-index: 50;
+  overflow: auto;
 }
 
 @media (max-width: 640px) {

@@ -8,6 +8,7 @@ import Banner from '../../Banner'
 import PanelSetting from './PanelSetting'
 import PanelFavorites from './PanelFavorites'
 import PanelTags from './PanelTags'
+import PanelSearch from './PanelSearch'
 
 type Menu = { [key: string]: boolean }
 
@@ -159,7 +160,14 @@ const Player: React.FC<IPlayer> = (props) => {
             langChange={props.langChange}
           />
         )}
-        {menu.search && <section></section>}
+        {menu.search && (
+          <PanelSearch
+            lang={props.lang}
+            favoritesId={props.favoritesId}
+            playList={props.playList}
+            favoritesChange={props.favoritesChange}
+          />
+        )}
         {props.banner &&
           //TODO: передать в баннер genres
           !menu.favorites &&

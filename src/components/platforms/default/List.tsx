@@ -22,7 +22,10 @@ const List = ({ favoritesID, radio, favoritesChange }: Props) => {
         <div>
           {radio.name} / {radio.fm}
         </div>
-        {radio.genres.length !== 0 && <span>{radio.genres}</span>}
+        {
+          //TODO: проверить если будент несколько radio.genres
+          radio.genres.length !== 0 && <span>{radio.genres}</span>
+        }
       </article>
       <div className='fav'>
         {displayFavorite ? (
