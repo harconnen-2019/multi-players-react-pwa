@@ -1,8 +1,8 @@
-.ul-props {
-  margin: 0;
+.tags {
+  margin: 0 0 20px 0;
   padding: 0;
 }
-.ul-props li {
+.tags li {
   display: inline-block;
   margin: 10px 15px 0 0;
   padding: 5px 10px;
@@ -10,15 +10,15 @@
   font-size: small;
   cursor: pointer;
 }
-.ul-props li,
-.ul-props li.noactive,
-.ul-props li:focus {
+.tags li,
+/* .tags li.noactive, */
+.tags li:focus {
   background-color: var(--color-background);
   color: var(--color-two);
   border: var(--color-one) 1px solid;
 }
-.ul-props li:hover,
-.ul-props li.active {
+.tags li:hover,
+.tags li.active {
   background-color: var(--color-two);
   color: var(--color-background);
   border: var(--color-one) 1px solid;

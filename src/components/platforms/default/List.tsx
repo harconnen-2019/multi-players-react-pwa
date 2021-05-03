@@ -17,7 +17,7 @@ const List = ({ favoritesID, radio, favoritesChange }: Props) => {
 
   return (
     <section className='list'>
-      <img src={radio.cover} alt={radio.name} />
+      <img src={radio.cover} alt={radio.name} loading='lazy' />
       <article>
         <div>
           {radio.name} / {radio.fm}
