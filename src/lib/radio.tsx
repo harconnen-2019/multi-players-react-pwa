@@ -90,7 +90,7 @@ export const createPlayList = (
  * @returns {Array}
  */
 export const createArrayTags = (playlist: IRadio[], tag: string) => {
-  const result = new Set()
+  const result: Set<string> = new Set()
   playlist.forEach((element: IRadio) => {
     //FIXME: element[tag] - не получается
     if (tag === 'genres') {
@@ -130,19 +130,21 @@ export class Radio implements IRadio {
   activeBitRate
   genres
   moods
-  favorite
+  // favorite
   top
   recommend
   url
   session
-  favoriteAdd = () => {
-    this.favorite = true
-    fetch(`${this.url.favoriteAdd}?session=${this.session}&radio_id=${this.id}`)
-  }
-  favoriteDel = () => {
-    this.favorite = false
-    fetch(`${this.url.favoriteDel}?session=${this.session}&radio_id=${this.id}`)
-  }
+
+  // favoriteAdd = () => {
+  //   this.favorite = true
+  //   fetch(`${this.url.favoriteAdd}?session=${this.session}&radio_id=${this.id}`)
+  // }
+  // favoriteDel = () => {
+  //   this.favorite = false
+  //   fetch(`${this.url.favoriteDel}?session=${this.session}&radio_id=${this.id}`)
+  // }
+
   /**
    * @method
    * @param {string} bit - выбранный битрейт
@@ -200,7 +202,7 @@ export class Radio implements IRadio {
     })()
     this.genres = Radio.createTag(item.genres)
     this.moods = Radio.createTag(item.moods)
-    this.favorite = false //TODO: Доработать назначение (нет смысла в этом значении)
+    // this.favorite = false //TODO: Доработать назначение (нет смысла в этом значении)
     this.top = item.is_top === 1 ? true : false
     this.recommend = item.is_recommend === 1 ? true : false
     this.session = session

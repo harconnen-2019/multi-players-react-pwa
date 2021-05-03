@@ -32,7 +32,7 @@ export interface IRadio {
   /** в рекомендованных */
   readonly recommend: boolean
   /** в избранном */
-  readonly favorite: boolean
+  // readonly favorite: boolean
   /** жанры */
   readonly genres: Array<string>
   /**-настроения */
@@ -42,9 +42,9 @@ export interface IRadio {
   /** сессия для методов избранного */
   readonly session: string | undefined
   /**добавление в избранное */
-  favoriteAdd: () => void
+  // favoriteAdd: () => void
   /** удаление из избранного */
-  favoriteDel: () => void
+  // favoriteDel: () => void
   /** выбор стрима для плеера */
   selectStream: (bit: string) => void
 }

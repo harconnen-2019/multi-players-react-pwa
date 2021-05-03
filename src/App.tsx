@@ -45,11 +45,11 @@ function App() {
   const [isMuted, setIsMuted] = useState<boolean>(false)
   const [timeAds, setTimeAds] = useState<number>(new Date().getTime())
 
+  const [allGenres, setAllGenres] = useState<Set<string>>()
+  const [allMoods, setAllMoods] = useState<Set<string>>()
+
   const videoRef = useRef<any>(null)
   // const [player, setPlayer] = useState<object | null>(null)
-
-  let allGenresFromPlayList
-  let allMoodsFromPlayList
 
   useEffect(() => {
     consolTitle()
@@ -187,7 +187,7 @@ function App() {
       setPlayList(fullPlayList)
       report('Загрузка плейлиста : ', fullPlayList.length)
 
-      // Собираем индикаторы избранного
+      // Собираем идентификаторы избранного
       const loadFavoritesId: string[] = []
       favoritesListFromApi.data.list_radio.map((item) =>
         loadFavoritesId.push(item.id)
@@ -195,8 +195,8 @@ function App() {
       setFavoritesId(loadFavoritesId)
 
       //Собираем жанры и настроения
-      allGenresFromPlayList = createArrayTags(fullPlayList, 'genres')
-      allMoodsFromPlayList = createArrayTags(fullPlayList, 'moods')
+      setAllGenres(createArrayTags(fullPlayList, 'genres'))
+      setAllMoods(createArrayTags(fullPlayList, 'moods'))
 
       //TODO: Кэшировать последнее радио (продумать индексы)
       setRadio(fullPlayList[0])
@@ -324,6 +324,7 @@ function App() {
    * Добавление и удаление радио в избранное
    * @param {boolean} change - добавить удалить
    * @param {string} radioId  - ИД радио
+   * @returns {void} - изменяет состояние favoritesId
    */
   const favoritesChange = (change: boolean, radioId: string): void => {
     //TODO: при добавлении в избранное добавить радио в плейлист
@@ -377,10 +378,9 @@ function App() {
             langChange={(ev: React.ChangeEvent<HTMLSelectElement>): void => {
               selectLang(ev.target.value)
             }}
-            genres={allGenresFromPlayList}
-            moods={allMoodsFromPlayList}
+            genres={allGenres}
+            moods={allMoods}
             isWarning={isWarning}
-            // videoRef={videoRef}
             banner={init !== undefined ? init.advertising.banner : undefined}
             bitrateChange={bitrateChange}
             favoritesId={favoritesId}
