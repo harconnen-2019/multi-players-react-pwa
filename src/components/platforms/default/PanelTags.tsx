@@ -28,15 +28,19 @@ const PanelTags = ({
     let num = 0
     for (const prop in selectTags) {
       if (num === 0) {
-        result = playList?.filter((radio: IRadio) =>
-          radio.genres.find((item) => item === selectTags[prop])
-        )
+        result = playList?.filter((radio: IRadio) => {
+          //TODO: выбор genres или moods не самый лучший
+          const apiTag = tag === 'genres' ? radio.genres : radio.moods
+          return apiTag.find((item) => item === selectTags[prop])
+        })
       } else {
         result =
           result !== undefined
-            ? result.filter((radio) =>
-                radio.genres.find((item) => item === selectTags[prop])
-              )
+            ? result.filter((radio) => {
+                //TODO: выбор genres или moods не самый лучший
+                const apiTag = tag === 'genres' ? radio.genres : radio.moods
+                return apiTag.find((item) => item === selectTags[prop])
+              })
             : result
       }
       num++

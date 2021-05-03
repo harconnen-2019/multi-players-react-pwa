@@ -62,11 +62,13 @@ const Player: React.FC<IPlayer> = (props) => {
                     onClick={() => toggleMenu('genres')}
                   />
                 )}
-                <Icon
-                  name='moods'
-                  active={menu.moods}
-                  onClick={() => toggleMenu('moods')}
-                />
+                {props.allMoods?.size !== 0 && (
+                  <Icon
+                    name='moods'
+                    active={menu.moods}
+                    onClick={() => toggleMenu('moods')}
+                  />
+                )}
               </>
             )}
             <Icon
@@ -139,7 +141,16 @@ const Player: React.FC<IPlayer> = (props) => {
             favoritesChange={props.favoritesChange}
           />
         )}
-        {menu.moods && <section></section>}
+        {menu.moods && (
+          <PanelTags
+            tag='moods'
+            allTags={props.allMoods}
+            favoritesId={props.favoritesId}
+            playList={props.playList}
+            favoritesChange={props.favoritesChange}
+          />
+        )}
+        {/* {menu.moods && <section></section>} */}
         {menu.setting && (
           <PanelSetting
             radio={props.radio}

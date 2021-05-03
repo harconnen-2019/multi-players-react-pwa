@@ -24,4 +24,5 @@ export type IPlayer = {
   favoritesId: Array<string>
   favoritesChange: (change: boolean, radioId: string) => void
   allGenres: Set<string> | undefined
+  allMoods: Set<string> | undefined
 }

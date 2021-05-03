@@ -386,6 +386,7 @@ function App() {
             favoritesId={favoritesId}
             favoritesChange={favoritesChange}
             allGenres={allGenres}
+            allMoods={allMoods}
           />
         </Suspense>
         <div data-vjs-player>
