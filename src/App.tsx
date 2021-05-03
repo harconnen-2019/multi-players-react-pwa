@@ -49,6 +49,7 @@ function App() {
   const [allMoods, setAllMoods] = useState<Set<string>>()
   // поле для поиска
   const [input, setInput] = useState<string>('')
+  const [searchPlayList, setSearchPlayList] = useState<IRadio[]>()
 
   const videoRef = useRef<any>(null)
   // const [player, setPlayer] = useState<object | null>(null)
@@ -354,15 +355,16 @@ function App() {
    * Обработка формы поиска
    */
   const searchSubmit = async () => {
+    //TODO: поиск при закрытии панели не обнуляется
     const searchFromApi = await fetchFromApi<ApiRadioListRequest>(
       `${CONFIG.PREFIX}${init?.api.search}${input}`
     )
-    const searchPlayList: Array<IRadio> = createPlayList(
+    const result: Array<IRadio> = createPlayList(
       [],
       searchFromApi.data.list_radio,
       PLATFORM
     )
-    console.log(searchPlayList)
+    setSearchPlayList(result)
   }
 
   if (status === CONFIG.STATUS.INIT) {
@@ -400,6 +402,7 @@ function App() {
             allMoods={allMoods}
             input={input}
             inputChange={(event) => setInput(event.target.value)}
+            searchPlayList={searchPlayList}
             searchSubmit={searchSubmit}
           />
         </Suspense>

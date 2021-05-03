@@ -168,6 +168,7 @@ const Player: React.FC<IPlayer> = (props) => {
             favoritesChange={props.favoritesChange}
             input={props.input}
             inputChange={props.inputChange}
+            searchPlayList={props.searchPlayList}
             searchSubmit={props.searchSubmit}
           />
         )}

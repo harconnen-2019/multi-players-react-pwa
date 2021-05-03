@@ -27,5 +27,6 @@ export type IPlayer = {
   allMoods: Set<string> | undefined
   input: string
   inputChange: (event: React.ChangeEvent<HTMLInputElement>) => void
+  searchPlayList: IRadio[] | undefined
   searchSubmit: () => void
 }

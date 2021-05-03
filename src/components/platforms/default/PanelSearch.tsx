@@ -12,6 +12,7 @@ interface Props {
   favoritesChange: (change: boolean, radioId: string) => void
   input: string
   inputChange: (event: React.ChangeEvent<HTMLInputElement>) => void
+  searchPlayList: IRadio[] | undefined
   searchSubmit: () => void
 }
 
@@ -22,8 +23,13 @@ const PanelSearch = ({
   favoritesChange,
   input,
   inputChange,
+  searchPlayList,
   searchSubmit,
 }: Props) => {
+  const list =
+    searchPlayList !== undefined && searchPlayList?.length > 0
+      ? searchPlayList
+      : playList
   return (
     <section className='search'>
       <InputSearch
@@ -33,8 +39,8 @@ const PanelSearch = ({
         searchSubmit={searchSubmit}
       />
 
-      {playList !== undefined &&
-        playList.map((radio) => (
+      {list !== undefined &&
+        list.map((radio) => (
           <List
             key={radio.id}
             favoritesID={favoritesId}
@@ -42,7 +48,7 @@ const PanelSearch = ({
             favoritesChange={favoritesChange}
           />
         ))}
-      {playList !== undefined && playList.length >= 20 && (
+      {list !== undefined && list.length >= 20 && (
         <footer>
           <p>
             {/* //TODO: фраза не переведена */}
