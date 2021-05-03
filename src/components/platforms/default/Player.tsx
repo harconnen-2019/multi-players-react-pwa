@@ -7,6 +7,7 @@ import Volume from './Volume'
 import Banner from '../../Banner'
 import PanelSetting from './PanelSetting'
 import PanelFavorites from './PanelFavorites'
+import PanelTags from './PanelTags'
 
 type Menu = { [key: string]: boolean }
 
@@ -54,11 +55,13 @@ const Player: React.FC<IPlayer> = (props) => {
                   active={menu.favorites}
                   onClick={() => toggleMenu('favorites')}
                 />
-                <Icon
-                  name='genres'
-                  active={menu.genres}
-                  onClick={() => toggleMenu('genres')}
-                />
+                {props.allGenres?.size !== 0 && (
+                  <Icon
+                    name='genres'
+                    active={menu.genres}
+                    onClick={() => toggleMenu('genres')}
+                  />
+                )}
                 <Icon
                   name='moods'
                   active={menu.moods}
@@ -127,7 +130,15 @@ const Player: React.FC<IPlayer> = (props) => {
             favoritesChange={props.favoritesChange}
           />
         )}
-        {menu.genres && <section></section>}
+        {menu.genres && (
+          <PanelTags
+            tag='genres'
+            allTags={props.allGenres}
+            favoritesId={props.favoritesId}
+            playList={props.playList}
+            favoritesChange={props.favoritesChange}
+          />
+        )}
         {menu.moods && <section></section>}
         {menu.setting && (
           <PanelSetting

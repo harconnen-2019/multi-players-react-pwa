@@ -385,6 +385,7 @@ function App() {
             bitrateChange={bitrateChange}
             favoritesId={favoritesId}
             favoritesChange={favoritesChange}
+            allGenres={allGenres}
           />
         </Suspense>
         <div data-vjs-player>

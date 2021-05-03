@@ -1,0 +1,26 @@
+.ul-props {
+  margin: 0;
+  padding: 0;
+}
+.ul-props li {
+  display: inline-block;
+  margin: 10px 15px 0 0;
+  padding: 5px 10px;
+  border-radius: 11px;
+  font-size: small;
+  cursor: pointer;
+}
+.ul-props li,
+.ul-props li.noactive,
+.ul-props li:focus {
+  background-color: var(--color-background);
+  color: var(--color-two);
+  border: var(--color-one) 1px solid;
+}
+.ul-props li:hover,
+.ul-props li.active {
+  background-color: var(--color-two);
+  color: var(--color-background);
+  border: var(--color-one) 1px solid;
+  transition: 0.3s ease-in-out;
+}
