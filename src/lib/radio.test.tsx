@@ -121,9 +121,6 @@ describe('Radio', () => {
       },
     ])
   })
-  test('Формируем массив битрейт', () => {
-    expect(radio.activeBitRate).toEqual(['0', '88'])
-  })
   test('Правильно выбрана платформа', () => {
     expect(radio.vast).toBe(3150)
   })

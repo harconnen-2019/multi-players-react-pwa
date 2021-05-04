@@ -135,7 +135,7 @@ describe('Инициализация плеера', () => {
   const init = createInitFromApi(api, 'FB')
 
   test('Загрузка всех url api', () => {
-    expect(Object.keys(init.api).length === 5).toBe(true)
+    expect(Object.keys(init.api).length === 6).toBe(true)
   })
   test('Загрузка темы плеера', () => {
     expect(Object.keys(init.player).length === 6).toBe(true)
