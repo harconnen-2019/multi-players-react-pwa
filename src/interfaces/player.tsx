@@ -29,4 +29,5 @@ export type IPlayer = {
   inputChange: (event: React.ChangeEvent<HTMLInputElement>) => void
   searchPlayList: IRadio[] | undefined
   searchSubmit: () => void
+  playSelectRadio: (radio: IRadio) => void
 }

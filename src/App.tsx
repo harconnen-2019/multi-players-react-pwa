@@ -231,7 +231,7 @@ function App() {
             : (selectIndex = index - 1)
           break
         case 'next':
-          index === playList.length - 1
+          index >= playList.length - 1
             ? (selectIndex = 0)
             : (selectIndex = index + 1)
           break
@@ -367,6 +367,13 @@ function App() {
     setSearchPlayList(result)
   }
 
+  const playSelectRadio = (radio: IRadio) => {
+    setRadio(radio)
+    setIsPlay(true)
+    play()
+    report('Выбор радио из списка', radio)
+  }
+
   if (status === CONFIG.STATUS.INIT) {
     return <div>Загрузка...</div>
   } else if (status === CONFIG.STATUS.ERROR) {
@@ -404,6 +411,7 @@ function App() {
             inputChange={(event) => setInput(event.target.value)}
             searchPlayList={searchPlayList}
             searchSubmit={searchSubmit}
+            playSelectRadio={playSelectRadio}
           />
         </Suspense>
         <div data-vjs-player>

@@ -8,6 +8,8 @@ interface Props {
   playList: IRadio[] | undefined
   lang: ILocalization
   favoritesChange: (change: boolean, radioId: string) => void
+  playSelectRadio: (radio: IRadio) => void
+  toggleMenu: (event: string) => void
 }
 
 const PanelFavorites = ({
@@ -15,6 +17,8 @@ const PanelFavorites = ({
   playList,
   lang,
   favoritesChange,
+  playSelectRadio,
+  toggleMenu,
 }: Props) => {
   const [favorites, setFavorites] = useState<IRadio[] | undefined>([])
   useEffect(() => {
@@ -33,6 +37,8 @@ const PanelFavorites = ({
             favoritesID={favoritesId}
             radio={item}
             favoritesChange={favoritesChange}
+            playSelectRadio={playSelectRadio}
+            toggleMenu={toggleMenu}
           />
         ))
       ) : lang.favoritesEmpty ? (

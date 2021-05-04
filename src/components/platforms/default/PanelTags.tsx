@@ -9,6 +9,8 @@ interface Props {
   favoritesId: Array<string>
   playList: IRadio[] | undefined
   favoritesChange: (change: boolean, radioId: string) => void
+  playSelectRadio: (radio: IRadio) => void
+  toggleMenu: (event: string) => void
 }
 
 const PanelTags = ({
@@ -17,6 +19,8 @@ const PanelTags = ({
   favoritesId,
   playList,
   favoritesChange,
+  playSelectRadio,
+  toggleMenu,
 }: Props) => {
   const [tagsRadio, setTagsRadio] = useState<IRadio[] | undefined>([])
   const [selectTags, setSelectTags] = useState<string[]>([])
@@ -86,6 +90,8 @@ const PanelTags = ({
             favoritesID={favoritesId}
             radio={radio}
             favoritesChange={favoritesChange}
+            playSelectRadio={playSelectRadio}
+            toggleMenu={toggleMenu}
           />
         ))}
     </section>

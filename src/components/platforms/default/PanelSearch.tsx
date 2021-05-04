@@ -14,6 +14,8 @@ interface Props {
   inputChange: (event: React.ChangeEvent<HTMLInputElement>) => void
   searchPlayList: IRadio[] | undefined
   searchSubmit: () => void
+  playSelectRadio: (radio: IRadio) => void
+  toggleMenu: (event: string) => void
 }
 
 const PanelSearch = ({
@@ -25,6 +27,8 @@ const PanelSearch = ({
   inputChange,
   searchPlayList,
   searchSubmit,
+  playSelectRadio,
+  toggleMenu,
 }: Props) => {
   const list =
     searchPlayList !== undefined && searchPlayList?.length > 0
@@ -46,6 +50,8 @@ const PanelSearch = ({
             favoritesID={favoritesId}
             radio={radio}
             favoritesChange={favoritesChange}
+            playSelectRadio={playSelectRadio}
+            toggleMenu={toggleMenu}
           />
         ))}
       {list !== undefined && list.length >= 20 && (

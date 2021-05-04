@@ -6,24 +6,42 @@ interface Props {
   favoritesID: string[]
   radio: IRadio
   favoritesChange: (change: boolean, radioId: string) => void
+  playSelectRadio: (radio: IRadio) => void
+  toggleMenu: (event: string) => void
 }
 
-const List = ({ favoritesID, radio, favoritesChange }: Props) => {
+const List = ({
+  favoritesID,
+  radio,
+  favoritesChange,
+  playSelectRadio,
+  toggleMenu,
+}: Props) => {
   const displayFavorite = favoritesID.find((item) => {
     return item === radio.id
   })
     ? true
     : false
 
+  const selectRadio = (radio: IRadio) => {
+    toggleMenu('null')
+    playSelectRadio(radio)
+  }
+
   return (
     <section className='list'>
-      <img src={radio.cover} alt={radio.name} loading='lazy' />
-      <article>
+      <img
+        src={radio.cover}
+        alt={radio.name}
+        loading='lazy'
+        onClick={() => selectRadio(radio)}
+      />
+      <article onClick={() => selectRadio(radio)}>
         <div>
           {radio.name} / {radio.fm}
         </div>
         {
-          //TODO: проверить если будент несколько radio.genres
+          //TODO: проверить если будет несколько radio.genres
           radio.genres.length !== 0 && <span>{radio.genres}</span>
         }
       </article>

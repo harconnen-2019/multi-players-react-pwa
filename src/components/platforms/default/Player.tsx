@@ -131,6 +131,8 @@ const Player: React.FC<IPlayer> = (props) => {
             playList={props.playList}
             lang={props.lang}
             favoritesChange={props.favoritesChange}
+            playSelectRadio={props.playSelectRadio}
+            toggleMenu={toggleMenu}
           />
         )}
         {menu.genres && (
@@ -140,6 +142,8 @@ const Player: React.FC<IPlayer> = (props) => {
             favoritesId={props.favoritesId}
             playList={props.playList}
             favoritesChange={props.favoritesChange}
+            playSelectRadio={props.playSelectRadio}
+            toggleMenu={toggleMenu}
           />
         )}
         {menu.moods && (
@@ -149,6 +153,8 @@ const Player: React.FC<IPlayer> = (props) => {
             favoritesId={props.favoritesId}
             playList={props.playList}
             favoritesChange={props.favoritesChange}
+            playSelectRadio={props.playSelectRadio}
+            toggleMenu={toggleMenu}
           />
         )}
         {/* {menu.moods && <section></section>} */}
@@ -170,6 +176,8 @@ const Player: React.FC<IPlayer> = (props) => {
             inputChange={props.inputChange}
             searchPlayList={props.searchPlayList}
             searchSubmit={props.searchSubmit}
+            playSelectRadio={props.playSelectRadio}
+            toggleMenu={toggleMenu}
           />
         )}
         {props.banner &&
