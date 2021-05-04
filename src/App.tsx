@@ -167,38 +167,53 @@ function App() {
       addFavicon(initPlayer.player.favicon)
       report('Инициализация : ', initPlayer)
 
-      //TODO: проверить плеер на single
-      // Загрузка избранного
-      const favoritesListFromApi = await fetchFromApi<ApiRadioListRequest>(
-        `${CONFIG.PREFIX}${initPlayer.api.favoriteList}?session=${SESSION}`
-      )
-      // Загрузка рекомендованных
-      const recommendListFromApi = await fetchFromApi<ApiRadioListRequest>(
-        `${CONFIG.PREFIX}${initPlayer.api.recommend}&session=${SESSION}`
-      )
-      const fullPlayList: Array<IRadio> = createPlayList(
-        recommendListFromApi.data.list_radio,
-        favoritesListFromApi.data.list_radio,
-        PLATFORM
-      )
+      let fullPlayList: Array<IRadio>
+
+      if (initPlayer.player.single) {
+        // Загрузка обычного плейлиста
+        const radioListFromApi = await fetchFromApi<ApiRadioListRequest>(
+          `${CONFIG.PREFIX}${initPlayer.api.list}?session=${SESSION}`
+        )
+        fullPlayList = createPlayList(
+          radioListFromApi.data.list_radio,
+          [],
+          PLATFORM
+        )
+      } else {
+        // Загрузка избранного
+        const favoritesListFromApi = await fetchFromApi<ApiRadioListRequest>(
+          `${CONFIG.PREFIX}${initPlayer.api.favoriteList}?session=${SESSION}`
+        )
+        // Загрузка рекомендованных
+        const recommendListFromApi = await fetchFromApi<ApiRadioListRequest>(
+          `${CONFIG.PREFIX}${initPlayer.api.recommend}&session=${SESSION}`
+        )
+        fullPlayList = createPlayList(
+          recommendListFromApi.data.list_radio,
+          favoritesListFromApi.data.list_radio,
+          PLATFORM
+        )
+
+        // Собираем идентификаторы избранного
+        const loadFavoritesId: string[] = []
+        favoritesListFromApi.data.list_radio.map((item) =>
+          loadFavoritesId.push(item.id)
+        )
+        setFavoritesId(loadFavoritesId)
+
+        //Собираем жанры и настроения
+        setAllGenres(createArrayTags(fullPlayList, 'genres'))
+        setAllMoods(createArrayTags(fullPlayList, 'moods'))
+      }
+
       setPlayList(fullPlayList)
       report('Загрузка плейлиста : ', fullPlayList.length)
 
-      // Собираем идентификаторы избранного
-      const loadFavoritesId: string[] = []
-      favoritesListFromApi.data.list_radio.map((item) =>
-        loadFavoritesId.push(item.id)
-      )
-      setFavoritesId(loadFavoritesId)
-
-      //Собираем жанры и настроения
-      setAllGenres(createArrayTags(fullPlayList, 'genres'))
-      setAllMoods(createArrayTags(fullPlayList, 'moods'))
-
       //TODO: Кэшировать последнее радио (продумать индексы)
       setRadio(fullPlayList[0])
-      setStatus(CONFIG.STATUS.LOADED)
       report('Активное радио из INIT : ', fullPlayList[0])
+
+      setStatus(CONFIG.STATUS.LOADED)
     } catch {
       setStatus(CONFIG.STATUS.ERROR)
       console.error('Loading init failed')

@@ -7,9 +7,13 @@
   width: 100%;
   height: 31px;
   padding-left: 24px;
-  background-color: var(--color-background);
+  background-color: var(--color-input-background);
   border: var(--color-one) 1px solid;
-  color: var(--color-muted);
+  color: var(--color-input);
+  border-radius: 5px;
+}
+.search div.input input:focus {
+  outline: none;
 }
 .input svg {
   position: absolute;
@@ -17,7 +21,7 @@
   height: 13px;
   top: 10px;
   left: 7px;
-  fill: var(--color-muted);
+  fill: var(--color-input);
 }
 .search div.button {
   float: right;
@@ -29,9 +33,9 @@
   height: 31px;
   padding: 5px 1px;
   cursor: pointer;
-  color: var(--color-background);
-  background-color: var(--color-two);
-  border: var(--color-two);
+  color: var(--color-button);
+  background-color: var(--color-button-background);
+  border: var(--color-button-background) 1px solid;
   border-radius: 5px;
 }
 

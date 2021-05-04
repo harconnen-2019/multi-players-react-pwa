@@ -9,18 +9,18 @@
   border-radius: 11px;
   font-size: small;
   cursor: pointer;
+  background-color: var(--color-header-background);
 }
 .tags li,
 /* .tags li.noactive, */
 .tags li:focus {
   background-color: var(--color-background);
-  color: var(--color-two);
-  border: var(--color-one) 1px solid;
+  border: var(--color-two) 1px solid;
 }
 .tags li:hover,
 .tags li.active {
   background-color: var(--color-two);
   color: var(--color-background);
-  border: var(--color-one) 1px solid;
+  /* border: var(--color-one) 1px solid; */
   transition: 0.3s ease-in-out;
 }

@@ -1,25 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
-.theme-default {
-  --color-one: #98b1c6;
-  --color-two: #295474;
-  --color-lineVolume: #d7d7d7;
-  --color-header-background: #fff;
-  --color-background: #fff;
-  --color-muted: #999;
-}
-.theme-blue {
-  --color-one: #ffffff;
-  --color-two: #73c4fb;
-  --color-lineVolume: #d7d7d7;
-  --color-header-background: #005fc4;
-  --color-background: #0076f1;
-  --color-muted: #999;
-}
+@import url('./theme.css');
 
-body {
-  background-color: var(--color-background);
-}
 .container {
   position: relative;
   width: 100%;
@@ -27,6 +9,8 @@ body {
   height: 100vh;
   /* max-height: 700px; */
   font-family: 'Roboto', sans-serif;
+  background-color: var(--color-background);
+  color: var(--color-font);
 }
 header {
   position: absolute;
@@ -37,6 +21,7 @@ header {
   width: 100%;
   height: 70px;
   z-index: 50;
+  color: var(--color-font-header);
   background-color: var(--color-header-background);
   box-shadow: 0 3px 1px rgb(0 0 0 / 5%);
 }
@@ -100,6 +85,7 @@ main {
   width: 35px;
   height: 110px;
   cursor: pointer;
+  fill: var(--color-play);
 }
 .play svg {
   width: 75px;
@@ -107,6 +93,14 @@ main {
   padding-left: 15px;
   padding-right: 15px;
   cursor: pointer;
+  fill: var(--color-play);
+}
+
+.play svg:hover,
+.backward svg:hover,
+.forward svg:hover {
+  fill: var(--color-play-hover);
+  transition: 0.3s ease-in-out;
 }
 
 /* Панели */

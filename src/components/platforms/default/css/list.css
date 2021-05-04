@@ -1,6 +1,6 @@
 section.list {
   height: 70px;
-  border-bottom: var(--color-lineVolume) 1px solid;
+  border-bottom: var(--color-border) 1px solid;
 }
 section.list > img {
   background-color: #fff;
@@ -27,14 +27,14 @@ section.list > article > span {
   font-size: small;
   font-style: italic;
   cursor: pointer;
-  color: var(--color-muted);
+  /* color: var(--color-muted); */
 }
 section.list > .fav {
   float: right;
   margin-top: 25px;
 }
 section.list > .fav svg {
-  fill: var(--color-one);
+  fill: var(--color-list-svg);
   width: 22px;
   height: 22px;
   margin-right: 7px;

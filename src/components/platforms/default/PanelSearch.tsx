@@ -42,6 +42,8 @@ const PanelSearch = ({
         inputChange={inputChange}
         searchSubmit={searchSubmit}
       />
+      <br />
+      <br />
 
       {list !== undefined &&
         list.map((radio) => (

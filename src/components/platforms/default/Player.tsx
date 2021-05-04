@@ -33,7 +33,7 @@ const Player: React.FC<IPlayer> = (props) => {
   }
   return (
     <>
-      <div className='container theme-default'>
+      <div className={`container theme-${props.theme?.theme || 'default'}`}>
         <header>
           <section onClick={() => toggleMenu('null')}>
             <img src={props.radio?.cover} alt={props.radio?.name} />
