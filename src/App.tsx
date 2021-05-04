@@ -367,10 +367,16 @@ function App() {
     setSearchPlayList(result)
   }
 
+  /**
+   * Выбор радио из списка и воспроизведение
+   * @param {object} radio
+   */
   const playSelectRadio = (radio: IRadio) => {
     setRadio(radio)
     setIsPlay(true)
-    play()
+    setTimeout(() => {
+      play()
+    }, 1000)
     report('Выбор радио из списка', radio)
   }
 
@@ -398,8 +404,6 @@ function App() {
             langChange={(ev: React.ChangeEvent<HTMLSelectElement>): void => {
               selectLang(ev.target.value)
             }}
-            genres={allGenres}
-            moods={allMoods}
             isWarning={isWarning}
             banner={init !== undefined ? init.advertising.banner : undefined}
             bitrateChange={bitrateChange}
