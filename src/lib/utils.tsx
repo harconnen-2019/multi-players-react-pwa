@@ -61,6 +61,22 @@ export const addFavicon = (href: string | undefined) => {
 }
 
 /**
+ * Добавление в index.html элемент CSS
+ * @param {string} href - URL css получаем из API
+ */
+export const addStyleSheets = (href: string | undefined) => {
+  if (href !== undefined) {
+    var $head = document.head,
+      $link = document.createElement('link')
+
+    $link.rel = 'stylesheet'
+    $link.href = href
+
+    $head.appendChild($link)
+  }
+}
+
+/**
  * Обновление баннера по заданному интервалу
  * Интервал берем из конфига
  * @param {number} timeAds - время последнего обновления

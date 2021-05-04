@@ -15,6 +15,7 @@ import {
   fetchFromApi,
   report,
   addFavicon,
+  addStyleSheets,
   refreshBanner,
 } from './lib/utils'
 import { createArrayTags, createPlayList } from './lib/radio'
@@ -65,9 +66,6 @@ function App() {
      * //TODO: Список радио для поиска ?? пока fullPlayList
      */
     /**
-    /**
-     * //TODO: Кастомные стили плеера
-     */
     /**
      * //TODO: Установка заголовка из manifest.json попросить сделать в ините
      */
@@ -180,6 +178,13 @@ function App() {
       //TODO: Кэшировать последнее радио (продумать индексы)
       setRadio(fullPlayList[0])
       report('Активное радио из INIT : ', fullPlayList[0])
+
+      // Кастомные стили плеера
+      addStyleSheets(
+        `${
+          CONFIG.PREFIX
+        }/api/orange/func/player/${PLATFORM.toLowerCase()}/custom.css`
+      )
 
       setStatus(CONFIG.STATUS.LOADED)
 
