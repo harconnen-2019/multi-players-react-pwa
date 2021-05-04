@@ -65,7 +65,6 @@ function App() {
      */
     /**
     /**
-     * //TODO: Тема плеера
      * //TODO: Кастомные стили плеера
      */
     /**
@@ -80,8 +79,6 @@ function App() {
     /**
      * //TODO: Авторизация в соцсетях
      */
-
-    // setStatus(STATUS.LOADED)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
@@ -109,33 +106,6 @@ function App() {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [radio, status])
-
-  // Загрузка радио, выбранное на странице из API
-  // useEffect(() => {
-  //   if (radioId !== '') {
-  //     getData(`${config.URL_GET_RADIO}id=${radioId}`).then((data) => {
-  //       const {
-  //         data: { list_radio: apiRadio },
-  //       } = data
-
-  //       if (getStreamFromApi(apiRadio[0].streams)) {
-  //         const radio = addRadioFromPage(apiRadio)
-  //         setIsPlay(true)
-  //         setRadio(radio)
-  //         addStorageActiveRadio(radio)
-
-  //         config.DEBUG &&
-  //           console.log('Добавлено радио со страницы по ID', radio)
-  //       } else {
-  //         // Выводим предупреждение что радио не работает
-  //         setIsWarning(true)
-  //         setTimeout(() => {
-  //           setIsWarning(false)
-  //         }, 3000)
-  //       }
-  //     })
-  //   }
-  // }, [radioId])
 
   /**
    * Консольный баннер для отображения данных о плеере
@@ -266,7 +236,6 @@ function App() {
    * @method
    */
   const play = (): void => {
-    //TODO: Установка заголовка текущего радио
     // initializeIMA(
     //   `${config.URL_GET_VAST + radio}&cover_h=200&cover_w=200`.vast,
     //   true

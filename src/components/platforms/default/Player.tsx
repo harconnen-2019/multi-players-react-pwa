@@ -181,12 +181,13 @@ const Player: React.FC<IPlayer> = (props) => {
           />
         )}
         {props.banner &&
-          //TODO: передать в баннер genres
           !menu.favorites &&
           !menu.genres &&
           !menu.moods &&
           !menu.setting &&
-          !menu.search && <Banner banner={props.banner} />}
+          !menu.search && (
+            <Banner banner={props.banner} genres={props.radio?.genres} />
+          )}
       </div>
       <Sprite />
     </>

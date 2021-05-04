@@ -3,6 +3,7 @@ import './css/banner.css'
 
 interface Props {
   banner: string | null | undefined
+  genres: string[] | undefined
 }
 
 const Banner = (props: Props): React.ReactElement => {
@@ -12,8 +13,10 @@ const Banner = (props: Props): React.ReactElement => {
         <iframe
           title='Coffee PWA'
           src={
-            './adv_frame.html?' + props.banner
-            //TODO: '&genre=' + this.props.playerStore.genre.join()
+            './adv_frame.html?' +
+            props.banner +
+            '&genre=' +
+            props.genres?.join()
           }
           id='bannerRefresh'
         ></iframe>

@@ -92,10 +92,7 @@ describe('Radio', () => {
     id: '5f2beda6-0000-0000-0000-0000802c3407',
     is_recommend: 0,
   }
-  const radio = new Radio(input, 0, 'fb', 'sess', {
-    favoriteAdd: 'urlAdd',
-    favoriteDell: 'urlDel',
-  })
+  const radio = new Radio(input, 0, 'fb')
   // beforeAll(() => {})
 
   test('В радио объект "Streams" не пустой', () => {
@@ -125,15 +122,7 @@ describe('Radio', () => {
     ])
   })
   test('Формируем массив битрейт', () => {
-    expect(radio.bits).toEqual(['0', '88'])
-  })
-  test('Добавление в избранное', () => {
-    radio.favoriteAdd()
-    expect(radio.favorite).toBe(true)
-  })
-  test('Удаление из избранного', () => {
-    radio.favoriteDel()
-    expect(radio.favorite).toBe(false)
+    expect(radio.activeBitRate).toEqual(['0', '88'])
   })
   test('Правильно выбрана платформа', () => {
     expect(radio.vast).toBe(3150)
