@@ -1,12 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
-:root {
-  /* --color-one: #98b1c6; */
-  /* --color-two: #295474; */
-  --color-one: hsl(207, 30%, 70%);
-  --color-two: hsl(207, 50%, 30%);
+.theme-default {
+  --color-one: #98b1c6;
+  --color-two: #295474;
   --color-lineVolume: #d7d7d7;
+  --color-header-background: #fff;
   --color-background: #fff;
+  --color-muted: #999;
+}
+.theme-blue {
+  --color-one: #ffffff;
+  --color-two: #73c4fb;
+  --color-lineVolume: #d7d7d7;
+  --color-header-background: #005fc4;
+  --color-background: #0076f1;
   --color-muted: #999;
 }
 
@@ -30,6 +37,7 @@ header {
   width: 100%;
   height: 70px;
   z-index: 50;
+  background-color: var(--color-header-background);
   box-shadow: 0 3px 1px rgb(0 0 0 / 5%);
 }
 header section {
