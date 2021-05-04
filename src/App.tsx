@@ -19,6 +19,7 @@ import {
 } from './lib/utils'
 import { createArrayTags, createPlayList } from './lib/radio'
 import { useLocalization } from './hooks/localization'
+import { counterGa, counterFb, counterVk } from './lib/counters'
 
 const Player = React.lazy(() => import('./components/platforms/default/Player'))
 
@@ -72,9 +73,6 @@ function App() {
      */
     /**
      * //TODO: Deeplink
-     */
-    /**
-     * //TODO: Запуск счетчиков
      */
     /**
      * //TODO: Авторизация в соцсетях
@@ -184,6 +182,21 @@ function App() {
       report('Активное радио из INIT : ', fullPlayList[0])
 
       setStatus(CONFIG.STATUS.LOADED)
+
+      // подключение счетчиков
+      switch (PLATFORM.toLowerCase()) {
+        case 'pwa':
+          initPlayer.counters.ga && counterGa(initPlayer.counters.ga)
+          break
+        case 'fb':
+          initPlayer.counters.ga && counterGa(initPlayer.counters.ga)
+          initPlayer.counters.fb && counterFb(initPlayer.counters.fb)
+          break
+        case 'vk':
+          initPlayer.counters.ga && counterGa(initPlayer.counters.ga)
+          initPlayer.counters.vk && counterVk(initPlayer.counters.vk)
+          break
+      }
     } catch {
       setStatus(CONFIG.STATUS.ERROR)
       console.error('Loading init failed')
