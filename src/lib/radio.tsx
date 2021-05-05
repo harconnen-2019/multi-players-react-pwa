@@ -134,7 +134,6 @@ export class Radio implements IRadio {
    */
   selectStream = (bit: string) => {
     //TODO: Разобраться с битами равными нулю
-    //FIXME: Этот метод можно удалить перенести в функцию выбора битрейта
     const result: [{ src: string; type: string }] = [{ src: '', type: '' }]
     result[0].src = this.streams[bit][0].url
     result[0].type = this.streams[bit][0].mime

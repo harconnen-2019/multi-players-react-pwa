@@ -58,7 +58,8 @@ export enum PLATFORM {
   PWA = 'pwa',
   FB = 'fb',
   VK = 'vk',
-  OK = 'ok',
+  VKM = 'vkm',
+  ANDROID = 'android',
 }
 
 /**

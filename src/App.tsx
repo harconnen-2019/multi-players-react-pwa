@@ -307,8 +307,9 @@ function App() {
    * @param {*} event
    */
   const bitrateChange = (ev: React.ChangeEvent<HTMLSelectElement>) => {
-    //FIXME: Понаблюдать в работе Перенести сюда метод из класса
+    //TODO: Понаблюдать в работе Перенести сюда метод из класса
     const newRadio = radio
+
     newRadio?.selectStream(ev.target.value)
     if (radio !== undefined && newRadio?.activeBitRate !== undefined) {
       setRadio({
@@ -386,7 +387,7 @@ function App() {
     setIsPlay(true)
     setTimeout(() => {
       play()
-    }, 500)
+    }, 1000)
     report('Выбор радио из списка', radio)
   }
 
