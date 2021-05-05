@@ -21,6 +21,7 @@ import {
 import { createArrayTags, createPlayList } from './lib/radio'
 import { useLocalization } from './hooks/localization'
 import { counterGa, counterFb, counterVk } from './lib/counters'
+import Load from './components/Load'
 
 const Player = React.lazy(() => import('./components/platforms/default/Player'))
 
@@ -33,8 +34,8 @@ function App() {
   let PLATFORM: string = CONFIG.PLATFORM.PWA
 
   const [status, setStatus] = useState(CONFIG.STATUS.INIT)
-  // eslint-disable-next-line
-  const [isWarning, setIsWarning] = useState<boolean>(false)
+
+  // const [isWarning, setIsWarning] = useState<boolean>(false)
   const { localization, selectLang } = useLocalization()
   const [init, setInit] = useState<InitPlayer>()
 
@@ -60,7 +61,6 @@ function App() {
     setStatus(CONFIG.STATUS.LOADING)
     loadInit()
     /**
-     * //TODO: ТОП радио ??? Список радио для поиска ?? пока fullPlayList
      * //TODO: Deeplink
      * //TODO: Авторизация в соцсетях
      */
@@ -177,7 +177,6 @@ function App() {
       setPlayList(fullPlayList)
       report('Загрузка плейлиста : ', fullPlayList.length)
 
-      //TODO: Кэшировать последнее радио (продумать индексы)
       setRadio(fullPlayList[0])
       report('Активное радио из INIT : ', fullPlayList[0])
 
@@ -245,7 +244,6 @@ function App() {
       report('Выбранное радио : ', playList[selectIndex])
       newBanner()
     }
-    //TODO: addStorageActiveRadio(actRadio)
   }
 
   /**
@@ -368,7 +366,6 @@ function App() {
    * Обработка формы поиска
    */
   const searchSubmit = async () => {
-    //TODO: поиск при закрытии панели не обнуляется
     const searchFromApi = await fetchFromApi<ApiRadioListRequest>(
       `${CONFIG.PREFIX}${init?.api.search}${input}`
     )
@@ -394,13 +391,13 @@ function App() {
   }
 
   if (status === CONFIG.STATUS.INIT) {
-    return <div>Загрузка...</div>
+    return <Load err={false} />
   } else if (status === CONFIG.STATUS.ERROR) {
-    return <>Error....</>
+    return <Load err={true} />
   } else {
     return (
       <>
-        <Suspense fallback={<div>Загрузка...</div>}>
+        <Suspense fallback={<Load err={false} />}>
           <Player
             theme={init?.player}
             lang={localization}
@@ -417,7 +414,7 @@ function App() {
             langChange={(ev: React.ChangeEvent<HTMLSelectElement>): void => {
               selectLang(ev.target.value)
             }}
-            isWarning={isWarning}
+            // isWarning={isWarning}
             banner={init !== undefined ? init.advertising.banner : undefined}
             bitrateChange={bitrateChange}
             favoritesId={favoritesId}

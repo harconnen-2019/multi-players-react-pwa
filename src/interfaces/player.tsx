@@ -16,7 +16,7 @@ export type IPlayer = {
   getIndexRadio: (index: number | undefined, act: string) => void
   volumeChange: (event: React.ChangeEvent<HTMLInputElement>) => void
   langChange: (event: React.ChangeEvent<HTMLSelectElement>) => void
-  isWarning: boolean
+  // isWarning: boolean
   banner: string | null | undefined
   bitrateChange: (event: React.ChangeEvent<HTMLSelectElement>) => void
   favoritesId: Array<string>

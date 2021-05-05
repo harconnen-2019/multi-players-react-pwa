@@ -1,0 +1,16 @@
+.load {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: grey;
+  font-size: small;
+  padding: 20px 30px;
+}
+.error {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: indianred;
+  font-size: small;
+  padding: 20px 30px;
+}
+.load em,
+.error em {
+  font-size: smaller;
+}
