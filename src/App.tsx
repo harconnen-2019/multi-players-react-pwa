@@ -61,7 +61,6 @@ function App() {
     loadInit()
     /**
      * //TODO: ТОП радио ??? Список радио для поиска ?? пока fullPlayList
-     * //TODO: Установка заголовка из manifest.json попросить сделать в ините
      * //TODO: Deeplink
      * //TODO: Авторизация в соцсетях
      */
@@ -121,10 +120,17 @@ function App() {
       PLATFORM = set.app
       consolTitle()
 
+      const manifest = await fetchFromApi<{ [key: string]: string }>(
+        `${CONFIG.PREFIX}/api/orange/func/player/manifest.json`
+      )
+      document.title = manifest.name
+
       const init = await fetchFromApi<ApiInitRequest>(
         `${CONFIG.PREFIX}${CONFIG.URL_INIT}?session=${SESSION}`
       )
       const initPlayer: InitPlayer = createInitFromApi(init, PLATFORM)
+      initPlayer.player.name = manifest.name
+
       setInit(initPlayer)
       addFavicon(initPlayer.player.favicon)
       report('Инициализация : ', initPlayer)
@@ -260,7 +266,7 @@ function App() {
       setIsPlay(true)
     }, 10)
 
-    document.title = radio?.name ? radio?.name : 'player' //TODO: Название плеера в manifest + ' - ' + this.title
+    document.title = radio?.name ? radio?.name : 'player'
     newBanner()
   }
 
@@ -272,7 +278,7 @@ function App() {
   const pause = (): void => {
     videoRef.current.pause()
     setIsPlay(false)
-    //TODO: Обратно изменить TITLE на название плеера
+    document.title = init?.player.name ? init?.player.name : 'player'
     newBanner()
   }
 

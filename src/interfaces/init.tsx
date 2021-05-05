@@ -50,6 +50,8 @@ export type ThemeRequest = {
   readonly cover: string
   /** Стили текущей платформы */
   readonly css: string
+  /** Название плеера */
+  name?: string
 }
 
 /**
