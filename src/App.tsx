@@ -30,7 +30,7 @@ const Player = React.lazy(() => import('./components/platforms/default/Player'))
  */
 function App() {
   const SESSION: string | undefined = getCookie('session')
-  const PLATFORM: string = process.env.REACT_APP_PLATFORM || CONFIG.PLATFORM.PWA
+  let PLATFORM: string = CONFIG.PLATFORM.PWA
 
   const [status, setStatus] = useState(CONFIG.STATUS.INIT)
   // eslint-disable-next-line
@@ -57,22 +57,12 @@ function App() {
   // const [player, setPlayer] = useState<object | null>(null)
 
   useEffect(() => {
-    consolTitle()
     setStatus(CONFIG.STATUS.LOADING)
     loadInit()
-
     /**
-     * //TODO: ТОП радио ???
-     * //TODO: Список радио для поиска ?? пока fullPlayList
-     */
-    /**
-    /**
+     * //TODO: ТОП радио ??? Список радио для поиска ?? пока fullPlayList
      * //TODO: Установка заголовка из manifest.json попросить сделать в ините
-     */
-    /**
      * //TODO: Deeplink
-     */
-    /**
      * //TODO: Авторизация в соцсетях
      */
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -125,6 +115,12 @@ function App() {
   async function loadInit() {
     try {
       // Инициализация
+      const set = await fetchFromApi<{ [key: string]: string }>(
+        './settings.json'
+      )
+      PLATFORM = set.app
+      consolTitle()
+
       const init = await fetchFromApi<ApiInitRequest>(
         `${CONFIG.PREFIX}${CONFIG.URL_INIT}?session=${SESSION}`
       )
@@ -307,7 +303,7 @@ function App() {
    * @param {*} event
    */
   const bitrateChange = (ev: React.ChangeEvent<HTMLSelectElement>) => {
-    //TODO: Понаблюдать в работе Перенести сюда метод из класса
+    //FIXME: Понаблюдать в работе Перенести сюда метод из класса
     const newRadio = radio
     newRadio?.selectStream(ev.target.value)
     if (radio !== undefined && newRadio?.activeBitRate !== undefined) {
