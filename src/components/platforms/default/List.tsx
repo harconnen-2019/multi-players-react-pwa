@@ -46,23 +46,13 @@ const List = ({
         }
       </article>
       <div className='fav'>
-        {displayFavorite ? (
-          <svg
-            onClick={() => {
-              favoritesChange(displayFavorite, radio.id)
-            }}
-          >
-            <use xlinkHref={`#favorites`}></use>
-          </svg>
-        ) : (
-          <svg
-            onClick={() => {
-              favoritesChange(displayFavorite, radio.id)
-            }}
-          >
-            <use xlinkHref={`#favorite-add`}></use>
-          </svg>
-        )}
+        <svg
+          onClick={() => {
+            favoritesChange(displayFavorite, radio.id)
+          }}
+        >
+          <use xlinkHref={`#favorites${!displayFavorite ? '-add' : ''}`}></use>
+        </svg>
       </div>
     </section>
   )

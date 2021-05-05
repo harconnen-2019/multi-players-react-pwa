@@ -35,7 +35,7 @@ export const useLocalization = () => {
   const getLocalization = async (getLang: string) => {
     try {
       const result = await fetchFromApi<ILocalization>(
-        `/static/locales/${getLang}/messages.json`
+        `./static/locales/${getLang}/messages.json`
       )
       result.activeLang = { message: getLang }
       setLocalization(result)
