@@ -7,7 +7,7 @@ interface Props {
   favoritesId: Array<string>
   playList: IRadio[] | undefined
   lang: ILocalization
-  favoritesChange: (change: boolean, radioId: string) => void
+  favoritesChange: (change: boolean, radio: IRadio) => void
   playSelectRadio: (radio: IRadio) => void
   toggleMenu: (event: string) => void
 }

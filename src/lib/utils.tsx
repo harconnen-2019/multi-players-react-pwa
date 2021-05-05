@@ -90,8 +90,6 @@ export const refreshBanner = (timeAds: number) => {
     if (isIFrame(frame) && frame.contentWindow) {
       frame.contentWindow.location.reload()
     }
-    // TODO: Должен вернуть текущее время для обнуления интервала
-    // timeAds = new Date().getTime()
     report('Баннер обновлен, интервал:', CONFIG.INTERVAL_BANNER)
     return new Date().getTime()
   }

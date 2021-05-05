@@ -9,7 +9,7 @@ interface Props {
   lang: ILocalization
   favoritesId: Array<string>
   playList: IRadio[] | undefined
-  favoritesChange: (change: boolean, radioId: string) => void
+  favoritesChange: (change: boolean, radio: IRadio) => void
   input: string
   inputChange: (event: React.ChangeEvent<HTMLInputElement>) => void
   searchPlayList: IRadio[] | undefined

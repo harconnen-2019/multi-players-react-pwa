@@ -40,7 +40,7 @@ function App() {
 
   const [playList, setPlayList] = useState<IRadio[]>()
   const [favoritesId, setFavoritesId] = useState<Array<string>>([])
-  //TODO: Сделать для radio кеширование localStorage
+
   const [radio, setRadio] = useState<IRadio>()
   const [volume, setVolume] = useState<number>(50)
   const [isPlay, setIsPlay] = useState<boolean>(false)
@@ -323,35 +323,44 @@ function App() {
 
   /**
    * Добавление и удаление радио в избранное
+   * Если радио нет в плейлисте, добавление в конец плейлиста
    * @param {boolean} change - добавить удалить
-   * @param {string} radioId  - ИД радио
+   * @param {object} radio  - радио
    * @returns {void} - изменяет состояние favoritesId
    */
-  const favoritesChange = (change: boolean, radioId: string): void => {
-    //TODO: при добавлении в избранное добавить радио в плейлист
+  const favoritesChange = (change: boolean, radio: IRadio): void => {
     if (change) {
-      const newFavoritesId = favoritesId.filter((item) => item !== radioId)
+      const newFavoritesId = favoritesId.filter((item) => item !== radio.id)
       setFavoritesId(newFavoritesId)
       try {
         fetch(
-          `${CONFIG.PREFIX}${init?.api.favoriteDel}?session=${SESSION}&radio_id=${radioId}`
+          `${CONFIG.PREFIX}${init?.api.favoriteDel}?session=${SESSION}&radio_id=${radio.id}`
         )
       } catch (error) {
         console.error('Запрос на удаление избранного', error)
       }
-      report('Удалить из избранного', radioId)
+      report('Удалить из избранного', radio.id)
     } else {
       const newFavoritesId = [...favoritesId]
-      newFavoritesId.push(radioId)
+      newFavoritesId.push(radio.id)
       setFavoritesId(newFavoritesId)
+      // Добавляем в плейлист
+      const findFavorite = playList?.find((item) => item.id === radio.id)
+      if (!findFavorite && playList !== undefined) {
+        const result = [...playList]
+        radio.index = result.length
+        result.push(radio)
+        setPlayList(result)
+      }
+
       try {
         fetch(
-          `${CONFIG.PREFIX}${init?.api.favoriteAdd}?session=${SESSION}&radio_id=${radioId}`
+          `${CONFIG.PREFIX}${init?.api.favoriteAdd}?session=${SESSION}&radio_id=${radio.id}`
         )
       } catch (error) {
         console.error('Запрос на добавление избранного', error)
       }
-      report('Добавить в избранное', radioId)
+      report('Добавить в избранное', radio.id)
     }
   }
 
@@ -380,7 +389,7 @@ function App() {
     setIsPlay(true)
     setTimeout(() => {
       play()
-    }, 1000)
+    }, 500)
     report('Выбор радио из списка', radio)
   }
 

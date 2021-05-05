@@ -5,7 +5,7 @@ import './css/list.css'
 interface Props {
   favoritesID: string[]
   radio: IRadio
-  favoritesChange: (change: boolean, radioId: string) => void
+  favoritesChange: (change: boolean, radio: IRadio) => void
   playSelectRadio: (radio: IRadio) => void
   toggleMenu: (event: string) => void
 }
@@ -40,15 +40,12 @@ const List = ({
         <div>
           {radio.name} / {radio.fm}
         </div>
-        {
-          //TODO: проверить если будет несколько radio.genres
-          radio.genres.length !== 0 && <span>{radio.genres}</span>
-        }
+        {radio.genres.length !== 0 && <span>{radio.genres.join()}</span>}
       </article>
       <div className='fav'>
         <svg
           onClick={() => {
-            favoritesChange(displayFavorite, radio.id)
+            favoritesChange(displayFavorite, radio)
           }}
         >
           <use xlinkHref={`#favorites${!displayFavorite ? '-add' : ''}`}></use>
