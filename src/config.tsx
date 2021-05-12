@@ -67,3 +67,9 @@ export enum PLATFORM {
  * @constant {number}
  */
 export const INTERVAL_BANNER: number = 10000
+
+/**
+ * URL для соединения с сервером VAST
+ * @constant {string}
+ */
+export const URL_VAST: string = 'https://ssp.audioads.bid/?plid='

@@ -22,6 +22,7 @@ import { createArrayTags, createPlayList } from './lib/radio'
 import { useLocalization } from './hooks/localization'
 import { counterGa, counterFb, counterVk } from './lib/counters'
 import Load from './components/Load'
+import { initializeIMA } from './lib/ima'
 
 const Player = React.lazy(() => import('./components/platforms/default/Player'))
 
@@ -72,6 +73,7 @@ function App() {
   useEffect(() => {
     if (!videoRef || status !== CONFIG.STATUS.LOADED) return
     let actPlay: boolean = isPlay
+    pause()
     // Инициируем плеер
     const initPlayer = videojs(
       videoRef.current,
@@ -82,9 +84,17 @@ function App() {
       },
       function onPlayerReady() {
         report('VIDEOJS инициализирован : ', initPlayer)
+
+        initializeIMA(
+          `${CONFIG.URL_VAST}${
+            init?.advertising.plid
+          }&genre=${radio?.genres.join()}`,
+          true
+        )
+
+        actPlay && play()
       }
     )
-    actPlay && play()
     // setPlayer(initPlayer)
     return () => {
       initPlayer.dispose()
@@ -254,15 +264,10 @@ function App() {
    * @method
    */
   const play = (): void => {
-    // initializeIMA(
-    //   `${config.URL_GET_VAST + radio}&cover_h=200&cover_w=200`.vast,
-    //   true
-    // )
-    // config.DEBUG && console.log('VAST: ' + config.URL_GET_VAST + radio.vast)
     setTimeout(() => {
       videoRef.current.play()
       setIsPlay(true)
-    }, 10)
+    }, 1000)
 
     document.title = radio?.name ? radio?.name : 'player'
     newBanner()

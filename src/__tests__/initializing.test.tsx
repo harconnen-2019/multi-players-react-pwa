@@ -1,4 +1,4 @@
-import { createInitFromApi } from './initializing'
+import { createInitFromApi } from '../lib/initializing'
 
 describe('Инициализация плеера', () => {
   const api = {
