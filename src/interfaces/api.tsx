@@ -27,6 +27,7 @@ export type ApiInitRequest = {
       }
       player: {
         single: boolean
+        name: string
         email: string
         theme: string
         favicon: string

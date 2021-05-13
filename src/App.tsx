@@ -64,6 +64,7 @@ function App() {
     /**
      * //TODO: Deeplink
      * //TODO: Авторизация в соцсетях
+     * //TODO: Код для фейсбука
      */
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
@@ -91,7 +92,8 @@ function App() {
           }&genre=${radio?.genres.join()}`,
           true
         )
-
+        // console.log(videojs.getPlayers())
+        // console.log(videojs('content_audio'))
         actPlay && play()
       }
     )
@@ -130,16 +132,17 @@ function App() {
       PLATFORM = set.app
       consolTitle()
 
-      const manifest = await fetchFromApi<{ [key: string]: string }>(
-        `${CONFIG.PREFIX}/api/orange/func/player/manifest.json`
-      )
-      document.title = manifest.name
+      // const manifest = await fetchFromApi<{ [key: string]: string }>(
+      //   `${CONFIG.PREFIX}/api/orange/func/player/manifest.json`
+      // )
+      // document.title = manifest.name
 
       const init = await fetchFromApi<ApiInitRequest>(
         `${CONFIG.PREFIX}${CONFIG.URL_INIT}?session=${SESSION}`
       )
       const initPlayer: InitPlayer = createInitFromApi(init, PLATFORM)
-      initPlayer.player.name = manifest.name
+      document.title = initPlayer.player.name
+      // initPlayer.player.name = manifest.name
 
       setInit(initPlayer)
       addFavicon(initPlayer.player.favicon)
@@ -201,14 +204,14 @@ function App() {
 
       // подключение счетчиков
       switch (PLATFORM.toLowerCase()) {
-        case 'pwa':
+        case 'pwa' || 'android':
           initPlayer.counters.ga && counterGa(initPlayer.counters.ga)
           break
         case 'fb':
           initPlayer.counters.ga && counterGa(initPlayer.counters.ga)
           initPlayer.counters.fb && counterFb(initPlayer.counters.fb)
           break
-        case 'vk':
+        case 'vk' || 'vkm':
           initPlayer.counters.ga && counterGa(initPlayer.counters.ga)
           initPlayer.counters.vk && counterVk(initPlayer.counters.vk)
           break
@@ -275,6 +278,7 @@ function App() {
 
   /**
    * Пауза
+   * Меняем TITLE страницы на название плеера
    * Обновление баннера
    * @method
    */

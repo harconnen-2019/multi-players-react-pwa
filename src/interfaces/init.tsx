@@ -51,7 +51,7 @@ export type ThemeRequest = {
   /** Стили текущей платформы */
   readonly css: string
   /** Название плеера */
-  name?: string
+  name: string
 }
 
 /**
