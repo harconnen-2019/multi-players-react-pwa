@@ -31,7 +31,6 @@ stable:
         - id
         - npm install
         - npm run build
-        - npm run deploy
-        - cp -r server/* /static/my-radio.app/stable/landing
+        - npm run deploy && cp -r server/* /static/my-radio.app/stable/landing
     allow_failure: true
     when: on_success
