@@ -33,7 +33,7 @@ export function initializeIMA(tag, playAd) {
     onAdsManagerLoaded,
     false
   )
-  //   adsLoader.addEventListener(google.ima.AdErrorEvent.Type.AD_ERROR, onAdError, false)
+  // .  adsLoader.addEventListener(google.ima.AdErrorEvent.Type.AD_ERROR, onAdError, false)
 
   // Let the AdsLoader know when the video has ended
   videoElement.addEventListener('ended', function () {
