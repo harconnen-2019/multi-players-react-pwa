@@ -121,7 +121,7 @@ main {
     max-height: none;
   }
   nav svg {
-    margin-right: 6px;
+    margin-right: 8px;
     transition: 0.3s ease-in-out;
   }
   nav .no-mobile {

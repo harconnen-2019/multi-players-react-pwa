@@ -9,18 +9,14 @@
   border-radius: 11px;
   font-size: small;
   cursor: pointer;
-  background-color: var(--color-header-background);
-}
-.tags li,
-/* .tags li.noactive, */
-.tags li:focus {
-  background-color: var(--color-background);
-  border: var(--color-two) 1px solid;
+  background-color: var(--color-tags-bg);
+  border: var(--color-tags-border) 1px solid;
+  color: var(--color-tags);
 }
 .tags li:hover,
 .tags li.active {
-  background-color: var(--color-two);
-  color: var(--color-background);
-  /* border: var(--color-one) 1px solid; */
+  background-color: var(--color-tags-bg-hover);
+  border: var(--color-tags-border-hover) 1px solid;
+  color: var(--color-tags-hover);
   transition: 0.3s ease-in-out;
 }

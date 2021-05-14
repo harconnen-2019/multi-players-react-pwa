@@ -56,7 +56,7 @@ function App() {
   const [searchPlayList, setSearchPlayList] = useState<IRadio[]>()
 
   const videoRef = useRef<any>(null)
-  // const [player, setPlayer] = useState<object | null>(null)
+  const [player, setPlayer] = useState<object | null>(null)
 
   useEffect(() => {
     setStatus(CONFIG.STATUS.LOADING)
@@ -74,32 +74,35 @@ function App() {
   useEffect(() => {
     if (!videoRef || status !== CONFIG.STATUS.LOADED) return
     let actPlay: boolean = isPlay
-    pause()
-    // Инициируем плеер
-    const initPlayer = videojs(
-      videoRef.current,
-      {
-        autoplay: false,
-        controls: false,
-        sources: radio?.playStream,
-      },
-      function onPlayerReady() {
-        report('VIDEOJS инициализирован : ', initPlayer)
-
-        initializeIMA(
-          `${CONFIG.URL_VAST}${
-            init?.advertising.plid
-          }&genre=${radio?.genres.join()}`,
-          true
-        )
-        // console.log(videojs.getPlayers())
-        // console.log(videojs('content_audio'))
-        actPlay && play()
+    // pause()
+    if (!player) {
+      // Инициируем плеер
+      const initPlayer = videojs(
+        videoRef.current,
+        {
+          autoplay: false,
+          controls: false,
+          sources: radio?.playStream,
+        },
+        function onPlayerReady() {
+          report('VIDEOJS инициализирован : ', initPlayer)
+        }
+      )
+      setPlayer(initPlayer)
+    } else {
+      if (radio?.playStream !== undefined) {
+        videojs('content_audio').src(radio?.playStream)
       }
-    )
-    // setPlayer(initPlayer)
+    }
+    // initializeIMA(
+    //   `${CONFIG.URL_VAST}${
+    //     init?.advertising.plid
+    //   }&genre=${radio?.genres.join()}`,
+    //   true
+    // )
+    actPlay && play()
     return () => {
-      initPlayer.dispose()
+      // initPlayer.dispose()
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [radio, status])
@@ -255,7 +258,6 @@ function App() {
       }
       setRadio(playList[selectIndex])
       report('Выбранное радио : ', playList[selectIndex])
-      newBanner()
     }
   }
 
@@ -267,11 +269,16 @@ function App() {
    * @method
    */
   const play = (): void => {
+    initializeIMA(
+      `${CONFIG.URL_VAST}${
+        init?.advertising.plid
+      }&genre=${radio?.genres.join()}`,
+      true
+    )
     setTimeout(() => {
       videoRef.current.play()
-      setIsPlay(true)
     }, 1000)
-
+    setIsPlay(true)
     document.title = radio?.name ? radio?.name : 'player'
     newBanner()
   }
@@ -286,7 +293,6 @@ function App() {
     videoRef.current.pause()
     setIsPlay(false)
     document.title = init?.player.name ? init?.player.name : 'player'
-    newBanner()
   }
 
   /**
@@ -394,9 +400,11 @@ function App() {
   const playSelectRadio = (radio: IRadio) => {
     setRadio(radio)
     setIsPlay(true)
-    setTimeout(() => {
-      play()
-    }, 1000)
+    play()
+
+    // setTimeout(() => {
+    //   play()
+    // }, 1000)
     report('Выбор радио из списка', radio)
   }
 
@@ -447,9 +455,9 @@ function App() {
             playsInline
             hidden
           />
+          {/* Блок для IMA3 */}
+          <div id='ad-container'></div>
         </div>
-        {/* Блок для IMA3 */}
-        <div id='ad-container'></div>
       </>
     )
   }
