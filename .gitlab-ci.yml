@@ -1,0 +1,35 @@
+stages:
+    - release
+    - stable
+
+release:
+    stage: release
+    tags:
+        - node12
+    only:
+        refs:
+            - release
+    script:
+        - env
+        - id
+        - npm install
+        - npm run build
+        - cp -r server/* /static/my-radio.app/release/pwa2
+    allow_failure: true
+    when: on_success
+
+stable:
+    stage: stable
+    tags:
+        - node12
+    only:
+        refs:
+            - stable
+    script:
+        - env
+        - id
+        - npm install
+        - npm run build
+        - cp -r server/* /static/my-radio.app/stable/landing
+    allow_failure: true
+    when: on_success
