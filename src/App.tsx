@@ -447,9 +447,9 @@ function App() {
             playsInline
             hidden
           />
-          {/* Блок для IMA3 */}
-          <div id='ad-container'></div>
         </div>
+        {/* Блок для IMA3 */}
+        <div id='ad-container'></div>
       </>
     )
   }

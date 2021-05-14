@@ -63,6 +63,7 @@ describe('Инициализация плеера', () => {
           single: false,
           email: 'info@myradio.store',
           theme: 'default',
+          name: 'player',
           favicon:
             '/preview/image/c/-x-/00000000-0000-0000-0000-000000000000.fav.png',
         },
@@ -135,10 +136,10 @@ describe('Инициализация плеера', () => {
   const init = createInitFromApi(api, 'FB')
 
   test('Загрузка всех url api', () => {
-    expect(Object.keys(init.api).length === 6).toBe(true)
+    expect(Object.keys(init.api).length === 8).toBe(true)
   })
   test('Загрузка темы плеера', () => {
-    expect(Object.keys(init.player).length === 6).toBe(true)
+    expect(Object.keys(init.player).length === 7).toBe(true)
   })
   test('Проверка установки плеера на одно радио', () => {
     expect(init.player.single).toEqual(false)
