@@ -2,7 +2,7 @@
  * Контроллер плеера
  * @module components/App
  */
-import React, { Suspense, useEffect, useRef, useState } from 'react'
+import React, { createContext, Suspense, useEffect, useRef, useState } from 'react'
 import videojs from 'video.js'
 
 import Load from './components/Load'
@@ -20,6 +20,8 @@ import {
 } from './lib/utils'
 
 const Player = React.lazy(() => import('./components/platforms/default/Player'))
+
+export const listIdFavoritesContext = createContext<Array<string>>([])
 
 /**
  * Сборка всего плеера и бизнес логика
@@ -57,7 +59,7 @@ function App() {
     setStatus(CONFIG.STATUS.LOADING)
     loadInit()
     /**
-     * //TODO: Deeplink
+     * //TODO: Прочесть радио по ссылке и запустить
      * //TODO: Авторизация в соцсетях
      * //TODO: Код для фейсбука
      */
@@ -411,35 +413,36 @@ function App() {
     return (
       <>
         <Suspense fallback={<Load err={false} />}>
-          <Player
-            theme={init?.player}
-            lang={localization}
-            playList={playList}
-            radio={radio}
-            isPlay={isPlay}
-            play={play}
-            pause={pause}
-            isMuted={isMuted}
-            muted={muted}
-            volume={volume}
-            getIndexRadio={getIndexRadio}
-            volumeChange={volumeChange}
-            langChange={(ev: React.ChangeEvent<HTMLSelectElement>): void => {
-              selectLang(ev.target.value)
-            }}
-            // isWarning={isWarning}
-            banner={init !== undefined ? init.advertising.banner : undefined}
-            bitrateChange={bitrateChange}
-            favoritesId={favoritesId}
-            favoritesChange={favoritesChange}
-            allGenres={allGenres}
-            allMoods={allMoods}
-            input={input}
-            inputChange={(event) => setInput(event.target.value)}
-            searchPlayList={searchPlayList}
-            searchSubmit={searchSubmit}
-            playSelectRadio={playSelectRadio}
-          />
+          <listIdFavoritesContext.Provider value={favoritesId}>
+            <Player
+              theme={init?.player}
+              lang={localization}
+              playList={playList}
+              radio={radio}
+              isPlay={isPlay}
+              play={play}
+              pause={pause}
+              isMuted={isMuted}
+              muted={muted}
+              volume={volume}
+              getIndexRadio={getIndexRadio}
+              volumeChange={volumeChange}
+              langChange={(ev: React.ChangeEvent<HTMLSelectElement>): void => {
+                selectLang(ev.target.value)
+              }}
+              // isWarning={isWarning}
+              banner={init !== undefined ? init.advertising.banner : undefined}
+              bitrateChange={bitrateChange}
+              favoritesChange={favoritesChange}
+              allGenres={allGenres}
+              allMoods={allMoods}
+              input={input}
+              inputChange={(event) => setInput(event.target.value)}
+              searchPlayList={searchPlayList}
+              searchSubmit={searchSubmit}
+              playSelectRadio={playSelectRadio}
+            />
+          </listIdFavoritesContext.Provider>
         </Suspense>
         <div data-vjs-player>
           <video

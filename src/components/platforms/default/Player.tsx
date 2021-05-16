@@ -129,7 +129,6 @@ const Player: React.FC<IPlayer> = (props) => {
         </main>
         {menu.favorites && (
           <PanelFavorites
-            favoritesId={props.favoritesId}
             playList={props.playList}
             lang={props.lang}
             favoritesChange={props.favoritesChange}
@@ -141,7 +140,6 @@ const Player: React.FC<IPlayer> = (props) => {
           <PanelTags
             tag='genres'
             allTags={props.allGenres}
-            favoritesId={props.favoritesId}
             playList={props.playList}
             favoritesChange={props.favoritesChange}
             playSelectRadio={props.playSelectRadio}
@@ -152,7 +150,6 @@ const Player: React.FC<IPlayer> = (props) => {
           <PanelTags
             tag='moods'
             allTags={props.allMoods}
-            favoritesId={props.favoritesId}
             playList={props.playList}
             favoritesChange={props.favoritesChange}
             playSelectRadio={props.playSelectRadio}
@@ -171,7 +168,6 @@ const Player: React.FC<IPlayer> = (props) => {
         {menu.search && (
           <PanelSearch
             lang={props.lang}
-            favoritesId={props.favoritesId}
             playList={props.playList}
             favoritesChange={props.favoritesChange}
             input={props.input}

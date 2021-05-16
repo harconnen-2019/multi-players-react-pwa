@@ -8,7 +8,6 @@ import List from './List'
 interface Props {
   tag: string
   allTags: Set<string> | undefined
-  favoritesId: Array<string>
   playList: IRadio[] | undefined
   favoritesChange: (change: boolean, radio: IRadio) => void
   playSelectRadio: (radio: IRadio) => void
@@ -18,7 +17,6 @@ interface Props {
 const PanelTags = ({
   tag,
   allTags,
-  favoritesId,
   playList,
   favoritesChange,
   playSelectRadio,
@@ -89,7 +87,6 @@ const PanelTags = ({
         tagsRadio.map((radio) => (
           <List
             key={radio.id}
-            favoritesID={favoritesId}
             radio={radio}
             favoritesChange={favoritesChange}
             playSelectRadio={playSelectRadio}

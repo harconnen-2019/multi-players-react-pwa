@@ -2,10 +2,10 @@ import './css/list.css'
 
 import React from 'react'
 
+import { listIdFavoritesContext } from '../../../App'
 import { IRadio } from '../../../interfaces/radio'
 
 interface Props {
-  favoritesID: string[]
   radio: IRadio
   favoritesChange: (change: boolean, radio: IRadio) => void
   playSelectRadio: (radio: IRadio) => void
@@ -13,13 +13,14 @@ interface Props {
 }
 
 const List = ({
-  favoritesID,
   radio,
   favoritesChange,
   playSelectRadio,
   toggleMenu,
 }: Props) => {
-  const displayFavorite = favoritesID.find((item) => {
+  const favoritesId = React.useContext(listIdFavoritesContext)
+
+  const displayFavorite = favoritesId.find((item) => {
     return item === radio.id
   })
     ? true

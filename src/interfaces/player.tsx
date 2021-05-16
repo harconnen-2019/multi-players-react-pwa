@@ -19,7 +19,6 @@ export type IPlayer = {
   // isWarning: boolean
   banner: string | null | undefined
   bitrateChange: (event: React.ChangeEvent<HTMLSelectElement>) => void
-  favoritesId: Array<string>
   favoritesChange: (change: boolean, radio: IRadio) => void
   allGenres: Set<string> | undefined
   allMoods: Set<string> | undefined

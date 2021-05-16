@@ -9,7 +9,6 @@ import List from './List'
 
 interface Props {
   lang: ILocalization
-  favoritesId: Array<string>
   playList: IRadio[] | undefined
   favoritesChange: (change: boolean, radio: IRadio) => void
   input: string
@@ -22,7 +21,6 @@ interface Props {
 
 const PanelSearch = ({
   lang,
-  favoritesId,
   playList,
   favoritesChange,
   input,
@@ -51,7 +49,6 @@ const PanelSearch = ({
         list.map((radio) => (
           <List
             key={radio.id}
-            favoritesID={favoritesId}
             radio={radio}
             favoritesChange={favoritesChange}
             playSelectRadio={playSelectRadio}

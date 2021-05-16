@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react'
 
+import { listIdFavoritesContext } from '../../../App'
 import { ILocalization } from '../../../interfaces/localization'
 import { IRadio } from '../../../interfaces/radio'
 import List from './List'
 
 interface Props {
-  favoritesId: Array<string>
   playList: IRadio[] | undefined
   lang: ILocalization
   favoritesChange: (change: boolean, radio: IRadio) => void
@@ -14,7 +14,6 @@ interface Props {
 }
 
 const PanelFavorites = ({
-  favoritesId,
   playList,
   lang,
   favoritesChange,
@@ -22,6 +21,7 @@ const PanelFavorites = ({
   toggleMenu,
 }: Props) => {
   const [favorites, setFavorites] = useState<IRadio[] | undefined>([])
+  const favoritesId = React.useContext(listIdFavoritesContext)
   useEffect(() => {
     const result = playList?.filter(
       (item) => favoritesId.indexOf(item.id) !== -1
@@ -35,7 +35,6 @@ const PanelFavorites = ({
         favorites.map((item) => (
           <List
             key={item.id}
-            favoritesID={favoritesId}
             radio={item}
             favoritesChange={favoritesChange}
             playSelectRadio={playSelectRadio}
