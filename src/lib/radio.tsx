@@ -3,12 +3,8 @@
  * @module lib/radio
  */
 
+import { ApiSubRadioRequest, ApiSubStreamsRequest, ApiSubTagsRequest } from '../interfaces/api'
 import { IRadio } from '../interfaces/radio'
-import {
-  ApiSubRadioRequest,
-  ApiSubStreamsRequest,
-  ApiSubTagsRequest,
-} from '../interfaces/api'
 
 /**
  * Проверка наличия параметра stream в объекте, если false - пропуск радио

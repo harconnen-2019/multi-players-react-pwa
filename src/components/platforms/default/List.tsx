@@ -1,6 +1,8 @@
-import React from 'react'
-import { IRadio } from '../../../interfaces/radio'
 import './css/list.css'
+
+import React from 'react'
+
+import { IRadio } from '../../../interfaces/radio'
 
 interface Props {
   favoritesID: string[]

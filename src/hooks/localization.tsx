@@ -1,6 +1,7 @@
-import { useState, useEffect } from 'react'
-import { fetchFromApi, report } from '../lib/utils'
+import { useEffect, useState } from 'react'
+
 import { ILocalization } from '../interfaces/localization'
+import { fetchFromApi, report } from '../lib/utils'
 
 /**
  * Считывает локализацию из localStorage,

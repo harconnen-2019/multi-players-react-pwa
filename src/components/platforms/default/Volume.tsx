@@ -1,5 +1,6 @@
-import React from 'react'
 import './css/volume.css'
+
+import React from 'react'
 
 interface Props {
   volume: number

@@ -1,7 +1,9 @@
+import './css/panelSetting.css'
+
 import React from 'react'
+
 import { ILocalization } from '../../../interfaces/localization'
 import { IRadio } from '../../../interfaces/radio'
-import './css/panelSetting.css'
 import { listLocales } from '../../../lib/lang'
 
 interface Props {

@@ -1,6 +1,8 @@
-import React, { useState, useEffect } from 'react'
-import { IRadio } from '../../../interfaces/radio'
 import './css/panelTags.css'
+
+import React, { useEffect, useState } from 'react'
+
+import { IRadio } from '../../../interfaces/radio'
 import List from './List'
 
 interface Props {

@@ -1,6 +1,6 @@
+import { ThemeRequest } from './init'
 import { ILocalization } from './localization'
 import { IRadio } from './radio'
-import { ThemeRequest } from './init'
 
 export type IPlayer = {
   theme: ThemeRequest | undefined

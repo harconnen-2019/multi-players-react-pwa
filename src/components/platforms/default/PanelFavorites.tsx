@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react'
-import { IRadio } from '../../../interfaces/radio'
+import React, { useEffect, useState } from 'react'
+
 import { ILocalization } from '../../../interfaces/localization'
+import { IRadio } from '../../../interfaces/radio'
 import List from './List'
 
 interface Props {

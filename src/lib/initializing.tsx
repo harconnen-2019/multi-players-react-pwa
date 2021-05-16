@@ -3,8 +3,8 @@
  * @module lib/initializing
  */
 
-import { InitPlayer } from '../interfaces/init'
 import { ApiInitRequest } from '../interfaces/api'
+import { InitPlayer } from '../interfaces/init'
 
 /**
  * Сборка всех аргументов

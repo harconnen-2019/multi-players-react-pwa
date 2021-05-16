@@ -1,14 +1,16 @@
-import React, { useState } from 'react'
-import { IPlayer } from '../../../interfaces/player'
 import './css/player.css'
+
+import React, { useState } from 'react'
+
+import { IPlayer } from '../../../interfaces/player'
+import Banner from '../../Banner'
 import { Icon } from './Icon'
+import PanelFavorites from './PanelFavorites'
+import PanelSearch from './PanelSearch'
+import PanelSetting from './PanelSetting'
+import PanelTags from './PanelTags'
 import Sprite from './Sprite'
 import Volume from './Volume'
-import Banner from '../../Banner'
-import PanelSetting from './PanelSetting'
-import PanelFavorites from './PanelFavorites'
-import PanelTags from './PanelTags'
-import PanelSearch from './PanelSearch'
 
 type Menu = { [key: string]: boolean }
 

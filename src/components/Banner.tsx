@@ -1,5 +1,6 @@
-import React from 'react'
 import './css/banner.css'
+
+import React from 'react'
 
 interface Props {
   banner: string | null | undefined

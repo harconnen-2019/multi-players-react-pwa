@@ -1,9 +1,11 @@
-import React from 'react'
-import { IRadio } from '../../../interfaces/radio'
-import { ILocalization } from '../../../interfaces/localization'
-import List from './List'
 import './css/search.css'
+
+import React from 'react'
+
+import { ILocalization } from '../../../interfaces/localization'
+import { IRadio } from '../../../interfaces/radio'
 import InputSearch from './InputSearch'
+import List from './List'
 
 interface Props {
   lang: ILocalization

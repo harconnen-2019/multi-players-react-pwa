@@ -2,27 +2,22 @@
  * Контроллер плеера
  * @module components/App
  */
-import React, { useState, useEffect, Suspense, useRef } from 'react'
+import React, { Suspense, useEffect, useRef, useState } from 'react'
 import videojs from 'video.js'
 
+import Load from './components/Load'
 import * as CONFIG from './config'
+import { useLocalization } from './hooks/localization'
 import { ApiInitRequest, ApiRadioListRequest } from './interfaces/api'
 import { InitPlayer } from './interfaces/init'
 import { IRadio } from './interfaces/radio'
-import { createInitFromApi } from './lib/initializing'
-import {
-  getCookie,
-  fetchFromApi,
-  report,
-  addFavicon,
-  addStyleSheets,
-  refreshBanner,
-} from './lib/utils'
-import { createArrayTags, createPlayList } from './lib/radio'
-import { useLocalization } from './hooks/localization'
-import { counterGa, counterFb, counterVk } from './lib/counters'
-import Load from './components/Load'
+import { counterFb, counterGa, counterVk } from './lib/counters'
 import { initializeIMA } from './lib/ima'
+import { createInitFromApi } from './lib/initializing'
+import { createArrayTags, createPlayList } from './lib/radio'
+import {
+    addFavicon, addStyleSheets, fetchFromApi, getCookie, refreshBanner, report
+} from './lib/utils'
 
 const Player = React.lazy(() => import('./components/platforms/default/Player'))
 
