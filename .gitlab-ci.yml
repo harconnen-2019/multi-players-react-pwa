@@ -14,7 +14,7 @@ release:
         - id
         - npm install
         - npm run build
-        - npm run deploy
+        - bash buildAll.bash
         - cp -r server/* /static/my-radio.app/release/pwa2
     allow_failure: true
     when: on_success
@@ -30,7 +30,7 @@ stable:
         - env
         - id
         - npm install
-        - npm run build
-        - npm run deploy && cp -r server/* /static/my-radio.app/stable/landing
+        - bash buildAll.bash
+        - cp -r server/* /static/my-radio.app/stable/landing
     allow_failure: true
     when: on_success
