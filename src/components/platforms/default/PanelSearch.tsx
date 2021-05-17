@@ -19,6 +19,7 @@ interface Props {
   toggleMenu: (event: string) => void
 }
 
+//TODO: 1. Показать прогресс поиска. 2. Вывести сообщение если пусто
 const PanelSearch = ({
   lang,
   playList,

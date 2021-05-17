@@ -9,6 +9,7 @@ import PanelFavorites from './PanelFavorites'
 import PanelSearch from './PanelSearch'
 import PanelSetting from './PanelSetting'
 import PanelTags from './PanelTags'
+import PanelVkm from './PanelVkm'
 import Sprite from './Sprite'
 import Volume from './Volume'
 
@@ -23,6 +24,10 @@ const Player: React.FC<IPlayer> = (props) => {
     search: false,
     vkm: false,
   })
+  const visibleTag = {
+    genres: props.allGenres?.size !== 0 ? true : false,
+    moods: props.allMoods?.size !== 0 ? true : false,
+  }
   const toggleMenu = (event: string): void => {
     const newMenu: Menu = {}
     Object.keys(menu).forEach((key) => {
@@ -69,14 +74,14 @@ const Player: React.FC<IPlayer> = (props) => {
                     active={menu.favorites}
                     onClick={() => toggleMenu('favorites')}
                   />
-                  {props.allGenres?.size !== 0 && (
+                  {visibleTag.genres && (
                     <Icon
                       name='genres'
                       active={menu.genres}
                       onClick={() => toggleMenu('genres')}
                     />
                   )}
-                  {props.allMoods?.size !== 0 && (
+                  {visibleTag.moods && (
                     <Icon
                       name='moods'
                       active={menu.moods}
@@ -139,6 +144,17 @@ const Player: React.FC<IPlayer> = (props) => {
             )}
           </div>
         </main>
+        {menu.vkm && (
+          <PanelVkm
+            lang={props.lang}
+            input={props.input}
+            inputChange={props.inputChange}
+            searchSubmit={props.searchSubmit}
+            toggleMenu={toggleMenu}
+            single={props.theme?.single}
+            visibleTag={visibleTag}
+          />
+        )}
         {menu.favorites && (
           <PanelFavorites
             playList={props.playList}
@@ -195,7 +211,8 @@ const Player: React.FC<IPlayer> = (props) => {
           !menu.genres &&
           !menu.moods &&
           !menu.setting &&
-          !menu.search && (
+          !menu.search &&
+          !menu.vkm && (
             <Banner banner={props.banner} genres={props.radio?.genres} />
           )}
       </div>
