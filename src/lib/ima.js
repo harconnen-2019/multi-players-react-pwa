@@ -9,14 +9,14 @@ var adsManager
 
 let initIma = false
 
-window.addEventListener('load', function (event) {
-  videoElement = document.getElementById('content_audio')
-
-  // initializeIMA();
+setTimeout(() => {
+  // window.addEventListener('load', function (event) {
+  videoElement = document.getElementById('content_audio_html5_api')
   videoElement.addEventListener('play', function (event) {
     loadAds(event)
   })
-})
+  // })
+}, 700)
 
 export function initializeIMA(tag, playAd) {
   initIma = playAd

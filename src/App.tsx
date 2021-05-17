@@ -20,6 +20,9 @@ import {
 } from './lib/utils'
 
 const Player = React.lazy(() => import('./components/platforms/default/Player'))
+const Android = React.lazy(
+  () => import('./components/platforms/android/Player')
+)
 
 export const listIdFavoritesContext = createContext<Array<string>>([])
 
@@ -407,7 +410,7 @@ function App() {
     report('Выбор радио из списка', radio)
   }
 
-  if (status === CONFIG.STATUS.INIT) {
+  if (status === CONFIG.STATUS.INIT || status === CONFIG.STATUS.LOADING) {
     return <Load err={false} />
   } else if (status === CONFIG.STATUS.ERROR) {
     return <Load err={true} />
@@ -416,34 +419,73 @@ function App() {
       <>
         <Suspense fallback={<Load err={false} />}>
           <listIdFavoritesContext.Provider value={favoritesId}>
-            <Player
-              theme={init?.player}
-              lang={localization}
-              playList={playList}
-              radio={radio}
-              isPlay={isPlay}
-              play={play}
-              pause={pause}
-              isMuted={isMuted}
-              muted={muted}
-              volume={volume}
-              getIndexRadio={getIndexRadio}
-              volumeChange={volumeChange}
-              langChange={(ev: React.ChangeEvent<HTMLSelectElement>): void => {
-                selectLang(ev.target.value)
-              }}
-              // isWarning={isWarning}
-              banner={init !== undefined ? init.advertising.banner : undefined}
-              bitrateChange={bitrateChange}
-              favoritesChange={favoritesChange}
-              allGenres={allGenres}
-              allMoods={allMoods}
-              input={input}
-              inputChange={(event) => setInput(event.target.value)}
-              searchPlayList={searchPlayList}
-              searchSubmit={searchSubmit}
-              playSelectRadio={playSelectRadio}
-            />
+            {init?.player.platform === 'android' ? (
+              <Android
+                theme={init?.player}
+                lang={localization}
+                playList={playList}
+                radio={radio}
+                isPlay={isPlay}
+                play={play}
+                pause={pause}
+                isMuted={isMuted}
+                muted={muted}
+                volume={volume}
+                getIndexRadio={getIndexRadio}
+                volumeChange={volumeChange}
+                langChange={(
+                  ev: React.ChangeEvent<HTMLSelectElement>
+                ): void => {
+                  selectLang(ev.target.value)
+                }}
+                // isWarning={isWarning}
+                banner={
+                  init !== undefined ? init.advertising.banner : undefined
+                }
+                bitrateChange={bitrateChange}
+                favoritesChange={favoritesChange}
+                allGenres={allGenres}
+                allMoods={allMoods}
+                input={input}
+                inputChange={(event) => setInput(event.target.value)}
+                searchPlayList={searchPlayList}
+                searchSubmit={searchSubmit}
+                playSelectRadio={playSelectRadio}
+              />
+            ) : (
+              <Player
+                theme={init?.player}
+                lang={localization}
+                playList={playList}
+                radio={radio}
+                isPlay={isPlay}
+                play={play}
+                pause={pause}
+                isMuted={isMuted}
+                muted={muted}
+                volume={volume}
+                getIndexRadio={getIndexRadio}
+                volumeChange={volumeChange}
+                langChange={(
+                  ev: React.ChangeEvent<HTMLSelectElement>
+                ): void => {
+                  selectLang(ev.target.value)
+                }}
+                // isWarning={isWarning}
+                banner={
+                  init !== undefined ? init.advertising.banner : undefined
+                }
+                bitrateChange={bitrateChange}
+                favoritesChange={favoritesChange}
+                allGenres={allGenres}
+                allMoods={allMoods}
+                input={input}
+                inputChange={(event) => setInput(event.target.value)}
+                searchPlayList={searchPlayList}
+                searchSubmit={searchSubmit}
+                playSelectRadio={playSelectRadio}
+              />
+            )}
           </listIdFavoritesContext.Provider>
         </Suspense>
         <div data-vjs-player>
