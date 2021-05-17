@@ -30,6 +30,7 @@ stable:
         - env
         - id
         - npm install
+        - npm run build
         - bash buildAll.bash
         - cp -r server/* /static/my-radio.app/stable/landing
     allow_failure: true
