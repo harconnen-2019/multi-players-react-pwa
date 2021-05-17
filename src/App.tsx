@@ -59,7 +59,7 @@ function App() {
     setStatus(CONFIG.STATUS.LOADING)
     loadInit()
     /**
-     * //TODO: Прочесть радио по ссылке и запустить
+     * //TODO: Прочесть радио по ссылке и запустить (Диплинк)
      * //TODO: Авторизация в соцсетях
      * //TODO: Код для фейсбука
      */
@@ -109,9 +109,14 @@ function App() {
    * @function
    * @returns {void}
    */
-  function consolTitle(): void {
+  function consolTitle(setting: InitPlayer): void {
     console.group('Init player:')
     console.info(CONFIG.VERSION, `Platform: ${PLATFORM}`)
+    report('single player : ' + setting.player.single)
+    report('theme : ' + setting.player.theme)
+    report('banner : ' + setting.advertising.banner)
+    report('plid : ' + setting.advertising.plid)
+    report('preroll : ' + setting.advertising.preroll)
     report('env : ' + process.env.NODE_ENV)
     report('session : %s', SESSION)
     console.groupEnd()
@@ -130,12 +135,6 @@ function App() {
         './settings.json'
       )
       PLATFORM = set.app
-      consolTitle()
-
-      // const manifest = await fetchFromApi<{ [key: string]: string }>(
-      //   `${CONFIG.PREFIX}/api/orange/func/player/manifest.json`
-      // )
-      // document.title = manifest.name
 
       const init = await fetchFromApi<ApiInitRequest>(
         `${CONFIG.PREFIX}${CONFIG.URL_INIT}?session=${SESSION}`
@@ -145,6 +144,8 @@ function App() {
       // initPlayer.player.name = manifest.name
 
       setInit(initPlayer)
+      consolTitle(initPlayer)
+
       addFavicon(initPlayer.player.favicon)
       report('Инициализация : ', initPlayer)
 
