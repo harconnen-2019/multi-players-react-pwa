@@ -57,6 +57,10 @@ header section > article > span {
 nav {
   padding-top: 25px;
 }
+.vkm svg {
+  padding-left: 15px;
+  margin-right: 10px;
+}
 nav svg {
   fill: var(--color-one);
   width: 22px;

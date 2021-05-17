@@ -21,6 +21,7 @@ const Player: React.FC<IPlayer> = (props) => {
     moods: false,
     setting: false,
     search: false,
+    vkm: false,
   })
   const toggleMenu = (event: string): void => {
     const newMenu: Menu = {}
@@ -37,6 +38,15 @@ const Player: React.FC<IPlayer> = (props) => {
     <>
       <div className={`container theme-${props.theme?.theme || 'default'}`}>
         <header>
+          {props.theme?.platform === 'vkm' && (
+            <nav className='vkm'>
+              <Icon
+                name='bars'
+                active={menu.vkm}
+                onClick={() => toggleMenu('vkm')}
+              />
+            </nav>
+          )}
           <section onClick={() => toggleMenu('null')}>
             <img src={props.radio?.cover} alt={props.radio?.name} />
             <article>
@@ -44,49 +54,51 @@ const Player: React.FC<IPlayer> = (props) => {
               <span>{props.radio?.note}</span>
             </article>
           </section>
-          <nav>
-            <Volume
-              volume={props.volume}
-              volumeChange={props.volumeChange}
-              isMuted={props.isMuted}
-              muted={props.muted}
-            />
-            {props.theme !== undefined && !props.theme.single && (
-              <>
-                <Icon
-                  name='favorites'
-                  active={menu.favorites}
-                  onClick={() => toggleMenu('favorites')}
-                />
-                {props.allGenres?.size !== 0 && (
-                  <Icon
-                    name='genres'
-                    active={menu.genres}
-                    onClick={() => toggleMenu('genres')}
-                  />
-                )}
-                {props.allMoods?.size !== 0 && (
-                  <Icon
-                    name='moods'
-                    active={menu.moods}
-                    onClick={() => toggleMenu('moods')}
-                  />
-                )}
-              </>
-            )}
-            <Icon
-              name='setting'
-              active={menu.setting}
-              onClick={() => toggleMenu('setting')}
-            />
-            {props.theme !== undefined && !props.theme.single && (
-              <Icon
-                name='bars'
-                active={menu.search}
-                onClick={() => toggleMenu('search')}
+          {props.theme?.platform !== 'vkm' && (
+            <nav>
+              <Volume
+                volume={props.volume}
+                volumeChange={props.volumeChange}
+                isMuted={props.isMuted}
+                muted={props.muted}
               />
-            )}
-          </nav>
+              {props.theme !== undefined && !props.theme.single && (
+                <>
+                  <Icon
+                    name='favorites'
+                    active={menu.favorites}
+                    onClick={() => toggleMenu('favorites')}
+                  />
+                  {props.allGenres?.size !== 0 && (
+                    <Icon
+                      name='genres'
+                      active={menu.genres}
+                      onClick={() => toggleMenu('genres')}
+                    />
+                  )}
+                  {props.allMoods?.size !== 0 && (
+                    <Icon
+                      name='moods'
+                      active={menu.moods}
+                      onClick={() => toggleMenu('moods')}
+                    />
+                  )}
+                </>
+              )}
+              <Icon
+                name='setting'
+                active={menu.setting}
+                onClick={() => toggleMenu('setting')}
+              />
+              {props.theme !== undefined && !props.theme.single && (
+                <Icon
+                  name='bars'
+                  active={menu.search}
+                  onClick={() => toggleMenu('search')}
+                />
+              )}
+            </nav>
+          )}
         </header>
         <main>
           <div className='backward'>

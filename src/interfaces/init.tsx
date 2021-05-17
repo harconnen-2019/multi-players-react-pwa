@@ -38,6 +38,8 @@ type ApiRequest = {
  * @alias ThemeRequest
  */
 export type ThemeRequest = {
+  /** Плеер для платформы */
+  readonly platform: string
   /** Плеер для одного радио */
   readonly single: boolean
   /** Favicon */
@@ -73,7 +75,7 @@ type CountersIdRequest = {
  */
 type AdvertisingRequest = {
   /** Плид для IMA Google */
-  readonly plid: number
+  readonly plid: number | null
   /** Параметры для показа баннера */
   readonly banner: string | null
   /** VAST параметры преролла */

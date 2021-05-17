@@ -20,7 +20,7 @@ export interface IRadio {
   /** описание (адрес + fm) */
   readonly note: string
   /** идентификатор рекламы */
-  readonly vast: number
+  readonly vast: number | null
   /** текущий стрим */
   readonly playStream: Array<{ src: string; type: string }>
   /** все стримы */

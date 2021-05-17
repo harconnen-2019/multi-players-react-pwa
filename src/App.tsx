@@ -266,6 +266,7 @@ function App() {
    * @method
    */
   const play = (): void => {
+    //TODO: если плид не загружен vast не запускаем
     initializeIMA(
       `${CONFIG.URL_VAST}${
         init?.advertising.plid

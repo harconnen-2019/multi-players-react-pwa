@@ -33,13 +33,18 @@ export const createInitFromApi = (
       top: init.api.radio_top,
     },
     player: {
+      platform: platform,
       single: init.player.single || false,
       name: init.player.name || 'Player',
       favicon: init.player.favicon,
       themeDefault: init.player.theme || 'default',
-      theme: init.defaults.style[platform].theme || 'default',
-      cover: init.defaults.style[platform].cover,
-      css: init.defaults.style[platform].custom_css,
+      theme: init.defaults.style[platform]?.theme || 'default',
+      cover:
+        init.defaults.style[platform]?.cover ||
+        '00000000-0000-0000-0000-000000000000.fav.png',
+      css:
+        init.defaults.style[platform]?.custom_css ||
+        '/api/orange/func/player/pwa/custom.css',
     },
     counters: {
       ga:
@@ -50,7 +55,7 @@ export const createInitFromApi = (
         init.counters?.vk && init.counters?.vk !== '' ? init.counters.vk : null,
     },
     advertising: {
-      plid: init.defaults.vast.daast[platform],
+      plid: init.defaults.vast.daast[platform] || null,
       banner:
         init.vast[platform]?.banner && init.vast[platform]?.banner !== ''
           ? init.vast[platform].banner

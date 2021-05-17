@@ -152,7 +152,7 @@ export class Radio implements IRadio {
     this.address = item.origins[0].name
     this.fm = item.fm
     this.note = this.address + ', ' + this.fm
-    this.vast = item.vast.daast[platform]
+    this.vast = item.vast.daast[platform] || null
     this.streams = item.streams
     this.playStream =
       // Добавление одного стрима из массива
