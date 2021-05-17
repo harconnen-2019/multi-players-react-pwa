@@ -32,6 +32,6 @@ stable:
         - npm install
         - npm run build
         - bash buildAll.bash
-        - cp -r server/* /static/my-radio.app/stable/landing
+        - cp -r server/* /static/my-radio.app/stable/pwa2
     allow_failure: true
     when: on_success
