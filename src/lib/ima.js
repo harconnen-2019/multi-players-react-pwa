@@ -14,42 +14,46 @@ let initIma = false
 setTimeout(() => {
   // window.addEventListener('load', function (event) {
   videoElement = document.getElementById('content_audio_html5_api')
-  videoElement.addEventListener('play', function (event) {
-    loadAds(event)
-  })
-  console.log('loadAds event-play')
+  if (videoElement) {
+    videoElement.addEventListener('play', function (event) {
+      loadAds(event)
+    })
+    console.log('loadAds event-play')
+  }
   // })
 }, 2000)
 
 export function initializeIMA(tag, playAd) {
-  initIma = playAd
-  adContainer = document.getElementById('ad-container')
+  if (videoElement) {
+    initIma = playAd
+    adContainer = document.getElementById('ad-container')
 
-  adDisplayContainer = new google.ima.AdDisplayContainer(
-    adContainer,
-    videoElement
-  )
-  adsLoader = new google.ima.AdsLoader(adDisplayContainer)
+    adDisplayContainer = new google.ima.AdDisplayContainer(
+      adContainer,
+      videoElement
+    )
+    adsLoader = new google.ima.AdsLoader(adDisplayContainer)
 
-  adsLoader.addEventListener(
-    google.ima.AdsManagerLoadedEvent.Type.ADS_MANAGER_LOADED,
-    onAdsManagerLoaded,
-    false
-  )
-  // .  adsLoader.addEventListener(google.ima.AdErrorEvent.Type.AD_ERROR, onAdError, false)
+    adsLoader.addEventListener(
+      google.ima.AdsManagerLoadedEvent.Type.ADS_MANAGER_LOADED,
+      onAdsManagerLoaded,
+      false
+    )
+    // .  adsLoader.addEventListener(google.ima.AdErrorEvent.Type.AD_ERROR, onAdError, false)
 
-  // Let the AdsLoader know when the video has ended
-  videoElement.addEventListener('ended', function () {
-    adsLoader.contentComplete()
-  })
+    // Let the AdsLoader know when the video has ended
+    videoElement.addEventListener('ended', function () {
+      adsLoader.contentComplete()
+    })
 
-  // this.player.ima.setContentWithAdTag(null, this.SAMPLE_AD_TAG, false);
-  // this.player.ima.requestAds();
-  var adsRequest = new google.ima.AdsRequest()
-  adsRequest.adTagUrl = tag
+    // this.player.ima.setContentWithAdTag(null, this.SAMPLE_AD_TAG, false);
+    // this.player.ima.requestAds();
+    var adsRequest = new google.ima.AdsRequest()
+    adsRequest.adTagUrl = tag
 
-  // Pass the request to the adsLoader to request ads
-  adsLoader.requestAds(adsRequest)
+    // Pass the request to the adsLoader to request ads
+    adsLoader.requestAds(adsRequest)
+  }
 }
 
 function loadAds(event) {
