@@ -14,7 +14,6 @@ import { IRadio } from '../interfaces/radio'
  */
 export const getStreamFromApi = (streams: ApiSubStreamsRequest) => {
   //TODO: Разобраться с битами равными нулю
-  // const result: boolean = Object.keys(streams).length !== 0 ? true : false
   return Object.keys(streams).length !== 0 // Короткий вариант
 }
 
@@ -23,8 +22,8 @@ export const getStreamFromApi = (streams: ApiSubStreamsRequest) => {
  * @param {Array} items - список радиостанций из API
  * @returns {Array} - массив без дубликатов
  */
-export const uniqueArrow = (items: Array<ApiSubRadioRequest>) => {
-  let result: Array<ApiSubRadioRequest> = []
+export const uniqueArrow = (items: Array<IRadio>) => {
+  let result: Array<IRadio> = []
   const idItems: string[] = []
 
   items.map((item) => idItems.push(item.id))
@@ -33,10 +32,14 @@ export const uniqueArrow = (items: Array<ApiSubRadioRequest>) => {
     return idItems.indexOf(item) === pos
   })
 
+  let num = 0
   selectItems.map((radio) => {
     for (let item of items) {
       if (radio === item.id) {
+        item.index = num
         result.push(item)
+        // console.log(num, item)
+        num++
         break
       }
     }
@@ -54,19 +57,24 @@ export const uniqueArrow = (items: Array<ApiSubRadioRequest>) => {
  * @returns {Array} - нормализованный список объектов радио (используем класс Radio)
  */
 export const createPlayList = (
-  apiFav: Array<ApiSubRadioRequest>,
-  apiRec: Array<ApiSubRadioRequest>,
-  platform: string
+  api: Array<ApiSubRadioRequest>,
+  platform: string,
+  favoritesId: string[] = []
 ) => {
   const apiPlatform: string = platform.toLowerCase() || 'pwa'
   const result: Array<IRadio> = []
-  const api = Array.from(apiRec.concat(apiFav))
-  const unique = uniqueArrow(api)
   let index: number = 0
-  unique.forEach((element) => {
+  api.forEach((element) => {
+    // проверяем наличие в списке избранного
+    const radioFavorite = favoritesId.find((item) => {
+      return item === element.id
+    })
+      ? true
+      : false
+
     // Проверка на наличие стрима, иначе пропускаем
     if (getStreamFromApi(element.streams)) {
-      const item: IRadio = new Radio(element, index, apiPlatform)
+      const item: IRadio = new Radio(element, index, apiPlatform, radioFavorite)
       result.push(item)
     }
     index++
@@ -121,6 +129,7 @@ export class Radio implements IRadio {
   activeBitRate
   genres
   moods
+  favorite
   top
   recommend
 
@@ -143,7 +152,12 @@ export class Radio implements IRadio {
     })
     return result
   }
-  constructor(item: ApiSubRadioRequest, index: number, platform: string) {
+  constructor(
+    item: ApiSubRadioRequest,
+    index: number,
+    platform: string,
+    radioFavorite: boolean
+  ) {
     this.index = index
     this.id = item.id
     this.name = item.name
@@ -174,6 +188,7 @@ export class Radio implements IRadio {
     })()
     this.genres = Radio.createTag(item.genres)
     this.moods = Radio.createTag(item.moods)
+    this.favorite = radioFavorite
     this.top = item.is_top === 1 ? true : false
     this.recommend = item.is_recommend === 1 ? true : false
   }

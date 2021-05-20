@@ -22,6 +22,7 @@ fs.stat('server', function (err) {
   fs.mkdirSync('server/vk')
   fs.mkdirSync('server/vkm')
   fs.mkdirSync('server/win')
+  fs.mkdirSync('server/android')
   console.log('Директории соц-сетей созданы')
 
   fs.copySync('build', 'server', { dereference: true })
@@ -31,12 +32,12 @@ fs.stat('server', function (err) {
   fs.copySync('build', 'server/vk', { dereference: true })
   fs.copySync('build', 'server/vkm', { dereference: true })
   fs.copySync('build', 'server/win', { dereference: true })
-  // fs.copySync('public', 'server/android', { dereference: true })
+  fs.copySync('public', 'server/android', { dereference: true })
   console.log('Плеера соцсетей собраны')
 
   fileHandler('server/fb', 'fb')
   fileHandler('server/vk', 'vk')
   fileHandler('server/vkm', 'vkm')
-  // fileHandler('server', 'android')
+  fileHandler('server/android', 'android')
   console.log('Последние настройки закончены')
 })

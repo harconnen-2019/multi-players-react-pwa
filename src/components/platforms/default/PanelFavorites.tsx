@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 
-import { listIdFavoritesContext } from '../../../App'
 import { ILocalization } from '../../../interfaces/localization'
 import { IRadio } from '../../../interfaces/radio'
 import List from './List'
@@ -20,15 +19,7 @@ const PanelFavorites = ({
   playSelectRadio,
   toggleMenu,
 }: Props) => {
-  const [favorites, setFavorites] = useState<IRadio[] | undefined>([])
-  const favoritesId = React.useContext(listIdFavoritesContext)
-  useEffect(() => {
-    const result = playList?.filter(
-      (item) => favoritesId.indexOf(item.id) !== -1
-    )
-    setFavorites(result)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [favoritesId])
+  const favorites = playList?.filter((item) => item.favorite === true)
   return (
     <section>
       {favorites !== undefined && favorites.length !== 0 ? (

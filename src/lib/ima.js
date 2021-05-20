@@ -9,14 +9,17 @@ var adsManager
 
 let initIma = false
 
+//TODO: Отключить кнопки пока идет реклама
+
 setTimeout(() => {
   // window.addEventListener('load', function (event) {
   videoElement = document.getElementById('content_audio_html5_api')
   videoElement.addEventListener('play', function (event) {
     loadAds(event)
   })
+  console.log('loadAds event-play')
   // })
-}, 700)
+}, 2000)
 
 export function initializeIMA(tag, playAd) {
   initIma = playAd

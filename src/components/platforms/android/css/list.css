@@ -1,0 +1,53 @@
+.line-list-flex .list {
+  margin-right: 20px;
+}
+.list {
+  width: 156px;
+  height: 212px;
+}
+.list-radio {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  border-radius: 5px;
+}
+.list-radio img {
+  width: 150px;
+  height: 150px;
+  border: #f0efef 1px solid;
+  border-radius: 5px;
+}
+.ico-favorites {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  width: 40px;
+  height: 40px;
+  background-color: rgba(180, 180, 180, 0.7);
+  border-radius: 50%;
+  cursor: pointer;
+}
+.ico-favorites svg {
+  margin: 8px 0 0 7.5px;
+  fill: #fff;
+  width: 26px;
+  height: 26px;
+}
+.f-muted {
+  background-color: rgba(180, 180, 180, 0.2);
+}
+.f-muted svg {
+  fill: rgb(187, 187, 187);
+}
+.list .title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-top: 8px;
+  font-size: 0.9rem;
+}
+.list .genres {
+  color: #aeb9c8;
+  padding-top: 2px;
+  font-size: 0.75rem;
+}

@@ -1,6 +1,6 @@
 import './css/panelTags.css'
 
-import React, { useEffect, useState } from 'react'
+import { useState } from 'react'
 
 import { IRadio } from '../../../interfaces/radio'
 import List from './List'
@@ -22,36 +22,31 @@ const PanelTags = ({
   playSelectRadio,
   toggleMenu,
 }: Props) => {
-  const [tagsRadio, setTagsRadio] = useState<IRadio[] | undefined>([])
   const [selectTags, setSelectTags] = useState<string[]>([])
   //TODO: может можно обойтись без перевода set() в массив (дает ошибку)
   const listTags = allTags !== undefined ? Array.from(allTags) : []
 
-  useEffect(() => {
-    let result: IRadio[] | undefined
-    let num = 0
-    for (const prop in selectTags) {
-      if (num === 0) {
-        result = playList?.filter((radio: IRadio) => {
-          //TODO: выбор genres или moods не самый лучший
-          const apiTag = tag === 'genres' ? radio.genres : radio.moods
-          return apiTag.find((item) => item === selectTags[prop])
-        })
-      } else {
-        result =
-          result !== undefined
-            ? result.filter((radio) => {
-                //TODO: выбор genres или moods не самый лучший
-                const apiTag = tag === 'genres' ? radio.genres : radio.moods
-                return apiTag.find((item) => item === selectTags[prop])
-              })
-            : result
-      }
-      num++
+  let tagsRadio: IRadio[] | undefined
+  let num = 0
+  for (const prop in selectTags) {
+    if (num === 0) {
+      tagsRadio = playList?.filter((radio: IRadio) => {
+        //TODO: выбор genres или moods не самый лучший
+        const apiTag = tag === 'genres' ? radio.genres : radio.moods
+        return apiTag.find((item) => item === selectTags[prop])
+      })
+    } else {
+      tagsRadio =
+        tagsRadio !== undefined
+          ? tagsRadio.filter((radio) => {
+              //TODO: выбор genres или moods не самый лучший
+              const apiTag = tag === 'genres' ? radio.genres : radio.moods
+              return apiTag.find((item) => item === selectTags[prop])
+            })
+          : tagsRadio
     }
-    setTagsRadio(result)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectTags])
+    num++
+  }
 
   /**
    * Добавление и удаление выбранных tag

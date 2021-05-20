@@ -2,7 +2,7 @@
  * Контроллер плеера
  * @module components/App
  */
-import React, { createContext, Suspense, useEffect, useRef, useState } from 'react'
+import React, { Suspense, useEffect, useRef, useState } from 'react'
 import videojs from 'video.js'
 
 import Load from './components/Load'
@@ -14,7 +14,7 @@ import { IRadio } from './interfaces/radio'
 import { counterFb, counterGa, counterVk } from './lib/counters'
 import { initializeIMA } from './lib/ima'
 import { createInitFromApi } from './lib/initializing'
-import { createArrayTags, createPlayList } from './lib/radio'
+import { createArrayTags, createPlayList, uniqueArrow } from './lib/radio'
 import {
     addFavicon, addStyleSheets, fetchFromApi, getCookie, refreshBanner, report
 } from './lib/utils'
@@ -24,7 +24,7 @@ const Android = React.lazy(
   () => import('./components/platforms/android/Player')
 )
 
-export const listIdFavoritesContext = createContext<Array<string>>([])
+// export const listIdFavoritesContext = createContext<Array<string>>([])
 
 /**
  * Сборка всего плеера и бизнес логика
@@ -156,27 +156,19 @@ function App() {
 
       if (initPlayer.player.single) {
         // Загрузка обычного плейлиста
+        //TODO: При загрузке картинок в плейлисте указать размер
         const radioListFromApi = await fetchFromApi<ApiRadioListRequest>(
           `${CONFIG.PREFIX}${initPlayer.api.list}?session=${SESSION}`
         )
         fullPlayList = createPlayList(
           radioListFromApi.data.list_radio,
-          [],
           PLATFORM
         )
       } else {
+        // Если плеер с несколькими плей-листами
         // Загрузка избранного
         const favoritesListFromApi = await fetchFromApi<ApiRadioListRequest>(
           `${CONFIG.PREFIX}${initPlayer.api.favoriteList}?session=${SESSION}`
-        )
-        // Загрузка рекомендованных
-        const recommendListFromApi = await fetchFromApi<ApiRadioListRequest>(
-          `${CONFIG.PREFIX}${initPlayer.api.recommend}&session=${SESSION}`
-        )
-        fullPlayList = createPlayList(
-          recommendListFromApi.data.list_radio,
-          favoritesListFromApi.data.list_radio,
-          PLATFORM
         )
 
         // Собираем идентификаторы избранного
@@ -185,6 +177,40 @@ function App() {
           loadFavoritesId.push(item.id)
         )
         setFavoritesId(loadFavoritesId)
+
+        const favoritesPlayList = createPlayList(
+          favoritesListFromApi.data.list_radio,
+          PLATFORM,
+          loadFavoritesId
+        )
+
+        // Загрузка рекомендованных
+        const recommendListFromApi = await fetchFromApi<ApiRadioListRequest>(
+          `${CONFIG.PREFIX}${initPlayer.api.recommend}&session=${SESSION}`
+        )
+        const recommendPlayList = createPlayList(
+          recommendListFromApi.data.list_radio,
+          PLATFORM,
+          loadFavoritesId
+        )
+
+        // Загрузка популярных
+        const topListFromApi = await fetchFromApi<ApiRadioListRequest>(
+          `${CONFIG.PREFIX}${initPlayer.api.top}&session=${SESSION}`
+        )
+        const topPlayList = createPlayList(
+          topListFromApi.data.list_radio,
+          PLATFORM,
+          loadFavoritesId
+        )
+
+        const mergePlayList: IRadio[] = favoritesPlayList.concat(
+          recommendPlayList,
+          topPlayList
+        )
+
+        // удаляем дубликаты из плейлиста и обновляем индексы
+        fullPlayList = uniqueArrow(mergePlayList)
 
         //Собираем жанры и настроения
         setAllGenres(createArrayTags(fullPlayList, 'genres'))
@@ -271,6 +297,7 @@ function App() {
    */
   const play = (): void => {
     //TODO: если плид не загружен vast не запускаем
+    // (плид есть у радио и есть у плеера, а еще есть preroll хз что это)
     initializeIMA(
       `${CONFIG.URL_VAST}${
         init?.advertising.plid
@@ -348,6 +375,17 @@ function App() {
     if (change) {
       const newFavoritesId = favoritesId.filter((item) => item !== radio.id)
       setFavoritesId(newFavoritesId)
+      //TODO: сделать изменение favorite у радио в плейлисте поизящней
+      //TODO: не меняется избранное в списке поиска
+      if (playList !== undefined) {
+        const result = [...playList]
+        result.forEach((item) => {
+          if (item.id === radio.id) {
+            item.favorite = false
+          }
+        })
+        setPlayList(result)
+      }
       try {
         fetch(
           `${CONFIG.PREFIX}${init?.api.favoriteDel}?session=${SESSION}&radio_id=${radio.id}`
@@ -360,11 +398,21 @@ function App() {
       const newFavoritesId = [...favoritesId]
       newFavoritesId.push(radio.id)
       setFavoritesId(newFavoritesId)
+      if (playList !== undefined) {
+        const result = [...playList]
+        result.forEach((item) => {
+          if (item.id === radio.id) {
+            item.favorite = true
+          }
+        })
+        setPlayList(result)
+      }
       // Добавляем в плейлист
       const findFavorite = playList?.find((item) => item.id === radio.id)
       if (!findFavorite && playList !== undefined) {
         const result = [...playList]
         radio.index = result.length
+        radio.favorite = true
         result.push(radio)
         setPlayList(result)
       }
@@ -388,9 +436,9 @@ function App() {
       `${CONFIG.PREFIX}${init?.api.search}${input}`
     )
     const result: Array<IRadio> = createPlayList(
-      [],
       searchFromApi.data.list_radio,
-      PLATFORM
+      PLATFORM,
+      favoritesId
     )
     setSearchPlayList(result)
   }
@@ -418,75 +466,67 @@ function App() {
     return (
       <>
         <Suspense fallback={<Load err={false} />}>
-          <listIdFavoritesContext.Provider value={favoritesId}>
-            {init?.player.platform === 'android' ? (
-              <Android
-                theme={init?.player}
-                lang={localization}
-                playList={playList}
-                radio={radio}
-                isPlay={isPlay}
-                play={play}
-                pause={pause}
-                isMuted={isMuted}
-                muted={muted}
-                volume={volume}
-                getIndexRadio={getIndexRadio}
-                volumeChange={volumeChange}
-                langChange={(
-                  ev: React.ChangeEvent<HTMLSelectElement>
-                ): void => {
-                  selectLang(ev.target.value)
-                }}
-                // isWarning={isWarning}
-                banner={
-                  init !== undefined ? init.advertising.banner : undefined
-                }
-                bitrateChange={bitrateChange}
-                favoritesChange={favoritesChange}
-                allGenres={allGenres}
-                allMoods={allMoods}
-                input={input}
-                inputChange={(event) => setInput(event.target.value)}
-                searchPlayList={searchPlayList}
-                searchSubmit={searchSubmit}
-                playSelectRadio={playSelectRadio}
-              />
-            ) : (
-              <Player
-                theme={init?.player}
-                lang={localization}
-                playList={playList}
-                radio={radio}
-                isPlay={isPlay}
-                play={play}
-                pause={pause}
-                isMuted={isMuted}
-                muted={muted}
-                volume={volume}
-                getIndexRadio={getIndexRadio}
-                volumeChange={volumeChange}
-                langChange={(
-                  ev: React.ChangeEvent<HTMLSelectElement>
-                ): void => {
-                  selectLang(ev.target.value)
-                }}
-                // isWarning={isWarning}
-                banner={
-                  init !== undefined ? init.advertising.banner : undefined
-                }
-                bitrateChange={bitrateChange}
-                favoritesChange={favoritesChange}
-                allGenres={allGenres}
-                allMoods={allMoods}
-                input={input}
-                inputChange={(event) => setInput(event.target.value)}
-                searchPlayList={searchPlayList}
-                searchSubmit={searchSubmit}
-                playSelectRadio={playSelectRadio}
-              />
-            )}
-          </listIdFavoritesContext.Provider>
+          {/* <listIdFavoritesContext.Provider value={favoritesId}> */}
+          {init?.player.platform === 'android' ? (
+            <Android
+              theme={init?.player}
+              lang={localization}
+              playList={playList}
+              radio={radio}
+              isPlay={isPlay}
+              play={play}
+              pause={pause}
+              isMuted={isMuted}
+              muted={muted}
+              volume={volume}
+              getIndexRadio={getIndexRadio}
+              volumeChange={volumeChange}
+              langChange={(ev: React.ChangeEvent<HTMLSelectElement>): void => {
+                selectLang(ev.target.value)
+              }}
+              // isWarning={isWarning}
+              banner={init !== undefined ? init.advertising.banner : undefined}
+              bitrateChange={bitrateChange}
+              favoritesChange={favoritesChange}
+              allGenres={allGenres}
+              allMoods={allMoods}
+              input={input}
+              inputChange={(event) => setInput(event.target.value)}
+              searchPlayList={searchPlayList}
+              searchSubmit={searchSubmit}
+              playSelectRadio={playSelectRadio}
+            />
+          ) : (
+            <Player
+              theme={init?.player}
+              lang={localization}
+              playList={playList}
+              radio={radio}
+              isPlay={isPlay}
+              play={play}
+              pause={pause}
+              isMuted={isMuted}
+              muted={muted}
+              volume={volume}
+              getIndexRadio={getIndexRadio}
+              volumeChange={volumeChange}
+              langChange={(ev: React.ChangeEvent<HTMLSelectElement>): void => {
+                selectLang(ev.target.value)
+              }}
+              // isWarning={isWarning}
+              banner={init !== undefined ? init.advertising.banner : undefined}
+              bitrateChange={bitrateChange}
+              favoritesChange={favoritesChange}
+              allGenres={allGenres}
+              allMoods={allMoods}
+              input={input}
+              inputChange={(event) => setInput(event.target.value)}
+              searchPlayList={searchPlayList}
+              searchSubmit={searchSubmit}
+              playSelectRadio={playSelectRadio}
+            />
+          )}
+          {/* </listIdFavoritesContext.Provider> */}
         </Suspense>
         <div data-vjs-player>
           <video

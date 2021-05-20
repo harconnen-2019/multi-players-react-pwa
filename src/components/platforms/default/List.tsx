@@ -2,7 +2,6 @@ import './css/list.css'
 
 import React from 'react'
 
-import { listIdFavoritesContext } from '../../../App'
 import { IRadio } from '../../../interfaces/radio'
 
 interface Props {
@@ -18,14 +17,6 @@ const List = ({
   playSelectRadio,
   toggleMenu,
 }: Props) => {
-  const favoritesId = React.useContext(listIdFavoritesContext)
-
-  const displayFavorite = favoritesId.find((item) => {
-    return item === radio.id
-  })
-    ? true
-    : false
-
   const selectRadio = (radio: IRadio) => {
     toggleMenu('null')
     playSelectRadio(radio)
@@ -48,10 +39,10 @@ const List = ({
       <div className='fav'>
         <svg
           onClick={() => {
-            favoritesChange(displayFavorite, radio)
+            favoritesChange(radio.favorite, radio)
           }}
         >
-          <use xlinkHref={`#favorites${!displayFavorite ? '-add' : ''}`}></use>
+          <use xlinkHref={`#favorites${!radio.favorite ? '-add' : ''}`}></use>
         </svg>
       </div>
     </section>
