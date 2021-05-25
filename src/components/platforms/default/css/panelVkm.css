@@ -1,6 +1,7 @@
 section > p {
   margin: 30px;
   margin-left: 5px;
+  cursor: pointer;
 }
 section > p > svg {
   width: 22px;
@@ -8,11 +9,11 @@ section > p > svg {
   float: left;
   fill: var(--color-list-svg);
 }
-section > p > span {
+/* section > p > span {
   float: left;
   padding-top: 5px;
   width: 80px;
-}
+} */
 
 .panelVkm div.input {
   display: inline-block;

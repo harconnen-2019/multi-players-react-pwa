@@ -16,7 +16,7 @@ const List = ({
   toggleMenu,
 }: Props) => {
   const selectRadio = (radio: IRadio) => {
-    toggleMenu('null')
+    toggleMenu('player')
     playSelectRadio(radio)
   }
 

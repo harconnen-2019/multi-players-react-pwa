@@ -24,8 +24,6 @@ const Android = React.lazy(
   () => import('./components/platforms/android/Player')
 )
 
-// export const listIdFavoritesContext = createContext<Array<string>>([])
-
 /**
  * Сборка всего плеера и бизнес логика
  * @returns {void}
@@ -156,7 +154,7 @@ function App() {
 
       if (initPlayer.player.single) {
         // Загрузка обычного плейлиста
-        //TODO: При загрузке картинок в плейлисте указать размер
+        //TODO: При загрузке картинок в плейлисте указать размер (во всех запросах)
         const radioListFromApi = await fetchFromApi<ApiRadioListRequest>(
           `${CONFIG.PREFIX}${initPlayer.api.list}?session=${SESSION}`
         )
@@ -184,6 +182,16 @@ function App() {
           loadFavoritesId
         )
 
+        // Загрузка обычных
+        const radioListFromApi = await fetchFromApi<ApiRadioListRequest>(
+          `${CONFIG.PREFIX}${initPlayer.api.list}?session=${SESSION}`
+        )
+        const radioPlayList = createPlayList(
+          radioListFromApi.data.list_radio,
+          PLATFORM,
+          loadFavoritesId
+        )
+
         // Загрузка рекомендованных
         const recommendListFromApi = await fetchFromApi<ApiRadioListRequest>(
           `${CONFIG.PREFIX}${initPlayer.api.recommend}&session=${SESSION}`
@@ -205,6 +213,7 @@ function App() {
         )
 
         const mergePlayList: IRadio[] = favoritesPlayList.concat(
+          radioPlayList,
           recommendPlayList,
           topPlayList
         )
@@ -466,7 +475,6 @@ function App() {
     return (
       <>
         <Suspense fallback={<Load err={false} />}>
-          {/* <listIdFavoritesContext.Provider value={favoritesId}> */}
           {init?.player.platform === 'android' ? (
             <Android
               theme={init?.player}
@@ -526,7 +534,6 @@ function App() {
               playSelectRadio={playSelectRadio}
             />
           )}
-          {/* </listIdFavoritesContext.Provider> */}
         </Suspense>
         <div data-vjs-player>
           <video

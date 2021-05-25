@@ -6,13 +6,23 @@ import { IPlayer } from '../../../interfaces/player'
 import Canvas from './Canvas'
 import { Icon } from './Icon'
 import { Index } from './Index'
+import MiniPanelPlay from './MiniPanelPlay'
+import PanelFavorites from './PanelFavorites'
+import PanelPlay from './PanelPlay'
+import PanelRecommend from './PanelRecommend'
+import PanelSetting from './PanelSetting'
+import PanelTop from './PanelTop'
 import Sprite from './Sprite'
 
 type Menu = { [key: string]: boolean }
 
 const Player: React.FC<IPlayer> = (props) => {
   const [menu, setMenu] = useState<Menu>({
+    player: false,
     canvas: false,
+    recommend: false,
+    top: false,
+    wallet: false,
     favorites: false,
     genres: false,
     moods: false,
@@ -59,14 +69,68 @@ const Player: React.FC<IPlayer> = (props) => {
           visibleTag={visibleTag}
         />
       )}
-      {!menu.canvas && (
-        <Index
+      {!menu.player &&
+        !menu.canvas &&
+        !menu.recommend &&
+        !menu.top &&
+        !menu.wallet &&
+        !menu.favorites &&
+        !menu.genres &&
+        !menu.moods &&
+        !menu.setting &&
+        !menu.search && (
+          <Index
+            lang={props.lang}
+            toggleMenu={toggleMenu}
+            visibleTag={visibleTag}
+            playList={props.playList}
+            favoritesChange={props.favoritesChange}
+            playSelectRadio={props.playSelectRadio}
+          />
+        )}
+      {menu.player && (
+        <PanelPlay
+          banner={props.banner}
+          radio={props.radio}
+          theme={props.theme}
+          getIndexRadio={props.getIndexRadio}
+          play={props.play}
+          pause={props.pause}
+          isPlay={props.isPlay}
+        />
+      )}
+      <MiniPanelPlay />
+      {menu.favorites && (
+        <PanelFavorites
+          playList={props.playList}
           lang={props.lang}
+          favoritesChange={props.favoritesChange}
+          playSelectRadio={props.playSelectRadio}
           toggleMenu={toggleMenu}
-          visibleTag={visibleTag}
+        />
+      )}
+      {menu.recommend && (
+        <PanelRecommend
           playList={props.playList}
           favoritesChange={props.favoritesChange}
           playSelectRadio={props.playSelectRadio}
+          toggleMenu={toggleMenu}
+        />
+      )}
+      {menu.top && (
+        <PanelTop
+          playList={props.playList}
+          favoritesChange={props.favoritesChange}
+          playSelectRadio={props.playSelectRadio}
+          toggleMenu={toggleMenu}
+        />
+      )}
+      {menu.setting && (
+        <PanelSetting
+          radio={props.radio}
+          bitrateChange={props.bitrateChange}
+          lang={props.lang}
+          langChange={props.langChange}
         />
       )}
       <Sprite />

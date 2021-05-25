@@ -1,4 +1,4 @@
-import './css/panelCanvas.css'
+import './css/canvas.css'
 
 import React from 'react'
 
@@ -14,12 +14,6 @@ const Canvas = ({ lang, toggleMenu, visibleTag }: Props) => {
   return (
     <div className='panel'>
       <section>
-        <p onClick={() => toggleMenu('favorites')}>
-          <svg>
-            <use xlinkHref='#favorites'></use>
-          </svg>
-          {lang ? lang.favorites.message : 'Favorites'}
-        </p>
         {visibleTag.genres && (
           <p onClick={() => toggleMenu('genres')}>
             <svg>
@@ -36,6 +30,38 @@ const Canvas = ({ lang, toggleMenu, visibleTag }: Props) => {
             {lang ? lang.mood.message : 'Mood'}
           </p>
         )}
+        <p onClick={() => toggleMenu('recommend')}>
+          <svg>
+            <use xlinkHref='#like'></use>
+          </svg>
+          Recommendations
+        </p>
+        <p onClick={() => toggleMenu('top')}>
+          <svg>
+            <use xlinkHref='#star'></use>
+          </svg>
+          Popular radio station
+        </p>
+        <hr />
+        <p onClick={() => toggleMenu('user')}>
+          <svg>
+            <use xlinkHref='#user'></use>
+          </svg>
+          {lang ? lang.profile.message : 'Profile'}
+        </p>
+        <p onClick={() => toggleMenu('favorites')}>
+          <svg>
+            <use xlinkHref='#favorites'></use>
+          </svg>
+          {lang ? lang.favorites.message : 'Favorites'}
+        </p>
+        {/* <p onClick={() => toggleMenu('wallet')}>
+          <svg>
+            <use xlinkHref='#wallet'></use>
+          </svg>
+          Payment method
+        </p> */}
+        <hr />
         <p onClick={() => toggleMenu('setting')}>
           <svg>
             <use xlinkHref='#setting'></use>
@@ -46,6 +72,7 @@ const Canvas = ({ lang, toggleMenu, visibleTag }: Props) => {
     </div>
   )
   //TODO: нет перевода Settings
+  //TODO: нет перевода Popular radio station & Recommendations & Payment method
 }
 
 export default Canvas

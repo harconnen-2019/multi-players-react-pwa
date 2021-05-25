@@ -1,3 +1,5 @@
+import './css/index.css'
+
 import React from 'react'
 
 import { ILocalization } from '../../../interfaces/localization'
@@ -29,7 +31,12 @@ export const Index = ({
       <section>
         {favorites !== undefined && favorites.length !== 0 && (
           <>
-            <p>{lang.favorites ? lang.favorites.message : 'Favorites'}</p>
+            <p className='index'>
+              {lang.favorites ? lang.favorites.message : 'Favorites'}
+              <svg>
+                <use xlinkHref='#fast'></use>
+              </svg>
+            </p>
             <div className='slider'>
               <div className='line-list-flex'>
                 {favorites.map((radio) => (
@@ -47,7 +54,12 @@ export const Index = ({
         )}
         {recommend !== undefined && recommend.length !== 0 && (
           <>
-            <p>Recommendations</p>
+            <p className='index'>
+              Recommendations
+              <svg>
+                <use xlinkHref='#fast'></use>
+              </svg>
+            </p>
             <div className='slider'>
               <div className='line-list-flex'>
                 {recommend.map((radio) => (
@@ -65,7 +77,12 @@ export const Index = ({
         )}
         {top !== undefined && top.length !== 0 && (
           <>
-            <p>Popular radio station</p>
+            <p className='index'>
+              Popular radio station
+              <svg>
+                <use xlinkHref='#fast'></use>
+              </svg>
+            </p>
             <div className='slider'>
               <div className='line-list-flex'>
                 {top.map((radio) => (

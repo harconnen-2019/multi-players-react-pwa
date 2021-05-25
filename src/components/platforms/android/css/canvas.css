@@ -15,3 +15,6 @@ section > p > span {
   padding-top: 5px;
   width: 80px;
 }
+hr {
+  border: #bf93f8 1px solid;
+}
