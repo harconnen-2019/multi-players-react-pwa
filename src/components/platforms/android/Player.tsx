@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 
 import { IPlayer } from '../../../interfaces/player'
 import Canvas from './Canvas'
+import Header from './Header'
 import { Icon } from './Icon'
 import { Index } from './Index'
 import MiniPanelPlay from './MiniPanelPlay'
@@ -11,6 +12,7 @@ import PanelFavorites from './PanelFavorites'
 import PanelPlay from './PanelPlay'
 import PanelProfile from './PanelProfile'
 import PanelRecommend from './PanelRecommend'
+import PanelSearch from './PanelSearch'
 import PanelSetting from './PanelSetting'
 import PanelTags from './PanelTags'
 import PanelText from './PanelText'
@@ -53,20 +55,42 @@ const Player: React.FC<IPlayer> = (props) => {
   return (
     <>
       <header>
-        {
-          //TODO: Сделать крестик для отключения меню
-        }
-        <Icon
-          name='bars'
-          active={menu.canvas}
-          onClick={() => toggleMenu('canvas')}
-        />
-        <img
-          onClick={() => toggleMenu('null')}
-          className='logo'
-          src='static/images/logo-mini.png'
-          alt='logo'
-        />
+        <div>
+          {menu.player ||
+          menu.user ||
+          menu.terms ||
+          menu.eula ||
+          menu.recommend ||
+          menu.top ||
+          menu.wallet ||
+          menu.favorites ||
+          menu.genres ||
+          menu.moods ||
+          menu.setting ||
+          menu.search ? (
+            <div className='line-list-flex'>
+              <Icon name='left' onClick={() => toggleMenu('null')} />
+              <Header menu={menu} radio={props.radio} lang={props.lang} />
+            </div>
+          ) : (
+            <>
+              <Icon
+                name='bars'
+                active={menu.canvas}
+                onClick={() => toggleMenu('canvas')}
+              />
+              <img
+                onClick={() => toggleMenu('null')}
+                className='logo'
+                src='static/images/logo-mini.png'
+                alt='logo'
+              />
+            </>
+          )}
+        </div>
+        <div>
+          <Icon name='search' onClick={() => toggleMenu('search')} />
+        </div>
       </header>
       {menu.canvas && (
         <Canvas
@@ -166,6 +190,19 @@ const Player: React.FC<IPlayer> = (props) => {
           bitrateChange={props.bitrateChange}
           lang={props.lang}
           langChange={props.langChange}
+        />
+      )}
+      {menu.search && (
+        <PanelSearch
+          lang={props.lang}
+          playList={props.playList}
+          favoritesChange={props.favoritesChange}
+          input={props.input}
+          inputChange={props.inputChange}
+          searchPlayList={props.searchPlayList}
+          searchSubmit={props.searchSubmit}
+          playSelectRadio={props.playSelectRadio}
+          toggleMenu={toggleMenu}
         />
       )}
       {menu.user && <PanelProfile toggleMenu={toggleMenu} lang={props.lang} />}
