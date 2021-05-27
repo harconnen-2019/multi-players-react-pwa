@@ -24,7 +24,7 @@ const List = ({
     <div className='list'>
       <div className='list-radio'>
         <img
-          src={radio.cover}
+          src={radio.cover.replace('100x100', '150x150')}
           alt={radio.name}
           loading='lazy'
           onClick={() => selectRadio(radio)}

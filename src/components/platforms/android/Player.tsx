@@ -9,8 +9,11 @@ import { Index } from './Index'
 import MiniPanelPlay from './MiniPanelPlay'
 import PanelFavorites from './PanelFavorites'
 import PanelPlay from './PanelPlay'
+import PanelProfile from './PanelProfile'
 import PanelRecommend from './PanelRecommend'
 import PanelSetting from './PanelSetting'
+import PanelTags from './PanelTags'
+import PanelText from './PanelText'
 import PanelTop from './PanelTop'
 import Sprite from './Sprite'
 
@@ -28,6 +31,9 @@ const Player: React.FC<IPlayer> = (props) => {
     moods: false,
     setting: false,
     search: false,
+    user: false,
+    terms: false,
+    eula: false,
   })
   const visibleTag = {
     genres: props.allGenres?.size !== 0 ? true : false,
@@ -71,6 +77,9 @@ const Player: React.FC<IPlayer> = (props) => {
       )}
       {!menu.player &&
         !menu.canvas &&
+        !menu.user &&
+        !menu.terms &&
+        !menu.eula &&
         !menu.recommend &&
         !menu.top &&
         !menu.wallet &&
@@ -99,7 +108,13 @@ const Player: React.FC<IPlayer> = (props) => {
           isPlay={props.isPlay}
         />
       )}
-      <MiniPanelPlay />
+      {!menu.player && props.isPlay && (
+        <MiniPanelPlay
+          radio={props.radio}
+          toggleMenu={toggleMenu}
+          pause={props.pause}
+        />
+      )}
       {menu.favorites && (
         <PanelFavorites
           playList={props.playList}
@@ -125,6 +140,26 @@ const Player: React.FC<IPlayer> = (props) => {
           toggleMenu={toggleMenu}
         />
       )}
+      {menu.genres && (
+        <PanelTags
+          tag='genres'
+          allTags={props.allGenres}
+          playList={props.playList}
+          favoritesChange={props.favoritesChange}
+          playSelectRadio={props.playSelectRadio}
+          toggleMenu={toggleMenu}
+        />
+      )}
+      {menu.moods && (
+        <PanelTags
+          tag='moods'
+          allTags={props.allMoods}
+          playList={props.playList}
+          favoritesChange={props.favoritesChange}
+          playSelectRadio={props.playSelectRadio}
+          toggleMenu={toggleMenu}
+        />
+      )}
       {menu.setting && (
         <PanelSetting
           radio={props.radio}
@@ -133,6 +168,10 @@ const Player: React.FC<IPlayer> = (props) => {
           langChange={props.langChange}
         />
       )}
+      {menu.user && <PanelProfile toggleMenu={toggleMenu} lang={props.lang} />}
+      {menu.terms && <PanelText text='terms' radio={props.radio} />}
+      {menu.eula && <PanelText text='eula' radio={props.radio} />}
+      {!menu.player && props.isPlay && <div className='down'></div>}
       <Sprite />
     </>
   )

@@ -50,3 +50,6 @@ header .logo {
   flex-wrap: wrap;
   justify-content: space-around;
 }
+.down {
+  height: 80px;
+}
