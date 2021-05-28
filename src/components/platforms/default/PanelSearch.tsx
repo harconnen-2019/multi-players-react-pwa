@@ -2,9 +2,9 @@ import React from 'react'
 
 import { ILocalization } from '../../../interfaces/localization'
 import { IRadio } from '../../../interfaces/radio'
-import Input from './Input'
 import List from './List'
 import styles from './PanelSearch.module.css'
+import Input from './structure/Input'
 
 interface Props {
   lang: ILocalization

@@ -11,7 +11,7 @@ import PanelSetting from './PanelSetting'
 import PanelTags from './PanelTags'
 import PanelVkm from './PanelVkm'
 import Sprite from './Sprite'
-import Volume from './Volume'
+import Volume from './structure/Volume'
 
 type Menu = { [key: string]: boolean }
 

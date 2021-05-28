@@ -1,8 +1,8 @@
 import React from 'react'
 
 import { ILocalization } from '../../../interfaces/localization'
-import Input from './Input'
 import styles from './PanelVkm.module.css'
+import Input from './structure/Input'
 
 interface Props {
   lang: ILocalization
