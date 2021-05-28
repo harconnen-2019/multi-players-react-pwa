@@ -1,11 +1,10 @@
-import './css/search.css'
-
 import React from 'react'
 
 import { ILocalization } from '../../../interfaces/localization'
 import { IRadio } from '../../../interfaces/radio'
-import InputSearch from './InputSearch'
+import Input from './Input'
 import List from './List'
+import styles from './PanelSearch.module.css'
 
 interface Props {
   lang: ILocalization
@@ -36,8 +35,8 @@ const PanelSearch = ({
       ? searchPlayList
       : playList
   return (
-    <section className='search'>
-      <InputSearch
+    <section className={styles.search}>
+      <Input
         lang={lang}
         input={input}
         inputChange={inputChange}
@@ -63,7 +62,7 @@ const PanelSearch = ({
             Didn't find the right station in the list? Use the search for + 50
             000 stations from all over the world
           </p>
-          <InputSearch
+          <Input
             lang={lang}
             input={input}
             inputChange={inputChange}

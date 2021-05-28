@@ -1,0 +1,11 @@
+.panel > p {
+  margin: 30px;
+  margin-left: 5px;
+  cursor: pointer;
+}
+.panel > p > svg {
+  width: 22px;
+  height: 22px;
+  float: left;
+  fill: var(--color-list-svg);
+}

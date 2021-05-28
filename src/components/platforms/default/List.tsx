@@ -1,8 +1,7 @@
-import './css/list.css'
-
 import React from 'react'
 
 import { IRadio } from '../../../interfaces/radio'
+import styles from './List.module.css'
 
 interface Props {
   radio: IRadio
@@ -23,7 +22,7 @@ const List = ({
   }
 
   return (
-    <section className='list'>
+    <section className={styles.list}>
       <img
         src={radio.cover}
         alt={radio.name}
@@ -36,7 +35,7 @@ const List = ({
         </div>
         {radio.genres.length !== 0 && <span>{radio.genres.join()}</span>}
       </article>
-      <div className='fav'>
+      <div className={styles.favorites}>
         <svg
           onClick={() => {
             favoritesChange(radio.favorite, radio)

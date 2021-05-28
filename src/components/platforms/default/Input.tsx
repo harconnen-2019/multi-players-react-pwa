@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { ILocalization } from '../../../interfaces/localization'
+import styles from './Input.module.css'
 
 interface Props {
   lang: ILocalization
@@ -19,7 +20,7 @@ const InputSearch = ({ lang, input, inputChange, searchSubmit }: Props) => {
   }
   return (
     <>
-      <div className='input'>
+      <div className={styles.input}>
         <svg>
           <use xlinkHref='#search'></use>
         </svg>
@@ -35,7 +36,7 @@ const InputSearch = ({ lang, input, inputChange, searchSubmit }: Props) => {
           }
         />
       </div>
-      <div className='button'>
+      <div className={styles.button}>
         <button id='btnSearch' onClick={searchSubmit} type='submit'>
           {lang.search ? lang.search.message : 'Search'}
         </button>

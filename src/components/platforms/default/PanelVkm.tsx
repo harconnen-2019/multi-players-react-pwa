@@ -1,9 +1,8 @@
-import './css/panelVkm.css'
-
 import React from 'react'
 
 import { ILocalization } from '../../../interfaces/localization'
-import InputSearch from './InputSearch'
+import Input from './Input'
+import styles from './PanelVkm.module.css'
 
 interface Props {
   lang: ILocalization
@@ -28,7 +27,7 @@ const PanelVkm = ({
     toggleMenu('search')
   }
   return (
-    <section className='panelVkm'>
+    <section className={styles.panel}>
       {single !== undefined && !single && (
         <>
           <p onClick={() => toggleMenu('favorites')}>
@@ -37,7 +36,7 @@ const PanelVkm = ({
             </svg>
             {lang ? lang.favorites.message : 'Favorites'}
           </p>
-          <InputSearch
+          <Input
             lang={lang}
             input={input}
             inputChange={inputChange}

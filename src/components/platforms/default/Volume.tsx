@@ -1,6 +1,6 @@
-import './css/volume.css'
-
 import React from 'react'
+
+import styles from './Volume.module.css'
 
 interface Props {
   volume: number
@@ -19,7 +19,7 @@ function Volume({
     <>
       {!isMuted ? (
         <svg
-          className='no-mobile'
+          className={styles.mobileHidden}
           onClick={() => {
             muted(true)
           }}
@@ -28,7 +28,7 @@ function Volume({
         </svg>
       ) : (
         <svg
-          className='no-mobile'
+          className={styles.mobileHidden}
           onClick={() => {
             muted(false)
           }}
@@ -37,7 +37,7 @@ function Volume({
         </svg>
       )}
       <input
-        className='no-mobile'
+        className={`${styles.volume} ${styles.mobileHidden}`}
         type='range'
         min='1'
         max='100'

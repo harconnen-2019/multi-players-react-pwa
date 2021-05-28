@@ -1,9 +1,8 @@
-import './css/panelTags.css'
-
 import { useState } from 'react'
 
 import { IRadio } from '../../../interfaces/radio'
 import List from './List'
+import styles from './PanelTags.module.css'
 
 interface Props {
   tag: string
@@ -64,7 +63,7 @@ const PanelTags = ({
   }
   return (
     <section>
-      <ul className='tags'>
+      <ul className={styles.tags}>
         {listTags.map((item) => (
           <li
             className={selectTags.find((tag) => item === tag) ? 'active' : ''}

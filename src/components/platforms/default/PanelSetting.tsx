@@ -1,10 +1,9 @@
-import './css/panelSetting.css'
-
 import React from 'react'
 
 import { ILocalization } from '../../../interfaces/localization'
 import { IRadio } from '../../../interfaces/radio'
 import { listLocales } from '../../../lib/lang'
+import styles from './PanelSetting.module.css'
 
 interface Props {
   radio: IRadio | undefined
@@ -20,7 +19,7 @@ const PanelSetting = ({
   langChange,
 }: Props): React.ReactElement => {
   return (
-    <section>
+    <section className={styles.setting}>
       <p>
         <svg>
           <use xlinkHref='#quality'></use>
