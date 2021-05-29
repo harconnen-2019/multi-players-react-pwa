@@ -19,3 +19,8 @@
   border: 1px solid #bf93f8;
   transition: 0.3s ease-in-out;
 }
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}

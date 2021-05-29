@@ -1,5 +1,3 @@
-import './css/player.css'
-
 import React, { useState } from 'react'
 
 import { IPlayer } from '../../../interfaces/player'
@@ -18,6 +16,7 @@ import PanelSetting from './PanelSetting'
 import PanelTags from './PanelTags'
 import PanelText from './PanelText'
 import PanelTop from './PanelTop'
+import styles from './Player.module.css'
 
 type Menu = { [key: string]: boolean }
 
@@ -54,7 +53,7 @@ const Player: React.FC<IPlayer> = (props) => {
   }
   return (
     <>
-      <header>
+      <div className={styles.header}>
         <div>
           {menu.player ||
           menu.user ||
@@ -68,7 +67,7 @@ const Player: React.FC<IPlayer> = (props) => {
           menu.moods ||
           menu.setting ||
           menu.search ? (
-            <div className='line-list-flex'>
+            <div style={{ display: 'inline-flex' }}>
               <Icon name='left' onClick={() => toggleMenu('null')} />
               <Header menu={menu} radio={props.radio} lang={props.lang} />
             </div>
@@ -81,7 +80,7 @@ const Player: React.FC<IPlayer> = (props) => {
               />
               <img
                 onClick={() => toggleMenu('null')}
-                className='logo'
+                className={styles.logo}
                 src='static/images/logo-mini.png'
                 alt='logo'
               />
@@ -95,8 +94,8 @@ const Player: React.FC<IPlayer> = (props) => {
             onClick={() => toggleMenu('search')}
           />
         </div>
-      </header>
-      <div className='panel'>
+      </div>
+      <div className={styles.panel}>
         {menu.canvas && (
           <Canvas
             lang={props.lang}
@@ -211,7 +210,7 @@ const Player: React.FC<IPlayer> = (props) => {
         )}
         {menu.terms && <PanelText text='terms' radio={props.radio} />}
         {menu.eula && <PanelText text='eula' radio={props.radio} />}
-        {!menu.player && props.isPlay && <div className='down'></div>}
+        {!menu.player && props.isPlay && <div className={styles.down}></div>}
       </div>
       <Sprite />
     </>

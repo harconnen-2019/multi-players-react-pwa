@@ -19,7 +19,13 @@ const PanelFavorites = ({
 }: Props) => {
   const favorites = playList?.filter((item) => item.favorite === true)
   return (
-    <section className='list-flex'>
+    <section
+      style={{
+        display: 'flex',
+        flexWrap: 'wrap',
+        justifyContent: 'space-around',
+      }}
+    >
       {favorites !== undefined && favorites.length !== 0 ? (
         favorites.map((item) => (
           <List

@@ -3,7 +3,7 @@ import './PlayerTheme.css'
 import React, { useState } from 'react'
 
 import { IPlayer } from '../../../interfaces/player'
-import Banner from '../../Banner'
+import Banner from '../shared/Banner'
 import { Icon } from '../shared/Icon'
 import Sprite from './modules/Sprite'
 import Volume from './modules/Volume'

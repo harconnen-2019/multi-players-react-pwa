@@ -14,3 +14,6 @@
   white-space: nowrap;
   width: 100%;
 }
+.slider > div > div {
+  margin-right: 20px;
+}

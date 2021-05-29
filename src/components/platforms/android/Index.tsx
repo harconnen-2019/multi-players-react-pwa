@@ -36,7 +36,7 @@ export const Index = ({
             </svg>
           </p>
           <div className={styles.slider}>
-            <div className='line-list-flex'>
+            <div style={{ display: 'inline-flex' }}>
               {favorites.map((radio) => (
                 <List
                   key={radio.id}
@@ -59,7 +59,7 @@ export const Index = ({
             </svg>
           </p>
           <div className={styles.slider}>
-            <div className='line-list-flex'>
+            <div style={{ display: 'inline-flex' }}>
               {recommend.map((radio) => (
                 <List
                   key={radio.id}
@@ -82,7 +82,7 @@ export const Index = ({
             </svg>
           </p>
           <div className={styles.slider}>
-            <div className='line-list-flex'>
+            <div style={{ display: 'inline-flex' }}>
               {top.map((radio) => (
                 <List
                   key={radio.id}

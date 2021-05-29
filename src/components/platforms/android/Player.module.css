@@ -5,7 +5,7 @@ body {
   color: #2d425c;
 }
 
-header {
+.header {
   position: fixed;
   top: 0;
   width: 100%;
@@ -15,17 +15,17 @@ header {
   display: flex;
   justify-content: space-between;
 }
-header svg {
+.header svg {
   margin: 20px 20px 0 20px;
   fill: #bf93f8;
   width: 25px;
   height: 25px;
   cursor: pointer;
 }
-header svg.active {
+.header svg.active {
   fill: #583e79;
 }
-header .logo {
+.header .logo {
   width: 100px;
 }
 
@@ -37,14 +37,6 @@ header .logo {
   margin: 85px 10px 0 10px;
 }
 
-.line-list-flex {
-  display: inline-flex;
-}
-.list-flex {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-}
 .down {
   height: 80px;
 }

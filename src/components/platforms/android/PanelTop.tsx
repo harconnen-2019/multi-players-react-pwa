@@ -16,7 +16,13 @@ const PanelTop = ({
 }: Props) => {
   const top = playList?.filter((item) => item.top === true)
   return (
-    <section className='list-flex'>
+    <section
+      style={{
+        display: 'flex',
+        flexWrap: 'wrap',
+        justifyContent: 'space-around',
+      }}
+    >
       {top !== undefined &&
         top.map((item) => (
           <List

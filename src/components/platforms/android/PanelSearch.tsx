@@ -44,7 +44,7 @@ const PanelSearch = ({
       />
       <br />
       <br />
-      <div className='list-flex'>
+      <div className={styles.flex}>
         {list !== undefined &&
           list.map((radio) => (
             <List

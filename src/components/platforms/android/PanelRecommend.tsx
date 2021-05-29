@@ -16,7 +16,13 @@ const PanelRecommend = ({
 }: Props) => {
   const recommend = playList?.filter((item) => item.recommend === true)
   return (
-    <section className='list-flex'>
+    <section
+      style={{
+        display: 'flex',
+        flexWrap: 'wrap',
+        justifyContent: 'space-around',
+      }}
+    >
       {recommend !== undefined &&
         recommend.map((item) => (
           <List

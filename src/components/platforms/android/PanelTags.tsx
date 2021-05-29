@@ -77,7 +77,7 @@ const PanelTags = ({
           </li>
         ))}
       </ul>
-      <div className='list-flex'>
+      <div className={styles.flex}>
         {tagsRadio !== undefined &&
           tagsRadio.length !== 0 &&
           tagsRadio.map((radio) => (

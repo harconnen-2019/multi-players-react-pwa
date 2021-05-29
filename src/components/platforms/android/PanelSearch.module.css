@@ -2,3 +2,8 @@
   padding: 20px 0 30px 0;
   font-size: small;
 }
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
