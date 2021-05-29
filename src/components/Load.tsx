@@ -1,4 +1,4 @@
-import './css/load.css'
+import styles from './Load.module.css'
 
 interface Props {
   err: boolean
@@ -7,7 +7,7 @@ interface Props {
 const Load = ({ err }: Props) => {
   if (err) {
     return (
-      <div className='error'>
+      <div className={styles.error}>
         An error occured!
         <br />
         <em>We are sorry. We are already working on it...</em>
@@ -15,7 +15,7 @@ const Load = ({ err }: Props) => {
     )
   } else {
     return (
-      <div className='load'>
+      <div className={styles.load}>
         Initializing the player.
         <br />
         <em>If you wait a long time, check your network connection...</em>

@@ -1,6 +1,7 @@
 // import React from 'react'
-import { render, screen, act } from '@testing-library/react'
-import { Icon } from '../components/platforms/default/Icon'
+import { act, render, screen } from '@testing-library/react'
+
+import { Icon } from '../components/platforms/default/structure/Icon'
 
 describe('<Icon />', () => {
   test('test', () => {

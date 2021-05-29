@@ -1,0 +1,4 @@
+.active {
+  fill: var(--color-two);
+  transition: 0.3s ease-in-out;
+}

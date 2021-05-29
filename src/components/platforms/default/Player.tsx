@@ -1,16 +1,17 @@
-import './css/player.css'
+import './css/theme.css'
 
 import React, { useState } from 'react'
 
 import { IPlayer } from '../../../interfaces/player'
 import Banner from '../../Banner'
-import { Icon } from './Icon'
 import PanelFavorites from './PanelFavorites'
 import PanelSearch from './PanelSearch'
 import PanelSetting from './PanelSetting'
 import PanelTags from './PanelTags'
 import PanelVkm from './PanelVkm'
-import Sprite from './Sprite'
+import styles from './Player.module.css'
+import { Icon } from './structure/Icon'
+import Sprite from './structure/Sprite'
 import Volume from './structure/Volume'
 
 type Menu = { [key: string]: boolean }
@@ -41,10 +42,14 @@ const Player: React.FC<IPlayer> = (props) => {
   }
   return (
     <>
-      <div className={`container theme-${props.theme?.theme || 'default'}`}>
-        <header>
+      <div
+        className={`${styles.container} theme-${
+          props.theme?.theme || 'default'
+        }`}
+      >
+        <div className={styles.header}>
           {props.theme?.platform === 'vkm' && (
-            <nav className='vkm'>
+            <nav className={styles.vkm}>
               <Icon
                 name='bars'
                 active={menu.vkm}
@@ -104,9 +109,9 @@ const Player: React.FC<IPlayer> = (props) => {
               )}
             </nav>
           )}
-        </header>
-        <main>
-          <div className='backward'>
+        </div>
+        <div className={styles.player}>
+          <div className={styles.backward}>
             {props.theme !== undefined && !props.theme.single && (
               <svg
                 onClick={() => props.getIndexRadio(props.radio?.index, 'prev')}
@@ -115,7 +120,7 @@ const Player: React.FC<IPlayer> = (props) => {
               </svg>
             )}
           </div>
-          <div className='play'>
+          <div className={styles.play}>
             {!props.isPlay ? (
               <svg
                 onClick={() => {
@@ -134,7 +139,7 @@ const Player: React.FC<IPlayer> = (props) => {
               </svg>
             )}
           </div>
-          <div className='forward'>
+          <div className={styles.forward}>
             {props.theme !== undefined && !props.theme.single && (
               <svg
                 onClick={() => props.getIndexRadio(props.radio?.index, 'next')}
@@ -143,7 +148,7 @@ const Player: React.FC<IPlayer> = (props) => {
               </svg>
             )}
           </div>
-        </main>
+        </div>
         {menu.vkm && (
           <PanelVkm
             lang={props.lang}

@@ -1,4 +1,4 @@
-aside {
+.banner {
   position: absolute;
   width: 300px;
   height: 254px;
@@ -7,7 +7,7 @@ aside {
   z-index: 0;
 }
 
-iframe {
+.banner iframe {
   /* background-color: #f1f1f1; */
   border: 0;
   overflow: hidden;
@@ -18,7 +18,7 @@ iframe {
 }
 
 @media (max-width: 640px) {
-  aside {
+  .banner {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -70%);

@@ -1,6 +1,6 @@
-import './css/banner.css'
-
 import React from 'react'
+
+import styles from './Banner.module.css'
 
 interface Props {
   banner: string | null | undefined
@@ -10,7 +10,7 @@ interface Props {
 const Banner = (props: Props): React.ReactElement => {
   return (
     <>
-      <aside>
+      <div className={styles.banner}>
         <iframe
           title='Coffee PWA'
           src={
@@ -21,7 +21,7 @@ const Banner = (props: Props): React.ReactElement => {
           }
           id='bannerRefresh'
         ></iframe>
-      </aside>
+      </div>
     </>
   )
 }

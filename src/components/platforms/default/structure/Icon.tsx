@@ -1,5 +1,6 @@
-import classNames from 'classnames'
 import React from 'react'
+
+import styles from './Icon.module.css'
 
 interface Props {
   name: string
@@ -9,9 +10,9 @@ interface Props {
 }
 
 export const Icon = ({ name, className, onClick, active, ...attrs }: Props) => {
-  const classes = classNames({ active: active }, className)
+  const hi = active ? styles.active : ''
   return (
-    <svg {...attrs} className={classes} onClick={onClick}>
+    <svg {...attrs} className={hi} onClick={onClick}>
       <use xlinkHref={`#${name}`}></use>
     </svg>
   )

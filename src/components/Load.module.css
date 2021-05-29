@@ -1,14 +1,15 @@
-.load {
+.common {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  color: grey;
   font-size: small;
   padding: 20px 30px;
 }
+.load {
+  composes: common;
+  color: grey;
+}
 .error {
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  composes: common;
   color: indianred;
-  font-size: small;
-  padding: 20px 30px;
 }
 .load em,
 .error em {
