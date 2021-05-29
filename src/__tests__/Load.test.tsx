@@ -1,4 +1,4 @@
-import Load from '../components/platforms/shared/Load'
+import Load from '../components/shared/Load'
 
 describe('Локализация', () => {
   test('', () => {

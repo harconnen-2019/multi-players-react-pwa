@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { ILocalization } from '../../../../interfaces/localization'
+import { ILocalization } from '../../../interfaces/localization'
 import styles from './Canvas.module.css'
 
 interface Props {

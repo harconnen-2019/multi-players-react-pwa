@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-import { IPlayer } from '../../../interfaces/player'
+import { IPlayer } from '../../interfaces/player'
 import { Icon } from '../shared/Icon'
 import { Index } from './Index'
 import Canvas from './modules/Canvas'

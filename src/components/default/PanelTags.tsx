@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import { IRadio } from '../../../interfaces/radio'
+import { IRadio } from '../../interfaces/radio'
 import List from './modules/List'
 import styles from './PanelTags.module.css'
 

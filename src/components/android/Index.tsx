@@ -1,7 +1,7 @@
 import React from 'react'
 
-import { ILocalization } from '../../../interfaces/localization'
-import { IRadio } from '../../../interfaces/radio'
+import { ILocalization } from '../../interfaces/localization'
+import { IRadio } from '../../interfaces/radio'
 import styles from './Index.module.css'
 import List from './modules/List'
 

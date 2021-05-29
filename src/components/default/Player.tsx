@@ -2,7 +2,7 @@ import './PlayerTheme.css'
 
 import React, { useState } from 'react'
 
-import { IPlayer } from '../../../interfaces/player'
+import { IPlayer } from '../../interfaces/player'
 import Banner from '../shared/Banner'
 import { Icon } from '../shared/Icon'
 import Sprite from './modules/Sprite'

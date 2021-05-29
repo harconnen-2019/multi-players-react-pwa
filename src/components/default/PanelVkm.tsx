@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { ILocalization } from '../../../interfaces/localization'
+import { ILocalization } from '../../interfaces/localization'
 import Input from './modules/Input'
 import styles from './PanelVkm.module.css'
 

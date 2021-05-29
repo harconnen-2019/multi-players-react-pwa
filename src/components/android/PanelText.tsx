@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { IRadio } from '../../../interfaces/radio'
+import { IRadio } from '../../interfaces/radio'
 
 interface Props {
   text: string

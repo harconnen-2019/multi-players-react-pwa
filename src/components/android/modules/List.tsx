@@ -1,4 +1,4 @@
-import { IRadio } from '../../../../interfaces/radio'
+import { IRadio } from '../../../interfaces/radio'
 import styles from './List.module.css'
 
 interface Props {

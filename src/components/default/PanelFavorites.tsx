@@ -1,5 +1,7 @@
-import { ILocalization } from '../../../interfaces/localization'
-import { IRadio } from '../../../interfaces/radio'
+import React from 'react'
+
+import { ILocalization } from '../../interfaces/localization'
+import { IRadio } from '../../interfaces/radio'
 import List from './modules/List'
 
 interface Props {
@@ -19,13 +21,7 @@ const PanelFavorites = ({
 }: Props) => {
   const favorites = playList?.filter((item) => item.favorite === true)
   return (
-    <section
-      style={{
-        display: 'flex',
-        flexWrap: 'wrap',
-        justifyContent: 'space-around',
-      }}
-    >
+    <section>
       {favorites !== undefined && favorites.length !== 0 ? (
         favorites.map((item) => (
           <List

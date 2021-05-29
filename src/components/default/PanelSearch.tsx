@@ -1,7 +1,7 @@
 import React from 'react'
 
-import { ILocalization } from '../../../interfaces/localization'
-import { IRadio } from '../../../interfaces/radio'
+import { ILocalization } from '../../interfaces/localization'
+import { IRadio } from '../../interfaces/radio'
 import Input from './modules/Input'
 import List from './modules/List'
 import styles from './PanelSearch.module.css'
@@ -44,18 +44,17 @@ const PanelSearch = ({
       />
       <br />
       <br />
-      <div className={styles.flex}>
-        {list !== undefined &&
-          list.map((radio) => (
-            <List
-              key={radio.id}
-              radio={radio}
-              favoritesChange={favoritesChange}
-              playSelectRadio={playSelectRadio}
-              toggleMenu={toggleMenu}
-            />
-          ))}
-      </div>
+
+      {list !== undefined &&
+        list.map((radio) => (
+          <List
+            key={radio.id}
+            radio={radio}
+            favoritesChange={favoritesChange}
+            playSelectRadio={playSelectRadio}
+            toggleMenu={toggleMenu}
+          />
+        ))}
       {list !== undefined && list.length >= 20 && (
         <footer>
           <p>

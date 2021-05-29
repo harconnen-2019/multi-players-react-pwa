@@ -5,7 +5,7 @@
 import React, { Suspense, useEffect, useRef, useState } from 'react'
 import videojs from 'video.js'
 
-import Load from './components/platforms/shared/Load'
+import Load from './components/shared/Load'
 import * as CONFIG from './config'
 import { useLocalization } from './hooks/localization'
 import { ApiInitRequest, ApiRadioListRequest } from './interfaces/api'
@@ -19,10 +19,8 @@ import {
     addFavicon, addStyleSheets, fetchFromApi, getCookie, refreshBanner, report
 } from './lib/utils'
 
-const Player = React.lazy(() => import('./components/platforms/default/Player'))
-const Android = React.lazy(
-  () => import('./components/platforms/android/Player')
-)
+const Player = React.lazy(() => import('./components/default/Player'))
+const Android = React.lazy(() => import('./components/android/Player'))
 
 /**
  * Сборка всего плеера и бизнес логика

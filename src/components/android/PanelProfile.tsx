@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { ILocalization } from '../../../interfaces/localization'
+import { ILocalization } from '../../interfaces/localization'
 
 interface Props {
   toggleMenu: (event: string) => void

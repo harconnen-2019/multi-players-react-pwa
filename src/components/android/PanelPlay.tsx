@@ -1,7 +1,7 @@
 import React from 'react'
 
-import { ThemeRequest } from '../../../interfaces/init'
-import { IRadio } from '../../../interfaces/radio'
+import { ThemeRequest } from '../../interfaces/init'
+import { IRadio } from '../../interfaces/radio'
 import Banner from '../shared/Banner'
 import styles from './PanelPlay.module.css'
 

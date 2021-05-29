@@ -1,8 +1,8 @@
 import React from 'react'
 
-import { ILocalization } from '../../../interfaces/localization'
-import { IRadio } from '../../../interfaces/radio'
-import { listLocales } from '../../../lib/lang'
+import { ILocalization } from '../../interfaces/localization'
+import { IRadio } from '../../interfaces/radio'
+import { listLocales } from '../../lib/lang'
 import styles from './PanelSetting.module.css'
 
 interface Props {
