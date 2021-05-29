@@ -1,24 +1,25 @@
 .line-list-flex .list {
   margin-right: 20px;
 }
+.common {
+  width: 150px;
+  height: 150px;
+  border-radius: 5px;
+}
 .list {
   width: 156px;
   height: 212px;
 }
-.list-radio {
+.listRadio {
+  composes: common;
   position: relative;
-  width: 150px;
-  height: 150px;
-  border-radius: 5px;
 }
-.list-radio img {
-  width: 150px;
-  height: 150px;
+.img {
+  composes: common;
   border: #f0efef 1px solid;
-  border-radius: 5px;
   cursor: pointer;
 }
-.ico-favorites {
+.favorites {
   position: absolute;
   bottom: 5px;
   right: 5px;
@@ -28,16 +29,16 @@
   border-radius: 50%;
   cursor: pointer;
 }
-.ico-favorites svg {
+.favorites svg {
   margin: 8px 0 0 7.5px;
   fill: #fff;
   width: 26px;
   height: 26px;
 }
-.f-muted {
+.muted {
   background-color: rgba(180, 180, 180, 0.2);
 }
-.f-muted svg {
+.muted svg {
   fill: rgb(187, 187, 187);
 }
 .list .title {

@@ -1,5 +1,5 @@
 import { IRadio } from '../../../interfaces/radio'
-import List from './List'
+import List from './modules/List'
 
 interface Props {
   playList: IRadio[] | undefined
@@ -16,20 +16,18 @@ const PanelTop = ({
 }: Props) => {
   const top = playList?.filter((item) => item.top === true)
   return (
-    <div className='panel'>
-      <section className='list-flex'>
-        {top !== undefined &&
-          top.map((item) => (
-            <List
-              key={item.id}
-              radio={item}
-              favoritesChange={favoritesChange}
-              playSelectRadio={playSelectRadio}
-              toggleMenu={toggleMenu}
-            />
-          ))}
-      </section>
-    </div>
+    <section className='list-flex'>
+      {top !== undefined &&
+        top.map((item) => (
+          <List
+            key={item.id}
+            radio={item}
+            favoritesChange={favoritesChange}
+            playSelectRadio={playSelectRadio}
+            toggleMenu={toggleMenu}
+          />
+        ))}
+    </section>
   )
 }
 

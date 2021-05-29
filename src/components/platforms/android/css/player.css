@@ -37,13 +37,6 @@ header .logo {
   margin: 85px 10px 0 10px;
 }
 
-.slider {
-  overflow: hidden;
-  overflow-x: scroll;
-  white-space: nowrap;
-  width: 100%;
-}
-
 .line-list-flex {
   display: inline-flex;
 }
@@ -54,41 +47,4 @@ header .logo {
 }
 .down {
   height: 80px;
-}
-.bread {
-  font-size: 16px;
-  color: #fff;
-  margin-top: 24px;
-}
-
-section.header-player {
-  padding: 10px 5px 0 10px;
-  width: 230px;
-  flex: 1 1 auto;
-  cursor: pointer;
-  height: 70px;
-}
-section.header-player > img {
-  width: 50px;
-  height: 50px;
-  float: left;
-  border-radius: 3px;
-}
-section.header-player > article {
-  float: left;
-  margin-left: 10px;
-  margin-top: 7px;
-  /* width: 68%; */
-  width: calc(100% - 70px);
-  color: #fff;
-}
-section.header-player > article > div {
-  font-size: larger;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-section.header-player > article > span {
-  font-size: small;
-  color: #fff;
 }

@@ -11,6 +11,7 @@
   background-color: #fff;
   color: #aeb9c8;
   border: 1px solid #aeb9c8;
+  cursor: pointer;
 }
 .tags li:hover,
 .tags li.active {

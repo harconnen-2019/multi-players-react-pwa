@@ -1,9 +1,8 @@
-import './css/panelTags.css'
-
 import { useState } from 'react'
 
 import { IRadio } from '../../../interfaces/radio'
-import List from './List'
+import List from './modules/List'
+import styles from './PanelTags.module.css'
 
 interface Props {
   tag: string
@@ -62,36 +61,36 @@ const PanelTags = ({
     setSelectTags(result)
   }
   return (
-    <div className='panel'>
-      <section>
-        <ul className='tags'>
-          {listTags.map((item) => (
-            <li
-              className={selectTags.find((tag) => item === tag) ? 'active' : ''}
-              onClick={() => {
-                tagChange(item)
-              }}
-              key={item}
-            >
-              {item}
-            </li>
+    <section>
+      <ul className={styles.tags}>
+        {listTags.map((item) => (
+          <li
+            className={
+              selectTags.find((tag) => item === tag) ? styles.active : ''
+            }
+            onClick={() => {
+              tagChange(item)
+            }}
+            key={item}
+          >
+            {item}
+          </li>
+        ))}
+      </ul>
+      <div className='list-flex'>
+        {tagsRadio !== undefined &&
+          tagsRadio.length !== 0 &&
+          tagsRadio.map((radio) => (
+            <List
+              key={radio.id}
+              radio={radio}
+              favoritesChange={favoritesChange}
+              playSelectRadio={playSelectRadio}
+              toggleMenu={toggleMenu}
+            />
           ))}
-        </ul>
-        <div className='list-flex'>
-          {tagsRadio !== undefined &&
-            tagsRadio.length !== 0 &&
-            tagsRadio.map((radio) => (
-              <List
-                key={radio.id}
-                radio={radio}
-                favoritesChange={favoritesChange}
-                playSelectRadio={playSelectRadio}
-                toggleMenu={toggleMenu}
-              />
-            ))}
-        </div>
-      </section>
-    </div>
+      </div>
+    </section>
   )
 }
 

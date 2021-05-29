@@ -2,7 +2,7 @@ import React from 'react'
 
 import { ILocalization } from '../../../interfaces/localization'
 import { IRadio } from '../../../interfaces/radio'
-import List from './structure/List'
+import List from './modules/List'
 
 interface Props {
   playList: IRadio[] | undefined

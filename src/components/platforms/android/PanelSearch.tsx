@@ -1,11 +1,10 @@
-import './css/search.css'
-
 import React from 'react'
 
 import { ILocalization } from '../../../interfaces/localization'
 import { IRadio } from '../../../interfaces/radio'
-import InputSearch from './InputSearch'
-import List from './List'
+import Input from './modules/Input'
+import List from './modules/List'
+import styles from './PanelSearch.module.css'
 
 interface Props {
   lang: ILocalization
@@ -36,45 +35,43 @@ const PanelSearch = ({
       ? searchPlayList
       : playList
   return (
-    <div className='panel'>
-      <section className='search'>
-        <InputSearch
-          lang={lang}
-          input={input}
-          inputChange={inputChange}
-          searchSubmit={searchSubmit}
-        />
-        <br />
-        <br />
-        <div className='list-flex'>
-          {list !== undefined &&
-            list.map((radio) => (
-              <List
-                key={radio.id}
-                radio={radio}
-                favoritesChange={favoritesChange}
-                playSelectRadio={playSelectRadio}
-                toggleMenu={toggleMenu}
-              />
-            ))}
-        </div>
-        {list !== undefined && list.length >= 20 && (
-          <footer>
-            <p>
-              {/* //TODO: фраза не переведена */}
-              Didn't find the right station in the list? Use the search for + 50
-              000 stations from all over the world
-            </p>
-            <InputSearch
-              lang={lang}
-              input={input}
-              inputChange={inputChange}
-              searchSubmit={searchSubmit}
+    <section className={styles.search}>
+      <Input
+        lang={lang}
+        input={input}
+        inputChange={inputChange}
+        searchSubmit={searchSubmit}
+      />
+      <br />
+      <br />
+      <div className='list-flex'>
+        {list !== undefined &&
+          list.map((radio) => (
+            <List
+              key={radio.id}
+              radio={radio}
+              favoritesChange={favoritesChange}
+              playSelectRadio={playSelectRadio}
+              toggleMenu={toggleMenu}
             />
-          </footer>
-        )}
-      </section>
-    </div>
+          ))}
+      </div>
+      {list !== undefined && list.length >= 20 && (
+        <footer>
+          <p>
+            {/* //TODO: фраза не переведена */}
+            Didn't find the right station in the list? Use the search for + 50
+            000 stations from all over the world
+          </p>
+          <Input
+            lang={lang}
+            input={input}
+            inputChange={inputChange}
+            searchSubmit={searchSubmit}
+          />
+        </footer>
+      )}
+    </section>
   )
 }
 

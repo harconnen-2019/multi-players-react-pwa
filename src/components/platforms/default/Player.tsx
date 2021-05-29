@@ -5,14 +5,14 @@ import React, { useState } from 'react'
 import { IPlayer } from '../../../interfaces/player'
 import Banner from '../../Banner'
 import { Icon } from '../shared/Icon'
+import Sprite from './modules/Sprite'
+import Volume from './modules/Volume'
 import PanelFavorites from './PanelFavorites'
 import PanelSearch from './PanelSearch'
 import PanelSetting from './PanelSetting'
 import PanelTags from './PanelTags'
 import PanelVkm from './PanelVkm'
 import styles from './Player.module.css'
-import Sprite from './structure/Sprite'
-import Volume from './structure/Volume'
 
 type Menu = { [key: string]: boolean }
 

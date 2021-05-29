@@ -1,0 +1,36 @@
+.bread {
+  font-size: 16px;
+  color: #fff;
+  margin-top: 24px;
+}
+.player {
+  padding: 10px 5px 0 10px;
+  width: 230px;
+  flex: 1 1 auto;
+  cursor: pointer;
+  height: 70px;
+}
+.player > img {
+  width: 50px;
+  height: 50px;
+  float: left;
+  border-radius: 3px;
+}
+.player > article {
+  float: left;
+  margin-left: 10px;
+  margin-top: 7px;
+  /* width: 68%; */
+  width: calc(100% - 70px);
+  color: #fff;
+}
+.player > article > div {
+  font-size: larger;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.player > article > span {
+  font-size: small;
+  color: #fff;
+}

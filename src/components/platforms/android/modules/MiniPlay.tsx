@@ -1,32 +1,30 @@
-import './css/miniPanelPlay.css'
-
 import React from 'react'
 
-import { IRadio } from '../../../interfaces/radio'
+import { IRadio } from '../../../../interfaces/radio'
+import styles from './MiniPlay.module.css'
 
 interface Props {
   radio: IRadio | undefined
   pause: () => void
-  toggleMenu: (event: string) => void
 }
 
-const miniPanelPlay = ({ radio, pause, toggleMenu }: Props) => {
+const miniPlay = ({ radio, pause }: Props) => {
   return (
-    <div className='mini-play'>
-      <section>
+    <div className={styles.mini}>
+      <div className={styles.radio}>
         <img src={radio?.cover} alt={radio?.name} />
         <article>
           <div>{radio?.name}</div>
           <span>{radio?.note}</span>
         </article>
-      </section>
-      <div className='svg'>
-        <div className='play'>
+      </div>
+      <div className={styles.svg}>
+        <div className={styles.play}>
           <svg>
             <use xlinkHref='#play'></use>
           </svg>
         </div>
-        <div className='cancel'>
+        <div className={styles.cancel}>
           <svg
             onClick={() => {
               pause()
@@ -40,4 +38,4 @@ const miniPanelPlay = ({ radio, pause, toggleMenu }: Props) => {
   )
 }
 
-export default miniPanelPlay
+export default miniPlay

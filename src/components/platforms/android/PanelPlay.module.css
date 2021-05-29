@@ -1,4 +1,4 @@
-main {
+.main {
   display: flex;
   justify-content: center;
   align-items: flex-end;
@@ -8,9 +8,11 @@ main {
   width: 52px;
   fill: #2d425c;
   margin: 0 30px;
+  cursor: pointer;
 }
 .forward svg,
 .backward svg {
   width: 32px;
   fill: #2d425c;
+  cursor: pointer;
 }

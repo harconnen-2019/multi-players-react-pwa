@@ -1,10 +1,9 @@
-import './css/index.css'
-
 import React from 'react'
 
 import { ILocalization } from '../../../interfaces/localization'
 import { IRadio } from '../../../interfaces/radio'
-import List from './List'
+import styles from './Index.module.css'
+import List from './modules/List'
 
 interface Props {
   lang: ILocalization
@@ -27,79 +26,77 @@ export const Index = ({
   const recommend = playList?.filter((item) => item.recommend === true)
   const top = playList?.filter((item) => item.top === true)
   return (
-    <div className='panel'>
-      <section>
-        {favorites !== undefined && favorites.length !== 0 && (
-          <>
-            <p className='index'>
-              {lang.favorites ? lang.favorites.message : 'Favorites'}
-              <svg>
-                <use xlinkHref='#fast'></use>
-              </svg>
-            </p>
-            <div className='slider'>
-              <div className='line-list-flex'>
-                {favorites.map((radio) => (
-                  <List
-                    key={radio.id}
-                    radio={radio}
-                    favoritesChange={favoritesChange}
-                    playSelectRadio={playSelectRadio}
-                    toggleMenu={toggleMenu}
-                  />
-                ))}
-              </div>
+    <section>
+      {favorites !== undefined && favorites.length !== 0 && (
+        <>
+          <p className={styles.index}>
+            {lang.favorites ? lang.favorites.message : 'Favorites'}
+            <svg>
+              <use xlinkHref='#fast'></use>
+            </svg>
+          </p>
+          <div className={styles.slider}>
+            <div className='line-list-flex'>
+              {favorites.map((radio) => (
+                <List
+                  key={radio.id}
+                  radio={radio}
+                  favoritesChange={favoritesChange}
+                  playSelectRadio={playSelectRadio}
+                  toggleMenu={toggleMenu}
+                />
+              ))}
             </div>
-          </>
-        )}
-        {recommend !== undefined && recommend.length !== 0 && (
-          <>
-            <p className='index'>
-              Recommendations
-              <svg>
-                <use xlinkHref='#fast'></use>
-              </svg>
-            </p>
-            <div className='slider'>
-              <div className='line-list-flex'>
-                {recommend.map((radio) => (
-                  <List
-                    key={radio.id}
-                    radio={radio}
-                    favoritesChange={favoritesChange}
-                    playSelectRadio={playSelectRadio}
-                    toggleMenu={toggleMenu}
-                  />
-                ))}
-              </div>
+          </div>
+        </>
+      )}
+      {recommend !== undefined && recommend.length !== 0 && (
+        <>
+          <p className={styles.index}>
+            Recommendations
+            <svg>
+              <use xlinkHref='#fast'></use>
+            </svg>
+          </p>
+          <div className={styles.slider}>
+            <div className='line-list-flex'>
+              {recommend.map((radio) => (
+                <List
+                  key={radio.id}
+                  radio={radio}
+                  favoritesChange={favoritesChange}
+                  playSelectRadio={playSelectRadio}
+                  toggleMenu={toggleMenu}
+                />
+              ))}
             </div>
-          </>
-        )}
-        {top !== undefined && top.length !== 0 && (
-          <>
-            <p className='index'>
-              Popular radio station
-              <svg>
-                <use xlinkHref='#fast'></use>
-              </svg>
-            </p>
-            <div className='slider'>
-              <div className='line-list-flex'>
-                {top.map((radio) => (
-                  <List
-                    key={radio.id}
-                    radio={radio}
-                    favoritesChange={favoritesChange}
-                    playSelectRadio={playSelectRadio}
-                    toggleMenu={toggleMenu}
-                  />
-                ))}
-              </div>
+          </div>
+        </>
+      )}
+      {top !== undefined && top.length !== 0 && (
+        <>
+          <p className={styles.index}>
+            Popular radio station
+            <svg>
+              <use xlinkHref='#fast'></use>
+            </svg>
+          </p>
+          <div className={styles.slider}>
+            <div className='line-list-flex'>
+              {top.map((radio) => (
+                <List
+                  key={radio.id}
+                  radio={radio}
+                  favoritesChange={favoritesChange}
+                  playSelectRadio={playSelectRadio}
+                  toggleMenu={toggleMenu}
+                />
+              ))}
             </div>
-          </>
-        )}
-      </section>
-    </div>
+          </div>
+        </>
+      )}
+    </section>
   )
   //TODO: нет перевода Popular radio station & Recommendations
 }

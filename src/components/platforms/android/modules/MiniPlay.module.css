@@ -1,4 +1,4 @@
-.mini-play {
+.mini {
   background: #f7f7f7;
   box-shadow: 0 -3px 8px -3px rgb(0 0 0 / 10%);
   position: fixed;
@@ -8,49 +8,49 @@
   bottom: 0;
   display: flex;
 }
-.mini-play section {
+.mini .radio {
   padding: 10px 5px 0 10px;
   width: 50%;
   flex: 1 1 auto;
   cursor: pointer;
-  height: 70px;
+  /* height: 70px; */
 }
-.mini-play section > img {
+.mini .radio > img {
   width: 50px;
   height: 50px;
   float: left;
   border-radius: 3px;
 }
-.mini-play section > article {
+.mini .radio > article {
   float: left;
   margin-left: 10px;
   margin-top: 7px;
   /* width: 68%; */
   width: calc(100% - 70px);
 }
-.mini-play section > article > div {
+.mini .radio > article > div {
   font-size: larger;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.mini-play section > article > span {
+.mini .radio > article > span {
   font-size: small;
 }
-.mini-play .svg {
+.mini .svg {
   display: flex;
 }
-.mini-play .play,
-.mini-play .cancel {
+.mini .play,
+.mini .cancel {
   height: 70px;
 }
-.mini-play .play svg {
+.mini .play svg {
   width: 22px;
   height: 70px;
   fill: #bf93f8;
   margin: 0 30px 0 0;
 }
-.mini-play .cancel svg {
+.mini .cancel svg {
   width: 18px;
   height: 70px;
   fill: #dbdbdb;

@@ -1,0 +1,16 @@
+.index > svg {
+  margin-right: 20px;
+  width: 22px;
+  height: 22px;
+  float: right;
+  fill: #bf93f8;
+}
+.index {
+  color: #bf93f8;
+}
+.slider {
+  overflow: hidden;
+  overflow-x: scroll;
+  white-space: nowrap;
+  width: 100%;
+}

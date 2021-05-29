@@ -1,20 +1,18 @@
-section > p {
+.canvas > p {
   margin: 20px;
   margin-left: 10px;
   font-size: 1.3rem;
+  cursor: pointer;
 }
-section > p > svg {
+.canvas > p > svg {
   margin-right: 20px;
   width: 22px;
   height: 22px;
   float: left;
   fill: #bf93f8;
 }
-section > p > span {
+.canvas > p > span {
   float: left;
   padding-top: 5px;
   width: 80px;
-}
-hr {
-  border: #bf93f8 1px solid;
 }
