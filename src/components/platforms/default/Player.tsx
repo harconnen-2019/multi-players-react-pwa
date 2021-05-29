@@ -1,16 +1,16 @@
-import './css/theme.css'
+import './PlayerTheme.css'
 
 import React, { useState } from 'react'
 
 import { IPlayer } from '../../../interfaces/player'
 import Banner from '../../Banner'
+import { Icon } from '../shared/Icon'
 import PanelFavorites from './PanelFavorites'
 import PanelSearch from './PanelSearch'
 import PanelSetting from './PanelSetting'
 import PanelTags from './PanelTags'
 import PanelVkm from './PanelVkm'
 import styles from './Player.module.css'
-import { Icon } from './structure/Icon'
 import Sprite from './structure/Sprite'
 import Volume from './structure/Volume'
 

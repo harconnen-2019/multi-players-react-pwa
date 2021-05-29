@@ -5,7 +5,7 @@
 import React, { Suspense, useEffect, useRef, useState } from 'react'
 import videojs from 'video.js'
 
-import Load from './components/Load'
+import Load from './components/platforms/shared/Load'
 import * as CONFIG from './config'
 import { useLocalization } from './hooks/localization'
 import { ApiInitRequest, ApiRadioListRequest } from './interfaces/api'
