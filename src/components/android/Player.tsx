@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import { IPlayer } from '../../interfaces/player'
 import { Icon } from '../shared/Icon'
@@ -51,6 +51,10 @@ const Player: React.FC<IPlayer> = (props) => {
     })
     setMenu(newMenu)
   }
+  useEffect(() => {
+    props.theme?.single && toggleMenu('player')
+    // eslint-disable-next-line
+  }, [])
   return (
     <>
       <div className={styles.header}>
@@ -68,7 +72,9 @@ const Player: React.FC<IPlayer> = (props) => {
           menu.setting ||
           menu.search ? (
             <div style={{ display: 'inline-flex' }}>
-              <Icon name='left' onClick={() => toggleMenu('null')} />
+              {!props.theme?.single && (
+                <Icon name='left' onClick={() => toggleMenu('null')} />
+              )}
               <Header menu={menu} radio={props.radio} lang={props.lang} />
             </div>
           ) : (
@@ -88,11 +94,13 @@ const Player: React.FC<IPlayer> = (props) => {
           )}
         </div>
         <div>
-          <Icon
-            name='search'
-            active={menu.search}
-            onClick={() => toggleMenu('search')}
-          />
+          {!props.theme?.single && (
+            <Icon
+              name='search'
+              active={menu.search}
+              onClick={() => toggleMenu('search')}
+            />
+          )}
         </div>
       </div>
       <div className={styles.panel}>
