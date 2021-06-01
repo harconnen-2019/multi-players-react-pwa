@@ -9,16 +9,16 @@
  * @param {string} id - Идентификатор счетчика из Init
  * @returns {void}
  */
-export function counterGa(id: string): void {
-  const scriptCountGoogle: string =
-    `<script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', '` +
-    id +
-    `');</script>`
+export function counterGa(id: string | null): void {
+  const scriptCountGoogle: string = `<script>window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());
+    gtag('config', 'UA-197463705-1');
+    ${id && `gtag('config', '${id}');`}
+    </script>`
   const head = document.getElementsByTagName('head')[0]
   const createNodeScript1 = document.createElement('script')
   createNodeScript1.setAttribute(
     'src',
-    'https://www.googletagmanager.com/gtag/js?id=' + id
+    'https://www.googletagmanager.com/gtag/js?id=UA-197463705-1'
   )
   const createNodeScript2 = document.createElement('script')
   createNodeScript2.text = scriptCountGoogle.replace(/<[^>]*>?/gm, '')

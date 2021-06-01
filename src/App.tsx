@@ -1,7 +1,9 @@
+/*global gtag*/
 /**
  * Контроллер плеера
  * @module components/App
  */
+
 import React, { Suspense, useEffect, useRef, useState } from 'react'
 import videojs from 'video.js'
 
@@ -11,7 +13,7 @@ import { useLocalization } from './hooks/localization'
 import { ApiInitRequest, ApiRadioListRequest } from './interfaces/api'
 import { InitPlayer } from './interfaces/init'
 import { IRadio } from './interfaces/radio'
-import { counterFb, counterGa, counterVk } from './lib/counters'
+import { counterGa } from './lib/counters'
 import { initializeIMA } from './lib/ima'
 import { createInitFromApi } from './lib/initializing'
 import { createArrayTags, createPlayList, uniqueArrow } from './lib/radio'
@@ -60,7 +62,6 @@ function App() {
     /**
      * //TODO: Прочесть радио по ссылке и запустить (Диплинк)
      * //TODO: Авторизация в соцсетях
-     * //TODO: Код для фейсбука
      */
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
@@ -152,7 +153,6 @@ function App() {
 
       if (initPlayer.player.single) {
         // Загрузка обычного плейлиста
-        //TODO: При загрузке картинок в плейлисте указать размер (во всех запросах)
         const radioListFromApi = await fetchFromApi<ApiRadioListRequest>(
           `${CONFIG.PREFIX}${initPlayer.api.list}?session=${SESSION}`
         )
@@ -240,19 +240,33 @@ function App() {
       setStatus(CONFIG.STATUS.LOADED)
 
       // подключение счетчиков
-      switch (PLATFORM.toLowerCase()) {
-        case 'pwa' || 'android':
-          initPlayer.counters.ga && counterGa(initPlayer.counters.ga)
-          break
-        case 'fb':
-          initPlayer.counters.ga && counterGa(initPlayer.counters.ga)
-          initPlayer.counters.fb && counterFb(initPlayer.counters.fb)
-          break
-        case 'vk' || 'vkm':
-          initPlayer.counters.ga && counterGa(initPlayer.counters.ga)
-          initPlayer.counters.vk && counterVk(initPlayer.counters.vk)
-          break
-      }
+      counterGa(initPlayer.counters.ga)
+
+      // switch (PLATFORM.toLowerCase()) {
+      //   case CONFIG.PLATFORM.PWA || CONFIG.PLATFORM.ANDROID:
+      //     counterGa(initPlayer.counters.ga)
+      //     break
+      //   case CONFIG.PLATFORM.FB:
+      //     counterGa(initPlayer.counters.ga)
+      //     initPlayer.counters.fb && counterFb(initPlayer.counters.fb)
+      //     break
+      //   case CONFIG.PLATFORM.VK || CONFIG.PLATFORM.VKM:
+      //     counterGa(initPlayer.counters.ga)
+      //     initPlayer.counters.vk && counterVk(initPlayer.counters.vk)
+      //     break
+      // }
+      setTimeout(() => {
+        if (localStorage.getItem('install-player')) {
+          console.log('no-event-player-install')
+        } else {
+          localStorage.setItem('install-player', PLATFORM)
+          gtag('event', `Start-${PLATFORM}`, {
+            event_label: 'Первый старт плеера',
+            event_category: 'Плееры',
+          })
+          console.log('ga-event-player-install', PLATFORM)
+        }
+      }, 5000)
     } catch {
       setStatus(CONFIG.STATUS.ERROR)
       console.error('Loading init failed')
@@ -405,6 +419,7 @@ function App() {
       const newFavoritesId = [...favoritesId]
       newFavoritesId.push(radio.id)
       setFavoritesId(newFavoritesId)
+
       if (playList !== undefined) {
         const result = [...playList]
         result.forEach((item) => {
