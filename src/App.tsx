@@ -289,6 +289,7 @@ function App() {
       theme_color: '#ffffff',
       description: '',
       background_color: '#ffffff',
+      orientation: 'portrait-primary',
       icons: [
         {
           src:
