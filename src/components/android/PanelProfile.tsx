@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { ILocalization } from '../../interfaces/localization'
+import styles from './PanelProfile.module.css'
 
 interface Props {
   toggleMenu: (event: string) => void
@@ -9,7 +10,7 @@ interface Props {
 
 const PanelProfile = ({ toggleMenu, lang }: Props) => {
   return (
-    <section>
+    <section className={styles.profile}>
       <p>
         <svg>
           <use xlinkHref='#user'></use>
