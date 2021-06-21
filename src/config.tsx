@@ -9,7 +9,7 @@ import { version } from '../package.json'
  * Версия приложения
  * @constant {string}
  */
-export const VERSION: string = `App version : ${version} (alfa)`
+export const VERSION: string = `App version : ${version}`
 
 /**
  * Активирует консольные логи для отладки

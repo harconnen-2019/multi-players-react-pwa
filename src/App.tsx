@@ -143,6 +143,8 @@ function App() {
       document.title = initPlayer.player.name
       // initPlayer.player.name = manifest.name
 
+      generateManifest(initPlayer.player.name, initPlayer.player.favicon)
+
       setInit(initPlayer)
       consolTitle(initPlayer)
 
@@ -270,6 +272,42 @@ function App() {
     } catch {
       setStatus(CONFIG.STATUS.ERROR)
       console.error('Loading init failed')
+    }
+  }
+
+  /**
+   * Динамический manifest
+   * @param {string} name - Имя плеера
+   */
+  function generateManifest(name: string, favicon: string) {
+    const myDynamicManifest = {
+      name: name,
+      short_name: name,
+      scope: window.location.href,
+      start_url: window.location.href,
+      display: 'standalone',
+      theme_color: '#ffffff',
+      description: '',
+      background_color: '#ffffff',
+      icons: [
+        {
+          src: CONFIG.PREFIX + favicon.replace('-x-', '192x192'),
+          type: 'image/png',
+          sizes: '192x192',
+        },
+        {
+          src: CONFIG.PREFIX + favicon.replace('-x-', '512x512'),
+          type: 'image/png',
+          sizes: '512x512',
+        },
+      ],
+    }
+    const stringManifest = JSON.stringify(myDynamicManifest)
+    const blob = new Blob([stringManifest], { type: 'application/json' })
+    const manifestURL = URL.createObjectURL(blob)
+    const element = document.querySelector('#custom-manifest')
+    if (element) {
+      element.setAttribute('href', manifestURL)
     }
   }
 
