@@ -291,12 +291,14 @@ function App() {
       background_color: '#ffffff',
       icons: [
         {
-          src: window.location.href + favicon.replace('-x-', '192x192'),
+          src:
+            window.location.href + favicon.replace('-x-', '192x192').slice(1),
           type: 'image/png',
           sizes: '192x192',
         },
         {
-          src: window.location.href + favicon.replace('-x-', '278x278'),
+          src:
+            window.location.href + favicon.replace('-x-', '278x278').slice(1),
           type: 'image/png',
           sizes: '278x278',
         },
