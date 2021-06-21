@@ -296,9 +296,9 @@ function App() {
           sizes: '192x192',
         },
         {
-          src: CONFIG.PREFIX + favicon.replace('-x-', '512x512'),
+          src: CONFIG.PREFIX + favicon.replace('-x-', '278x278'),
           type: 'image/png',
-          sizes: '512x512',
+          sizes: '278x278',
         },
       ],
     }
