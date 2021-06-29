@@ -16,7 +16,7 @@ body {
   justify-content: space-between;
 }
 .header svg {
-  margin: 20px 20px 0 20px;
+  margin: 20px 10px 0 10px;
   fill: #bf93f8;
   width: 25px;
   height: 25px;
@@ -27,6 +27,7 @@ body {
 }
 .header .logo {
   width: 100px;
+  margin-left: 10px;
 }
 
 .panel {

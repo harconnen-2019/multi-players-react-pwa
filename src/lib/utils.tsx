@@ -77,6 +77,44 @@ export const addStyleSheets = (href: string | undefined) => {
 }
 
 /**
+ * Динамический manifest
+ * @param {string} name - Имя плеера
+ * @param {string} favicon - Логотип плеера
+ */
+export const generateManifest = (name: string, favicon: string) => {
+  const myDynamicManifest = {
+    name: name,
+    short_name: name,
+    scope: window.location.href,
+    start_url: window.location.href,
+    display: 'standalone',
+    theme_color: '#ffffff',
+    description: '',
+    background_color: '#ffffff',
+    orientation: 'portrait-primary',
+    icons: [
+      {
+        src: window.location.href + favicon.replace('-x-', '192x192').slice(1),
+        type: 'image/png',
+        sizes: '192x192',
+      },
+      {
+        src: window.location.href + favicon.replace('-x-', '278x278').slice(1),
+        type: 'image/png',
+        sizes: '278x278',
+      },
+    ],
+  }
+  const stringManifest = JSON.stringify(myDynamicManifest)
+  const blob = new Blob([stringManifest], { type: 'application/json' })
+  const manifestURL = URL.createObjectURL(blob)
+  const element = document.querySelector('#custom-manifest')
+  if (element) {
+    element.setAttribute('href', manifestURL)
+  }
+}
+
+/**
  * Обновление баннера по заданному интервалу
  * Интервал берем из конфига
  * @param {number} timeAds - время последнего обновления

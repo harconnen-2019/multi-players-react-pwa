@@ -32,13 +32,22 @@ const Header = ({ menu, radio, lang }: Props) => {
         {menu.terms && (lang.terms ? lang.terms.message : 'Privacy policy')}
       </div>
       {menu.player && (
-        <div className={styles.player}>
-          <img src={radio?.cover} alt={radio?.name} />
-          <article>
-            <div>{radio?.name}</div>
-            <span>{radio?.note}</span>
-          </article>
-        </div>
+        <>
+          <div className={styles.player}>
+            <img src={radio?.cover} alt={radio?.name} />
+            <article>
+              <div>{radio?.name}</div>
+              <span>{radio?.note}</span>
+            </article>
+          </div>
+          <div>
+            <svg className='' onClick={() => {}}>
+              <use
+                xlinkHref={radio?.favorite ? `#favorites` : `#favorites-add`}
+              ></use>
+            </svg>
+          </div>
+        </>
       )}
     </>
   )
