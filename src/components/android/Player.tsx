@@ -108,7 +108,7 @@ const Player: React.FC<IPlayer> = (props) => {
           )}
         </div>
       </div>
-      <div className={styles.panel}>
+      <div className={`${styles.panel} ${menu.canvas && styles.canvas}`}>
         {menu.canvas && (
           <Canvas
             lang={props.lang}
@@ -150,7 +150,11 @@ const Player: React.FC<IPlayer> = (props) => {
           />
         )}
         {!menu.player && props.isPlay && (
-          <MiniPlay radio={props.radio} pause={props.pause} />
+          <MiniPlay
+            radio={props.radio}
+            pause={props.pause}
+            toggleMenu={toggleMenu}
+          />
         )}
         {menu.favorites && (
           <PanelFavorites

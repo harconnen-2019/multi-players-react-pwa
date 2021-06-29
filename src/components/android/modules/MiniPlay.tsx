@@ -6,12 +6,18 @@ import styles from './MiniPlay.module.css'
 interface Props {
   radio: IRadio | undefined
   pause: () => void
+  toggleMenu: (event: string) => void
 }
 
-const miniPlay = ({ radio, pause }: Props) => {
+const miniPlay = ({ radio, pause, toggleMenu }: Props) => {
   return (
     <div className={styles.mini}>
-      <div className={styles.radio}>
+      <div
+        className={styles.radio}
+        onClick={() => {
+          toggleMenu('player')
+        }}
+      >
         <img src={radio?.cover} alt={radio?.name} />
         <article>
           <div>{radio?.name}</div>

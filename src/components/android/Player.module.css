@@ -37,7 +37,14 @@ body {
 .panel section {
   margin: 85px 10px 0 10px;
 }
-
+.canvas {
+  background-color: #081c34;
+  height: calc(100vh - 65px);
+}
+.canvas section {
+  margin: 65px 10px 0 10px;
+  padding-top: 5px;
+}
 .down {
   height: 80px;
 }
