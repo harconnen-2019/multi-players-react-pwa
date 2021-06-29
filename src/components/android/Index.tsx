@@ -44,6 +44,7 @@ export const Index = ({
                   favoritesChange={favoritesChange}
                   playSelectRadio={playSelectRadio}
                   toggleMenu={toggleMenu}
+                  listFavorites={true}
                 />
               ))}
             </div>

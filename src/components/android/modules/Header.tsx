@@ -8,9 +8,10 @@ interface Props {
   menu: { [key: string]: boolean }
   radio: IRadio | undefined
   lang: ILocalization
+  favoritesChange: (change: boolean, radio: IRadio) => void
 }
 
-const Header = ({ menu, radio, lang }: Props) => {
+const Header = ({ menu, radio, lang, favoritesChange }: Props) => {
   return (
     <>
       <div className={styles.bread}>
@@ -40,13 +41,20 @@ const Header = ({ menu, radio, lang }: Props) => {
               <span>{radio?.note}</span>
             </article>
           </div>
-          <div>
-            <svg className='' onClick={() => {}}>
-              <use
-                xlinkHref={radio?.favorite ? `#favorites` : `#favorites-add`}
-              ></use>
-            </svg>
-          </div>
+          {radio !== undefined && (
+            <div>
+              <svg
+                className=''
+                onClick={() => {
+                  favoritesChange(radio.favorite, radio)
+                }}
+              >
+                <use
+                  xlinkHref={radio?.favorite ? `#favorites` : `#favorites-add`}
+                ></use>
+              </svg>
+            </div>
+          )}
         </>
       )}
     </>

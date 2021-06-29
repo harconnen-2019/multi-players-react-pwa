@@ -6,6 +6,7 @@ interface Props {
   favoritesChange: (change: boolean, radio: IRadio) => void
   playSelectRadio: (radio: IRadio) => void
   toggleMenu: (event: string) => void
+  listFavorites?: boolean
 }
 
 const List = ({
@@ -13,6 +14,7 @@ const List = ({
   favoritesChange,
   playSelectRadio,
   toggleMenu,
+  listFavorites = false,
 }: Props) => {
   const selectRadio = (radio: IRadio) => {
     toggleMenu('player')
@@ -29,19 +31,17 @@ const List = ({
           loading='lazy'
           onClick={() => selectRadio(radio)}
         />
-        <div
-          className={`${styles.favorites} ${
-            !radio.favorite ? styles.muted : ''
-          }`}
-        >
-          <svg
-            onClick={() => {
-              favoritesChange(radio.favorite, radio)
-            }}
-          >
-            <use xlinkHref={`#favorites${!radio.favorite ? '-add' : ''}`}></use>
-          </svg>
-        </div>
+        {listFavorites && radio.favorite && (
+          <div className={`${styles.favorites}`}>
+            <svg
+              onClick={() => {
+                favoritesChange(radio.favorite, radio)
+              }}
+            >
+              <use xlinkHref={`#cancel`}></use>
+            </svg>
+          </div>
+        )}
       </div>
       <div className={styles.title}>{radio.name}</div>
       <div className={styles.genres}>

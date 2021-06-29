@@ -22,15 +22,15 @@
   right: 5px;
   width: 40px;
   height: 40px;
-  background-color: rgba(180, 180, 180, 0.7);
+  background-color: rgba(191, 147, 248, 0.4);
   border-radius: 50%;
   cursor: pointer;
 }
 .favorites svg {
-  margin: 8px 0 0 7.5px;
+  margin: 12px 0 0 11.5px;
   fill: #fff;
-  width: 26px;
-  height: 26px;
+  width: 16px;
+  height: 16px;
 }
 .muted {
   background-color: rgba(180, 180, 180, 0.2);

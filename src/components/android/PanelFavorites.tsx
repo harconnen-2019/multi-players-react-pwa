@@ -34,6 +34,7 @@ const PanelFavorites = ({
             favoritesChange={favoritesChange}
             playSelectRadio={playSelectRadio}
             toggleMenu={toggleMenu}
+            listFavorites={true}
           />
         ))
       ) : lang.favoritesEmpty ? (

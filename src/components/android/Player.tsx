@@ -75,7 +75,12 @@ const Player: React.FC<IPlayer> = (props) => {
               {!props.theme?.single && (
                 <Icon name='left' onClick={() => toggleMenu('null')} />
               )}
-              <Header menu={menu} radio={props.radio} lang={props.lang} />
+              <Header
+                menu={menu}
+                radio={props.radio}
+                lang={props.lang}
+                favoritesChange={props.favoritesChange}
+              />
             </div>
           ) : (
             <>
