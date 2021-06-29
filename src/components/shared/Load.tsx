@@ -1,10 +1,12 @@
+import * as CONFIG from '../../config'
 import styles from './Load.module.css'
 
 interface Props {
   err: boolean
+  platform: string | undefined
 }
 
-const Load = ({ err }: Props) => {
+const Load = ({ err, platform }: Props) => {
   if (err) {
     return (
       <div className={styles.error}>
@@ -15,7 +17,11 @@ const Load = ({ err }: Props) => {
     )
   } else {
     return (
-      <div className={styles.load}>
+      <div
+        className={`${styles.load} ${
+          platform === CONFIG.PLATFORM.ANDROID ? styles.android : ''
+        }`}
+      >
         Initializing the player.
         <br />
         <em>If you wait a long time, check your network connection...</em>

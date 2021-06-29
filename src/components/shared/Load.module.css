@@ -7,6 +7,11 @@
   composes: common;
   color: grey;
 }
+.android {
+  background-image: url('/src/components/bg-crop.jpg');
+  background-size: cover;
+  height: 100vh;
+}
 .error {
   composes: common;
   color: indianred;

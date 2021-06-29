@@ -483,13 +483,15 @@ function App() {
   }
 
   if (status === CONFIG.STATUS.INIT || status === CONFIG.STATUS.LOADING) {
-    return <Load err={false} />
+    return <Load err={false} platform={init?.player.platform} />
   } else if (status === CONFIG.STATUS.ERROR) {
-    return <Load err={true} />
+    return <Load err={true} platform={init?.player.platform} />
   } else {
     return (
       <>
-        <Suspense fallback={<Load err={false} />}>
+        <Suspense
+          fallback={<Load err={false} platform={init?.player.platform} />}
+        >
           {init?.player.platform === 'android' ? (
             <Android
               theme={init?.player}
