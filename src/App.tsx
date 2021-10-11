@@ -268,6 +268,10 @@ function App() {
           })
           console.log('ga-event-player-install', PLATFORM)
         }
+        gtag('event', `Start-${PLATFORM}`, {
+          event_label: 'Запуск плеера',
+          event_category: 'Плееры',
+        })
       }, 5000)
     } catch {
       setStatus(CONFIG.STATUS.ERROR)
@@ -333,6 +337,10 @@ function App() {
     setIsPlay(true)
     document.title = radio?.name ? radio?.name : 'player'
     newBanner()
+    gtag('event', `${radio?.name}`, {
+      event_label: 'Запуск радиостанции',
+      event_category: 'Плееры',
+    })
   }
 
   /**
