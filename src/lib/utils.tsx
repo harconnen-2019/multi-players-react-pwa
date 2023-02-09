@@ -7,7 +7,7 @@ import * as CONFIG from '../config'
 /**
  * Считывает cookies до инициализации для отправки запросов api (?session=)
  * @function
- * @returns {string | undefine} - Значение cookie или Undefine
+ * @returns {string | undefined} - Значение cookie или Undefined
  */
 export const getCookie = (name: string): string | undefined => {
   let matches = document.cookie.match(
@@ -21,8 +21,8 @@ export const getCookie = (name: string): string | undefined => {
 /**
  * Получение данных с сервера с помощью Fetch
  * @function
- * @param {string} url - url
  * @returns {Promise}
+ * @param request
  */
 export async function fetchFromApi<T>(request: RequestInfo): Promise<T> {
   let result
@@ -50,9 +50,9 @@ export const report = (text: string, prop: any = ''): void => {
  */
 export const addFavicon = (href: string | undefined) => {
   if (href !== undefined) {
-    var link: HTMLElement =
-      document.querySelector("link[rel*='icon']") ||
-      document.createElement('link')
+    const link: HTMLElement =
+        document.querySelector('link[rel*=\'icon\']') ||
+        document.createElement('link')
     link.setAttribute('type', 'image/x-icon')
     link.setAttribute('rel', 'shortcut icon')
     link.setAttribute('href', CONFIG.PREFIX + href)
@@ -66,8 +66,8 @@ export const addFavicon = (href: string | undefined) => {
  */
 export const addStyleSheets = (href: string | undefined) => {
   if (href !== undefined) {
-    var $head = document.head,
-      $link = document.createElement('link')
+    const $head = document.head,
+        $link = document.createElement('link')
 
     $link.rel = 'stylesheet'
     $link.href = href
